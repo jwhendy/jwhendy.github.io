@@ -26,7 +26,7 @@ SITE_URL = "https://jwhendy.github.io/"
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://jwhendy.github.io/"
 BLOG_EMAIL = "jw.hendy@gmail.com"
-BLOG_DESCRIPTION = "When you put knowledge, food, and coffee into the bio-machine, here are some of the things that come out."  # (translatable)
+BLOG_DESCRIPTION = "Knowledge, food, and coffee go in; this is some of what comes out."  # (translatable)
 
 # Nikola is multilingual!
 #
