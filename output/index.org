@@ -1,22 +1,71 @@
-#+BEGIN_COMMENT
-.. title: 
+#+begin_comment
+.. title: home 
 .. slug: index
-.. date: 2017-05-14
+.. date: 2017-05-14 20:36:32 UTC-05:00
 .. tags: 
 .. category: 
 .. link: 
 .. description: 
 .. type: text
 .. author: jwh
-#+END_COMMENT
+#+end_comment
+
+* 
+
+#+name: in-and-out
+#+header: :file img/in-and-out.png :imagemagick yes :iminoptions -density 1200 
+#+begin_src latex :packages '(("" "tikz")) :headers \renewcommand{\rmdefault}{cmss} :exports results :results output raw :border 1em :eval yes
+\usetikzlibrary{positioning,shapes,arrows}
+\begin{tikzpicture}[scale=0.75]
+  \node[draw, rounded corners, anchor=east] (n1) at (0,0) {knowledge};
+  \node[draw, rounded corners, anchor=east] (n2) at (0,-1) {food};
+  \node[draw, rounded corners, anchor=east] (n3) at (0,-2) {coffee};
+  \node[draw, rounded corners] (me) at (2,-1) {me};
+  \node[draw, rounded corners] (out) at (4,-1) {see below!};
+
+  \draw (n1.east) to [out=0, in=180] (me.west);
+  \draw[->] (n2.east) -- (me.west);
+  \draw (n3.east) to [out=0, in=180] (me.west);
+  \draw[->] (me.east) -- (out.west);
+
+\end{tikzpicture}
+#+end_src
+
+#+attr_html: :width 75%
+#+RESULTS: in-and-out
+[[file:img/in-and-out.png]]
 
 
-* test 1
+* fine arts
 
-Some text
+#+begin_html  
 
-- a 
-- bulleted
-- list
+<table class="wide">
+<tr>
+  <td class="left">
+    <a href="http://imgur.com/a/wBCpD">
+        <img src="http://imgur.com/QM93Z.png" style="height:400px" alt="frame" title="frame"/>
+    </a>
+  </td>
+  <td class="right">
+    <a href="http://imgur.com/a/JbmC2">
+        <img src="http://imgur.com/fUakK.png" style="height:400px" alt="cribbage_mpf" title="cribbage_mpf"/>
+    </a>
+  </td>
+</tr>
+<tr>
+  <td class="left">
+    <a href="http://imgur.com/a/kwvLM">
+        <img src="http://imgur.com/8uopQ.png" style="height:400px" alt="cribbage_drs" title="cribbage_drs"/>
+    </a>
+  </td>
+  <td class="right">
+    <a href="http://imgur.com/a/2muIy">
+        <img src="http://imgur.com/38U9y.png" style="height:400px" alt="cribbage_pp" title="cribbage_pp"/>
+    </a>
+  </td>
+</tr>
+</table>
 
-* another test
+#+end_html
+
