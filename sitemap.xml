@@ -7,30 +7,70 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://jwhendy.github.io/</loc>
-  <lastmod>2017-05-15T03:25:00Z</lastmod>
+  <lastmod>2017-05-15T20:51:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/2017/</loc>
+  <lastmod>2017-05-15T20:51:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/about/</loc>
+  <lastmod>2017-05-15T20:51:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/archive.html</loc>
-  <lastmod>2017-05-15T02:55:00Z</lastmod>
+  <lastmod>2017-05-15T21:13:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jwhendy.github.io/blogs/</loc>
-  <lastmod>2017-05-15T01:38:00Z</lastmod>
+  <loc>https://jwhendy.github.io/blog/</loc>
+  <lastmod>2017-05-15T20:51:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/blog/2017-05-15-kick-off/</loc>
+  <lastmod>2017-05-15T20:51:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/categories/</loc>
-  <lastmod>2017-05-15T01:38:00Z</lastmod>
+  <lastmod>2017-05-15T23:10:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jwhendy.github.io/galleries/</loc>
-  <lastmod>2017-05-15T01:38:00Z</lastmod>
+  <loc>https://jwhendy.github.io/categories/first-nikola-github/</loc>
+  <lastmod>2017-05-15T23:09:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jwhendy.github.io/indexy/</loc>
-  <lastmod>2017-05-15T01:53:00Z</lastmod>
+  <loc>https://jwhendy.github.io/categories/first/</loc>
+  <lastmod>2017-05-15T23:10:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jwhendy.github.io/listings/</loc>
-  <lastmod>2017-05-15T01:38:00Z</lastmod>
+  <loc>https://jwhendy.github.io/categories/github/</loc>
+  <lastmod>2017-05-15T23:10:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/categories/nikola/</loc>
+  <lastmod>2017-05-15T23:10:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/portfolio/</loc>
+  <lastmod>2017-05-15T23:01:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/portfolio/arts/</loc>
+  <lastmod>2017-05-15T22:32:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/portfolio/codey/</loc>
+  <lastmod>2017-05-15T22:32:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/portfolio/electronica/</loc>
+  <lastmod>2017-05-15T23:01:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/portfolio/fine_arts/</loc>
+  <lastmod>2017-05-15T20:51:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/portfolio/house/</loc>
+  <lastmod>2017-05-15T22:32:00Z</lastmod>
  </url>
 </urlset>

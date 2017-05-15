@@ -1,0 +1,86 @@
+#+BEGIN_COMMENT
+.. title: portfolio
+.. slug: portfolio
+.. date: 2017-05-15 15:10:24 UTC-05:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+
+* 
+
+#+name: in-and-out
+#+header: :file img/in-and-out.png :imagemagick yes :iminoptions -density 1200 
+#+begin_src latex :packages '(("" "tikz")) :headers \renewcommand{\rmdefault}{cmss} :exports results :results output raw :border 1em :eval no
+\usetikzlibrary{positioning,shapes,arrows}
+\begin{tikzpicture}[scale=0.75]
+  \node[draw, rounded corners, anchor=east] (n1) at (0,0) {knowledge};
+  \node[draw, rounded corners, anchor=east] (n2) at (0,-1) {food};
+  \node[draw, rounded corners, anchor=east] (n3) at (0,-2) {coffee};
+  \node[draw, rounded corners] (me) at (2,-1) {me};
+  \node[draw, rounded corners] (out) at (4,-1) {see below!};
+
+  \draw (n1.east) to [out=0, in=180] (me.west);
+  \draw[->] (n2.east) -- (me.west);
+  \draw (n3.east) to [out=0, in=180] (me.west);
+  \draw[->] (me.east) -- (out.west);
+
+\end{tikzpicture}
+#+end_src
+
+#+attr_html: :width 75%
+#+RESULTS: in-and-out
+[[file:../img/in-and-out.png]]
+
+
+
+I love learning new things, and I particularly enjoy the challenge of wondering "Could I
+do that?" This is a portal into various areas where I've had that thought, persevered
+sufficiently to get a result, /and/ I was pleased enough with it to show the internet.
+
+Take a look around; if you want to get back here, click =portfolio= in the top menu.
+
+#+begin_export html  
+
+<div class="container-fluid" style="border-spacing: 1em;">
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <a href="codey/"><strong>codey things</strong></a><br/><br/>
+      <a href="codey/">
+        <img src="../img/insurance-viz.png" style="max-width: 80%; border-radius: 10px;" alt="frame" />
+      </a>
+    </div>
+
+    <div class="col-md-6">
+      <a href="electronica/"><strong>electronica</strong></a><br/><br/>
+      <a href="electronica/">
+        <img src="../img/liam-led-matrix.jpg" style="max-width: 80%; border-radius: 10px;" alt="frame" />
+      </a>
+    </div>
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <a href="arts/"><strong>fine arts</strong></a><br/><br/>
+      <a href="arts/">
+        <img src="http://imgur.com/QM93Z.png" style="max-width: 80%; border-radius: 10px;" alt="frame" />
+      </a>
+    </div>
+
+    <div class="col-md-6">
+      <a href="house/"><strong>house</strong></a><br/><br/>
+      <a href="house/">
+        <img src="../img/roof.jpg" style="max-width: 80%; border-radius: 10px;" alt="frame" />
+      </a>
+    </div>
+
+  </div>
+
+</div>
+#+end_export
