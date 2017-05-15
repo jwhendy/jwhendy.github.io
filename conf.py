@@ -18,7 +18,7 @@ import time
 
 # Data about this site
 BLOG_AUTHOR = "John Henderson"  # (translatable)
-BLOG_TITLE = "portfolio"  # (translatable)
+BLOG_TITLE = "technologeekery"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
 SITE_URL = "https://jwhendy.github.io/"
@@ -78,9 +78,9 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        #("/archive.html", "Archive"),
-        ("/categories/", "Tags"),
-        #("/rss.xml", "RSS feed"),
+        ("/portfolio/", "portfolio"),
+        ("/blog/", "blog"),
+        ("/categories/", "tags"),
     ),
 }
 
@@ -127,9 +127,10 @@ THEME_COLOR = '#5670d4'
 #     )
 
 POSTS = (
-    ("posts/*.rst", "posts", "post.tmpl"),
-    ("posts/*.txt", "posts", "post.tmpl"),
-    ("posts/*.html", "posts", "post.tmpl"),
+    ("posts/*.org", "blog", "post.tmpl"),
+    ("posts/*.rst", "blog", "post.tmpl"),
+    ("posts/*.txt", "blog", "post.tmpl"),
+    ("posts/*.html", "blog", "post.tmpl"),
 )
 
 PAGES = (
@@ -456,7 +457,7 @@ HIDDEN_AUTHORS = ['Guest']
 # Final location for the main blog page and sibling paginated pages is
 # output / TRANSLATION[lang] / INDEX_PATH / index-*.html
 # (translatable)
-INDEX_PATH = "blogs"
+INDEX_PATH = "blog"
 
 # Optional HTML that displayed on “main” blog index.html files.
 # May be used for a greeting. (translatable)
@@ -1024,7 +1025,7 @@ MARKDOWN_EXTENSIONS = ['fenced_code', 'codehilite', 'extra']
 
 # Show link to source for the posts?
 # Formerly known as HIDE_SOURCELINK (inverse)
-# SHOW_SOURCELINK = True
+SHOW_SOURCELINK = False
 # Copy the source files for your pages?
 # Setting it to False implies SHOW_SOURCELINK = False
 # COPY_SOURCES = True
@@ -1124,7 +1125,7 @@ MARKDOWN_EXTENSIONS = ['fenced_code', 'codehilite', 'extra']
 # Extra things you want in the pages HEAD tag. This will be added right
 # before </head>
 # (translatable)
-# EXTRA_HEAD_DATA = ""
+EXTRA_HEAD_DATA = "<style>body{font-size:17px;}</style>"
 # Google Analytics or whatever else you use. Added to the bottom of <body>
 # in the default template (base.tmpl).
 # (translatable)

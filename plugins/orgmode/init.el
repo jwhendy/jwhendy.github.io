@@ -5,10 +5,11 @@
 
 ;; Uncomment these lines and change the path to your org source to
 ;; add use it.
-;; (let* ((org-lisp-dir "~/.emacs.d/src/org/lisp"))
-;;   (when (file-directory-p org-lisp-dir)
-;;       (add-to-list 'load-path org-lisp-dir)
-;;       (require 'org)))
+
+(let* ((org-lisp-dir "~/.elisp/org/lisp"))
+  (when (file-directory-p org-lisp-dir)
+      (add-to-list 'load-path org-lisp-dir)
+      (require 'org)))
 
 (require 'ox-html)
 
