@@ -1,0 +1,34 @@
+#+BEGIN_COMMENT
+.. title: electronica
+.. slug: electronica
+.. date: 2017-05-15 15:10:24 UTC-05:00
+.. tags: electronics arduino
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+
+* 
+
+Violet, a robot I built with my 6-at-the-time year old:
+
+#+html: <div align="center">
+#+html: <a href="http://jwhendy.blogspot.com/2015/07/violet-making-introductory-arduino.html">
+#+attr_html: :height 600px
+[[http://imgur.com/BjeU5yF.jpg]]
+#+html: </a>
+#+html: </div>
+
+* noex                                                             :noexport:
+
+https://www.youtube.com/watch?v=kTi8ZCS-Nbs
+
+- violet (grab 3M FB and twitter features)
+- light suit v1
+- light suit v2
+- led matrix
+- 1d pong
+- christmas star

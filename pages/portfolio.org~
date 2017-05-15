@@ -1,0 +1,40 @@
+#+BEGIN_COMMENT
+.. title: portfolio
+.. slug: portfolio
+.. date: 2017-05-15 15:10:24 UTC-05:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+
+* 
+
+#+name: in-and-out
+#+header: :file img/in-and-out.png :imagemagick yes :iminoptions -density 1200 
+#+begin_src latex :packages '(("" "tikz")) :headers \renewcommand{\rmdefault}{cmss} :exports results :results output raw :border 1em :eval no
+\usetikzlibrary{positioning,shapes,arrows}
+\begin{tikzpicture}[scale=0.75]
+  \node[draw, rounded corners, anchor=east] (n1) at (0,0) {knowledge};
+  \node[draw, rounded corners, anchor=east] (n2) at (0,-1) {food};
+  \node[draw, rounded corners, anchor=east] (n3) at (0,-2) {coffee};
+  \node[draw, rounded corners] (me) at (2,-1) {me};
+  \node[draw, rounded corners] (out) at (4,-1) {see below!};
+
+  \draw (n1.east) to [out=0, in=180] (me.west);
+  \draw[->] (n2.east) -- (me.west);
+  \draw (n3.east) to [out=0, in=180] (me.west);
+  \draw[->] (me.east) -- (out.west);
+
+\end{tikzpicture}
+#+end_src
+
+#+attr_html: :width 75%
+#+RESULTS: in-and-out
+[[file:../img/in-and-out.png]]
+
+
+
