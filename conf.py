@@ -132,6 +132,7 @@ POSTS = (
 )
 
 PAGES = (
+    ("pages/*.org", "", "story.tmpl"),
     ("pages/*.rst", "", "story.tmpl"),
     ("pages/*.txt", "", "story.tmpl"),
     ("pages/*.html", "", "story.tmpl"),
@@ -224,7 +225,7 @@ COMPILERS = {
     # "pandoc": ('.rst', '.md', '.txt'),
 }
 
-## COMPILERS['orgmode'] = ('.org', )
+COMPILERS["orgmode"] = ('.org', )
 
 # Create by default posts in one file format?
 # Set to False for two-file posts, with separate metadata.
