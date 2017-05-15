@@ -1,6 +1,6 @@
-.. title: something
-.. slug: something
-.. date: 2017-05-14 15:59:29 UTC-05:00
+.. title: index
+.. slug: index
+.. date: 2017-05-14 20:36:32 UTC-05:00
 .. tags: 
 .. category: 
 .. link: 
