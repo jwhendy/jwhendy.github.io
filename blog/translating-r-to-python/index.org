@@ -40,6 +40,10 @@ pickup will be relevant (I'm already doing these sorts of tasks), and the learni
 targetted (I'm extracting the small % of information I need vs. trying to digest things I
 likely will never use).
 
+#+begin_export html
+<!-- TEASER_END -->
+#+end_export
+
 * The challenge
 
 The data consists of some raw test data from a sensor. I've anonymized what it is, but the
