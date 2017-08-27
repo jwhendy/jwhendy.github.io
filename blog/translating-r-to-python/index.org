@@ -62,17 +62,44 @@ if you want to follow along.
 * Using R
 
 So you can get a sense of how I'm doing this in =R= (comments/improvements welcome!),
-let's look at the raw data:
+let's look at the raw data. =i= here is just the row number, but because of the sampling
+rate it's also the time in milliseconds.
 
-#+begin_src R :session r :exports code :results silent
+#+begin_src R :session r :exports both :results output :eval no
 
 library(ggplot2)
 library(reshape2)
 
-data <- read.csv("r-to-python-data.csv")
+data <- read.csv("https://jwhendy.github.io/data/r-to-python-data.csv")
+head(data)
 
 #+end_SRC
 
+#+RESULTS:
+:   i test_1 test_2
+: 1 1  -0.03  -0.05
+: 2 2  -0.03  -0.05
+: 3 3  -0.03  -0.05
+: 4 4  -0.03  -0.05
+: 5 5  -0.03  -0.05
+: 6 6  -0.03  -0.05
+
+If we plot it, you can see the lag I'm talking about
+
+#+header: :file ../files/img/overview.png :height 600 :width 900 :res 150
+#+name: overview
+#+begin_src R :session r :exports both :results output graphics
+
+data_melt <- melt(data, id.vars = "i")
+ggplot(data_melt, aes(x = i, y = value, colour = variable)) + geom_line()
+
+#+end_SRC
+
+#+begin_center
+#+attr_html: :width 600px
+#+RESULTS: overview
+[[file:../files/img/overview.png]]
+#+end_center
 
 
  
