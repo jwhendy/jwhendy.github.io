@@ -84,3 +84,67 @@ Take a look around; if you want to get back here, click =portfolio= in the top m
 
 </div>
 #+end_export
+
+* original dump                                                    :noexport:
+
+
+** fine arts
+- etched marriage photo
+- picture frame
+- cribbage: dan s., rick, paul, mark, andy
+- control box for henderizer v1
+- honda badge
+- shaving brush
+- crochet hats
+
+** data viz/programming
+
+- fhtm graphics?
+- insurance visualizer
+- various other shiny examples
+- junk charts feature re. sleep schedules
+- plot tile floor
+- weather prediction
+- kickstarter watcher
+
+** arduino
+
+- violet (grab 3M FB and twitter features)
+- light suit v1
+- light suit v2
+- led matrix
+- 1d pong
+- christmas star
+
+** home improvement
+
+- dining room/living room trim
+- dining room windows
+- garage roof, doors, and siding
+- entry way tile floor
+
+
+** presentations
+
+- devfest 1 & 2 & (&3?)
+- r, data viz, python meetups
+- two r classes at 3M
+- arduino led desk light class
+
+** mechanisms
+
+- car repair
+- magnetic securement for andy's board
+- rock tumbler attempt
+- took apart/rebuilt road bike
+- table saw?
+- circular saw rebuild
+- lawn mower repaint
+
+** continuing ed
+
+- The Data Scientist's Toolbox (R), John's Hopkins. 2014.
+- Getting Started with Python, University of Michigan. 2015.
+- Python Data Structures, University of Michigan. 2015.
+- Using Python to Access Web Data, University of Michigan. 2016.
+- Using Databases with Python, University of Michigan. 2016.

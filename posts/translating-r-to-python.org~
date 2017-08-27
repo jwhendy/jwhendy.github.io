@@ -1,0 +1,34 @@
+#+BEGIN_COMMENT
+.. title: Translating R to python
+.. slug: translating-r-to-python
+.. date: 2017-08-27 15:52:28 UTC-05:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+* Background
+
+I've been using =R= for at least [[https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r][5 years]]. Lately, I've been trying to pick up =python= as
+well, which is quite the learning experience! I've been through some tutorials (or pieces
+of them) from [[http://greenteapress.com/thinkpython/html/index.html][/think python/]] and [[https://learnpythonthehardway.org/][lpthw]], as well as [[https://www.coursera.org/learn/python][classes on Coursera]]. With some basics
+under my belt, I started getting into =numpy= and =pandas=, which is where things got
+tricky. I can vaguely recall a time in my =R= Padawan days when I had a sense of what I
+wanted to do, but didn't know enough to even formulate the question correctly. I also find
+I don't learn well by just reading docs. I want to poke and prod around, trying to wrap my
+head around what I'm reading. For example, I ran across the the function =tolist()= via
+[[https://stackoverflow.com/questions/34898159/python-pandas-series-combine-the-rows][SO]], but have no idea how to interpret [[https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.tolist.html][this]] as it is:
+
+#+BEGIN_quote
+Series.tolist()[source]
+  Convert Series to a nested list
+#+END_quote
+
+#+BEGIN_QUOTE
+
+#+END_QUOTE
+
+ 

@@ -1,0 +1,61 @@
+<div id="outline-container-orgd80eb72" class="outline-2">
+<h2 id="orgd80eb72">Background</h2>
+<div class="outline-text-2" id="text-orgd80eb72">
+<p>
+I've been using <code>R</code> for at least <a href="https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r">5 years</a>. Lately, I've been trying to pick up <code>python</code> as
+well, which is quite the learning experience! I've been through some tutorials (or pieces
+of them) from <a href="http://greenteapress.com/thinkpython/html/index.html"><i>think python</i></a> and <a href="https://learnpythonthehardway.org/">lpthw</a>, as well as <a href="https://www.coursera.org/learn/python">classes on Coursera</a>. With some basics
+under my belt, I started getting into <code>numpy</code> and <code>pandas</code>, which is where things got
+tricky. I can vaguely recall a time in my <code>R</code> Padawan days when I had a sense of what I
+wanted to do, but didn't know enough to even formulate the question correctly. I also find
+I don't learn well by just reading docs. I want to poke and prod around, trying to wrap my
+head around what I'm reading. For example, I ran across the the function <code>tolist()</code> via
+<a href="https://stackoverflow.com/questions/34898159/python-pandas-series-combine-the-rows">SO</a>, but have no idea how to interpret <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.tolist.html">this</a> as it is:
+</p>
+
+<pre class="example">
+Series.tolist()
+  Convert Series to a nested list
+</pre>
+
+<p>
+I thought a <code>pd.Series</code> was just like an <code>R</code> vector; why would it be "nestable" in the
+first place? What is a nested list and why do I want that? Some <a href="https://stackoverflow.com/questions/23748995/pandas-dataframe-to-list">examples</a> just show that it
+converts from a <code>pd.Series</code> to a list. I don't see any "nesting," but then don't know what
+that is.
+</p>
+
+<p>
+In any case, the point is that instead of trying to just learn <code>pandas</code> in some linear
+way, I thought it might be more effective to simply take some <code>R</code> code and translate it to
+<code>python</code>. I know what I want to know and the tools I would use in <code>R</code>, so getting my brain
+around how to do the same in <code>python</code> seemed like an interesting way to learn. Whatever I
+pickup will be relevant (I'm already doing these sorts of tasks), and the learning is more
+targetted (I'm extracting the small % of information I need vs. trying to digest things I
+likely will never use).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4a6bd69" class="outline-2">
+<h2 id="org4a6bd69">The challenge</h2>
+<div class="outline-text-2" id="text-org4a6bd69">
+<p>
+The data consists of some raw test data from a sensor. I've anonymized what it is, but the
+gist is as follows:
+</p>
+
+<ul class="org-ul">
+<li>I start logging data via USB at 1000 Hz</li>
+<li>The test begins and I get the data of interest</li>
+<li>I stop logging that sample</li>
+</ul>
+
+<p>
+Because the logging software and machine don't communicate, I end up with varying amounts
+of baseline, nominally zero data before the test occurs. Once it's over, I have a "tail"
+of unknown length after the test is complete. I tend to have anywhere between 5-25 tests,
+and I want to align their starts for plotting/analysis. The 
+</p>
+</div>
+</div>
