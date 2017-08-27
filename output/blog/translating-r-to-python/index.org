@@ -97,7 +97,7 @@ ggplot(data_melt, aes(x = i, y = value, colour = variable)) + geom_line()
 
 #+attr_html: :width 600px
 #+RESULTS: overview
-[[file:../,,/img/overview.png]]
+[[file:../../img/overview.png]]
 
 
 After the lag, the machine does a little bit of warmup/prep which is that first
