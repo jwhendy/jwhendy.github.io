@@ -95,11 +95,10 @@ ggplot(data_melt, aes(x = i, y = value, colour = variable)) + geom_line()
 
 #+end_src
 
-#+begin_center
 #+attr_html: :width 600px
 #+RESULTS: overview
 [[file:../,,/img/overview.png]]
-#+end_center
+
 
 After the lag, the machine does a little bit of warmup/prep which is that first
 mini-peak. Then there's a brief pause and the test is run. The "start" of each test is the
@@ -140,7 +139,7 @@ adjuster <- function(vals) {
   ## I want to ditch the lag/warm up, keep the test itself, and ditch the
   ## logging of nothing once the test completes. To do this, I send back:
   ## - NAs from 0 to the start index
-  ## - the shifted milliseconds for the test data
+  ## - a new, shifted index matching the start and end of the test
   ## - NAs until the end
   adj <- c(rep(NA, start),
            1:(end - start),
