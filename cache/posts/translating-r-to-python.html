@@ -1,6 +1,6 @@
-<div id="outline-container-org1307b62" class="outline-2">
-<h2 id="org1307b62">Background</h2>
-<div class="outline-text-2" id="text-org1307b62">
+<div id="outline-container-org5566fe3" class="outline-2">
+<h2 id="org5566fe3">Background</h2>
+<div class="outline-text-2" id="text-org5566fe3">
 <p>
 I've been using <code>R</code> for at least <a href="https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r">5 years</a>. Lately, I've been trying to pick up <code>python</code> as
 well, which is quite the learning experience! I've been through some tutorials (or pieces
@@ -39,9 +39,9 @@ likely will never use).
 </div>
 </div>
 
-<div id="outline-container-org0f0b984" class="outline-2">
-<h2 id="org0f0b984">The challenge</h2>
-<div class="outline-text-2" id="text-org0f0b984">
+<div id="outline-container-org9f0248f" class="outline-2">
+<h2 id="org9f0248f">The challenge</h2>
+<div class="outline-text-2" id="text-org9f0248f">
 <p>
 The data consists of some raw test data from a sensor. I've anonymized what it is, but the
 gist is as follows:
@@ -63,9 +63,9 @@ if you want to follow along.
 </div>
 </div>
 
-<div id="outline-container-org7638121" class="outline-2">
-<h2 id="org7638121">Using R</h2>
-<div class="outline-text-2" id="text-org7638121">
+<div id="outline-container-orgd19f35b" class="outline-2">
+<h2 id="orgd19f35b">Using R</h2>
+<div class="outline-text-2" id="text-orgd19f35b">
 <p>
 So you can get a sense of how I'm doing this in <code>R</code> (comments/improvements welcome!),
 let's look at the raw data. <code>i</code> here is just the row number, but because of the sampling
@@ -195,13 +195,13 @@ data_all <span class="o">&lt;-</span> <span class="kp">do.call</span><span class
 </div>
 
 
-<div id="outline-container-orgcece349" class="outline-2">
-<h2 id="orgcece349">The translation</h2>
-<div class="outline-text-2" id="text-orgcece349">
+<div id="outline-container-org007ad7e" class="outline-2">
+<h2 id="org007ad7e">The translation</h2>
+<div class="outline-text-2" id="text-org007ad7e">
 </div>
-<div id="outline-container-org95fc126" class="outline-3">
-<h3 id="org95fc126">Moving averages</h3>
-<div class="outline-text-3" id="text-org95fc126">
+<div id="outline-container-orgf048202" class="outline-3">
+<h3 id="orgf048202">Moving averages</h3>
+<div class="outline-text-3" id="text-orgf048202">
 <p>
 I just went line by line trying to re-create what I wanted. I'll start with the moving
 average, <code>ma()</code> function. When I googles "moving average in R" some years ago, I got the
@@ -220,19 +220,19 @@ among others:
 I ended up liking <code>pd.rolling</code>, so my new function is:
 </p>
 
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ma</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">250</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;take in a df column and return a moving average smoothed one&quot;&quot;&quot;</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">res</span>
+<div class="highlight"><pre><span></span>def ma<span class="p">(</span><span class="kp">col</span><span class="p">,</span> n<span class="o">=</span><span class="m">250</span><span class="p">)</span><span class="o">:</span>
+    <span class="s">&quot;&quot;&quot;take in a df column and return a moving average smoothed one&quot;&quot;&quot;</span>
+    res <span class="o">=</span> col.rolling<span class="p">(</span>center<span class="o">=</span>True<span class="p">,</span> window<span class="o">=</span>n<span class="p">)</span><span class="m">.</span><span class="kp">mean</span><span class="p">()</span>
+    <span class="kr">return</span> res
 </pre></div>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgc0b930f" class="outline-2">
-<h2 id="orgc0b930f">Takeaways</h2>
-<div class="outline-text-2" id="text-orgc0b930f">
+<div id="outline-container-org7ac091b" class="outline-2">
+<h2 id="org7ac091b">Takeaways</h2>
+<div class="outline-text-2" id="text-org7ac091b">
 <p>
 Both languages can have multiple ways to do something, but I have a vague notion that
 <code>python</code> may feature more ways to do something than <code>R</code>, or at least it seems to get more
