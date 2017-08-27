@@ -56,7 +56,7 @@ gist is as follows:
 Because the logging software and machine don't communicate, I end up with varying amounts
 of baseline, nominally zero data before the test occurs. Once it's over, I have a "tail"
 of unknown length after the test is complete. I tend to have anywhere between 5-25 tests,
-and I want to align their starts for plotting/analysis. I've created a sample dataset [[../files/r-to-python-data.csv][here]]
+and I want to align their starts for plotting/analysis. I've created a sample dataset [[../../data/r-to-python-data.csv][here]]
 if you want to follow along.
 
 * Using R
