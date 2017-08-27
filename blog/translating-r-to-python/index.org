@@ -88,7 +88,7 @@ If we plot it, you can see the lag I'm talking about
 
 #+header: :file ../files/img/overview.png :height 600 :width 900 :res 150
 #+name: overview
-#+begin_src R :session r :exports both :results output graphics
+#+begin_src R :session r :exports both :results output graphics :eval no
 
 data_melt <- melt(data, id.vars = "i")
 ggplot(data_melt, aes(x = i, y = value, colour = variable)) + geom_line()
@@ -98,7 +98,7 @@ ggplot(data_melt, aes(x = i, y = value, colour = variable)) + geom_line()
 #+begin_center
 #+attr_html: :width 600px
 #+RESULTS: overview
-[[file:../files/img/overview.png]]
+[[file:../img/overview.png]]
 #+end_center
 
 
