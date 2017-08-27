@@ -207,7 +207,7 @@ among others:
 
 I ended up liking =pd.rolling=, so my new function is:
 
-#+begin_src python :exports code :results silent :eval no
+#+begin_src R :exports code :results silent :eval no
 
 def ma(col, n=250):
     """take in a df column and return a moving average smoothed one"""
