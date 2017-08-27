@@ -83,9 +83,9 @@ of them) fr">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-org5641061" class="outline-2">
-<h2 id="org5641061">Background</h2>
-<div class="outline-text-2" id="text-org5641061">
+    <div id="outline-container-org1307b62" class="outline-2">
+<h2 id="org1307b62">Background</h2>
+<div class="outline-text-2" id="text-org1307b62">
 <p>
 I've been using <code>R</code> for at least <a href="https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r">5 years</a>. Lately, I've been trying to pick up <code>python</code> as
 well, which is quite the learning experience! I've been through some tutorials (or pieces
@@ -124,9 +124,9 @@ likely will never use).
 </div>
 </div>
 
-<div id="outline-container-orgcb6692f" class="outline-2">
-<h2 id="orgcb6692f">The challenge</h2>
-<div class="outline-text-2" id="text-orgcb6692f">
+<div id="outline-container-org0f0b984" class="outline-2">
+<h2 id="org0f0b984">The challenge</h2>
+<div class="outline-text-2" id="text-org0f0b984">
 <p>
 The data consists of some raw test data from a sensor. I've anonymized what it is, but the
 gist is as follows:
@@ -147,9 +147,9 @@ if you want to follow along.
 </div>
 </div>
 
-<div id="outline-container-org3f2a579" class="outline-2">
-<h2 id="org3f2a579">Using R</h2>
-<div class="outline-text-2" id="text-org3f2a579">
+<div id="outline-container-org7638121" class="outline-2">
+<h2 id="org7638121">Using R</h2>
+<div class="outline-text-2" id="text-org7638121">
 <p>
 So you can get a sense of how I'm doing this in <code>R</code> (comments/improvements welcome!),
 let's look at the raw data. <code>i</code> here is just the row number, but because of the sampling
@@ -273,6 +273,56 @@ data_all <span class="o">&lt;-</span> <span class="kp">do.call</span><span class
 <div class="figure">
 <p><img src="../../img/aligned.png" alt="aligned.png" width="600px"></p>
 </div>
+</div>
+</div>
+
+
+<div id="outline-container-orgcece349" class="outline-2">
+<h2 id="orgcece349">The translation</h2>
+<div class="outline-text-2" id="text-orgcece349">
+</div>
+<div id="outline-container-org95fc126" class="outline-3">
+<h3 id="org95fc126">Moving averages</h3>
+<div class="outline-text-3" id="text-org95fc126">
+<p>
+I just went line by line trying to re-create what I wanted. I'll start with the moving
+average, <code>ma()</code> function. When I googles "moving average in R" some years ago, I got the
+one-liner above pretty easily. Search for that in <code>python</code> and you get suggestions using,
+among others:
+</p>
+
+<ul class="org-ul">
+<li><code>np.convolve()</code></li>
+<li><code>np.cumsum()</code></li>
+<li>
+<code>pd.rolling_mean</code>, which is now <code>pd.rolling().mean()</code>
+</li>
+<li>enumerating over a manually created list</li>
+</ul>
+<p>
+I ended up liking <code>pd.rolling</code>, so my new function is:
+</p>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ma</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">250</span><span class="p">):</span>
+    <span class="sd">"""take in a df column and return a moving average smoothed one"""</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc0b930f" class="outline-2">
+<h2 id="orgc0b930f">Takeaways</h2>
+<div class="outline-text-2" id="text-orgc0b930f">
+<p>
+Both languages can have multiple ways to do something, but I have a vague notion that
+<code>python</code> may feature more ways to do something than <code>R</code>, or at least it seems to get more
+answers. I don't know why this occurs… perhaps <code>R</code> is just more likely to have some
+<code>super_exact_func()</code> that happens to do the thing, as many <code>python</code> responses are not a
+simple function from a module, but might be 3-5 lines of code within an iterator.
+</p>
 </div>
 </div>
     </div>

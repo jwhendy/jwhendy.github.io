@@ -191,3 +191,36 @@ ggplot(data_all, aes(x = adj, y = smooth, colour = id)) + geom_line()
 #+RESULTS: adjusted
 [[file:../../img/aligned.png]]
 
+
+* The translation
+
+** Moving averages
+I just went line by line trying to re-create what I wanted. I'll start with the moving
+average, =ma()= function. When I googles "moving average in R" some years ago, I got the
+one-liner above pretty easily. Search for that in =python= and you get suggestions using,
+among others:
+
+- =np.convolve()=
+- =np.cumsum()=
+- =pd.rolling_mean=, which is now =pd.rolling().mean()=
+- enumerating over a manually created list
+
+I ended up liking =pd.rolling=, so my new function is:
+
+#+begin_src python :exports code :results silent :eval no
+
+def ma(col, n=250):
+    """take in a df column and return a moving average smoothed one"""
+    res = col.rolling(center=True, window=n).mean()
+    return res
+
+#+end_src
+
+
+* Takeaways
+
+Both languages can have multiple ways to do something, but I have a vague notion that
+=python= may feature more ways to do something than =R=, or at least it seems to get more
+answers. I don't know why this occurs... perhaps =R= is just more likely to have some
+=super_exact_func()= that happens to do the thing, as many =python= responses are not a
+simple function from a module, but might be 3-5 lines of code within an iterator.
