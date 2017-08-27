@@ -83,9 +83,9 @@ of them) fr">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-org6271499" class="outline-2">
-<h2 id="org6271499">Background</h2>
-<div class="outline-text-2" id="text-org6271499">
+    <div id="outline-container-org4fa4712" class="outline-2">
+<h2 id="org4fa4712">Background</h2>
+<div class="outline-text-2" id="text-org4fa4712">
 <p>
 I've been using <code>R</code> for at least <a href="https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r">5 years</a>. Lately, I've been trying to pick up <code>python</code> as
 well, which is quite the learning experience! I've been through some tutorials (or pieces
@@ -124,9 +124,9 @@ likely will never use).
 </div>
 </div>
 
-<div id="outline-container-org4d1f03e" class="outline-2">
-<h2 id="org4d1f03e">The challenge</h2>
-<div class="outline-text-2" id="text-org4d1f03e">
+<div id="outline-container-org0c9dd2d" class="outline-2">
+<h2 id="org0c9dd2d">The challenge</h2>
+<div class="outline-text-2" id="text-org0c9dd2d">
 <p>
 The data consists of some raw test data from a sensor. I've anonymized what it is, but the
 gist is as follows:
@@ -147,9 +147,9 @@ if you want to follow along.
 </div>
 </div>
 
-<div id="outline-container-orgb7bb4a5" class="outline-2">
-<h2 id="orgb7bb4a5">Using R</h2>
-<div class="outline-text-2" id="text-orgb7bb4a5">
+<div id="outline-container-org1ef3283" class="outline-2">
+<h2 id="org1ef3283">Using R</h2>
+<div class="outline-text-2" id="text-org1ef3283">
 <p>
 So you can get a sense of how I'm doing this in <code>R</code> (comments/improvements welcome!),
 let's look at the raw data. <code>i</code> here is just the row number, but because of the sampling
@@ -174,7 +174,7 @@ data <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s
 </pre>
 
 <p>
-If we plot it, you can see the lag I'm talking about
+If we plot it, you can see the lag I'm talking about:
 </p>
 
 <div class="highlight"><pre><span></span>data_melt <span class="o">&lt;-</span> melt<span class="p">(</span>data<span class="p">,</span> id.vars <span class="o">=</span> <span class="s">"i"</span><span class="p">)</span>
@@ -184,8 +184,95 @@ ggplot<span class="p">(</span>data_melt<span class="p">,</span> aes<span class="
 <div class="org-center">
 
 <div class="figure">
-<p><img src="../../img/overview.png" alt="overview.png" width="600px"></p>
+<p><img src="../,,/img/overview.png" alt="overview.png" width="600px"></p>
 </div>
+</div>
+
+<p>
+After the lag, the machine does a little bit of warmup/prep which is that first
+mini-peak. Then there's a brief pause and the test is run. The "start" of each test is the
+point right after the pause, and that's what I want to align to.
+</p>
+
+<p>
+For my <code>python</code> challenge, I'll be trying to create an analog of this:
+</p>
+
+<div class="highlight"><pre><span></span><span class="c1">## here I apply a moving average to smooth the data</span>
+<span class="c1">## source: https://stackoverflow.com/questions/743812</span>
+ma <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">,</span> n<span class="p">){</span>stats<span class="o">::</span>filter<span class="p">(</span>x<span class="p">,</span> <span class="kp">rep</span><span class="p">(</span><span class="m">1</span><span class="o">/</span>n<span class="p">,</span> n<span class="p">),</span> sides<span class="o">=</span><span class="m">2</span><span class="p">)}</span>
+
+
+<span class="c1">## this is a modified form of the function I use to align the data</span>
+adjuster <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>vals<span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1">## find the baseline value and add 0.1 to create a "trigger" level</span>
+  baseline <span class="o">&lt;-</span> <span class="kp">mean</span><span class="p">(</span>vals<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">],</span> na.rm <span class="o">=</span> <span class="bp">T</span><span class="p">)</span> <span class="o">+</span> <span class="m">0.1</span>
+
+  <span class="c1">## what's the index of the first value above our trigger?        </span>
+  base <span class="o">&lt;-</span> <span class="kp">which</span><span class="p">(</span>vals <span class="o">&gt;</span> baseline<span class="p">)[</span><span class="m">1</span><span class="p">]</span>
+
+  <span class="c1">## find the mini-peak, which occurs within 500ms of the initial rise</span>
+  peak <span class="o">&lt;-</span> <span class="kp">which.max</span><span class="p">(</span>vals<span class="p">[</span>base<span class="o">:</span><span class="p">(</span>base <span class="o">+</span> <span class="m">500</span><span class="p">)])</span>
+
+  <span class="c1">## find the trough afterward, which signals the actual test start</span>
+  valley <span class="o">&lt;-</span> <span class="kp">which.min</span><span class="p">(</span>vals<span class="p">[(</span>base <span class="o">+</span> peak<span class="p">)</span><span class="o">:</span><span class="p">(</span>base <span class="o">+</span> peak <span class="o">+</span> <span class="m">600</span><span class="p">)])</span>
+
+  <span class="c1">## add up our cumulative indices</span>
+  start <span class="o">&lt;-</span> base <span class="o">+</span> peak <span class="o">+</span> valley
+
+  <span class="c1">## I manually examined a couple data points at this setting and found</span>
+  <span class="c1">## the test to last ~3000ms</span>
+  end <span class="o">&lt;-</span> start <span class="o">+</span> <span class="m">3000</span>
+
+  <span class="c1">## I want to ditch the lag/warm up, keep the test itself, and ditch the</span>
+  <span class="c1">## logging of nothing once the test completes. To do this, I send back:</span>
+  <span class="c1">## - NAs from 0 to the start index</span>
+  <span class="c1">## - the shifted milliseconds for the test data</span>
+  <span class="c1">## - NAs until the end</span>
+  adj <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="kp">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> start<span class="p">),</span>
+	   <span class="m">1</span><span class="o">:</span><span class="p">(</span>end <span class="o">-</span> start<span class="p">),</span>
+	   <span class="kp">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="p">(</span><span class="kp">length</span><span class="p">(</span>vals<span class="p">)</span> <span class="o">-</span> end<span class="p">)))</span>
+
+  <span class="kr">return</span><span class="p">(</span>adj<span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="c1">## this is likely overkill for 2 columns, but lapply is typically</span>
+<span class="c1">## how I go about processing columns through some function, creating</span>
+<span class="c1">## data frames, and then re-assembling into a big dataframe afterward</span>
+data_list <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="kp">ncol</span><span class="p">(</span>data<span class="p">),</span> <span class="kr">function</span><span class="p">(</span>i<span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1">## create a dataframe to hold the raw force and an id for this data</span>
+  n <span class="o">&lt;-</span> <span class="kp">length</span><span class="p">(</span>data<span class="p">[,</span> i<span class="p">])</span>
+  temp <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>id <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span><span class="kp">names</span><span class="p">(</span>data<span class="p">)[</span>i<span class="p">],</span> n<span class="p">),</span>
+		     raw <span class="o">=</span> data<span class="p">[,</span> i<span class="p">])</span>
+
+  <span class="c1">## run the raw force through the ma() function to smooth</span>
+  <span class="c1">## dump the NAs returned</span>
+  temp<span class="o">$</span>smooth <span class="o">&lt;-</span> ma<span class="p">(</span>temp<span class="o">$</span><span class="kp">raw</span><span class="p">,</span> <span class="m">250</span><span class="p">)</span>
+  temp <span class="o">&lt;-</span> temp<span class="p">[</span><span class="o">!</span><span class="kp">is.na</span><span class="p">(</span>temp<span class="o">$</span>smooth<span class="p">),</span> <span class="p">]</span>
+
+  <span class="c1">## run the smoothed force through our adjuster function</span>
+  <span class="c1">## purge the returned NAs</span>
+  temp<span class="o">$</span>adj <span class="o">&lt;-</span> adjuster<span class="p">(</span>temp<span class="o">$</span>smooth<span class="p">)</span>
+  temp <span class="o">&lt;-</span> temp<span class="p">[</span><span class="o">!</span><span class="kp">is.na</span><span class="p">(</span>temp<span class="o">$</span>adj<span class="p">),</span> <span class="p">]</span>
+
+  <span class="kr">return</span><span class="p">(</span>temp<span class="p">)</span>
+
+<span class="p">})</span>
+
+<span class="c1">## lastly, I put the data into long form by "stacking it" using rbind</span>
+data_all <span class="o">&lt;-</span> <span class="kp">do.call</span><span class="p">(</span><span class="kp">rbind</span><span class="p">,</span> data_list<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>ggplot<span class="p">(</span>data_all<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> adj<span class="p">,</span> y <span class="o">=</span> smooth<span class="p">,</span> colour <span class="o">=</span> id<span class="p">))</span> <span class="o">+</span> geom_line<span class="p">()</span>
+</pre></div>
+
+
+<div class="figure">
+<p><img src="../../img/aligned.png" alt="aligned.png" width="600px"></p>
 </div>
 </div>
 </div>

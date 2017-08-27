@@ -84,7 +84,7 @@ head(data)
 : 5 5  -0.03  -0.05
 : 6 6  -0.03  -0.05
 
-If we plot it, you can see the lag I'm talking about
+If we plot it, you can see the lag I'm talking about:
 
 #+header: :file ../files/img/overview.png :height 600 :width 900 :res 150
 #+name: overview
@@ -93,13 +93,102 @@ If we plot it, you can see the lag I'm talking about
 data_melt <- melt(data, id.vars = "i")
 ggplot(data_melt, aes(x = i, y = value, colour = variable)) + geom_line()
 
-#+end_SRC
+#+end_src
 
 #+begin_center
 #+attr_html: :width 600px
 #+RESULTS: overview
-[[file:../../img/overview.png]]
+[[file:../,,/img/overview.png]]
 #+end_center
 
+After the lag, the machine does a little bit of warmup/prep which is that first
+mini-peak. Then there's a brief pause and the test is run. The "start" of each test is the
+point right after the pause, and that's what I want to align to.
 
- 
+For my =python= challenge, I'll be trying to create an analog of this:
+
+#+name: munging
+#+begin_src R :session r :exports code :results silent 
+
+## here I apply a moving average to smooth the data
+## source: https://stackoverflow.com/questions/743812
+ma <- function(x, n){stats::filter(x, rep(1/n, n), sides=2)}
+
+
+## this is a modified form of the function I use to align the data
+adjuster <- function(vals) {
+
+  ## find the baseline value and add 0.1 to create a "trigger" level
+  baseline <- mean(vals[1:20], na.rm = T) + 0.1
+
+  ## what's the index of the first value above our trigger?        
+  base <- which(vals > baseline)[1]
+
+  ## find the mini-peak, which occurs within 500ms of the initial rise
+  peak <- which.max(vals[base:(base + 500)])
+
+  ## find the trough afterward, which signals the actual test start
+  valley <- which.min(vals[(base + peak):(base + peak + 600)])
+
+  ## add up our cumulative indices
+  start <- base + peak + valley
+
+  ## I manually examined a couple data points at this setting and found
+  ## the test to last ~3000ms
+  end <- start + 3000
+
+  ## I want to ditch the lag/warm up, keep the test itself, and ditch the
+  ## logging of nothing once the test completes. To do this, I send back:
+  ## - NAs from 0 to the start index
+  ## - the shifted milliseconds for the test data
+  ## - NAs until the end
+  adj <- c(rep(NA, start),
+           1:(end - start),
+           rep(NA, (length(vals) - end)))
+
+  return(adj)
+
+}
+
+## this is likely overkill for 2 columns, but lapply is typically
+## how I go about processing columns through some function, creating
+## data frames, and then re-assembling into a big dataframe afterward
+data_list <- lapply(2:ncol(data), function(i) {
+
+  ## create a dataframe to hold the raw force and an id for this data
+  n <- length(data[, i])
+  temp <- data.frame(id = rep(names(data)[i], n),
+                     raw = data[, i])
+
+  ## run the raw force through the ma() function to smooth
+  ## dump the NAs returned
+  temp$smooth <- ma(temp$raw, 250)
+  temp <- temp[!is.na(temp$smooth), ]
+
+  ## run the smoothed force through our adjuster function
+  ## purge the returned NAs
+  temp$adj <- adjuster(temp$smooth)
+  temp <- temp[!is.na(temp$adj), ]
+  
+  return(temp)
+
+})
+
+## lastly, I put the data into long form by "stacking it" using rbind
+data_all <- do.call(rbind, data_list)
+
+#+end_src
+
+
+#+header: :file ../files/img/aligned.png :height 600 :width 900 :res 150
+#+name: adjusted
+#+begin_src R :session r :exports both :results output graphics :eval no
+
+ggplot(data_all, aes(x = adj, y = smooth, colour = id)) + geom_line()
+
+#+end_src
+
+#+attr_html: :width 600px
+#+RESULTS: adjusted
+[[file:../../img/aligned.png]]
+
