@@ -83,9 +83,9 @@ of them) fr">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-org878f9a6" class="outline-2">
-<h2 id="org878f9a6">Background</h2>
-<div class="outline-text-2" id="text-org878f9a6">
+    <div id="outline-container-orgd3a7b54" class="outline-2">
+<h2 id="orgd3a7b54">Background</h2>
+<div class="outline-text-2" id="text-orgd3a7b54">
 <p>
 I've been using <code>R</code> for at least <a href="https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r">5 years</a>. Lately, I've been trying to pick up <code>python</code> as
 well, which is quite the learning experience! I've been through some tutorials (or pieces
@@ -124,9 +124,9 @@ likely will never use).
 </div>
 </div>
 
-<div id="outline-container-org177e30d" class="outline-2">
-<h2 id="org177e30d">The challenge</h2>
-<div class="outline-text-2" id="text-org177e30d">
+<div id="outline-container-orge0c93d1" class="outline-2">
+<h2 id="orge0c93d1">The challenge</h2>
+<div class="outline-text-2" id="text-orge0c93d1">
 <p>
 The data consists of some raw test data from a sensor. I've anonymized what it is, but the
 gist is as follows:
@@ -147,19 +147,46 @@ if you want to follow along.
 </div>
 </div>
 
-<div id="outline-container-org90c4637" class="outline-2">
-<h2 id="org90c4637">Using R</h2>
-<div class="outline-text-2" id="text-org90c4637">
+<div id="outline-container-org70f82f0" class="outline-2">
+<h2 id="org70f82f0">Using R</h2>
+<div class="outline-text-2" id="text-org70f82f0">
 <p>
 So you can get a sense of how I'm doing this in <code>R</code> (comments/improvements welcome!),
-let's look at the raw data:
+let's look at the raw data. <code>i</code> here is just the row number, but because of the sampling
+rate it's also the time in milliseconds.
 </p>
 
 <div class="highlight"><pre><span></span><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>reshape2<span class="p">)</span>
 
-data <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">"r-to-python-data.csv"</span><span class="p">)</span>
+data <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">"https://jwhendy.github.io/data/r-to-python-data.csv"</span><span class="p">)</span>
+<span class="kp">head</span><span class="p">(</span>data<span class="p">)</span>
 </pre></div>
+
+<pre class="example">
+  i test_1 test_2
+1 1  -0.03  -0.05
+2 2  -0.03  -0.05
+3 3  -0.03  -0.05
+4 4  -0.03  -0.05
+5 5  -0.03  -0.05
+6 6  -0.03  -0.05
+</pre>
+
+<p>
+If we plot it, you can see the lag I'm talking about
+</p>
+
+<div class="highlight"><pre><span></span>data_melt <span class="o">&lt;-</span> melt<span class="p">(</span>data<span class="p">,</span> id.vars <span class="o">=</span> <span class="s">"i"</span><span class="p">)</span>
+ggplot<span class="p">(</span>data_melt<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> i<span class="p">,</span> y <span class="o">=</span> value<span class="p">,</span> colour <span class="o">=</span> variable<span class="p">))</span> <span class="o">+</span> geom_line<span class="p">()</span>
+</pre></div>
+
+<div class="org-center">
+
+<div class="figure">
+<p><img src="../files/img/overview.png" alt="overview.png" width="600px"></p>
+</div>
+</div>
 </div>
 </div>
     </div>
