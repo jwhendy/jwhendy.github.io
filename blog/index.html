@@ -71,7 +71,7 @@
             </span></p>
             <p class="dateline"><a href="translating-r-to-python/" rel="bookmark"><time class="published dt-published" datetime="2017-08-27T15:52:28-05:00" title="2017-08-27 15:52">2017-08-27 15:52</time></a></p>
         </div>
-    </header><div class="e-content entry-content">
+    </header><div class="p-summary entry-summary">
     <div id="outline-container-orgd7efde8" class="outline-2">
 <h2 id="orgd7efde8">Background</h2>
 <div class="outline-text-2" id="text-orgd7efde8">
@@ -109,46 +109,7 @@ targetted (I'm extracting the small % of information I need vs. trying to digest
 likely will never use).
 </p>
 
-<!-- TEASER_END -->
-</div>
-</div>
-
-<div id="outline-container-orgfb87c1a" class="outline-2">
-<h2 id="orgfb87c1a">The challenge</h2>
-<div class="outline-text-2" id="text-orgfb87c1a">
-<p>
-The data consists of some raw test data from a sensor. I've anonymized what it is, but the
-gist is as follows:
-</p>
-
-<ul class="org-ul">
-<li>I start logging data via USB at 1000 Hz</li>
-<li>The test begins and I get the data of interest</li>
-<li>I stop logging that sample</li>
-</ul>
-<p>
-Because the logging software and machine don't communicate, I end up with varying amounts
-of baseline, nominally zero data before the test occurs. Once it's over, I have a "tail"
-of unknown length after the test is complete. I tend to have anywhere between 5-25 tests,
-and I want to align their starts for plotting/analysis. I've created a sample dataset <a href="files/r-to-python-data.csv">here</a>
-if you want to follow along.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org7b350a0" class="outline-2">
-<h2 id="org7b350a0">Using R</h2>
-<div class="outline-text-2" id="text-org7b350a0">
-<p>
-So you can get a sense of how I'm doing this in <code>R</code> (comments/improvements welcome!),
-let's look at the raw data:
-</p>
-
-<div class="highlight"><pre><span></span><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>reshape2<span class="p">)</span>
-
-data <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">"r-to-python-data.csv"</span><span class="p">)</span>
-</pre></div>
+<p class="more"><a href="translating-r-to-python/">Read more…</a></p>
 </div>
 </div>
     </div>
@@ -159,7 +120,7 @@ data <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s
             </span></p>
             <p class="dateline"><a href="2017-05-15-kick-off/" rel="bookmark"><time class="published dt-published" datetime="2017-05-15T15:12:47-05:00" title="2017-05-15 15:12">2017-05-15 15:12</time></a></p>
         </div>
-    </header><div class="e-content entry-content">
+    </header><div class="p-summary entry-summary">
     <p>
 trying to see how this works
 </p>
