@@ -68,7 +68,8 @@ wonder if something can be done, and then /really/ want to do it if I don't see 
 previous examples. Having build the LED panel, I had the idea to recreate a picture with
 it. I wanted to know if I could break up a picture into pixel "chunks" (16x16 in my case),
 send them to the panel, take pictures of each, and then put them back together. I also
-wanted to know if it would work out... here's [[../img/led_head_shot_explained.jpg][a picture]] that better explains how it was made.
+wanted to know if it would work out... here's [[../img/led_head_shot_explained.png][a diagram]] that better explains how it was
+made.
 
 It turns out that you /can/ do this. I was surprised at the color differences between the
 top half and bottom half (each tile is redder on top and bluer on the bottom). After
