@@ -11,10 +11,11 @@
 #+end_comment
 
 #+begin_export html
-<div class="container" align="left">
+<div class="container" align="center">
 <div class="row">
 <div class="col-md-12">
-<img src="../img/jwh-bw_2016.jpg" style="margin: 0 0 10px 0; border-color: #fff; border-radius: 125px; width: 250px;" />
+<!-- img src="../img/jwh-bw_2016.jpg" style="margin: 0 0 10px 0; border-color: #fff; border-radius: 125px; width: 250px;" /> -->
+<img src="../img/led_head_shot.jpg" style="margin: 0 0 10px 0; border-color: #fff; border-radius: 15px; width: 250px;" />
 </div>
 </div>
 </div>
@@ -26,7 +27,7 @@ wife and three kiddos.
 
 I created this primarily as an online portfolio, though I will likely migrate my [[http://jwhendy.blogspot.com/][blog]] here
 as well. As I write this, I'm primarily just tickled that =github= offers hosting like
-this, that I can write in my beloved [[http://orgmode.org/][org-mode]] via [[https://getnikola.com/][Nikola]], and that I got it to work after
+this, that I can write in my beloved [[http://orgmode.org/][org-mode]] via [[https://getnikola.com/][Nikola]], /and/ that I got it to work after
 just one night and part of a day.
 
 I've gone by /jwhendy/ (sometimes just /hendy/) for some time; you might see me on
@@ -52,7 +53,8 @@ For some specifics on the electronics and software side of things:
 - =python=: this is currently my "next big thing." I've been really enjoying several
   classes on [[http://www.coursera.org/][Coursera]], making some handy scripts, and even using it to program robots via
   [[http://www.ros.org/][ROS]].
-- arduino, raspberry pi, et al: 
+- arduino, raspberry pi, et al: I love the world of microcontrollers, sensors, and
+  gadgets. It's so enjoyable to create something that mostly does your will! 
 - data visualization: this is sort of meta, but since much of my programming outputs
   visuals, I group it in this category. If you can't understand or communicate the data,
   game over. I got interested in this topic thanks to the amazing site [[http://flowingdata.com/][FlowingData]].
