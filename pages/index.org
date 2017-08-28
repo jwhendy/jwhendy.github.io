@@ -11,7 +11,7 @@
 #+end_comment
 
 #+begin_export html
-<div class="container" align="right">
+<div class="container" align="center">
 <div class="row">
 <div class="col-md-12">
 <img src="../img/jwh-bw_2016.jpg" style="margin: 0 0 10px 0; border-color: #fff; border-radius: 125px; width: 250px;" />
