@@ -1,6 +1,6 @@
-<div id="outline-container-org29a5172" class="outline-2">
-<h2 id="org29a5172">Background</h2>
-<div class="outline-text-2" id="text-org29a5172">
+<div id="outline-container-org5c88a44" class="outline-2">
+<h2 id="org5c88a44">Background</h2>
+<div class="outline-text-2" id="text-org5c88a44">
 <p>
 I've been using <code>R</code> for at least <a href="https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r">5 years</a>. Lately, I've been trying to pick up <code>python</code> as
 well, which is quite the learning experience! I've been through some tutorials (or pieces
@@ -39,9 +39,9 @@ likely will never use).
 </div>
 </div>
 
-<div id="outline-container-orgfe5f2b3" class="outline-2">
-<h2 id="orgfe5f2b3">The challenge</h2>
-<div class="outline-text-2" id="text-orgfe5f2b3">
+<div id="outline-container-org974e34b" class="outline-2">
+<h2 id="org974e34b">The challenge</h2>
+<div class="outline-text-2" id="text-org974e34b">
 <p>
 The data consists of some raw test data from a sensor. I've anonymized what it is, but the
 gist is as follows:
@@ -63,9 +63,9 @@ if you want to follow along.
 </div>
 </div>
 
-<div id="outline-container-org10da309" class="outline-2">
-<h2 id="org10da309">Using R</h2>
-<div class="outline-text-2" id="text-org10da309">
+<div id="outline-container-org78690c2" class="outline-2">
+<h2 id="org78690c2">Using R</h2>
+<div class="outline-text-2" id="text-org78690c2">
 <p>
 So you can get a sense of how I'm doing this in <code>R</code> (comments/improvements welcome!),
 let's look at the raw data. <code>i</code> here is just the row number, but because of the sampling
@@ -195,13 +195,13 @@ data_all <span class="o">&lt;-</span> <span class="kp">do.call</span><span class
 </div>
 
 
-<div id="outline-container-orgaa13c22" class="outline-2">
-<h2 id="orgaa13c22">The translation</h2>
-<div class="outline-text-2" id="text-orgaa13c22">
+<div id="outline-container-org5b00cdd" class="outline-2">
+<h2 id="org5b00cdd">The translation</h2>
+<div class="outline-text-2" id="text-org5b00cdd">
 </div>
-<div id="outline-container-org1a20183" class="outline-3">
-<h3 id="org1a20183">Moving average</h3>
-<div class="outline-text-3" id="text-org1a20183">
+<div id="outline-container-org2966dce" class="outline-3">
+<h3 id="org2966dce">Moving average</h3>
+<div class="outline-text-3" id="text-org2966dce">
 <p>
 I just went line by line trying to re-create what I wanted. I'll start with the moving
 average, <code>ma()</code> function. When I googles "moving average in R" some years ago, I got the
@@ -228,16 +228,16 @@ I ended up liking <code>pd.rolling</code>, so my new function is:
 </div>
 </div>
 
-<div id="outline-container-orgfd682f1" class="outline-3">
-<h3 id="orgfd682f1">Adjusting</h3>
-<div class="outline-text-3" id="text-orgfd682f1">
+<div id="outline-container-org93d5434" class="outline-3">
+<h3 id="org93d5434">Adjusting</h3>
+<div class="outline-text-3" id="text-org93d5434">
 <p>
 The <code>adjuster()</code> function was <i>much</i> more difficult. Along the way, I ran into a bunch of
 other things I had to get up to speed on.
 </p>
 
 <ul class="org-ul">
-<li>how do I <a href="https://stackoverflow.com/questions/45910155/combine-output-of-multiple-functions-into-a-pd-series-in-python-like-c-in-r">generate some test data</a> so I'm not running tests on 10k values?</li>
+<li>how do I <a href="https://stackoverflow.com/questions/45910155/combine-output-of-multiple-functions-into-a-pd-series-in-python-like-c-in-r">generate some test data</a> in a non-painful way?</li>
 <li>what's the <a href="https://stackoverflow.com/questions/21800169/python-pandas-get-index-of-rows-which-column-matches-certain-value">equivalent to <code>which()</code> in <code>R</code></a>?</li>
 <li>how do I do <a href="https://stackoverflow.com/questions/12235552/r-function-rep-in-python-replicates-elements-of-a-list-vector">something like <code>rep()</code></a>?</li>
 <li>how about <a href="http://pandas.pydata.org/pandas-docs/stable/merging.html"><code>rbind()</code></a>?</li>
@@ -271,9 +271,9 @@ what I ended up with:
 </div>
 </div>
 
-<div id="outline-container-orgfb5c3c6" class="outline-3">
-<h3 id="orgfb5c3c6">Quasi <code>lapply()</code></h3>
-<div class="outline-text-3" id="text-orgfb5c3c6">
+<div id="outline-container-orgeec44eb" class="outline-3">
+<h3 id="orgeec44eb">Quasi <code>lapply()</code></h3>
+<div class="outline-text-3" id="text-orgeec44eb">
 <p>
 Next, to cycle through my columns to run them through <code>ma()</code> and <code>adjuster()</code>:
 </p>
@@ -309,9 +309,9 @@ Next, to cycle through my columns to run them through <code>ma()</code> and <cod
 
 
 
-<div id="outline-container-org025c252" class="outline-3">
-<h3 id="org025c252">The result</h3>
-<div class="outline-text-3" id="text-org025c252">
+<div id="outline-container-org560cadb" class="outline-3">
+<h3 id="org560cadb">The result</h3>
+<div class="outline-text-3" id="text-org560cadb">
 <p>
 I'd call this a success!
 </p>
@@ -332,9 +332,9 @@ I'd call this a success!
 </div>
 
 
-<div id="outline-container-org6a9fc0a" class="outline-2">
-<h2 id="org6a9fc0a">A gotcha: indices in <code>pandas</code></h2>
-<div class="outline-text-2" id="text-org6a9fc0a">
+<div id="outline-container-org5fad01c" class="outline-2">
+<h2 id="org5fad01c">A gotcha: indices in <code>pandas</code></h2>
+<div class="outline-text-2" id="text-org5fad01c">
 <p>
 I can't even stress how confused I was when my whole plot was shifted vs. the <code>R</code>
 result. It took me a <i>long</i> time to realize that even though I thought I got <code>loc</code>
@@ -394,9 +394,9 @@ scratcher!
 </div>
 </div>
 
-<div id="outline-container-org7c93958" class="outline-2">
-<h2 id="org7c93958">Takeaway</h2>
-<div class="outline-text-2" id="text-org7c93958">
+<div id="outline-container-org652d038" class="outline-2">
+<h2 id="org652d038">Takeaway</h2>
+<div class="outline-text-2" id="text-org652d038">
 <p>
 Most of this was <i>relatively</i> straightforward, granted it still required a lot of
 digging. To conclude, this was immensely helpful. It seems like I should have figured this out a

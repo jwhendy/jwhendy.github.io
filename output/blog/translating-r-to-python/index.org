@@ -221,7 +221,7 @@ def ma(col, n=250):
 The =adjuster()= function was /much/ more difficult. Along the way, I ran into a bunch of
 other things I had to get up to speed on.
 
-- how do I [[https://stackoverflow.com/questions/45910155/combine-output-of-multiple-functions-into-a-pd-series-in-python-like-c-in-r][generate some test data]] so I'm not running tests on 10k values?
+- how do I [[https://stackoverflow.com/questions/45910155/combine-output-of-multiple-functions-into-a-pd-series-in-python-like-c-in-r][generate some test data]] in a non-painful way?
 - what's the [[https://stackoverflow.com/questions/21800169/python-pandas-get-index-of-rows-which-column-matches-certain-value][equivalent to =which()= in =R=]]?
 - how do I do [[https://stackoverflow.com/questions/12235552/r-function-rep-in-python-replicates-elements-of-a-list-vector][something like =rep()=]]?
 - how about [[http://pandas.pydata.org/pandas-docs/stable/merging.html][=rbind()=]]?
