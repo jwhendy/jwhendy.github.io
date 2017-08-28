@@ -11,7 +11,7 @@
 #+end_comment
 
 #+begin_export html
-<div class="container" align="center">
+<div class="container" align="left">
 <div class="row">
 <div class="col-md-12">
 <img src="../img/jwh-bw_2016.jpg" style="margin: 0 0 10px 0; border-color: #fff; border-radius: 125px; width: 250px;" />
@@ -36,10 +36,10 @@ I've gone by /jwhendy/ (sometimes just /hendy/) for some time; you might see me 
 
 I studied mechanical engineering, but see myself as quite a hodge-podge of iterests. I'm
 into programming, electronics, data analysis and visualization, woodworking, various
-crafty things, and home repair/improvement. I also play piano and guitar, soccer, rock
-climb, and camp.
+crafty things, and home repair/improvement. I also enjoy playing piano and guitar, soccer, rock
+climbing, hobby photography, and camping.
 
-On the software side, I'm into:
+For some specifics on the electronics and software side of things:
 - [[http://orgmode.org/][org-mode]]: a note-taking/todo/scheduling/code-writing/document generation add-on for the
   [[http://www.gnu.org/software/emacs/][emacs text editor]]. I use this heavily at work and home and would say that it's the most
   revolutionary piece of software I've ever discovered!
@@ -52,6 +52,7 @@ On the software side, I'm into:
 - =python=: this is currently my "next big thing." I've been really enjoying several
   classes on [[http://www.coursera.org/][Coursera]], making some handy scripts, and even using it to program robots via
   [[http://www.ros.org/][ROS]].
+- arduino, raspberry pi, et al: 
 - data visualization: this is sort of meta, but since much of my programming outputs
   visuals, I group it in this category. If you can't understand or communicate the data,
   game over. I got interested in this topic thanks to the amazing site [[http://flowingdata.com/][FlowingData]].
