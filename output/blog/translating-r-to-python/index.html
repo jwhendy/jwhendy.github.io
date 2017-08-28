@@ -83,9 +83,9 @@ of them) fr">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-org5566fe3" class="outline-2">
-<h2 id="org5566fe3">Background</h2>
-<div class="outline-text-2" id="text-org5566fe3">
+    <div id="outline-container-orge35736b" class="outline-2">
+<h2 id="orge35736b">Background</h2>
+<div class="outline-text-2" id="text-orge35736b">
 <p>
 I've been using <code>R</code> for at least <a href="https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r">5 years</a>. Lately, I've been trying to pick up <code>python</code> as
 well, which is quite the learning experience! I've been through some tutorials (or pieces
@@ -124,9 +124,9 @@ likely will never use).
 </div>
 </div>
 
-<div id="outline-container-org9f0248f" class="outline-2">
-<h2 id="org9f0248f">The challenge</h2>
-<div class="outline-text-2" id="text-org9f0248f">
+<div id="outline-container-org13eef22" class="outline-2">
+<h2 id="org13eef22">The challenge</h2>
+<div class="outline-text-2" id="text-org13eef22">
 <p>
 The data consists of some raw test data from a sensor. I've anonymized what it is, but the
 gist is as follows:
@@ -147,9 +147,9 @@ if you want to follow along.
 </div>
 </div>
 
-<div id="outline-container-orgd19f35b" class="outline-2">
-<h2 id="orgd19f35b">Using R</h2>
-<div class="outline-text-2" id="text-orgd19f35b">
+<div id="outline-container-org9bf1ab0" class="outline-2">
+<h2 id="org9bf1ab0">Using R</h2>
+<div class="outline-text-2" id="text-org9bf1ab0">
 <p>
 So you can get a sense of how I'm doing this in <code>R</code> (comments/improvements welcome!),
 let's look at the raw data. <code>i</code> here is just the row number, but because of the sampling
@@ -206,7 +206,7 @@ ma <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">
 adjuster <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>vals<span class="p">)</span> <span class="p">{</span>
 
   <span class="c1">## find the baseline value and add 0.1 to create a "trigger" level</span>
-  baseline <span class="o">&lt;-</span> <span class="kp">mean</span><span class="p">(</span>vals<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">],</span> na.rm <span class="o">=</span> <span class="bp">T</span><span class="p">)</span> <span class="o">+</span> <span class="m">0.1</span>
+  baseline <span class="o">&lt;-</span> <span class="kp">mean</span><span class="p">(</span>vals<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">])</span> <span class="o">+</span> <span class="m">0.1</span>
 
   <span class="c1">## what's the index of the first value above our trigger?        </span>
   base <span class="o">&lt;-</span> <span class="kp">which</span><span class="p">(</span>vals <span class="o">&gt;</span> baseline<span class="p">)[</span><span class="m">1</span><span class="p">]</span>
@@ -277,13 +277,13 @@ data_all <span class="o">&lt;-</span> <span class="kp">do.call</span><span class
 </div>
 
 
-<div id="outline-container-org007ad7e" class="outline-2">
-<h2 id="org007ad7e">The translation</h2>
-<div class="outline-text-2" id="text-org007ad7e">
+<div id="outline-container-org308a8d3" class="outline-2">
+<h2 id="org308a8d3">The translation</h2>
+<div class="outline-text-2" id="text-org308a8d3">
 </div>
-<div id="outline-container-orgf048202" class="outline-3">
-<h3 id="orgf048202">Moving averages</h3>
-<div class="outline-text-3" id="text-orgf048202">
+<div id="outline-container-orge854ca2" class="outline-3">
+<h3 id="orge854ca2">Moving average</h3>
+<div class="outline-text-3" id="text-orge854ca2">
 <p>
 I just went line by line trying to re-create what I wanted. I'll start with the moving
 average, <code>ma()</code> function. When I googles "moving average in R" some years ago, I got the
@@ -303,25 +303,194 @@ among others:
 I ended up liking <code>pd.rolling</code>, so my new function is:
 </p>
 
-<div class="highlight"><pre><span></span>def ma<span class="p">(</span><span class="kp">col</span><span class="p">,</span> n<span class="o">=</span><span class="m">250</span><span class="p">)</span><span class="o">:</span>
-    <span class="s">"""take in a df column and return a moving average smoothed one"""</span>
-    res <span class="o">=</span> col.rolling<span class="p">(</span>center<span class="o">=</span>True<span class="p">,</span> window<span class="o">=</span>n<span class="p">)</span><span class="m">.</span><span class="kp">mean</span><span class="p">()</span>
-    <span class="kr">return</span> res
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ma</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">250</span><span class="p">):</span>
+    <span class="sd">"""take in a df column and return a moving average smoothed one"""</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">res</span>
 </pre></div>
 </div>
 </div>
+
+<div id="outline-container-org249d41f" class="outline-3">
+<h3 id="org249d41f">Adjusting</h3>
+<div class="outline-text-3" id="text-org249d41f">
+<p>
+The <code>adjuster()</code> function was <i>much</i> more difficult. Along the way, I ran into a bunch of
+other things I had to get up to speed on.
+</p>
+
+<ul class="org-ul">
+<li>how do I <a href="https://stackoverflow.com/questions/45910155/combine-output-of-multiple-functions-into-a-pd-series-in-python-like-c-in-r">generate some test data</a> so I'm not running tests on 10k values?</li>
+<li>what's the <a href="https://stackoverflow.com/questions/21800169/python-pandas-get-index-of-rows-which-column-matches-certain-value">equivalent to <code>which()</code> in <code>R</code></a>?</li>
+<li>how do I do <a href="https://stackoverflow.com/questions/12235552/r-function-rep-in-python-replicates-elements-of-a-list-vector">something like <code>rep()</code></a>?</li>
+<li>how about <a href="http://pandas.pydata.org/pandas-docs/stable/merging.html"><code>rbind()</code></a>?</li>
+<li>
+<code>pandas</code> subsets by conditionals, but what do I <a href="https://stackoverflow.com/questions/26249574/python-pandas-filtering-a-data-frame">use for <code>is.na</code></a>?</li>
+<li>
+<code>loc</code>, <code>iloc</code>, <code>at</code>, <code>iat</code>, and <code>ix</code>, <a href="https://stackoverflow.com/questions/28757389/loc-vs-iloc-vs-ix-vs-at-vs-iat">oh my!</a>
+</li>
+<li>
+<code>np.arange()</code>, <code>np.linspace()</code>, <code>np.random.random_sample()</code>
+</li>
+</ul>
+<p>
+That's just a few examples, but I'm highlighting to show that just having to figure things
+out was sooo much more effective than my previous reading of tutorials and intros! Here's
+what I ended up with:
+</p>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">adjuster</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+    <span class="sd">"""takes col, identifies beginning/end of a peel test, returns trimed df"""</span>
+
+    <span class="n">baseline</span> <span class="o">=</span> <span class="n">col</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.1</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">col</span><span class="p">[</span><span class="n">col</span> <span class="o">&gt;</span> <span class="n">baseline</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">peak</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">base</span><span class="p">:</span><span class="n">base</span><span class="o">+</span><span class="mi">500</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+    <span class="n">valley</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">peak</span><span class="p">:</span><span class="n">peak</span> <span class="o">+</span> <span class="mi">600</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">valley</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>  <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+		    <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+		    <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="o">-</span> <span class="n">start</span> <span class="o">-</span> <span class="mi">3000</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+</div>
+
+<div id="outline-container-org1a5a8c5" class="outline-3">
+<h3 id="org1a5a8c5">Quasi <code>lapply()</code>
+</h3>
+<div class="outline-text-3" id="text-org1a5a8c5">
+<p>
+Next, to cycle through my columns to run them through <code>ma()</code> and <code>adjuster()</code>:
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'https://jwhendy.github.io/data/r-to-python-data.csv'</span><span class="p">)</span>
+<span class="n">data_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="c1">## this iterator is ripe for being more elegant</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'id'</span> <span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+			 <span class="s1">'raw'</span> <span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]})</span>
+
+    <span class="c1">## smooth out, drop null results and then reindex</span>
+    <span class="c1">## I learned the hard way what pandas does when adding a column</span>
+    <span class="c1">## to an existing df when the indices don't match!</span>
+    <span class="n">temp</span><span class="p">[</span><span class="s1">'smooth'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ma</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="s1">'raw'</span><span class="p">])</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="s1">'smooth'</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="c1">## send to function to get what I want, purge the rest</span>
+    <span class="n">temp</span><span class="p">[</span><span class="s1">'adj'</span><span class="p">]</span> <span class="o">=</span> <span class="n">adjuster</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="s1">'smooth'</span><span class="p">])</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="s1">'adj'</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span>
+
+    <span class="c1">## add it to a list of dfs</span>
+    <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+
+
+<span class="c1">## use this like do.call(rbind, data_list) with R</span>
+<span class="n">data_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 
 
-<div id="outline-container-org7ac091b" class="outline-2">
-<h2 id="org7ac091b">Takeaways</h2>
-<div class="outline-text-2" id="text-org7ac091b">
+
+<div id="outline-container-org0567118" class="outline-3">
+<h3 id="org0567118">The result</h3>
+<div class="outline-text-3" id="text-org0567118">
 <p>
-Both languages can have multiple ways to do something, but I have a vague notion that
-<code>python</code> may feature more ways to do something than <code>R</code>, or at least it seems to get more
-answers. I don't know why this occurs… perhaps <code>R</code> is just more likely to have some
-<code>super_exact_func()</code> that happens to do the thing, as many <code>python</code> responses are not a
-simple function from a module, but might be 3-5 lines of code within an iterator.
+I'd call this a success!
+</p>
+
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ggplot</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data_all</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">'adj'</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">'smooth'</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">'id'</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_line</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'../aligned_py.png'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="figure">
+<p><img src="../../img/aligned_py.png" alt="aligned_py.png" width="600px"></p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org3e5ec9b" class="outline-2">
+<h2 id="org3e5ec9b">A gotcha: indices in <code>pandas</code>
+</h2>
+<div class="outline-text-2" id="text-org3e5ec9b">
+<p>
+I can't even stress how confused I was when my whole plot was shifted vs. the <code>R</code>
+result. It took me a <i>long</i> time to realize that even though I thought I got <code>loc</code>
+vs. <code>iloc</code>, I was still bitten by how <code>pandas</code> merges data frames/series with non-matching
+indices. 
+</p>
+
+<p>
+I'm used to entirely position-based indexing (i.e. <code>vals[i]</code> means the ith thing in the
+vector), whereas <code>pandas</code> appears to default to index. I even thought I accounted for this
+by finding my index-based points, but as a final step doing:
+</p>
+
+<pre class="example">
+## above it's just: start = valley
+start = col.index.get_loc(valley)
+</pre>
+
+<p>
+I got bitten by this combo:
+</p>
+
+<ul class="org-ul">
+<li>when I take my temp data frame and run the moving average, I get <code>1/2 * window</code> <code>NaN</code>
+values at the beginning/end (so, 125 on each side)</li>
+<li>when I purge these by subsetting with <code>notnull()</code>, I lose my starting 0 index; it now
+starts at 125</li>
+<li>the above code, indeed, gave me the positional location, but I use that value to create
+a new <code>pd.Series</code>, which gets an index starting at 0</li>
+<li>when I add the new data (0 indexed) to the existing data frame (starts at 125),
+everything ends up shifted</li>
+</ul>
+<p>
+If you already know <code>pandas</code> this is trivial for you, but this gets the point across to
+those who are new like me!
+</p>
+
+<pre class="example">
+s1 = pd.Series(1, index = np.arange(0, 4))
+s2 = pd.Series(2, index = np.arange(2, 6))
+pd.DataFrame({'s1' : s1, 's2' : s2}) 
+
+    s1   s2
+0  1.0  NaN
+1  1.0  NaN
+2  1.0  2.0
+3  1.0  2.0
+4  NaN  2.0
+5  NaN  2.0
+</pre>
+
+<p>
+I wouldn't in a million years have guessed this would be the behavior. Boy that was a head
+scratcher!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8a70fec" class="outline-2">
+<h2 id="org8a70fec">Takeaway</h2>
+<div class="outline-text-2" id="text-org8a70fec">
+<p>
+Most of this was <i>relatively</i> straightforward, granted it still required a lot of
+digging. To conclude, this was immensely helpful. It seems like I should have figured this out a
+long time ago: take something you know how to do and do it in the new language. I got a
+lot of practice with <code>python</code>, beefed up some general knowledge of how to even discuss
+<code>python</code> terminology, did something that's transferable to future work like this, and
+overall just feel good :) 
 </p>
 </div>
 </div>

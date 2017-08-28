@@ -118,7 +118,7 @@ ma <- function(x, n){stats::filter(x, rep(1/n, n), sides=2)}
 adjuster <- function(vals) {
 
   ## find the baseline value and add 0.1 to create a "trigger" level
-  baseline <- mean(vals[1:20], na.rm = T) + 0.1
+  baseline <- mean(vals[1:20]) + 0.1
 
   ## what's the index of the first value above our trigger?        
   base <- which(vals > baseline)[1]
@@ -194,7 +194,7 @@ ggplot(data_all, aes(x = adj, y = smooth, colour = id)) + geom_line()
 
 * The translation
 
-** Moving averages
+** Moving average
 I just went line by line trying to re-create what I wanted. I'll start with the moving
 average, =ma()= function. When I googles "moving average in R" some years ago, I got the
 one-liner above pretty easily. Search for that in =python= and you get suggestions using,
@@ -207,7 +207,7 @@ among others:
 
 I ended up liking =pd.rolling=, so my new function is:
 
-#+begin_src R :exports code :results silent :eval no
+#+begin_src python :exports code :results silent :eval no
 
 def ma(col, n=250):
     """take in a df column and return a moving average smoothed one"""
@@ -216,11 +216,154 @@ def ma(col, n=250):
 
 #+end_src
 
+** Adjusting
 
-* Takeaways
+The =adjuster()= function was /much/ more difficult. Along the way, I ran into a bunch of
+other things I had to get up to speed on.
 
-Both languages can have multiple ways to do something, but I have a vague notion that
-=python= may feature more ways to do something than =R=, or at least it seems to get more
-answers. I don't know why this occurs... perhaps =R= is just more likely to have some
-=super_exact_func()= that happens to do the thing, as many =python= responses are not a
-simple function from a module, but might be 3-5 lines of code within an iterator.
+- how do I [[https://stackoverflow.com/questions/45910155/combine-output-of-multiple-functions-into-a-pd-series-in-python-like-c-in-r][generate some test data]] so I'm not running tests on 10k values?
+- what's the [[https://stackoverflow.com/questions/21800169/python-pandas-get-index-of-rows-which-column-matches-certain-value][equivalent to =which()= in =R=]]?
+- how do I do [[https://stackoverflow.com/questions/12235552/r-function-rep-in-python-replicates-elements-of-a-list-vector][something like =rep()=]]?
+- how about [[http://pandas.pydata.org/pandas-docs/stable/merging.html][=rbind()=]]?
+- =pandas= subsets by conditionals, but what do I [[https://stackoverflow.com/questions/26249574/python-pandas-filtering-a-data-frame][use for =is.na=]]?
+- =loc=, =iloc=, =at=, =iat=, and =ix=, [[https://stackoverflow.com/questions/28757389/loc-vs-iloc-vs-ix-vs-at-vs-iat][oh my!]] 
+- =np.arange()=, =np.linspace()=, =np.random.random_sample()=
+
+That's just a few examples, but I'm highlighting to show that just having to figure things
+out was sooo much more effective than my previous reading of tutorials and intros! Here's
+what I ended up with:
+
+#+begin_src python :exports code :results silent :eval no
+
+def adjuster(col):
+    """takes col, identifies beginning/end of a peel test, returns trimed df"""
+    
+    baseline = col[0:20].mean() + 0.1
+    base = min(col[col > baseline].index)
+    peak = col.loc[base:base+500].idxmax()
+    valley = col.loc[peak:peak + 600].idxmin()
+    
+    start = valley
+
+    res = pd.Series(  np.repeat(None, start).tolist()
+                    + np.arange(0, 3000).tolist()
+                    + np.repeat(None, len(col) - start - 3000).tolist())
+
+    return res
+
+#+end_src
+
+** Quasi =lapply()=
+
+Next, to cycle through my columns to run them through =ma()= and =adjuster()=:
+
+#+begin_src python :exports code :results silent :eval no
+
+data = pd.read_csv('https://jwhendy.github.io/data/r-to-python-data.csv')
+data_list = list()
+
+## this iterator is ripe for being more elegant
+for i in [1, 2]:
+    temp = pd.DataFrame({'id' : data.columns[i],
+                         'raw' : data.iloc[:, i]})
+    
+    ## smooth out, drop null results and then reindex
+    ## I learned the hard way what pandas does when adding a column
+    ## to an existing df when the indices don't match!
+    temp['smooth'] = ma(temp['raw'])
+    temp = temp[temp['smooth'].notnull()]
+    temp = temp.reset_index(drop=True)
+    
+    ## send to function to get what I want, purge the rest
+    temp['adj'] = adjuster(temp['smooth'])
+    temp = temp[temp['adj'].notnull()]
+    
+    ## add it to a list of dfs
+    data_list.append(temp)
+
+    
+## use this like do.call(rbind, data_list) with R
+data_all = pd.concat(data_list)
+
+#+end_src
+
+
+
+** The result
+
+I'd call this a success!
+
+#+begin_src python :exports code :results silent :eval no 
+from ggplot import *
+
+p = ggplot(data_all, aes(x = 'adj', y = 'smooth', color = 'id')) + geom_line()
+p.save('../aligned_py.png', width=9, height=6, dpi=600)
+
+#+end_src
+
+#+attr_html: :width 600px
+#+RESULTS: adjusted
+[[file:../../img/aligned_py.png]]
+
+
+* A gotcha: indices in =pandas=
+
+I can't even stress how confused I was when my whole plot was shifted vs. the =R=
+result. It took me a /long/ time to realize that even though I thought I got =loc=
+vs. =iloc=, I was still bitten by how =pandas= merges data frames/series with non-matching
+indices. 
+
+I'm used to entirely position-based indexing (i.e. =vals[i]= means the ith thing in the
+vector), whereas =pandas= appears to default to index. I even thought I accounted for this
+by finding my index-based points, but as a final step doing:
+
+#+begin_example 
+
+## above it's just: start = valley
+start = col.index.get_loc(valley)
+
+#+end_example
+
+I got bitten by this combo:
+
+- when I take my temp data frame and run the moving average, I get =1/2 * window= =NaN=
+  values at the beginning/end (so, 125 on each side)
+- when I purge these by subsetting with =notnull()=, I lose my starting 0 index; it now
+  starts at 125
+- the above code, indeed, gave me the positional location, but I use that value to create
+  a new =pd.Series=, which gets an index starting at 0
+- when I add the new data (0 indexed) to the existing data frame (starts at 125),
+  everything ends up shifted
+
+If you already know =pandas= this is trivial for you, but this gets the point across to
+those who are new like me!
+
+#+begin_example 
+
+s1 = pd.Series(1, index = np.arange(0, 4))
+s2 = pd.Series(2, index = np.arange(2, 6))
+pd.DataFrame({'s1' : s1, 's2' : s2}) 
+
+    s1   s2
+0  1.0  NaN
+1  1.0  NaN
+2  1.0  2.0
+3  1.0  2.0
+4  NaN  2.0
+5  NaN  2.0
+
+#+end_example
+
+I wouldn't in a million years have guessed this would be the behavior. Boy that was a head
+scratcher!
+
+* Takeaway
+
+Most of this was /relatively/ straightforward, granted it still required a lot of
+digging. To conclude, this was immensely helpful. It seems like I should have figured this out a
+long time ago: take something you know how to do and do it in the new language. I got a
+lot of practice with =python=, beefed up some general knowledge of how to even discuss
+=python= terminology, did something that's transferable to future work like this, and
+overall just feel good :) 
+
+
