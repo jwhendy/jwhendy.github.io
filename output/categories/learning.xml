@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about learning)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/learning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 Dec 2017 21:18:08 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org2217f03" class="outline-2"&gt;
-&lt;h2 id="org2217f03"&gt;Introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org2217f03"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about learning)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/learning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 Dec 2017 21:20:12 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org2c1c592" class="outline-2"&gt;
+&lt;h2 id="org2c1c592"&gt;Introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org2c1c592"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up `python`, coming from mostly
 using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -31,11 +31,11 @@ libraries:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgb47170a" class="outline-2"&gt;
-&lt;h2 id="orgb47170a"&gt;The example&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgb47170a"&gt;
+&lt;div id="outline-container-org0165450" class="outline-2"&gt;
+&lt;h2 id="org0165450"&gt;The example&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org0165450"&gt;
 &lt;p&gt;
-I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots, a simple bar, a dot plot (basically a
+I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
 by group.
 &lt;/p&gt;
@@ -95,9 +95,9 @@ Here are our three plots:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orga020422" class="outline-2"&gt;
-&lt;h2 id="orga020422"&gt;ggpy&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orga020422"&gt;
+&lt;div id="outline-container-org9c8268e" class="outline-2"&gt;
+&lt;h2 id="org9c8268e"&gt;ggpy&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org9c8268e"&gt;
 &lt;p&gt;
 Porting `ggplot2` to `python` is an &lt;i&gt;amazing&lt;/i&gt; concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -111,24 +111,33 @@ aesthetic keyword is &lt;code&gt;weight&lt;/code&gt; and not simply &lt;code&gt;
 also causes there to be no `y-axis` label by default; I had to manually add it in.
 &lt;/p&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"font-weight: bold;"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;from&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ggplot&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"font-weight: bold;"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;import&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;pre class="example"&gt;
 
-&lt;span class="n"&gt;ggplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"font-style: italic;"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"font-style: italic;"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;geom_bar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stat&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"font-style: italic;"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s1"&gt;'identity'&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;scale_y_continuous&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"font-style: italic;"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+from ggplot import *
+
+ggplot(df, aes(x='car', weight='mpg')) + geom_bar(stat='identity') + scale_y_continuous('mpg')
+
+&lt;/pre&gt;
 
 &lt;p&gt;
-For the dot plot (note the switch back to &lt;code&gt;y=&lt;/code&gt;):
+For the dot plot, note the switch back to &lt;code&gt;y=&lt;/code&gt;:
 &lt;/p&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;ggplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"font-style: italic;"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"font-style: italic;"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;geom_point&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;ylim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;low&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;pre class="example"&gt;
+
+ggplot(df, aes(x='car', y='mpg')) + geom_point() + ylim(low=0)
+
+&lt;/pre&gt;
 
 &lt;p&gt;
 And the scatter plot:
 &lt;/p&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;ggplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"font-style: italic;"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s1"&gt;'wt'&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"font-style: italic;"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"font-style: italic;"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;geom_point&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;pre class="example"&gt;
+
+ggplot(df, aes(x='wt', y='mpg', color='car')) + geom_point()
+
+&lt;/pre&gt;
 
 
 &lt;table&gt;

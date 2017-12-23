@@ -35,7 +35,7 @@ libraries:
 
 * The example
 
-I started /really/ simple. Three types of plots, a simple bar, a dot plot (basically a
+I started /really/ simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
 by group.
 
@@ -107,29 +107,29 @@ The above is /almost/ identical using the port for the bar chart. I dislike that
 aesthetic keyword is =weight= and not simply =y=. This [[https://github.com/yhat/ggpy/issues/373][surprised someone else]], too. It
 also causes there to be no `y-axis` label by default; I had to manually add it in.
 
-#+begin_src python :eval no 
+#+begin_example 
 
 from ggplot import *
 
 ggplot(df, aes(x='car', weight='mpg')) + geom_bar(stat='identity') + scale_y_continuous('mpg')
 
-#+end_src
+#+end_example
 
-For the dot plot (note the switch back to ~y=~):
+For the dot plot, note the switch back to ~y=~:
 
-#+begin_src python :eval no  
+#+begin_example 
 
 ggplot(df, aes(x='car', y='mpg')) + geom_point() + ylim(low=0)
 
-#+end_src
+#+end_example
 
 And the scatter plot:
 
-#+begin_src python :eval no 
+#+begin_example 
 
 ggplot(df, aes(x='wt', y='mpg', color='car')) + geom_point()
 
-#+end_src
+#+end_example
 
 #+begin_export html 
 
