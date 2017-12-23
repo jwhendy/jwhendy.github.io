@@ -107,29 +107,64 @@ The above is /almost/ identical using the port for the bar chart. I dislike that
 aesthetic keyword is =weight= and not simply =y=. This [[https://github.com/yhat/ggpy/issues/373][surprised someone else]], too. It
 also causes there to be no `y-axis` label by default; I had to manually add it in.
 
-#+begin_example 
+I also don't love how =ggpy= handles limits. Note the dot plot from =ggplot2= and the
+nice little padding above the highest dot. In =ggpy=, this didn't seem to work well out of
+the box. I could fix it with =scale_y_continuous=, but why should I have to? This also
+makes for requiring what I consider hokey, like:
 
+#+begin_example
+... + scale_y_continuous(limits=(0, max(df['mpg'])*1.1))
+#+end_example
+
+I /could/ do that, but again, it's extra effort. In my own workflow, I find I'm often
+visualizing some variables pretty similarly. I'll copy and paste code blocks and switch
+out variable names. This is one more thing to need to remember, and perhaps the 1.1
+multiplier wouldn't work so well if the data range was different by an order or two of
+magnitude. Smart ranges should "just work" in my opinion.
+
+Another complaint has to do with saving out the files. I'm not showing it below, but these
+were each generated with:
+
+#+begin_example
+p = ggplot(...)
+p.save('filename.png', width=w, height=h, dpi=300)
+#+end_example
+
+In `R`, I'd do something very similar:
+
+#+begin_example
+png('filename.png', width=w, height=h, res=300)
+p
+dev.off()
+#+end_example
+
+For the bar and dot, things were fine using `width=9, height=6` (inches), but using this
+for the scatter seemed not to incorporate the legend in the width. Using the same size, I
+got this:
+
+#+attr_html: :width 600px
+[[../../img/ggpy_mtcars_scatter_color_crunch.png]]
+
+
+#+begin_example 
 from ggplot import *
 
 ggplot(df, aes(x='car', weight='mpg')) + geom_bar(stat='identity') + scale_y_continuous('mpg')
-
 #+end_example
 
 For the dot plot, note the switch back to ~y=~:
 
 #+begin_example 
-
 ggplot(df, aes(x='car', y='mpg')) + geom_point() + ylim(low=0)
-
 #+end_example
 
 And the scatter plot:
 
-#+begin_example 
-
+#+begin_example  
 ggplot(df, aes(x='wt', y='mpg', color='car')) + geom_point()
-
 #+end_example
+
+Here's what we get!
 
 #+begin_export html 
 
