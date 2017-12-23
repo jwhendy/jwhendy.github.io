@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about learning)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/learning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 Dec 2017 20:38:19 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org86b2364" class="outline-2"&gt;
-&lt;h2 id="org86b2364"&gt;Introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org86b2364"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about learning)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/learning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 Dec 2017 20:49:16 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orge552a0e" class="outline-2"&gt;
+&lt;h2 id="orge552a0e"&gt;Introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orge552a0e"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up `python`, coming from mostly
 using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -31,9 +31,9 @@ libraries:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgf7ee1b7" class="outline-2"&gt;
-&lt;h2 id="orgf7ee1b7"&gt;The example&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgf7ee1b7"&gt;
+&lt;div id="outline-container-org1e24bde" class="outline-2"&gt;
+&lt;h2 id="org1e24bde"&gt;The example&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org1e24bde"&gt;
 &lt;p&gt;
 I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots, a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -90,17 +90,17 @@ Here are our three plots:
 &lt;table&gt;
   &lt;td&gt;
     &lt;/td&gt;&lt;tr&gt;
-      &lt;img src="https://jwhendy.github.io/img/r_mtcars_bar.png" width="30%"&gt;
+      &lt;a href="https://jwhendy.github.io/img/r_mtcars_bar.png"&gt;&lt;img src="https://jwhendy.github.io/img/r_mtcars_bar.png" width="30%"&gt;&lt;/a&gt;
     &lt;/tr&gt;
   
   &lt;td&gt;
     &lt;/td&gt;&lt;tr&gt;
-      &lt;img src="https://jwhendy.github.io/img/r_mtcars_dot.png" width="30%"&gt;
+      &lt;a href="https://jwhendy.github.io/img/r_mtcars_dot.png"&gt;&lt;img src="https://jwhendy.github.io/img/r_mtcars_bar.png" width="30%"&gt;&lt;/a&gt;
     &lt;/tr&gt;
   
   &lt;td&gt;
     &lt;/td&gt;&lt;tr&gt;
-      &lt;img src="https://jwhendy.github.io/img/r_mtcars_scatter_color.png" width="30%"&gt;
+      &lt;a href="https://jwhendy.github.io/img/r_mtcars_scatter_color.png"&gt;&lt;img src="https://jwhendy.github.io/img/r_mtcars_bar.png" width="30%"&gt;&lt;/a&gt;
     &lt;/tr&gt;
   
 &lt;/table&gt;
