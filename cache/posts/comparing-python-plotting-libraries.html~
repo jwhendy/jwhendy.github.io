@@ -1,6 +1,6 @@
-<div id="outline-container-org86b2364" class="outline-2">
-<h2 id="org86b2364">Introduction</h2>
-<div class="outline-text-2" id="text-org86b2364">
+<div id="outline-container-org68c14f4" class="outline-2">
+<h2 id="org68c14f4">Introduction</h2>
+<div class="outline-text-2" id="text-org68c14f4">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up `python`, coming from mostly
 using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -30,9 +30,9 @@ libraries:
 </div>
 </div>
 
-<div id="outline-container-orgf7ee1b7" class="outline-2">
-<h2 id="orgf7ee1b7">The example</h2>
-<div class="outline-text-2" id="text-orgf7ee1b7">
+<div id="outline-container-orgdaac8fa" class="outline-2">
+<h2 id="orgdaac8fa">The example</h2>
+<div class="outline-text-2" id="text-orgdaac8fa">
 <p>
 I started <i>really</i> simple. Three types of plots, a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -89,17 +89,17 @@ Here are our three plots:
 <table>
   <td>
     <tr>
-      <img src="../../img/r_mtcars_bar.png" width="30%" />
+      <img src="../files/img/r_mtcars_bar.png" width="30%" />
     </tr>
   </td>
   <td>
     <tr>
-      <img src="../../img/r_mtcars_dot.png" width="30%" />
+      <img src="../files/img/r_mtcars_dot.png" width="30%" />
     </tr>
   </td>
   <td>
     <tr>
-      <img src="../../img/r_mtcars_scatter_color.png" width="30%" />
+      <img src="../files/img/r_mtcars_scatter_color.png" width="30%" />
     </tr>
   </td>
 </table>
