@@ -86,9 +86,9 @@ using `R` over the past 5-7 years for data analysis, stats, and a lot of plottin
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-orge552a0e" class="outline-2">
-<h2 id="orge552a0e">Introduction</h2>
-<div class="outline-text-2" id="text-orge552a0e">
+    <div id="outline-container-orgf194676" class="outline-2">
+<h2 id="orgf194676">Introduction</h2>
+<div class="outline-text-2" id="text-orgf194676">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up `python`, coming from mostly
 using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -118,9 +118,9 @@ libraries:
 </div>
 </div>
 
-<div id="outline-container-org1e24bde" class="outline-2">
-<h2 id="org1e24bde">The example</h2>
-<div class="outline-text-2" id="text-org1e24bde">
+<div id="outline-container-org20d0f46" class="outline-2">
+<h2 id="org20d0f46">The example</h2>
+<div class="outline-text-2" id="text-org20d0f46">
 <p>
 I started <i>really</i> simple. Three types of plots, a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -137,22 +137,14 @@ data<span class="p">(</span>mtcars<span class="p">)</span>
 df <span class="o">&lt;-</span> mtcars<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="p">]</span>
 df<span class="o">$</span>car <span class="o">&lt;-</span> <span class="kp">rownames</span><span class="p">(</span>df<span class="p">)</span>
 
-p <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> car<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">))</span> <span class="o">+</span> geom_bar<span class="p">(</span>stat<span class="o">=</span><span class="s">"identity"</span><span class="p">)</span>
-
-png<span class="p">(</span><span class="s">"r_mtcars_bar.png"</span><span class="p">,</span> width<span class="o">=</span><span class="m">900</span><span class="p">,</span> height<span class="o">=</span><span class="m">600</span><span class="p">,</span> res<span class="o">=</span><span class="m">150</span><span class="p">)</span>
-p
-dev.off<span class="p">()</span>
+ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> car<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">))</span> <span class="o">+</span> geom_bar<span class="p">(</span>stat<span class="o">=</span><span class="s">"identity"</span><span class="p">)</span>
 </pre></div>
 
 <p>
 A dot plot:
 </p>
 
-<div class="highlight"><pre><span></span>p <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> car<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span> <span class="o">+</span> expand_limits<span class="p">(</span>y<span class="o">=</span><span class="m">0</span><span class="p">)</span>
-
-png<span class="p">(</span><span class="s">"r_mtcars_dot.png"</span><span class="p">,</span> width<span class="o">=</span><span class="m">900</span><span class="p">,</span> height<span class="o">=</span><span class="m">600</span><span class="p">,</span> res<span class="o">=</span><span class="m">150</span><span class="p">)</span>
-p
-dev.off<span class="p">()</span>
+<div class="highlight"><pre><span></span>ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> car<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span> <span class="o">+</span> expand_limits<span class="p">(</span>y<span class="o">=</span><span class="m">0</span><span class="p">)</span>
 </pre></div>
 
 <p>
@@ -162,11 +154,7 @@ And lastly, we'll use a bit more data and do a colored scatter plot:
 <div class="highlight"><pre><span></span>df <span class="o">&lt;-</span> mtcars<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="p">]</span>
 df<span class="o">$</span>car <span class="o">&lt;-</span> <span class="kp">rownames</span><span class="p">(</span>df<span class="p">)</span>
 
-p <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> wt<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">,</span> colour <span class="o">=</span> car<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span>
-
-png<span class="p">(</span><span class="s">"../files/img/r_mtcars_scatter_color.png"</span><span class="p">,</span> width<span class="o">=</span><span class="m">900</span><span class="p">,</span> height<span class="o">=</span><span class="m">600</span><span class="p">,</span> res<span class="o">=</span><span class="m">150</span><span class="p">)</span>
-p
-dev.off<span class="p">()</span>
+ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> wt<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">,</span> colour <span class="o">=</span> car<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span>
 </pre></div>
 
 <p>
@@ -183,12 +171,12 @@ Here are our three plots:
 <td>
     </td>
 <tr>
-<a href="../../img/r_mtcars_dot.png"><img src="../../img/r_mtcars_bar.png" width="30%"></a>
+<a href="../../img/r_mtcars_dot.png"><img src="../../img/r_mtcars_dot.png" width="30%"></a>
     </tr>
 <td>
     </td>
 <tr>
-<a href="../../img/r_mtcars_scatter_color.png"><img src="../../img/r_mtcars_bar.png" width="30%"></a>
+<a href="../../img/r_mtcars_scatter_color.png"><img src="../../img/r_mtcars_scatter_color.png" width="30%"></a>
     </tr>
 </table>
 </div>
