@@ -11,8 +11,9 @@
       (add-to-list 'load-path org-lisp-dir)
       (require 'org)))
 
+(add-to-list 'load-path "~/.elisp/site-lisp/")
 (require 'ox-html)
-
+(require 'htmlize)
 ;;; Custom configuration for the export. ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; Add any custom configuration that you would like to 'conf.el'.

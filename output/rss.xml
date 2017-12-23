@@ -1,5 +1,1559 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy</title><link>https://jwhendy.github.io/</link><description>Knowledge, sleep, food and coffee go in; this type of stuff comes out.</description><atom:link href="https://jwhendy.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Mon, 28 Aug 2017 03:37:52 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Translating R to python</title><link>https://jwhendy.github.io/blog/translating-r-to-python/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org5c88a44" class="outline-2"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy</title><link>https://jwhendy.github.io/</link><description>Knowledge, sleep, food and coffee go in; this type of stuff comes out.</description><atom:link href="https://jwhendy.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 Dec 2017 20:26:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org68c14f4" class="outline-2"&gt;
+&lt;h2 id="org68c14f4"&gt;Introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org68c14f4"&gt;
+&lt;p&gt;
+As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up `python`, coming from mostly
+using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
+`python`'s plotting landscape quite a bit more confusing than I expected, with tons of
+options compared to the typical reigning `R` champions: `base`, &lt;a href="http://lattice.r-forge.r-project.org/"&gt;&lt;code&gt;lattice&lt;/code&gt;&lt;/a&gt;, and &lt;a href="http://ggplot2.org/"&gt;&lt;code&gt;ggplot2&lt;/code&gt;&lt;/a&gt;. 
+&lt;/p&gt;
+
+&lt;p&gt;
+Granted, there are a ton of other R contenders as well, such as &lt;a href="https://plot.ly/r/"&gt;&lt;code&gt;plotly&lt;/code&gt;&lt;/a&gt; and &lt;a href="https://ramnathv.github.io/rCharts/"&gt;&lt;code&gt;rCharts&lt;/code&gt;&lt;/a&gt;,
+but the three above are the most common. I stick almost exclusively to `ggplot2`, and
+rarely find something I can't do (granted, this is typical science-y stuff, not
+infographics or really complicated stuff). To educate myself, I went through and plotted a
+pretty standard dataset in various ways to see how one would do it in a bunch of `python`
+libraries:
+&lt;/p&gt;
+
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;a href="http://ggplot.yhathq.com/"&gt;&lt;code&gt;ggpy&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://matplotlib.org/"&gt;&lt;code&gt;matplotlib&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://seaborn.pydata.org/"&gt;&lt;code&gt;seaborn&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://plot.ly/python/"&gt;&lt;code&gt;plotly&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://plot.ly/ipython-notebooks/cufflinks/"&gt;&lt;code&gt;cufflinks&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://altair-viz.github.io/"&gt;&lt;code&gt;altair&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://bokeh.pydata.org/en/latest/"&gt;&lt;code&gt;bokeh&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pygal.org/en/stable/"&gt;&lt;code&gt;pygal&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="outline-container-orgdaac8fa" class="outline-2"&gt;
+&lt;h2 id="orgdaac8fa"&gt;The example&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgdaac8fa"&gt;
+&lt;p&gt;
+I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots, a simple bar, a dot plot (basically a
+bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
+by group.
+&lt;/p&gt;
+
+&lt;p&gt;
+The bar chart in R:
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;ggplot2&lt;span class="p"&gt;)&lt;/span&gt;
+data&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="p"&gt;)&lt;/span&gt;
+
+df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; mtcars&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+df&lt;span class="o"&gt;$&lt;/span&gt;car &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;rownames&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;)&lt;/span&gt;
+
+p &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;,&lt;/span&gt; aes&lt;span class="p"&gt;(&lt;/span&gt;x &lt;span class="o"&gt;=&lt;/span&gt; car&lt;span class="p"&gt;,&lt;/span&gt; y &lt;span class="o"&gt;=&lt;/span&gt; mpg&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; geom_bar&lt;span class="p"&gt;(&lt;/span&gt;stat&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"identity"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+png&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"r_mtcars_bar.png"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; width&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;900&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; height&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;600&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; res&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;150&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+p
+dev.off&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+A dot plot:
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;p &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;,&lt;/span&gt; aes&lt;span class="p"&gt;(&lt;/span&gt;x &lt;span class="o"&gt;=&lt;/span&gt; car&lt;span class="p"&gt;,&lt;/span&gt; y &lt;span class="o"&gt;=&lt;/span&gt; mpg&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; geom_point&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; expand_limits&lt;span class="p"&gt;(&lt;/span&gt;y&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+png&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"r_mtcars_dot.png"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; width&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;900&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; height&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;600&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; res&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;150&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+p
+dev.off&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+And lastly, we'll use a bit more data and do a colored scatter plot:
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; mtcars&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+df&lt;span class="o"&gt;$&lt;/span&gt;car &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;rownames&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;)&lt;/span&gt;
+
+p &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;,&lt;/span&gt; aes&lt;span class="p"&gt;(&lt;/span&gt;x &lt;span class="o"&gt;=&lt;/span&gt; wt&lt;span class="p"&gt;,&lt;/span&gt; y &lt;span class="o"&gt;=&lt;/span&gt; mpg&lt;span class="p"&gt;,&lt;/span&gt; colour &lt;span class="o"&gt;=&lt;/span&gt; car&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; geom_point&lt;span class="p"&gt;()&lt;/span&gt;
+
+png&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"../files/img/r_mtcars_scatter_color.png"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; width&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;900&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; height&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;600&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; res&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;150&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+p
+dev.off&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+Here are our three plots:
+&lt;/p&gt;
+
+
+&lt;table&gt;
+  &lt;td&gt;
+    &lt;/td&gt;&lt;tr&gt;
+      &lt;img src="https://jwhendy.github.io/blog/files/img/r_mtcars_bar.png" width="30%"&gt;
+    &lt;/tr&gt;
+  
+  &lt;td&gt;
+    &lt;/td&gt;&lt;tr&gt;
+      &lt;img src="https://jwhendy.github.io/blog/files/img/r_mtcars_dot.png" width="30%"&gt;
+    &lt;/tr&gt;
+  
+  &lt;td&gt;
+    &lt;/td&gt;&lt;tr&gt;
+      &lt;img src="https://jwhendy.github.io/blog/files/img/r_mtcars_scatter_color.png" width="30%"&gt;
+    &lt;/tr&gt;
+  
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</guid><pubDate>Sat, 23 Dec 2017 19:33:34 GMT</pubDate></item><item><title>The woes of repointing a stone foundation</title><link>https://jwhendy.github.io/blog/the-woes-of-repointing-a-stone-foundation/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org18af8e2" class="outline-2"&gt;
+&lt;h2 id="org18af8e2"&gt;background&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org18af8e2"&gt;
+&lt;p&gt;
+This project started as many do: a lot simpler. We have an old, second back door that's
+been peeling paint for some time. In addition, there was a smaller rectangle of 1/4" plywood
+that someone decided to use as siding at some point. Over time, this rotted up about 6"
+from the ground. Since the door and the siding were neatly tucked into this small section
+on the back of the house I decided to just remove, sheath/housewrap, and re-side the whole
+area.
+&lt;/p&gt;
+
+&lt;p&gt;
+When I got to work removing it, I found a lot of rotten wood under the threshold. More
+alarming, under the door contained what might have been concrete at some point, or perhaps
+mortarted stones. Now it was literally just moist dirt. I'd been planning to pour some new
+sort of platform once I removed all the dirt/debris, and then put in some sort of sill
+boards using treated lumber. I decided to remove some siding on the adjacent side of the
+house so I could decide if I should wrap this pour around the corner.
+&lt;/p&gt;
+
+&lt;p&gt;
+There's a little 6" concrete "skirt" along our driveway, and a foot long section was
+cracked away and loose. I got that removed and found an extremely loose stone foundation
+looking at me. I was able to pull out quite a bit without even trying. I started reading
+and found lots of mention of pointing stone foundations… but my goodness, the
+instructions on mortar are some of the most ambiguous I've ever seen. I'm writing this to
+keep track of the various links I've found as well as hopefully help others if and when I
+find the answer.
+&lt;/p&gt;
+
+&lt;p&gt;
+Helpful references:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;a href="http://www.buildingconservation.com/articles/cement/cement.htm"&gt;Building conservation&lt;/a&gt; on concrete as a lime mortar additive. Suggests that &amp;lt; 10% is
+bound to fail and one is better off relying purely on CO2 cure. Bunch of other articles
+there on &lt;a href="http://www.buildingconservation.com/articles/limegauging/limegauging.htm"&gt;gauging materials&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Hard to read &lt;a href="https://archive.org/stream/investigationone00carr/investigationone00carr_djvu.txt"&gt;paper&lt;/a&gt; with some ratios:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides"&gt;
+
+
+&lt;colgroup&gt;
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-left"&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" class="org-right"&gt; &lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;lime&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;sand&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;dust&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-left"&gt; &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-right"&gt;2&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-left"&gt;1 (Williamsburg brick)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-left"&gt;1 (Williamsburg brick)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-right"&gt;4&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-left"&gt;1 (lime powder)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-right"&gt;5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-left"&gt;1 (Martin clay)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;
+Results showed little difference in strength or water transmission between mixes (Martin
+clay slightly improved vapor trans).
+&lt;/p&gt;
+
+
+&lt;p&gt;
+Just googling "repair a stone foundation" gets all of these:
+&lt;/p&gt;
+
+&lt;table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides"&gt;
+
+
+&lt;colgroup&gt;
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-left"&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" class="org-left"&gt;source&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;recommendation&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;explanation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://www.thisoldhouse.com/how-to/how-to-repoint-stone-foundation"&gt;this old house&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;type-s masonry mortar&lt;/td&gt;
+&lt;td class="org-left"&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="http://historicbldgs.com/stonefoundations.htm"&gt;historic buildings&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;lime based mortar&lt;/td&gt;
+&lt;td class="org-left"&gt;should be soft, especially if the stones are sedimentary&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://diy.stackexchange.com/questions/2824/what-kind-of-mortar-should-i-use-to-point-a-fieldstone-foundation"&gt;diy-stackexchange&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;1:2-3, portland cement:sand&lt;/td&gt;
+&lt;td class="org-left"&gt;"Generally there should be no or very little lime in a stone wall."&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://diy.stackexchange.com/questions/2824/what-kind-of-mortar-should-i-use-to-point-a-fieldstone-foundation"&gt;diy-stackexchange&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;type n, pre-mixed + sand to target 20% cementitious&lt;/td&gt;
+&lt;td class="org-left"&gt;consulted a stone mason, but doesn't say this impacted decision&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://diy.stackexchange.com/questions/2824/what-kind-of-mortar-should-i-use-to-point-a-fieldstone-foundation"&gt;diy-stackexchange&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;type n&lt;/td&gt;
+&lt;td class="org-left"&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="http://www.oldhouseweb.com/forums/viewtopic.php?f=8&amp;amp;t=9529"&gt;old house web&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;slake type s dry hydrated lime 1 week in water; 1:2.5 lime:sand after&lt;/td&gt;
+&lt;td class="org-left"&gt; &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="http://www.diychatroom.com/f19/old-stone-foundation-repair-102132/#post632895"&gt;diy chat&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;type N portland cement is a lime mortar and not suitable&lt;/td&gt;
+&lt;td class="org-left"&gt;not breathable&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;
+Within those that advise lime mortar, there's also tremendous variation!
+&lt;/p&gt;
+
+&lt;table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides"&gt;
+
+
+&lt;colgroup&gt;
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-left"&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" class="org-left"&gt;source&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;lime&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;sand&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;cement&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;water&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="http://www.diychatroom.com/f19/old-stone-foundation-repair-102132/#post632751"&gt;diy chat&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-left"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="http://www.diychatroom.com/f19/old-stone-foundation-repair-102132/#post633837"&gt;diy chat&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;3-5&lt;/td&gt;
+&lt;td class="org-left"&gt;?&lt;/td&gt;
+&lt;td class="org-left"&gt;?&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;
+DIY Chatroom listing
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;a href="http://www.diychatroom.com/f19/old-stone-foundation-repair-102132/index2/"&gt;Old stone foundation repair&lt;/a&gt;: guy says he's using Type N mortar and is told it's as bad
+as some foam insulation that's there, or worse due to being too hard and not
+breathable. Some vague references to mixes, but not much specific.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Some TScar quotes:
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;a href="http://www.diychatroom.com/f19/old-stone-foundation-repair-102132/#post633837"&gt;Old stone foundation repair&lt;/a&gt;:
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+For a blended mortar, you can use Type S lime straight from the bag, for lime mortar, the
+lime needs to be hydrated. Gently cover with water and keep covered with water for at
+least 2 days, then pour off (and save) excess water and the lime is ready to be used. As
+long as you keep it covered with water it will remain in a usable condition. 
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;
+&lt;a href="http://www.diychatroom.com/f105/what-mortar-tuckpointing-old-sandstone-foundation-201345/"&gt;What mortar for tuckpointing old sandstone&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+Interesting that a historic preservation agency says cement? References &lt;a href="https://www.gsa.gov/portal/content/111682"&gt;this page&lt;/a&gt;.
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+Also, the GSA "Historic Preservation" guidelines for Preparing Lime Mortar For Repointing
+Masonry (using type S hydrated lime) advise using cement in all of the mortar mixes that
+they have listed - the highest lime to cement ratio given is 3:1 for working on historic
+masonry set in lime mortar: 
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+&lt;p&gt;
+Results from Smeaton Test:
+&lt;/p&gt;
+
+&lt;p&gt;
+Assessed for breakdown after each winter period, graded using A-E scale.
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;A: no deterioration&lt;/li&gt;
+&lt;li&gt;B-D: in between&lt;/li&gt;
+&lt;li&gt;E: total disintegration&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;
+top row: group b
+&lt;/p&gt;
+
+&lt;table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides"&gt;
+
+
+&lt;colgroup&gt;
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-right"&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" class="org-left"&gt; &lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;&lt;b&gt;matl's&lt;/b&gt;&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;hl&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;hlw&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;hti&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;bd&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;?&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;opc&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;wopc&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;&lt;b&gt;hexham&lt;/b&gt;&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt; &lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;&lt;b&gt;hstead&lt;/b&gt;&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt; &lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;salt %wt&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th scope="col" class="org-left"&gt;id&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;sand&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;plq&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;plh&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;lh&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;opc&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;wopc&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;hti&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;bd&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;1&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;5&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;1&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;5&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt; &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a1a&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;e&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;38.1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a1b&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;26.5&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a1c&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;31.8&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a1d&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;41.5&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a1e&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;e&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;33.3&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a1f&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;34.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a2a&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-right"&gt;18.5&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a2b&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-right"&gt;4.0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a2c&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;c&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;c&lt;/td&gt;
+&lt;td class="org-right"&gt;14.6&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a2d&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-right"&gt;2.4&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a2e&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-right"&gt;37.0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a2f&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-right"&gt;37.5&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a2g&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-right"&gt;35.1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a2h&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-right"&gt;0.22&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3a&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;e&lt;/td&gt;
+&lt;td class="org-left"&gt;c&lt;/td&gt;
+&lt;td class="org-left"&gt;e&lt;/td&gt;
+&lt;td class="org-right"&gt;61.2*&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3b&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.25&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;79.0*&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3c&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-right"&gt;29.5&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3d&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;e&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;e&lt;/td&gt;
+&lt;td class="org-right"&gt;td&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3e&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.25&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;td&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3f&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-right"&gt;30.1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3g&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;0.1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;td&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3h&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;0.25&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-right"&gt;32.1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3k&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-right"&gt;0.25&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3l&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;c&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;c&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-right"&gt;td&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3m&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.25&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-right"&gt;35.7&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;a3n&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-right"&gt;2.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b1a&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-right"&gt;33.4&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b1b&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-right"&gt;34.5&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b1c&lt;/td&gt;
+&lt;td class="org-right"&gt;4&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;c&lt;/td&gt;
+&lt;td class="org-right"&gt;34.7&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b1d&lt;/td&gt;
+&lt;td class="org-right"&gt;5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-right"&gt;42.3&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b1e&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;34.7&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b1f&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;53.7&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b1g&lt;/td&gt;
+&lt;td class="org-right"&gt;4&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;c&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;de&lt;/td&gt;
+&lt;td class="org-right"&gt;59.4&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b1h&lt;/td&gt;
+&lt;td class="org-right"&gt;5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-right"&gt;45.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b2a&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;c&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-right"&gt;49.1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b2b&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-right"&gt;40.2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b2c&lt;/td&gt;
+&lt;td class="org-right"&gt;4&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-right"&gt;44.0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b2d&lt;/td&gt;
+&lt;td class="org-right"&gt;5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-right"&gt;51.6&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b2e&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-right"&gt;26.5&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b2f&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-right"&gt;24.1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b2g&lt;/td&gt;
+&lt;td class="org-right"&gt;4&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-right"&gt;42.4&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b2h&lt;/td&gt;
+&lt;td class="org-right"&gt;5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;cd&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;d&lt;/td&gt;
+&lt;td class="org-right"&gt;47.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b3a&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-right"&gt;10.5&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b3b&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-right"&gt;21.3&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b3c&lt;/td&gt;
+&lt;td class="org-right"&gt;4&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-right"&gt;23.8&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b3d&lt;/td&gt;
+&lt;td class="org-right"&gt;5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-right"&gt;40.9&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b3e&lt;/td&gt;
+&lt;td class="org-right"&gt;2.5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-right"&gt;25.2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b3f&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;b&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-right"&gt;33.2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b3g&lt;/td&gt;
+&lt;td class="org-right"&gt;4&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-right"&gt;52.0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;b3h&lt;/td&gt;
+&lt;td class="org-right"&gt;5&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt;0.5&lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-left"&gt;bc&lt;/td&gt;
+&lt;td class="org-left"&gt;a&lt;/td&gt;
+&lt;td class="org-left"&gt;ab&lt;/td&gt;
+&lt;td class="org-right"&gt;44.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt; &lt;/td&gt;
+&lt;td class="org-left"&gt; &lt;/td&gt;
+&lt;td class="org-right"&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;
+strength vs. vapor perm:
+&lt;a href="http://www.limes.us/wp-content/uploads/2013/04/APTI-ComparativeLabEval.pdf"&gt;http://www.limes.us/wp-content/uploads/2013/04/APTI-ComparativeLabEval.pdf&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides"&gt;
+
+
+&lt;colgroup&gt;
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-left"&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" class="org-left"&gt;matl&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;wvtr&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;comp strength&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt;mfg&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th scope="col" class="org-left"&gt; &lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;g/m&lt;sup&gt;2&lt;/sup&gt;/hr&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;MPa&lt;/th&gt;
+&lt;th scope="col" class="org-left"&gt; &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;white OPC&lt;/td&gt;
+&lt;td class="org-right"&gt;1.18&lt;/td&gt;
+&lt;td class="org-right"&gt;&amp;gt; 25&lt;/td&gt;
+&lt;td class="org-left"&gt;Lehigh&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;grey OPC&lt;/td&gt;
+&lt;td class="org-right"&gt;1.76&lt;/td&gt;
+&lt;td class="org-right"&gt;&amp;gt; 25&lt;/td&gt;
+&lt;td class="org-left"&gt;Lehigh&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;CL: mr-200 rotary hydrated lime (high calcium)&lt;/td&gt;
+&lt;td class="org-right"&gt;4.94&lt;/td&gt;
+&lt;td class="org-right"&gt;1.76&lt;/td&gt;
+&lt;td class="org-left"&gt;Mississippi Lime&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;DL: super limoid type-s (domolitic hydrated)&lt;/td&gt;
+&lt;td class="org-right"&gt;3.51&lt;/td&gt;
+&lt;td class="org-right"&gt;3.67&lt;/td&gt;
+&lt;td class="org-left"&gt;Graymont&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;N-CL: Type N with calcitic lime/white OPC&lt;/td&gt;
+&lt;td class="org-right"&gt;2.25&lt;/td&gt;
+&lt;td class="org-right"&gt;15.37&lt;/td&gt;
+&lt;td class="org-left"&gt;Mississippi/Lehigh&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;N-DL: "" with domolitic lime/white OPC&lt;/td&gt;
+&lt;td class="org-right"&gt;1.76&lt;/td&gt;
+&lt;td class="org-right"&gt;16.34&lt;/td&gt;
+&lt;td class="org-left"&gt;Graymont/Lehigh&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;O-CL&lt;/td&gt;
+&lt;td class="org-right"&gt;3.4&lt;/td&gt;
+&lt;td class="org-right"&gt;8.26&lt;/td&gt;
+&lt;td class="org-left"&gt;Mississippi/Lehigh&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;O-DL&lt;/td&gt;
+&lt;td class="org-right"&gt;2.39&lt;/td&gt;
+&lt;td class="org-right"&gt;9.89&lt;/td&gt;
+&lt;td class="org-left"&gt;Mississippi/Lehigh&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;NHL-2&lt;/td&gt;
+&lt;td class="org-right"&gt;4.33&lt;/td&gt;
+&lt;td class="org-right"&gt;2.33&lt;/td&gt;
+&lt;td class="org-left"&gt;St. Astier&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;NHL-3.5&lt;/td&gt;
+&lt;td class="org-right"&gt;4.15&lt;/td&gt;
+&lt;td class="org-right"&gt;4.15&lt;/td&gt;
+&lt;td class="org-left"&gt;St. Astier&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;NHL-5&lt;/td&gt;
+&lt;td class="org-right"&gt;3.81&lt;/td&gt;
+&lt;td class="org-right"&gt;4.2&lt;/td&gt;
+&lt;td class="org-left"&gt;St. Astier&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;
+Another table of strength: 
+&lt;a href="https://www.ncptt.nps.gov/wp-content/uploads/2004-26.pdf"&gt;https://www.ncptt.nps.gov/wp-content/uploads/2004-26.pdf&lt;/a&gt;
+&lt;/p&gt;
+
+
+&lt;p&gt;
+groups:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;a1: lime, sand&lt;/li&gt;
+&lt;li&gt;a2: lime, sand, and brick dust/HTI powder&lt;/li&gt;
+&lt;li&gt;a3: lime, sand, and and OPC or white cement&lt;/li&gt;
+&lt;li&gt;b1: hydraulic lime, sand&lt;/li&gt;
+&lt;li&gt;b2: hydraulic lime, sand, and HTI&lt;/li&gt;
+&lt;li&gt;b3: hydraaulic lime, sand, and brick dust&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+constituents:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;plq: lime putty from quicklime&lt;/li&gt;
+&lt;li&gt;plh: lime putty from hydrated lime&lt;/li&gt;
+&lt;li&gt;lh: hydrated lime (powder)&lt;/li&gt;
+&lt;li&gt;hl: hydrated hydraulic lime (buff)&lt;/li&gt;
+&lt;li&gt;hlw: hydrated hydraulic lime (white)&lt;/li&gt;
+&lt;li&gt;opc: ordinary portland cement&lt;/li&gt;
+&lt;li&gt;hti: high temperature insulant refractory brick dust&lt;/li&gt;
+&lt;li&gt;bd: brick dust&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Site on Hadrian's Wall:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;hexham&lt;/li&gt;
+&lt;li&gt;houseseads&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;
+NHL:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;a href="http://www.preservationworks.us/contact.html"&gt;http://www.preservationworks.us/contact.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+www.doeni.gov.uk/niea/tn37&lt;sub&gt;repointing&lt;/sub&gt;&lt;sub&gt;stone&lt;/sub&gt;&lt;sub&gt;and&lt;/sub&gt;&lt;sub&gt;brick&lt;/sub&gt;-2.pdf
+&lt;/p&gt;
+
+&lt;p&gt;
+Videos:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Evg5pG8PZII&amp;amp;t=3s"&gt;guy claims&lt;/a&gt; lime mortar (3:1) failed on his brick cellar.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Misc post on OPC vs. lime: &lt;a href="http://www.contractortalk.com/f48/hydraulic-mortar-all-claims-284625/"&gt;http://www.contractortalk.com/f48/hydraulic-mortar-all-claims-284625/&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+Long post on contractor talk: &lt;a href="http://www.contractortalk.com/f48/bagged-premixed-lime-mortar-tuckpointing-113060/"&gt;http://www.contractortalk.com/f48/bagged-premixed-lime-mortar-tuckpointing-113060/&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+Mention of checking the void for sand ratio: &lt;a href="https://www.lancasterlimeworks.com/proper-ratio-lime-sand/"&gt;https://www.lancasterlimeworks.com/proper-ratio-lime-sand/&lt;/a&gt;
+&lt;/p&gt;
+
+
+&lt;p&gt;
+MN Historical Preservation listing: &lt;a href="http://www.mnhs.org/shpo/preservation-directory"&gt;http://www.mnhs.org/shpo/preservation-directory&lt;/a&gt;
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li class="on"&gt;&lt;code&gt;[X]&lt;/code&gt; &lt;a href="http://www.mnhs.org/shpo/preservation-directory/8209"&gt;http://www.mnhs.org/shpo/preservation-directory/8209&lt;/a&gt; (emailed)&lt;/li&gt;
+&lt;li class="on"&gt;&lt;code&gt;[X]&lt;/code&gt; &lt;a href="http://www.mnhs.org/shpo/preservation-directory/8212"&gt;http://www.mnhs.org/shpo/preservation-directory/8212&lt;/a&gt; (emailed)&lt;/li&gt;
+&lt;li class="on"&gt;&lt;code&gt;[X]&lt;/code&gt; &lt;a href="http://advancedmasonry.com/"&gt;http://advancedmasonry.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div id="outline-container-orgbd6795f" class="outline-2"&gt;
+&lt;h2 id="orgbd6795f"&gt;todo stuff&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgbd6795f"&gt;
+&lt;p&gt;
+&lt;a href="https://2cycle2gether.com/2010/09/reviving-lime-mortar/#.WayTaHVE5hE"&gt;https://2cycle2gether.com/2010/09/reviving-lime-mortar/#.WayTaHVE5hE&lt;/a&gt;
+&lt;a href="http://www.improvementcenter.com/blog/repairing-historical-stone-foundations.html"&gt;http://www.improvementcenter.com/blog/repairing-historical-stone-foundations.html&lt;/a&gt;
+&lt;a href="http://www.oldhouseweb.com/forums/viewtopic.php?f=4&amp;amp;t=21318"&gt;http://www.oldhouseweb.com/forums/viewtopic.php?f=4&amp;amp;t=21318&lt;/a&gt;
+&lt;a href="http://www.oldhouseweb.com/forums/viewtopic.php?f=4&amp;amp;t=24488"&gt;http://www.oldhouseweb.com/forums/viewtopic.php?f=4&amp;amp;t=24488&lt;/a&gt;
+&lt;a href="http://www.oldhouseweb.com/forums/viewtopic.php?f=2&amp;amp;t=27180"&gt;http://www.oldhouseweb.com/forums/viewtopic.php?f=2&amp;amp;t=27180&lt;/a&gt;
+&lt;a href="http://www.oldhouseweb.com/forums/viewtopic.php?f=4&amp;amp;t=27878"&gt;http://www.oldhouseweb.com/forums/viewtopic.php?f=4&amp;amp;t=27878&lt;/a&gt;
+&lt;/p&gt;
+
+
+&lt;p&gt;
+&lt;a href="http://www.diychatroom.com/f105/making-lime-mortar-201577/"&gt;http://www.diychatroom.com/f105/making-lime-mortar-201577/&lt;/a&gt;
+&lt;a href="http://www.diychatroom.com/f105/foundation-wall-repair-188563/"&gt;http://www.diychatroom.com/f105/foundation-wall-repair-188563/&lt;/a&gt;
+&lt;a href="http://www.diychatroom.com/f19/attn-tscarborough-hurricane-sandy-basement-repair-point-parge-insulate-172928/"&gt;http://www.diychatroom.com/f19/attn-tscarborough-hurricane-sandy-basement-repair-point-parge-insulate-172928/&lt;/a&gt;
+&lt;a href="https://www.gsa.gov/portal/content/111682"&gt;https://www.gsa.gov/portal/content/111682&lt;/a&gt;
+&lt;a href="http://www.diychatroom.com/f105/what-mortar-tuckpointing-old-sandstone-foundation-201345/"&gt;http://www.diychatroom.com/f105/what-mortar-tuckpointing-old-sandstone-foundation-201345/&lt;/a&gt;
+&lt;/p&gt;
+
+
+&lt;p&gt;
+the clearest recipe from Tscar:
+&lt;a href="http://www.diychatroom.com/f19/repointing-old-rubble-foundation-11673/"&gt;http://www.diychatroom.com/f19/repointing-old-rubble-foundation-11673/&lt;/a&gt;
+pics of mortar attacked church:
+&lt;a href="http://www.diychatroom.com/f19/1860s-foundation-wall-parging-35031/index2/"&gt;http://www.diychatroom.com/f19/1860s-foundation-wall-parging-35031/index2/&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description><guid>https://jwhendy.github.io/blog/the-woes-of-repointing-a-stone-foundation/</guid><pubDate>Sun, 03 Sep 2017 23:27:08 GMT</pubDate></item><item><title>Translating R to python</title><link>https://jwhendy.github.io/blog/translating-r-to-python/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org5c88a44" class="outline-2"&gt;
 &lt;h2 id="org5c88a44"&gt;Background&lt;/h2&gt;
 &lt;div class="outline-text-2" id="text-org5c88a44"&gt;
 &lt;p&gt;

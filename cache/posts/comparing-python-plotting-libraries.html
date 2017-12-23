@@ -1,0 +1,107 @@
+<div id="outline-container-org68c14f4" class="outline-2">
+<h2 id="org68c14f4">Introduction</h2>
+<div class="outline-text-2" id="text-org68c14f4">
+<p>
+As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up `python`, coming from mostly
+using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
+`python`'s plotting landscape quite a bit more confusing than I expected, with tons of
+options compared to the typical reigning `R` champions: `base`, <a href="http://lattice.r-forge.r-project.org/"><code>lattice</code></a>, and <a href="http://ggplot2.org/"><code>ggplot2</code></a>. 
+</p>
+
+<p>
+Granted, there are a ton of other R contenders as well, such as <a href="https://plot.ly/r/"><code>plotly</code></a> and <a href="https://ramnathv.github.io/rCharts/"><code>rCharts</code></a>,
+but the three above are the most common. I stick almost exclusively to `ggplot2`, and
+rarely find something I can't do (granted, this is typical science-y stuff, not
+infographics or really complicated stuff). To educate myself, I went through and plotted a
+pretty standard dataset in various ways to see how one would do it in a bunch of `python`
+libraries:
+</p>
+
+<ul class="org-ul">
+<li><a href="http://ggplot.yhathq.com/"><code>ggpy</code></a></li>
+<li><a href="https://matplotlib.org/"><code>matplotlib</code></a></li>
+<li><a href="https://seaborn.pydata.org/"><code>seaborn</code></a></li>
+<li><a href="https://plot.ly/python/"><code>plotly</code></a></li>
+<li><a href="https://plot.ly/ipython-notebooks/cufflinks/"><code>cufflinks</code></a></li>
+<li><a href="https://altair-viz.github.io/"><code>altair</code></a></li>
+<li><a href="https://bokeh.pydata.org/en/latest/"><code>bokeh</code></a></li>
+<li><a href="http://pygal.org/en/stable/"><code>pygal</code></a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdaac8fa" class="outline-2">
+<h2 id="orgdaac8fa">The example</h2>
+<div class="outline-text-2" id="text-orgdaac8fa">
+<p>
+I started <i>really</i> simple. Three types of plots, a simple bar, a dot plot (basically a
+bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
+by group.
+</p>
+
+<p>
+The bar chart in R:
+</p>
+
+<div class="highlight"><pre><span></span><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+data<span class="p">(</span>mtcars<span class="p">)</span>
+
+df <span class="o">&lt;-</span> mtcars<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="p">]</span>
+df<span class="o">$</span>car <span class="o">&lt;-</span> <span class="kp">rownames</span><span class="p">(</span>df<span class="p">)</span>
+
+p <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> car<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">))</span> <span class="o">+</span> geom_bar<span class="p">(</span>stat<span class="o">=</span><span class="s">&quot;identity&quot;</span><span class="p">)</span>
+
+png<span class="p">(</span><span class="s">&quot;r_mtcars_bar.png&quot;</span><span class="p">,</span> width<span class="o">=</span><span class="m">900</span><span class="p">,</span> height<span class="o">=</span><span class="m">600</span><span class="p">,</span> res<span class="o">=</span><span class="m">150</span><span class="p">)</span>
+p
+dev.off<span class="p">()</span>
+</pre></div>
+
+<p>
+A dot plot:
+</p>
+
+<div class="highlight"><pre><span></span>p <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> car<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span> <span class="o">+</span> expand_limits<span class="p">(</span>y<span class="o">=</span><span class="m">0</span><span class="p">)</span>
+
+png<span class="p">(</span><span class="s">&quot;r_mtcars_dot.png&quot;</span><span class="p">,</span> width<span class="o">=</span><span class="m">900</span><span class="p">,</span> height<span class="o">=</span><span class="m">600</span><span class="p">,</span> res<span class="o">=</span><span class="m">150</span><span class="p">)</span>
+p
+dev.off<span class="p">()</span>
+</pre></div>
+
+<p>
+And lastly, we'll use a bit more data and do a colored scatter plot:
+</p>
+
+<div class="highlight"><pre><span></span>df <span class="o">&lt;-</span> mtcars<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="p">]</span>
+df<span class="o">$</span>car <span class="o">&lt;-</span> <span class="kp">rownames</span><span class="p">(</span>df<span class="p">)</span>
+
+p <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> wt<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">,</span> colour <span class="o">=</span> car<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span>
+
+png<span class="p">(</span><span class="s">&quot;../files/img/r_mtcars_scatter_color.png&quot;</span><span class="p">,</span> width<span class="o">=</span><span class="m">900</span><span class="p">,</span> height<span class="o">=</span><span class="m">600</span><span class="p">,</span> res<span class="o">=</span><span class="m">150</span><span class="p">)</span>
+p
+dev.off<span class="p">()</span>
+</pre></div>
+
+<p>
+Here are our three plots:
+</p>
+
+
+<table>
+  <td>
+    <tr>
+      <img src="../files/img/r_mtcars_bar.png" width="30%" />
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <img src="../files/img/r_mtcars_dot.png" width="30%" />
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <img src="../files/img/r_mtcars_scatter_color.png" width="30%" />
+    </tr>
+  </td>
+</table>
+</div>
+</div>

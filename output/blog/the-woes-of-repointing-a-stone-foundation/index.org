@@ -1,0 +1,260 @@
+#+BEGIN_COMMENT
+.. title: The woes of repointing a stone foundation
+.. slug: the-woes-of-repointing-a-stone-foundation
+.. date: 2017-09-03 18:27:08 UTC-05:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+* background
+
+This project started as many do: a lot simpler. We have an old, second back door that's
+been peeling paint for some time. In addition, there was a smaller rectangle of 1/4" plywood
+that someone decided to use as siding at some point. Over time, this rotted up about 6"
+from the ground. Since the door and the siding were neatly tucked into this small section
+on the back of the house I decided to just remove, sheath/housewrap, and re-side the whole
+area.
+
+When I got to work removing it, I found a lot of rotten wood under the threshold. More
+alarming, under the door contained what might have been concrete at some point, or perhaps
+mortarted stones. Now it was literally just moist dirt. I'd been planning to pour some new
+sort of platform once I removed all the dirt/debris, and then put in some sort of sill
+boards using treated lumber. I decided to remove some siding on the adjacent side of the
+house so I could decide if I should wrap this pour around the corner.
+
+There's a little 6" concrete "skirt" along our driveway, and a foot long section was
+cracked away and loose. I got that removed and found an extremely loose stone foundation
+looking at me. I was able to pull out quite a bit without even trying. I started reading
+and found lots of mention of pointing stone foundations... but my goodness, the
+instructions on mortar are some of the most ambiguous I've ever seen. I'm writing this to
+keep track of the various links I've found as well as hopefully help others if and when I
+find the answer.
+
+Helpful references:
+- [[http://www.buildingconservation.com/articles/cement/cement.htm][Building conservation]] on concrete as a lime mortar additive. Suggests that < 10% is
+  bound to fail and one is better off relying purely on CO2 cure. Bunch of other articles
+  there on [[http://www.buildingconservation.com/articles/limegauging/limegauging.htm][gauging materials]]
+- Hard to read [[https://archive.org/stream/investigationone00carr/investigationone00carr_djvu.txt][paper]] with some ratios:
+
+|   | lime | sand | dust                   |
+|---+------+------+------------------------|
+| 1 |    1 |    3 |                        |
+| 2 |    1 |    3 | 1 (Williamsburg brick) |
+| 3 |    1 |  2.5 | 1 (Williamsburg brick) |
+| 4 |    1 |  2.5 | 1 (lime powder)        |
+| 5 |    1 |  2.5 | 1 (Martin clay)        |
+
+Results showed little difference in strength or water transmission between mixes (Martin
+clay slightly improved vapor trans).
+
+
+Just googling "repair a stone foundation" gets all of these:
+
+| source             | recommendation                                                        | explanation                                                         |
+|--------------------+-----------------------------------------------------------------------+---------------------------------------------------------------------|
+| [[https://www.thisoldhouse.com/how-to/how-to-repoint-stone-foundation][this old house]]     | type-s masonry mortar                                                 | -                                                                   |
+| [[http://historicbldgs.com/stonefoundations.htm][historic buildings]] | lime based mortar                                                     | should be soft, especially if the stones are sedimentary            |
+| [[https://diy.stackexchange.com/questions/2824/what-kind-of-mortar-should-i-use-to-point-a-fieldstone-foundation][diy-stackexchange]]  | 1:2-3, portland cement:sand                                           | "Generally there should be no or very little lime in a stone wall." |
+| [[https://diy.stackexchange.com/questions/2824/what-kind-of-mortar-should-i-use-to-point-a-fieldstone-foundation][diy-stackexchange]]  | type n, pre-mixed + sand to target 20% cementitious                   | consulted a stone mason, but doesn't say this impacted decision     |
+| [[https://diy.stackexchange.com/questions/2824/what-kind-of-mortar-should-i-use-to-point-a-fieldstone-foundation][diy-stackexchange]]  | type n                                                                | -                                                                   |
+| [[http://www.oldhouseweb.com/forums/viewtopic.php?f=8&t=9529][old house web]]      | slake type s dry hydrated lime 1 week in water; 1:2.5 lime:sand after |                                                                     |
+| [[http://www.diychatroom.com/f19/old-stone-foundation-repair-102132/#post632895][diy chat]]           | type N portland cement is a lime mortar and not suitable              | not breathable                                                      |
+
+
+Within those that advise lime mortar, there's also tremendous variation!
+
+| source   | lime | sand | cement | water |
+|----------+------+------+--------+-------|
+| [[http://www.diychatroom.com/f19/old-stone-foundation-repair-102132/#post632751][diy chat]] |    1 |    1 |        | 1     |
+| [[http://www.diychatroom.com/f19/old-stone-foundation-repair-102132/#post633837][diy chat]] |    1 |  3-5 | ?      | ?     |
+
+
+DIY Chatroom listing
+- [[http://www.diychatroom.com/f19/old-stone-foundation-repair-102132/index2/][Old stone foundation repair]]: guy says he's using Type N mortar and is told it's as bad
+  as some foam insulation that's there, or worse due to being too hard and not
+  breathable. Some vague references to mixes, but not much specific.
+
+Some TScar quotes:
+
+[[http://www.diychatroom.com/f19/old-stone-foundation-repair-102132/#post633837][Old stone foundation repair]]:
+#+begin_quote
+For a blended mortar, you can use Type S lime straight from the bag, for lime mortar, the
+lime needs to be hydrated. Gently cover with water and keep covered with water for at
+least 2 days, then pour off (and save) excess water and the lime is ready to be used. As
+long as you keep it covered with water it will remain in a usable condition. 
+#+end_quote
+
+[[http://www.diychatroom.com/f105/what-mortar-tuckpointing-old-sandstone-foundation-201345/][What mortar for tuckpointing old sandstone]]
+
+Interesting that a historic preservation agency says cement? References [[https://www.gsa.gov/portal/content/111682][this page]].
+#+begin_quote
+Also, the GSA "Historic Preservation" guidelines for Preparing Lime Mortar For Repointing
+Masonry (using type S hydrated lime) advise using cement in all of the mortar mixes that
+they have listed - the highest lime to cement ratio given is 3:1 for working on historic
+masonry set in lime mortar: 
+#+end_quote
+
+
+Results from Smeaton Test:
+
+Assessed for breakdown after each winter period, graded using A-E scale.
+- A: no deterioration
+- B-D: in between
+- E: total disintegration
+
+
+top row: group b
+
+|     | *matl's* |  hl | hlw | hti |   bd |    ? | opc | wopc | *hexham* |    | *hstead* |    | salt %wt |
+| id  |     sand | plq | plh |  lh |  opc | wopc | hti |   bd | 1        | 5  | 1        | 5  |          |
+|-----+----------+-----+-----+-----+------+------+-----+------+----------+----+----------+----+----------|
+| a1a |        3 |   1 |     |     |      |      |     |      | d        | e  | cd       | de |     38.1 |
+| a1b |        3 |     |   1 |     |      |      |     |      | d        | de | cd       | de |     26.5 |
+| a1c |        3 |     |     |   1 |      |      |     |      | d        | de | cd       | de |     31.8 |
+| a1d |      2.5 |   1 |     |     |      |      |     |      | d        | de | cd       | de |     41.5 |
+| a1e |      2.5 |     |   1 |     |      |      |     |      | e        | de | cd       | de |     33.3 |
+| a1f |      2.5 |     |     |   1 |      |      |     |      | de       | de | cd       | de |     34.4 |
+|-----+----------+-----+-----+-----+------+------+-----+------+----------+----+----------+----+----------|
+| a2a |        3 |   1 |     |     |      |      |   1 |      | de       | d  | bc       | d  |     18.5 |
+| a2b |        3 |   1 |     |     |      |      |     |    1 | a        | ab | a        | bc |      4.0 |
+| a2c |        3 |     |     |   1 |      |      |   1 |      | a        | c  | ab       | c  |     14.6 |
+| a2d |        3 |     |     |   1 |      |      |     |    1 | a        | ab | a        | ab |      2.4 |
+| a2e |        3 |   1 |     |     |      |      | 0.5 |      | ab       | d  | bc       | d  |     37.0 |
+| a2f |        3 |   1 |     |     |      |      |     |  0.5 | a        | bc | a        | ab |     37.5 |
+| a2g |        3 |     |     |   1 |      |      | 0.5 |      | a        | b  | bc       | cd |     35.1 |
+| a2h |        3 |     |     |   1 |      |      |     |  0.5 | a        | bc | a        | bc |     0.22 |
+|-----+----------+-----+-----+-----+------+------+-----+------+----------+----+----------+----+----------|
+| a3a |        3 |   1 |     |     |  0.1 |      |     |      | bc       | e  | c        | e  |    61.2* |
+| a3b |        3 |   1 |     |     | 0.25 |      |     |      | bc       | de | bc       | de |    79.0* |
+| a3c |        3 |   1 |     |     |  0.5 |      |     |      | a        | b  | ab       | bc |     29.5 |
+| a3d |        3 |   1 |     |     |      |  0.1 |     |      | de       | e  | cd       | e  |       td |
+| a3e |        3 |   1 |     |     |      | 0.25 |     |      | d        | de | cd       | de |       td |
+| a3f |        3 |   1 |     |     |      |  0.5 |     |      | a        | ab | a        | ab |     30.1 |
+| a3g |        3 |     |     |   1 |  0.1 |      |     |      | ab       | d  | bc       | de |       td |
+| a3h |        3 |     |     |   1 | 0.25 |      |     |      | ab       | b  | a        | a  |     32.1 |
+| a3k |        3 |     |     |   1 |  0.5 |      |     |      | a        | ab | a        | ab |     0.25 |
+| a3l |        3 |     |     |   1 |      |  0.1 |     |      | c        | d  | c        | d  |       td |
+| a3m |        3 |     |     |   1 |      | 0.25 |     |      | a        | bc | ab       | cd |     35.7 |
+| a3n |        3 |     |     |   1 |      |  0.5 |     |      | a        | ab | a        | a  |      2.4 |
+|-----+----------+-----+-----+-----+------+------+-----+------+----------+----+----------+----+----------|
+| b1a |      2.5 |   1 |     |     |      |      |     |      | a        | ab | a        | ab |     33.4 |
+| b1b |        3 |   1 |     |     |      |      |     |      | a        | ab | ab       | b  |     34.5 |
+| b1c |        4 |   1 |     |     |      |      |     |      | ab       | d  | b        | c  |     34.7 |
+| b1d |        5 |   1 |     |     |      |      |     |      | ab       | de | b        | cd |     42.3 |
+| b1e |      2.5 |     |   1 |     |      |      |     |      | cd       | de | de       | de |     34.7 |
+| b1f |        3 |     |   1 |     |      |      |     |      | cd       | d  | de       | de |     53.7 |
+| b1g |        4 |     |   1 |     |      |      |     |      | c        | d  | cd       | de |     59.4 |
+| b1h |        5 |     |   1 |     |      |      |     |      | cd       | d  | cd       | d  |     45.5 |
+|-----+----------+-----+-----+-----+------+------+-----+------+----------+----+----------+----+----------|
+| b2a |      2.5 |   1 |     |   1 |      |      |     |      | b        | c  | b        | bc |     49.1 |
+| b2b |        3 |   1 |     |   1 |      |      |     |      | b        | bc | bc       | bc |     40.2 |
+| b2c |        4 |   1 |     |   1 |      |      |     |      | b        | cd | bc       | cd |     44.0 |
+| b2d |        5 |   1 |     |   1 |      |      |     |      | bc       | d  | bc       | d  |     51.6 |
+| b2e |      2.5 |   1 |     | 0.5 |      |      |     |      | b        | b  | bc       | bc |     26.5 |
+| b2f |        3 |   1 |     | 0.5 |      |      |     |      | b        | bc | bc       | bc |     24.1 |
+| b2g |        4 |   1 |     | 0.5 |      |      |     |      | b        | bc | bc       | bc |     42.4 |
+| b2h |        5 |   1 |     | 0.5 |      |      |     |      | bc       | cd | bc       | d  |     47.9 |
+|-----+----------+-----+-----+-----+------+------+-----+------+----------+----+----------+----+----------|
+| b3a |      2.5 |   1 |     |     |    1 |      |     |      | a        | ab | a        | a  |     10.5 |
+| b3b |        3 |   1 |     |     |    1 |      |     |      | a        | ab | a        | a  |     21.3 |
+| b3c |        4 |   1 |     |     |    1 |      |     |      | a        | a  | a        | a  |     23.8 |
+| b3d |        5 |   1 |     |     |    1 |      |     |      | a        | b  | a        | b  |     40.9 |
+| b3e |      2.5 |   1 |     |     |  0.5 |      |     |      | a        | b  | a        | b  |     25.2 |
+| b3f |        3 |   1 |     |     |  0.5 |      |     |      | a        | b  | a        | ab |     33.2 |
+| b3g |        4 |   1 |     |     |  0.5 |      |     |      | a        | ab | a        | a  |     52.0 |
+| b3h |        5 |   1 |     |     |  0.5 |      |     |      | ab       | bc | a        | ab |     44.2 |
+|-----+----------+-----+-----+-----+------+------+-----+------+----------+----+----------+----+----------|
+|     |          |     |     |     |      |      |     |      |          |    |          |    |          |
+
+
+strength vs. vapor perm:
+http://www.limes.us/wp-content/uploads/2013/04/APTI-ComparativeLabEval.pdf
+
+| matl                                           |     wvtr | comp strength | mfg                |
+|                                                | g/m^2/hr |           MPa |                    |
+|------------------------------------------------+----------+---------------+--------------------|
+| white OPC                                      |     1.18 |          > 25 | Lehigh             |
+| grey OPC                                       |     1.76 |          > 25 | Lehigh             |
+| CL: mr-200 rotary hydrated lime (high calcium) |     4.94 |          1.76 | Mississippi Lime   |
+| DL: super limoid type-s (domolitic hydrated)   |     3.51 |          3.67 | Graymont           |
+| N-CL: Type N with calcitic lime/white OPC      |     2.25 |         15.37 | Mississippi/Lehigh |
+| N-DL: "" with domolitic lime/white OPC         |     1.76 |         16.34 | Graymont/Lehigh    |
+| O-CL                                           |      3.4 |          8.26 | Mississippi/Lehigh |
+| O-DL                                           |     2.39 |          9.89 | Mississippi/Lehigh |
+| NHL-2                                          |     4.33 |          2.33 | St. Astier         |
+| NHL-3.5                                        |     4.15 |          4.15 | St. Astier         |
+| NHL-5                                          |     3.81 |           4.2 | St. Astier         |
+
+Another table of strength: 
+https://www.ncptt.nps.gov/wp-content/uploads/2004-26.pdf
+
+
+groups:
+- a1: lime, sand
+- a2: lime, sand, and brick dust/HTI powder
+- a3: lime, sand, and and OPC or white cement
+- b1: hydraulic lime, sand
+- b2: hydraulic lime, sand, and HTI
+- b3: hydraaulic lime, sand, and brick dust
+
+constituents:
+- plq: lime putty from quicklime
+- plh: lime putty from hydrated lime
+- lh: hydrated lime (powder)
+- hl: hydrated hydraulic lime (buff)
+- hlw: hydrated hydraulic lime (white)
+- opc: ordinary portland cement
+- hti: high temperature insulant refractory brick dust
+- bd: brick dust
+
+Site on Hadrian's Wall:
+- hexham
+- houseseads
+
+
+NHL:
+- http://www.preservationworks.us/contact.html
+
+www.doeni.gov.uk/niea/tn37_repointing_stone_and_brick-2.pdf
+
+Videos:
+- [[https://www.youtube.com/watch?v=Evg5pG8PZII&t=3s][guy claims]] lime mortar (3:1) failed on his brick cellar. 
+
+Misc post on OPC vs. lime: http://www.contractortalk.com/f48/hydraulic-mortar-all-claims-284625/
+
+Long post on contractor talk: http://www.contractortalk.com/f48/bagged-premixed-lime-mortar-tuckpointing-113060/
+
+Mention of checking the void for sand ratio: https://www.lancasterlimeworks.com/proper-ratio-lime-sand/
+
+
+MN Historical Preservation listing: http://www.mnhs.org/shpo/preservation-directory
+- [X] http://www.mnhs.org/shpo/preservation-directory/8209 (emailed)
+- [X] http://www.mnhs.org/shpo/preservation-directory/8212 (emailed)
+- [X] http://advancedmasonry.com/
+
+
+* todo stuff
+
+https://2cycle2gether.com/2010/09/reviving-lime-mortar/#.WayTaHVE5hE
+http://www.improvementcenter.com/blog/repairing-historical-stone-foundations.html
+http://www.oldhouseweb.com/forums/viewtopic.php?f=4&t=21318
+http://www.oldhouseweb.com/forums/viewtopic.php?f=4&t=24488
+http://www.oldhouseweb.com/forums/viewtopic.php?f=2&t=27180
+http://www.oldhouseweb.com/forums/viewtopic.php?f=4&t=27878
+
+
+http://www.diychatroom.com/f105/making-lime-mortar-201577/
+http://www.diychatroom.com/f105/foundation-wall-repair-188563/
+http://www.diychatroom.com/f19/attn-tscarborough-hurricane-sandy-basement-repair-point-parge-insulate-172928/
+https://www.gsa.gov/portal/content/111682
+http://www.diychatroom.com/f105/what-mortar-tuckpointing-old-sandstone-foundation-201345/
+
+
+the clearest recipe from Tscar:
+http://www.diychatroom.com/f19/repointing-old-rubble-foundation-11673/
+pics of mortar attacked church:
+http://www.diychatroom.com/f19/1860s-foundation-wall-parging-35031/index2/
