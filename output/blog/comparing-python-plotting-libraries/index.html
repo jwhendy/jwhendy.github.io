@@ -86,9 +86,9 @@ using `R` over the past 5-7 years for data analysis, stats, and a lot of plottin
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-orge26b9ec" class="outline-2">
-<h2 id="orge26b9ec">Introduction</h2>
-<div class="outline-text-2" id="text-orge26b9ec">
+    <div id="outline-container-org9a2b9da" class="outline-2">
+<h2 id="org9a2b9da">Introduction</h2>
+<div class="outline-text-2" id="text-org9a2b9da">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up `python`, coming from mostly
 using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -118,9 +118,9 @@ libraries:
 </div>
 </div>
 
-<div id="outline-container-orgfdbb5dd" class="outline-2">
-<h2 id="orgfdbb5dd">The example</h2>
-<div class="outline-text-2" id="text-orgfdbb5dd">
+<div id="outline-container-org126139e" class="outline-2">
+<h2 id="org126139e">The example</h2>
+<div class="outline-text-2" id="text-org126139e">
 <p>
 I started <i>really</i> simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -182,9 +182,9 @@ Here are our three plots:
 </div>
 </div>
 
-<div id="outline-container-orgc9d5b18" class="outline-2">
-<h2 id="orgc9d5b18">ggpy</h2>
-<div class="outline-text-2" id="text-orgc9d5b18">
+<div id="outline-container-org15512fc" class="outline-2">
+<h2 id="org15512fc">ggpy</h2>
+<div class="outline-text-2" id="text-org15512fc">
 <p>
 Porting `ggplot2` to `python` is an <i>amazing</i> concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -228,16 +228,6 @@ p.save('filename.png', width=w, height=h, dpi=300)
 </pre>
 
 <p>
-In `R`, I'd do something very similar:
-</p>
-
-<pre class="example">
-png('filename.png', width=w, height=h, res=300)
-p
-dev.off()
-</pre>
-
-<p>
 For the bar and dot, things were fine using <code>width=9, height=6</code> (inches), but using this
 for the scatter seemed not to incorporate the legend in the width. Using the same size, I
 got this:
@@ -250,7 +240,7 @@ got this:
 
 <p>
 To get the legend to fit, I had to bump the size, but that makes the text labels much
-smaller. In <code>ggplot</code>, I could fix this with some <code>theme()</code> options; I didn't get far
+smaller with respect to the plot. In <code>ggplot</code>, I could fix this with some <code>theme()</code> options; I didn't get far
 enough to hunt the equivalent in <code>ggpy</code>.
 </p>
 
@@ -296,6 +286,83 @@ Here's what we get!
     </td>
 <tr>
 <a href="../../img/ggpy_mtcars_scatter_color.png"><img src="../../img/ggpy_mtcars_scatter_color.png" width="30%"></a>
+    </tr>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org33a71d2" class="outline-2">
+<h2 id="org33a71d2">matplotlib</h2>
+<div class="outline-text-2" id="text-org33a71d2">
+<p>
+From my reading, this looks like the loved and hated "bread and butter" of `python`
+plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
+much of this, likely due to how simple these examples are.
+</p>
+
+<p>
+I ran into the same quirk as with <code>ggpy</code> with respect to expanding the dot plot y-axis
+limits. I could pass <code>ylim(0)</code> to get zero included, but it would cut off the top dot. I
+had to do the hokey scaling bit again.
+</p>
+
+<p>
+Lastly, the process of getting colors by groups was not awesome. I found I could sort of
+<a href="https://stackoverflow.com/questions/26139423/plot-different-color-for-different-categorical-levels-using-matplotlib">manually map</a> each group to a color or do it the canonical way and <a href="https://stackoverflow.com/questions/43967663/scatter-plot-with-legend-colored-by-group-without-multiple-calls-to-plt-scatter">loop through</a> the data,
+adding a layer of dots for each group. That also required some fiddling with the <a href="https://matplotlib.org/users/legend_guide.html#legend-location">legend location</a>.
+</p>
+
+<p>
+The bar plot:
+</p>
+
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="n">import</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="k">as</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'car'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+<p>
+Dot plot:
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'car'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="nb">max</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">])</span><span class="o">*</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+<p>
+For the colored scatter plot, which I had a <a href="https://stackoverflow.com/questions/47956746/saving-matplotlib-subplot-axes-as-png-file">helluva time</a> getting to save as a file. I
+ended up having to just screenshot the plot from <code>jupyter lab</code>.
+</p>
+
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold; font-style: italic;"</span><span class="o">&gt;</span><span class="n">fig</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold; font-style: italic;"</span><span class="o">&gt;</span><span class="n">ax</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="k">for</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="n">ind</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="ow">in</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'wt'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<table>
+<td>
+    </td>
+<tr>
+<a href="../../img/mat_mtcars_bar.png"><img src="../../img/mat_mtcars_bar.png" width="30%"></a>
+    </tr>
+<td>
+    </td>
+<tr>
+<a href="../../img/mat_mtcars_dot.png"><img src="../../img/mat_mtcars_dot.png" width="30%"></a>
+    </tr>
+<td>
+    </td>
+<tr>
+<a href="../../img/mat_mtcars_scatter_color.png"><img src="../../img/mat_mtcars_scatter_color.png" width="30%"></a>
     </tr>
 </table>
 </div>

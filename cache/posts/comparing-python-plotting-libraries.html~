@@ -1,6 +1,6 @@
-<div id="outline-container-org0491175" class="outline-2">
-<h2 id="org0491175">Introduction</h2>
-<div class="outline-text-2" id="text-org0491175">
+<div id="outline-container-orge26b9ec" class="outline-2">
+<h2 id="orge26b9ec">Introduction</h2>
+<div class="outline-text-2" id="text-orge26b9ec">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up `python`, coming from mostly
 using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -30,9 +30,9 @@ libraries:
 </div>
 </div>
 
-<div id="outline-container-orgb35c866" class="outline-2">
-<h2 id="orgb35c866">The example</h2>
-<div class="outline-text-2" id="text-orgb35c866">
+<div id="outline-container-orgfdbb5dd" class="outline-2">
+<h2 id="orgfdbb5dd">The example</h2>
+<div class="outline-text-2" id="text-orgfdbb5dd">
 <p>
 I started <i>really</i> simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -94,9 +94,9 @@ Here are our three plots:
 </div>
 </div>
 
-<div id="outline-container-orga61576f" class="outline-2">
-<h2 id="orga61576f">ggpy</h2>
-<div class="outline-text-2" id="text-orga61576f">
+<div id="outline-container-orgc9d5b18" class="outline-2">
+<h2 id="orgc9d5b18">ggpy</h2>
+<div class="outline-text-2" id="text-orgc9d5b18">
 <p>
 Porting `ggplot2` to `python` is an <i>amazing</i> concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -164,7 +164,7 @@ got this:
 <p>
 To get the legend to fit, I had to bump the size, but that makes the text labels much
 smaller. In <code>ggplot</code>, I could fix this with some <code>theme()</code> options; I didn't get far
-enough to hunt the equivalent in <code>ggpy</code>
+enough to hunt the equivalent in <code>ggpy</code>.
 </p>
 
 <pre class="example">

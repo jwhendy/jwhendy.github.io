@@ -130,14 +130,6 @@ p = ggplot(...)
 p.save('filename.png', width=w, height=h, dpi=300)
 #+end_example
 
-In `R`, I'd do something very similar:
-
-#+begin_example
-png('filename.png', width=w, height=h, res=300)
-p
-dev.off()
-#+end_example
-
 For the bar and dot, things were fine using ~width=9, height=6~ (inches), but using this
 for the scatter seemed not to incorporate the legend in the width. Using the same size, I
 got this:
@@ -146,7 +138,7 @@ got this:
 [[../../img/ggpy_mtcars_scatter_color_crunch.png]]
 
 To get the legend to fit, I had to bump the size, but that makes the text labels much
-smaller. In =ggplot=, I could fix this with some =theme()= options; I didn't get far
+smaller with respect to the plot. In =ggplot=, I could fix this with some =theme()= options; I didn't get far
 enough to hunt the equivalent in =ggpy=.
 
 #+begin_example 
@@ -185,6 +177,74 @@ Here's what we get!
   <td>
     <tr>
       <a href="../../img/ggpy_mtcars_scatter_color.png"><img src="../../img/ggpy_mtcars_scatter_color.png" width="30%" /></a>
+    </tr>
+  </td>
+</table>
+
+#+end_export
+
+
+* matplotlib
+
+From my reading, this looks like the loved and hated "bread and butter" of `python`
+plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
+much of this, likely due to how simple these examples are.
+
+I ran into the same quirk as with =ggpy= with respect to expanding the dot plot y-axis
+limits. I could pass =ylim(0)= to get zero included, but it would cut off the top dot. I
+had to do the hokey scaling bit again.
+
+Lastly, the process of getting colors by groups was not awesome. I found I could sort of
+[[https://stackoverflow.com/questions/26139423/plot-different-color-for-different-categorical-levels-using-matplotlib][manually map]] each group to a color or do it the canonical way and [[https://stackoverflow.com/questions/43967663/scatter-plot-with-legend-colored-by-group-without-multiple-calls-to-plt-scatter][loop through]] the data,
+adding a layer of dots for each group. That also required some fiddling with the [[https://matplotlib.org/users/legend_guide.html#legend-location][legend location]].
+
+The bar plot:
+
+#+begin_src python 
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(9, 6))
+plt.bar(df['car'], df['mpg'])
+plt.show()
+#+end_src
+
+Dot plot:
+
+#+begin_src python 
+plt.figure(figsize=(9, 6))
+plt.scatter(df['car'], df['mpg'])
+plt.ylim(0, max(df['mpg'])*1.1)
+plt.show()
+#+end_src
+
+For the colored scatter plot, which I had a [[https://stackoverflow.com/questions/47956746/saving-matplotlib-subplot-axes-as-png-file][helluva time]] getting to save as a file. I
+ended up having to just screenshot the plot from =jupyter lab=.
+
+#+begin_src python 
+fig, ax = plt.subplots()
+plt.figure(figsize=(12, 9))
+for ind in df.index:
+    ax.scatter(df.loc[ind, 'wt'], df.loc[ind, 'mpg'], label=ind)
+ax.legend(bbox_to_anchor=(1.05, 1), loc=2)
+plt.show()
+#+end_src
+
+#+begin_export html 
+
+<table>
+  <td>
+    <tr>
+      <a href="../../img/mat_mtcars_bar.png"><img src="../../img/mat_mtcars_bar.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/mat_mtcars_dot.png"><img src="../../img/mat_mtcars_dot.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/mat_mtcars_scatter_color.png"><img src="../../img/mat_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
