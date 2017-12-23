@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 Dec 2017 21:35:49 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org19c0df1" class="outline-2"&gt;
-&lt;h2 id="org19c0df1"&gt;Introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org19c0df1"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 Dec 2017 21:38:56 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org0491175" class="outline-2"&gt;
+&lt;h2 id="org0491175"&gt;Introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org0491175"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up `python`, coming from mostly
 using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -31,9 +31,9 @@ libraries:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org261fe69" class="outline-2"&gt;
-&lt;h2 id="org261fe69"&gt;The example&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org261fe69"&gt;
+&lt;div id="outline-container-orgb35c866" class="outline-2"&gt;
+&lt;h2 id="orgb35c866"&gt;The example&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgb35c866"&gt;
 &lt;p&gt;
 I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -95,9 +95,9 @@ Here are our three plots:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org3791c07" class="outline-2"&gt;
-&lt;h2 id="org3791c07"&gt;ggpy&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org3791c07"&gt;
+&lt;div id="outline-container-orga61576f" class="outline-2"&gt;
+&lt;h2 id="orga61576f"&gt;ggpy&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orga61576f"&gt;
 &lt;p&gt;
 Porting `ggplot2` to `python` is an &lt;i&gt;amazing&lt;/i&gt; concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -151,7 +151,7 @@ dev.off()
 &lt;/pre&gt;
 
 &lt;p&gt;
-For the bar and dot, things were fine using `width=9, height=6` (inches), but using this
+For the bar and dot, things were fine using &lt;code&gt;width=9, height=6&lt;/code&gt; (inches), but using this
 for the scatter seemed not to incorporate the legend in the width. Using the same size, I
 got this:
 &lt;/p&gt;
@@ -162,6 +162,11 @@ got this:
 &lt;/p&gt;
 &lt;/div&gt;
 
+&lt;p&gt;
+To get the legend to fit, I had to bump the size, but that makes the text labels much
+smaller. In &lt;code&gt;ggplot&lt;/code&gt;, I could fix this with some &lt;code&gt;theme()&lt;/code&gt; options; I didn't get far
+enough to hunt the equivalent in &lt;code&gt;ggpy&lt;/code&gt;
+&lt;/p&gt;
 
 &lt;pre class="example"&gt;
 from ggplot import *

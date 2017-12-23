@@ -138,13 +138,16 @@ p
 dev.off()
 #+end_example
 
-For the bar and dot, things were fine using `width=9, height=6` (inches), but using this
+For the bar and dot, things were fine using ~width=9, height=6~ (inches), but using this
 for the scatter seemed not to incorporate the legend in the width. Using the same size, I
 got this:
 
 #+attr_html: :width 600px
 [[../../img/ggpy_mtcars_scatter_color_crunch.png]]
 
+To get the legend to fit, I had to bump the size, but that makes the text labels much
+smaller. In =ggplot=, I could fix this with some =theme()= options; I didn't get far
+enough to hunt the equivalent in =ggpy=
 
 #+begin_example 
 from ggplot import *
