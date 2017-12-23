@@ -147,7 +147,7 @@ got this:
 
 To get the legend to fit, I had to bump the size, but that makes the text labels much
 smaller. In =ggplot=, I could fix this with some =theme()= options; I didn't get far
-enough to hunt the equivalent in =ggpy=
+enough to hunt the equivalent in =ggpy=.
 
 #+begin_example 
 from ggplot import *

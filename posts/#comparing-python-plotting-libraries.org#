@@ -146,7 +146,7 @@ got this:
 [[../../img/ggpy_mtcars_scatter_color_crunch.png]]
 
 To get the legend to fit, I had to bump the size, but that makes the text labels much
-smaller. In =ggplot=, I could fix this with some =theme()= options; I didn't get far
+smaller with respect to the plot. In =ggplot=, I could fix this with some =theme()= options; I didn't get far
 enough to hunt the equivalent in =ggpy=.
 
 #+begin_example 
