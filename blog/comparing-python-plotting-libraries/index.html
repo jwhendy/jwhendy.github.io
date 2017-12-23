@@ -86,9 +86,9 @@ using `R` over the past 5-7 years for data analysis, stats, and a lot of plottin
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-org2217f03" class="outline-2">
-<h2 id="org2217f03">Introduction</h2>
-<div class="outline-text-2" id="text-org2217f03">
+    <div id="outline-container-org2c1c592" class="outline-2">
+<h2 id="org2c1c592">Introduction</h2>
+<div class="outline-text-2" id="text-org2c1c592">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up `python`, coming from mostly
 using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -118,11 +118,11 @@ libraries:
 </div>
 </div>
 
-<div id="outline-container-orgb47170a" class="outline-2">
-<h2 id="orgb47170a">The example</h2>
-<div class="outline-text-2" id="text-orgb47170a">
+<div id="outline-container-org0165450" class="outline-2">
+<h2 id="org0165450">The example</h2>
+<div class="outline-text-2" id="text-org0165450">
 <p>
-I started <i>really</i> simple. Three types of plots, a simple bar, a dot plot (basically a
+I started <i>really</i> simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
 by group.
 </p>
@@ -182,9 +182,9 @@ Here are our three plots:
 </div>
 </div>
 
-<div id="outline-container-orga020422" class="outline-2">
-<h2 id="orga020422">ggpy</h2>
-<div class="outline-text-2" id="text-orga020422">
+<div id="outline-container-org9c8268e" class="outline-2">
+<h2 id="org9c8268e">ggpy</h2>
+<div class="outline-text-2" id="text-org9c8268e">
 <p>
 Porting `ggplot2` to `python` is an <i>amazing</i> concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -198,24 +198,33 @@ aesthetic keyword is <code>weight</code> and not simply <code>y</code>. This <a 
 also causes there to be no `y-axis` label by default; I had to manually add it in.
 </p>
 
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="n">from</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="n">ggplot</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="n">import</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="o">*</span>
+<pre class="example">
 
-<span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'car'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="o">=&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'identity'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">+</span> <span class="n">scale_y_continuous</span><span class="p">(</span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">)</span>
-</pre></div>
+from ggplot import *
+
+ggplot(df, aes(x='car', weight='mpg')) + geom_bar(stat='identity') + scale_y_continuous('mpg')
+
+</pre>
 
 <p>
-For the dot plot (note the switch back to <code>y=</code>):
+For the dot plot, note the switch back to <code>y=</code>:
 </p>
 
-<div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'car'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">y</span><span class="o">=&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="n">ylim</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
+<pre class="example">
+
+ggplot(df, aes(x='car', y='mpg')) + geom_point() + ylim(low=0)
+
+</pre>
 
 <p>
 And the scatter plot:
 </p>
 
-<div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'wt'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">y</span><span class="o">=&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">color</span><span class="o">=&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'car'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">()</span>
-</pre></div>
+<pre class="example">
+
+ggplot(df, aes(x='wt', y='mpg', color='car')) + geom_point()
+
+</pre>
 
 
 <table>
