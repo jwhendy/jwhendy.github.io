@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 Dec 2017 21:20:12 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org2c1c592" class="outline-2"&gt;
-&lt;h2 id="org2c1c592"&gt;Introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org2c1c592"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 Dec 2017 21:35:49 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org19c0df1" class="outline-2"&gt;
+&lt;h2 id="org19c0df1"&gt;Introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org19c0df1"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up `python`, coming from mostly
 using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -31,9 +31,9 @@ libraries:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org0165450" class="outline-2"&gt;
-&lt;h2 id="org0165450"&gt;The example&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org0165450"&gt;
+&lt;div id="outline-container-org261fe69" class="outline-2"&gt;
+&lt;h2 id="org261fe69"&gt;The example&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org261fe69"&gt;
 &lt;p&gt;
 I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -95,9 +95,9 @@ Here are our three plots:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org9c8268e" class="outline-2"&gt;
-&lt;h2 id="org9c8268e"&gt;ggpy&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org9c8268e"&gt;
+&lt;div id="outline-container-org3791c07" class="outline-2"&gt;
+&lt;h2 id="org3791c07"&gt;ggpy&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org3791c07"&gt;
 &lt;p&gt;
 Porting `ggplot2` to `python` is an &lt;i&gt;amazing&lt;/i&gt; concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -111,12 +111,62 @@ aesthetic keyword is &lt;code&gt;weight&lt;/code&gt; and not simply &lt;code&gt;
 also causes there to be no `y-axis` label by default; I had to manually add it in.
 &lt;/p&gt;
 
-&lt;pre class="example"&gt;
+&lt;p&gt;
+I also don't love how &lt;code&gt;ggpy&lt;/code&gt; handles limits. Note the dot plot from &lt;code&gt;ggplot2&lt;/code&gt; and the
+nice little padding above the highest dot. In &lt;code&gt;ggpy&lt;/code&gt;, this didn't seem to work well out of
+the box. I could fix it with &lt;code&gt;scale_y_continuous&lt;/code&gt;, but why should I have to? This also
+makes for requiring what I consider hokey, like:
+&lt;/p&gt;
 
+&lt;pre class="example"&gt;
+... + scale_y_continuous(limits=(0, max(df['mpg'])*1.1))
+&lt;/pre&gt;
+
+&lt;p&gt;
+I &lt;i&gt;could&lt;/i&gt; do that, but again, it's extra effort. In my own workflow, I find I'm often
+visualizing some variables pretty similarly. I'll copy and paste code blocks and switch
+out variable names. This is one more thing to need to remember, and perhaps the 1.1
+multiplier wouldn't work so well if the data range was different by an order or two of
+magnitude. Smart ranges should "just work" in my opinion.
+&lt;/p&gt;
+
+&lt;p&gt;
+Another complaint has to do with saving out the files. I'm not showing it below, but these
+were each generated with:
+&lt;/p&gt;
+
+&lt;pre class="example"&gt;
+p = ggplot(...)
+p.save('filename.png', width=w, height=h, dpi=300)
+&lt;/pre&gt;
+
+&lt;p&gt;
+In `R`, I'd do something very similar:
+&lt;/p&gt;
+
+&lt;pre class="example"&gt;
+png('filename.png', width=w, height=h, res=300)
+p
+dev.off()
+&lt;/pre&gt;
+
+&lt;p&gt;
+For the bar and dot, things were fine using `width=9, height=6` (inches), but using this
+for the scatter seemed not to incorporate the legend in the width. Using the same size, I
+got this:
+&lt;/p&gt;
+
+
+&lt;div class="figure"&gt;
+&lt;p&gt;&lt;img src="https://jwhendy.github.io/img/ggpy_mtcars_scatter_color_crunch.png" alt="ggpy_mtcars_scatter_color_crunch.png" width="600px"&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;pre class="example"&gt;
 from ggplot import *
 
 ggplot(df, aes(x='car', weight='mpg')) + geom_bar(stat='identity') + scale_y_continuous('mpg')
-
 &lt;/pre&gt;
 
 &lt;p&gt;
@@ -124,9 +174,7 @@ For the dot plot, note the switch back to &lt;code&gt;y=&lt;/code&gt;:
 &lt;/p&gt;
 
 &lt;pre class="example"&gt;
-
 ggplot(df, aes(x='car', y='mpg')) + geom_point() + ylim(low=0)
-
 &lt;/pre&gt;
 
 &lt;p&gt;
@@ -134,10 +182,12 @@ And the scatter plot:
 &lt;/p&gt;
 
 &lt;pre class="example"&gt;
-
 ggplot(df, aes(x='wt', y='mpg', color='car')) + geom_point()
-
 &lt;/pre&gt;
+
+&lt;p&gt;
+Here's what we get!
+&lt;/p&gt;
 
 
 &lt;table&gt;
