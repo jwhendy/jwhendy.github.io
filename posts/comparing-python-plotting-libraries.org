@@ -96,3 +96,59 @@ Here are our three plots:
 
 #+end_export
 
+* ggpy
+
+Porting `ggplot2` to `python` is an /amazing/ concept. The whole idea behind the grammar
+of graphics is how little the code needs to change for different visualizations. We're
+only changing some mappings (some aspect of the data leads to some aesthetic) and the
+geometry being used.
+
+The above is /almost/ identical using the port for the bar chart. I dislike that the
+aesthetic keyword is =weight= and not simply =y=. This [[https://github.com/yhat/ggpy/issues/373][surprised someone else]], too. It
+also causes there to be no `y-axis` label by default; I had to manually add it in.
+
+#+begin_src python :eval no 
+
+from ggplot import *
+
+ggplot(df, aes(x='car', weight='mpg')) + geom_bar(stat='identity') + scale_y_continuous('mpg')
+
+#+end_src
+
+For the dot plot (note the switch back to ~y=~):
+
+#+begin_src python :eval no  
+
+ggplot(df, aes(x='car', y='mpg')) + geom_point() + ylim(low=0)
+
+#+end_src
+
+And the scatter plot:
+
+#+begin_src python :eval no 
+
+ggplot(df, aes(x='wt', y='mpg', color='car')) + geom_point()
+
+#+end_src
+
+#+begin_export html 
+
+<table>
+  <td>
+    <tr>
+      <a href="../../img/ggpy_mtcars_bar.png"><img src="../../img/ggpy_mtcars_bar.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/ggpy_mtcars_dot.png"><img src="../../img/ggpy_mtcars_dot.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/ggpy_mtcars_scatter_color.png"><img src="../../img/ggpy_mtcars_scatter_color.png" width="30%" /></a>
+    </tr>
+  </td>
+</table>
+
+#+end_export
