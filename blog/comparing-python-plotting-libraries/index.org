@@ -374,13 +374,14 @@ trace1 = [go.Scatter(
 
 #+end_src
 
-That's it. The key line in there is ~color=foo~, which only addresses a continuous color
-scale.
+That's it. The key line in there is ~color=np.random()~, which only addresses a continuous color
+scale. Thinking looking for [[https://plot.ly/python/colorscales/][color scale]] information would be helpful also wasn't. It just
+shows a bunch of ways to put up continuous colors scales, not discrete for groups.
 
 A little further up, we have this kludge:
 
 #+begin_src python 
-c= ['hsl('+str(h)+',50%'+',50%)' for h in np.linspace(0, 360, N)]
+c = ['hsl('+str(h)+',50%'+',50%)' for h in np.linspace(0, 360, N)]
 
 for i in range(int(N)):
     ...
@@ -460,3 +461,36 @@ colors are hard to distinguish. The ability to put in ~text=foo~ is super handy.
   </td>
 </table>
 #+end_export
+
+
+* cufflinks
+
+I don't have much to say here; it's supposed to be a way to sort of layer =plotly= right
+onto =pd.DataFrame= objects. That makes it really succinct, but I also find the
+documentation lacking.
+
+#+begin_src python 
+import cufflinks as cf
+
+df.iplot(kind='bar', x='car', y='mpg')
+#+end_src
+
+This /does/ show how nice the grammar of graphics is. Other than needing to specify that
+we want =markers=, we're literally just changing the =kind= of plot with the mappings
+staying the same. It's just a different way to draw the same thing.
+
+#+begin_src python 
+df.iplot(kind='scatter', x='car', y='mpg', mode='markers')
+#+end_src
+
+The grouped colors fell apart a bit for me again, perhaps because at the end of the day
+=cufflinks= is just =plotly=. I found [[https://github.com/santosjorge/cufflinks/blob/master/Cufflinks%20Tutorial%20-%20Colors.ipynb][this promising]] walkthrough, but one of the
+colorscale generation examples failed me. In the
+[[https://plot.ly/ipython-notebooks/cufflinks/#scatter-plot][cufflinks docs]] themselves, they basically say this isn't possible and just fallback to
+=plotly= syntax:
+
+#+begin_quote
+Plotting multiple column scatter plots isn't as easy with cufflinks. Here is an example
+with Plotly's native syntax
+#+end_quote
+
