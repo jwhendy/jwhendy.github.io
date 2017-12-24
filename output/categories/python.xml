@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 05:19:49 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org38cbb95" class="outline-2"&gt;
-&lt;h2 id="org38cbb95"&gt;introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org38cbb95"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 05:26:17 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org909e07f" class="outline-2"&gt;
+&lt;h2 id="org909e07f"&gt;introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org909e07f"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up &lt;code&gt;python&lt;/code&gt;, coming from mostly
 using &lt;code&gt;R&lt;/code&gt; over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -31,9 +31,9 @@ libraries:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orga8d5255" class="outline-2"&gt;
-&lt;h2 id="orga8d5255"&gt;the example&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orga8d5255"&gt;
+&lt;div id="outline-container-orgcb3969f" class="outline-2"&gt;
+&lt;h2 id="orgcb3969f"&gt;the example&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgcb3969f"&gt;
 &lt;p&gt;
 I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -95,9 +95,9 @@ Here are our three plots:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgb41d757" class="outline-2"&gt;
-&lt;h2 id="orgb41d757"&gt;ggpy&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgb41d757"&gt;
+&lt;div id="outline-container-org90a4a31" class="outline-2"&gt;
+&lt;h2 id="org90a4a31"&gt;ggpy&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org90a4a31"&gt;
 &lt;p&gt;
 Porting &lt;code&gt;ggplot2&lt;/code&gt; to &lt;code&gt;python&lt;/code&gt; is an &lt;i&gt;amazing&lt;/i&gt; concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -205,9 +205,9 @@ Here's what we get!
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-orgbf2ea83" class="outline-2"&gt;
-&lt;h2 id="orgbf2ea83"&gt;matplotlib&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgbf2ea83"&gt;
+&lt;div id="outline-container-org4795ea3" class="outline-2"&gt;
+&lt;h2 id="org4795ea3"&gt;matplotlib&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org4795ea3"&gt;
 &lt;p&gt;
 From my reading, this looks like the loved and hated "bread and butter" of &lt;code&gt;python&lt;/code&gt;
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -282,9 +282,9 @@ command.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgfa33c18" class="outline-2"&gt;
-&lt;h2 id="orgfa33c18"&gt;seaborn&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgfa33c18"&gt;
+&lt;div id="outline-container-org82b0a8a" class="outline-2"&gt;
+&lt;h2 id="org82b0a8a"&gt;seaborn&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org82b0a8a"&gt;
 &lt;p&gt;
 Seaborn was pretty straightforward. Not much else to say!
 &lt;/p&gt;
@@ -328,9 +328,9 @@ Seaborn was pretty straightforward. Not much else to say!
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org14b56fa" class="outline-2"&gt;
-&lt;h2 id="org14b56fa"&gt;plotly&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org14b56fa"&gt;
+&lt;div id="outline-container-orgd0188a8" class="outline-2"&gt;
+&lt;h2 id="orgd0188a8"&gt;plotly&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgd0188a8"&gt;
 &lt;p&gt;
 For these plots, I left in the &lt;code&gt;jupyter lab&lt;/code&gt; commands for plotting. To save them out, I
 clicked the camera icon in the &lt;code&gt;plotly&lt;/code&gt; embedded plot. Surprisingly, you can &lt;a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28"&gt;find evidence&lt;/a&gt;
@@ -512,9 +512,9 @@ colors are hard to distinguish. The ability to put in &lt;code&gt;text=foo&lt;/c
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-orgc8d9c4a" class="outline-2"&gt;
-&lt;h2 id="orgc8d9c4a"&gt;cufflinks&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgc8d9c4a"&gt;
+&lt;div id="outline-container-orga8b7a1a" class="outline-2"&gt;
+&lt;h2 id="orga8b7a1a"&gt;cufflinks&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orga8b7a1a"&gt;
 &lt;p&gt;
 I don't have much to say here; it's supposed to be a way to sort of layer &lt;code&gt;plotly&lt;/code&gt; right
 onto &lt;code&gt;pd.DataFrame&lt;/code&gt; objects. That makes it really succinct, but I also find the
@@ -575,9 +575,9 @@ So, I'll pass since I did this with &lt;code&gt;plotly&lt;/code&gt; above alread
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-org479813f" class="outline-2"&gt;
-&lt;h2 id="org479813f"&gt;altair&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org479813f"&gt;
+&lt;div id="outline-container-orgf985369" class="outline-2"&gt;
+&lt;h2 id="orgf985369"&gt;altair&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgf985369"&gt;
 &lt;p&gt;
 I learned about &lt;code&gt;altair&lt;/code&gt; from one of the inspirations between this exercise, which was a
 &lt;a href="https://www.youtube.com/watch?v=FytuB8nFHPQ"&gt;talk from Jake VanderPlas&lt;/a&gt; on the &lt;code&gt;python&lt;/code&gt; visualization landscape. It was a great overview
@@ -629,9 +629,9 @@ looking at the syntax!
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgc964516" class="outline-2"&gt;
-&lt;h2 id="orgc964516"&gt;bokeh&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgc964516"&gt;
+&lt;div id="outline-container-org3f895d0" class="outline-2"&gt;
+&lt;h2 id="org3f895d0"&gt;bokeh&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org3f895d0"&gt;
 &lt;p&gt;
 The first two are fairly uninteresting. I was excited to see that they'd
 &lt;a href="https://github.com/bokeh/bokeh/issues/1645#issuecomment-75697289"&gt;put some nice thought&lt;/a&gt; into colors! Indeed, that ability to select a &lt;code&gt;colorBrewer&lt;/code&gt; palette
@@ -706,9 +706,9 @@ And the scatter plot attempt:
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-org04249f5" class="outline-2"&gt;
-&lt;h2 id="org04249f5"&gt;pygal&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org04249f5"&gt;
+&lt;div id="outline-container-org38a6734" class="outline-2"&gt;
+&lt;h2 id="org38a6734"&gt;pygal&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org38a6734"&gt;
 &lt;p&gt;
 &lt;code&gt;pygal&lt;/code&gt; was certainly interesting. It's a little different than the others, but was more
 or less straightforward. 
@@ -782,14 +782,23 @@ of points on the x-axis instead.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgb9e7e1d" class="outline-2"&gt;
-&lt;h2 id="orgb9e7e1d"&gt;closing&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgb9e7e1d"&gt;
+&lt;div id="outline-container-org84f0907" class="outline-2"&gt;
+&lt;h2 id="org84f0907"&gt;closing&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org84f0907"&gt;
 &lt;p&gt;
-Hopefully that was slightly helpful. I hope to continue on with this exercise with more
+Hopefully for other noobs like myself that was helpful. I hope to continue this exercise with more
 complicated examples. I still feel a bit spoiled with &lt;code&gt;ggplot2&lt;/code&gt;, but I have my fingers
 crossed that with practice some of the things that are now intuitive with &lt;code&gt;R&lt;/code&gt; become so
-with at least &lt;i&gt;one&lt;/i&gt; &lt;code&gt;python&lt;/code&gt; library that I'd stick with. I'm an impossible 
+with at least &lt;i&gt;one&lt;/i&gt; &lt;code&gt;python&lt;/code&gt; library. I'm an impossible internal-debater and decision-postponer. I
+really want to know I've landed with the &lt;i&gt;best&lt;/i&gt; possible thing, or at least on a decision
+I can rationally defend. 
+&lt;/p&gt;
+
+&lt;p&gt;
+I'd love to just stick wtih &lt;code&gt;ggpy&lt;/code&gt;, but the &lt;a href="https://github.com/yhat/ggpy"&gt;commits&lt;/a&gt; holding at ~1-2 years ago is not
+reassuring as well as &lt;a href="https://github.com/yhat/ggpy/issues/239"&gt;issues from 2014&lt;/a&gt; asking for features that &lt;code&gt;R&lt;/code&gt;'s &lt;code&gt;gglot2&lt;/code&gt; already has
+(and no response). The only thing I'm sure on is that &lt;code&gt;ggplot2&lt;/code&gt; is pretty awesome and I
+don't think &lt;code&gt;python&lt;/code&gt; is there yet.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</guid><pubDate>Sat, 23 Dec 2017 19:33:34 GMT</pubDate></item><item><title>Translating R to python</title><link>https://jwhendy.github.io/blog/translating-r-to-python/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org5c88a44" class="outline-2"&gt;

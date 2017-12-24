@@ -713,7 +713,16 @@ chart
 
 * closing
 
-Hopefully that was slightly helpful. I hope to continue on with this exercise with more
+Hopefully for other noobs like myself that was helpful. I hope to continue this exercise with more
 complicated examples. I still feel a bit spoiled with =ggplot2=, but I have my fingers
 crossed that with practice some of the things that are now intuitive with =R= become so
-with at least /one/ =python= library that I'd stick with. I'm an impossible 
+with at least /one/ =python= library. I'm an impossible internal-debater and decision-postponer. I
+really want to know I've landed with the /best/ possible thing, or at least on a decision
+I can rationally defend. 
+
+I'd love to just stick wtih =ggpy=, but the [[https://github.com/yhat/ggpy][commits]] holding at ~1-2 years ago is not
+reassuring as well as [[https://github.com/yhat/ggpy/issues/239][issues from 2014]] asking for features that =R='s =gglot2= already has
+(and no response). The only thing I'm sure on is that =ggplot2= is pretty awesome and I
+don't think =python= is there yet.
+
+
