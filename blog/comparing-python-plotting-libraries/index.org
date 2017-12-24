@@ -616,5 +616,97 @@ for i in range(len(df)):
 
 show(p)
 #+end_src
+
+#+begin_export html 
+<table>
+  <td>
+    <tr>
+      <a href="../../img/bok_mtcars_bar.png"><img src="../../img/cf_mtcars_bar.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/bok_mtcars_dot.png"><img src="../../img/cf_mtcars_dot.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/bok_mtcars_scatter_color.png"><img src="../../img/bok_mtcars_scatter_color.png" width="30%" /></a>
+    </tr>
+  </td>
+</table>
+#+end_export
+
+
 * pygal
 
+
+=pygal= was certainly interesting. It's a little different than the others, but was more
+or less straightforward. 
+
+I found I had to pass an empty argument for =y_labels_major= or I'd get these sort of
+[[https://github.com/Kozea/pygal/issues/416][heavy weighted grid lines]] which I didn't want. It also looks to suffer from needing the
+x-axis marks to be labeled. I wish it was just as easy as ~x=foo, y=bar~. Oh well.
+
+#+begin_src python
+import pygal
+
+chart = pygal.Bar(width=800, height=600,
+                  explicit_size=True, show_legend=False)
+chart.y_labels_major = ['']
+chart.x_labels = df['car']
+chart.add('', df['mpg'])
+
+chart
+#+end_src
+
+Same issue other libraries suffer from with respect to the limits as well. Without telling
+=pygal= to increase the range, the top tick mark was much lower than the highest
+dot. Since I wanted to expand to include ~y=0~ anyway, it wasn't a big deal. Just an
+observation of something I don't think should be necessary.
+
+#+begin_src python
+chart = pygal.XY(width=600, height=400,
+                 explicit_size=True, show_legend=False,
+                 stroke=False)#, range=(0, max(df['mpg'])*1.1))
+chart.y_labels_major = ['']
+chart.x_labels = df['car']
+chart.add('', [(i, df['mpg'].iloc[i]) for i in range(len(df))])
+chart
+#+end_src
+
+Colors came for free with grouping! I /did/ get hung up a bit on the fact that you
+apparently need the points to be =tuples= inside of a list. I didn't get that initially
+and found that =chart.add(name, [x, y])= was ignoreing the values for =y=. I'd get a bunch
+of points on the x-axis instead.
+
+#+begin_src python 
+
+chart = pygal.XY(width=800, height=600,
+                 explicit_size=True)
+chart.y_labels_major = ['']
+for i in range(len(df)):
+    chart.add(df['car'][i], [(df['wt'][i], df['mpg'][i])])
+chart   
+
+#+end_src
+
+#+begin_export html 
+<table>
+  <td>
+    <tr>
+      <a href="../../img/pygal_mtcars_bar.png"><img src="../../img/cf_mtcars_bar.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/pygal_mtcars_dot.png"><img src="../../img/cf_mtcars_dot.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/pygal_mtcars_scatter_color.png"><img src="../../img/pygal_mtcars_scatter_color.png" width="30%" /></a>
+    </tr>
+  </td>
+</table>
+#+end_export
