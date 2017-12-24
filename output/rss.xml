@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy</title><link>https://jwhendy.github.io/</link><description>Knowledge, sleep, food and coffee go in; this type of stuff comes out.</description><atom:link href="https://jwhendy.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 03:55:41 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orgd87ac2f" class="outline-2"&gt;
-&lt;h2 id="orgd87ac2f"&gt;Introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgd87ac2f"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy</title><link>https://jwhendy.github.io/</link><description>Knowledge, sleep, food and coffee go in; this type of stuff comes out.</description><atom:link href="https://jwhendy.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 04:26:08 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org101d8c9" class="outline-2"&gt;
+&lt;h2 id="org101d8c9"&gt;Introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org101d8c9"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up &lt;code&gt;python&lt;/code&gt;, coming from mostly
 using &lt;code&gt;R&lt;/code&gt; over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -31,9 +31,9 @@ libraries:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgb082af7" class="outline-2"&gt;
-&lt;h2 id="orgb082af7"&gt;The example&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgb082af7"&gt;
+&lt;div id="outline-container-orgd980359" class="outline-2"&gt;
+&lt;h2 id="orgd980359"&gt;The example&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgd980359"&gt;
 &lt;p&gt;
 I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -95,9 +95,9 @@ Here are our three plots:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org5e1e851" class="outline-2"&gt;
-&lt;h2 id="org5e1e851"&gt;ggpy&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org5e1e851"&gt;
+&lt;div id="outline-container-orge4257d7" class="outline-2"&gt;
+&lt;h2 id="orge4257d7"&gt;ggpy&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orge4257d7"&gt;
 &lt;p&gt;
 Porting &lt;code&gt;ggplot2&lt;/code&gt; to &lt;code&gt;python&lt;/code&gt; is an &lt;i&gt;amazing&lt;/i&gt; concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -205,9 +205,9 @@ Here's what we get!
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-orga5cb161" class="outline-2"&gt;
-&lt;h2 id="orga5cb161"&gt;matplotlib&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orga5cb161"&gt;
+&lt;div id="outline-container-orgb0aa0ac" class="outline-2"&gt;
+&lt;h2 id="orgb0aa0ac"&gt;matplotlib&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgb0aa0ac"&gt;
 &lt;p&gt;
 From my reading, this looks like the loved and hated "bread and butter" of &lt;code&gt;python&lt;/code&gt;
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -282,9 +282,9 @@ command.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org5a1868f" class="outline-2"&gt;
-&lt;h2 id="org5a1868f"&gt;seaborn&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org5a1868f"&gt;
+&lt;div id="outline-container-org3be6219" class="outline-2"&gt;
+&lt;h2 id="org3be6219"&gt;seaborn&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org3be6219"&gt;
 &lt;p&gt;
 Seaborn was pretty straightforward. Not much else to say!
 &lt;/p&gt;
@@ -328,9 +328,9 @@ Seaborn was pretty straightforward. Not much else to say!
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org703f7fc" class="outline-2"&gt;
-&lt;h2 id="org703f7fc"&gt;plotly&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org703f7fc"&gt;
+&lt;div id="outline-container-org12170c6" class="outline-2"&gt;
+&lt;h2 id="org12170c6"&gt;plotly&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org12170c6"&gt;
 &lt;p&gt;
 For these plots, I left in the &lt;code&gt;jupyter lab&lt;/code&gt; commands for plotting. To save them out, I
 clicked the camera icon in the &lt;code&gt;plotly&lt;/code&gt; embedded plot. Surprisingly, you can &lt;a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28"&gt;find evidence&lt;/a&gt;
@@ -415,15 +415,16 @@ Plotly's &lt;a href="https://plot.ly/python/line-and-scatter/#scatter-with-a-col
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;
-That's it. The key line in there is &lt;code&gt;color=foo&lt;/code&gt;, which only addresses a continuous color
-scale.
+That's it. The key line in there is &lt;code&gt;color=np.random()&lt;/code&gt;, which only addresses a continuous color
+scale. Thinking looking for &lt;a href="https://plot.ly/python/colorscales/"&gt;color scale&lt;/a&gt; information would be helpful also wasn't. It just
+shows a bunch of ways to put up continuous colors scales, not discrete for groups.
 &lt;/p&gt;
 
 &lt;p&gt;
 A little further up, we have this kludge:
 &lt;/p&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'hsl('&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;',50%'&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;',50%)'&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;360&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'hsl('&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;',50%'&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;',50%)'&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;360&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
 
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
     &lt;span class="o"&gt;...&lt;/span&gt;
@@ -507,6 +508,47 @@ colors are hard to distinguish. The ability to put in &lt;code&gt;text=foo&lt;/c
     &lt;/tr&gt;
   
 &lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div id="outline-container-org9d0f888" class="outline-2"&gt;
+&lt;h2 id="org9d0f888"&gt;cufflinks&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org9d0f888"&gt;
+&lt;p&gt;
+I don't have much to say here; it's supposed to be a way to sort of layer &lt;code&gt;plotly&lt;/code&gt; right
+onto &lt;code&gt;pd.DataFrame&lt;/code&gt; objects. That makes it really succinct, but I also find the
+documentation lacking.
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cufflinks&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;cf&lt;/span&gt;
+
+&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;kind&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+This &lt;i&gt;does&lt;/i&gt; show how nice the grammar of graphics is. Other than needing to specify that
+we want &lt;code&gt;markers&lt;/code&gt;, we're literally just changing the &lt;code&gt;kind&lt;/code&gt; of plot with the mappings
+staying the same. It's just a different way to draw the same thing.
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;kind&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'scatter'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'markers'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+The grouped colors fell apart a bit for me again, perhaps because at the end of the day
+&lt;code&gt;cufflinks&lt;/code&gt; is just &lt;code&gt;plotly&lt;/code&gt;. I found &lt;a href="https://github.com/santosjorge/cufflinks/blob/master/Cufflinks%20Tutorial%20-%20Colors.ipynb"&gt;this promising&lt;/a&gt; walkthrough, but one of the
+colorscale generation examples failed me. In the
+&lt;a href="https://plot.ly/ipython-notebooks/cufflinks/#scatter-plot"&gt;cufflinks docs&lt;/a&gt; themselves, they basically say this isn't possible and just fallback to
+&lt;code&gt;plotly&lt;/code&gt; syntax:
+&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;
+Plotting multiple column scatter plots isn't as easy with cufflinks. Here is an example
+with Plotly's native syntax
+&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</guid><pubDate>Sat, 23 Dec 2017 19:33:34 GMT</pubDate></item><item><title>The woes of repointing a stone foundation</title><link>https://jwhendy.github.io/blog/the-woes-of-repointing-a-stone-foundation/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org18af8e2" class="outline-2"&gt;
 &lt;h2 id="org18af8e2"&gt;background&lt;/h2&gt;
