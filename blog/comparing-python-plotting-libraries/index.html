@@ -86,9 +86,9 @@ python's">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-orgd630d49" class="outline-2">
-<h2 id="orgd630d49">Introduction</h2>
-<div class="outline-text-2" id="text-orgd630d49">
+    <div id="outline-container-orgd87ac2f" class="outline-2">
+<h2 id="orgd87ac2f">Introduction</h2>
+<div class="outline-text-2" id="text-orgd87ac2f">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up <code>python</code>, coming from mostly
 using <code>R</code> over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -118,9 +118,9 @@ libraries:
 </div>
 </div>
 
-<div id="outline-container-orgf78588f" class="outline-2">
-<h2 id="orgf78588f">The example</h2>
-<div class="outline-text-2" id="text-orgf78588f">
+<div id="outline-container-orgb082af7" class="outline-2">
+<h2 id="orgb082af7">The example</h2>
+<div class="outline-text-2" id="text-orgb082af7">
 <p>
 I started <i>really</i> simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -182,9 +182,9 @@ Here are our three plots:
 </div>
 </div>
 
-<div id="outline-container-orgd43dffb" class="outline-2">
-<h2 id="orgd43dffb">ggpy</h2>
-<div class="outline-text-2" id="text-orgd43dffb">
+<div id="outline-container-org5e1e851" class="outline-2">
+<h2 id="org5e1e851">ggpy</h2>
+<div class="outline-text-2" id="text-org5e1e851">
 <p>
 Porting <code>ggplot2</code> to <code>python</code> is an <i>amazing</i> concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -291,9 +291,9 @@ Here's what we get!
 </div>
 
 
-<div id="outline-container-org8a69f2b" class="outline-2">
-<h2 id="org8a69f2b">matplotlib</h2>
-<div class="outline-text-2" id="text-org8a69f2b">
+<div id="outline-container-orga5cb161" class="outline-2">
+<h2 id="orga5cb161">matplotlib</h2>
+<div class="outline-text-2" id="text-orga5cb161">
 <p>
 From my reading, this looks like the loved and hated "bread and butter" of <code>python</code>
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -368,9 +368,9 @@ command.
 </div>
 </div>
 
-<div id="outline-container-orgbb521cb" class="outline-2">
-<h2 id="orgbb521cb">Seaborn</h2>
-<div class="outline-text-2" id="text-orgbb521cb">
+<div id="outline-container-org5a1868f" class="outline-2">
+<h2 id="org5a1868f">seaborn</h2>
+<div class="outline-text-2" id="text-org5a1868f">
 <p>
 Seaborn was pretty straightforward. Not much else to say!
 </p>
@@ -414,9 +414,9 @@ Seaborn was pretty straightforward. Not much else to say!
 </div>
 </div>
 
-<div id="outline-container-org23faf34" class="outline-2">
-<h2 id="org23faf34">plotly</h2>
-<div class="outline-text-2" id="text-org23faf34">
+<div id="outline-container-org703f7fc" class="outline-2">
+<h2 id="org703f7fc">plotly</h2>
+<div class="outline-text-2" id="text-org703f7fc">
 <p>
 For these plots, I left in the <code>jupyter lab</code> commands for plotting. To save them out, I
 clicked the camera icon in the <code>plotly</code> embedded plot. Surprisingly, you can <a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28">find evidence</a>
@@ -564,10 +564,35 @@ objects would get me discrete colors for free. So I ended up with this:
 <div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'wt'</span><span class="p">][</span><span class="n">i</span><span class="p">]],</span>
 		   <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'mpg'</span><span class="p">][</span><span class="n">i</span><span class="p">]],</span>
 		   <span class="n">mode</span><span class="o">=</span><span class="s1">'markers'</span><span class="p">,</span>
-		   <span class="n">name</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">'car'</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+		   <span class="n">name</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">'car'</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+		   <span class="n">text</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">'car'</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
 
 <span class="n">plotly</span><span class="o">.</span><span class="n">offline</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
+
+<p>
+To be fair, I like plotly. I like the hover text, especially for larger datasets where
+colors actually aren't the best way to tell them apart. Even with these 10 cars, the
+colors are hard to distinguish. The ability to put in <code>text=foo</code> is super handy. Our finished result:
+</p>
+
+<table>
+<td>
+    </td>
+<tr>
+<a href="../../img/plotly_mtcars_bar.png"><img src="../../img/plotly_mtcars_bar.png" width="30%"></a>
+    </tr>
+<td>
+    </td>
+<tr>
+<a href="../../img/plotly_mtcars_dot.png"><img src="../../img/plotly_mtcars_dot.png" width="30%"></a>
+    </tr>
+<td>
+    </td>
+<tr>
+<a href="../../img/plotly_mtcars_scatter_color.png"><img src="../../img/plotly_mtcars_scatter_color.png" width="30%"></a>
+    </tr>
+</table>
 </div>
 </div>
     </div>
