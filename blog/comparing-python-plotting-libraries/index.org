@@ -551,17 +551,17 @@ alt.Chart(df).mark_point().encode(x='wt', y='mpg', color='car')
 <table>
   <td>
     <tr>
-      <a href="../../img/alt_mtcars_bar.png"><img src="../../img/alt_mtcars_bar.png" width="30%" /></a>
+      <a href="../../img/alt_mtcars_bar.png"><img src="../../img/alt_mtcars_bar.png" width="15%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/alt_mtcars_dot.png"><img src="../../img/alt_mtcars_dot.png" width="30%" /></a>
+      <a href="../../img/alt_mtcars_dot.png"><img src="../../img/alt_mtcars_dot.png" width="15%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/alt_mtcars_scatter_color.png"><img src="../../img/alt_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="../../img/alt_mtcars_scatter_color.png"><img src="../../img/alt_mtcars_scatter_color.png" width="40%" /></a>
     </tr>
   </td>
 </table>
@@ -713,4 +713,7 @@ chart
 
 * closing
 
-Hopefully that 
+Hopefully that was slightly helpful. I hope to continue on with this exercise with more
+complicated examples. I still feel a bit spoiled with =ggplot2=, but I have my fingers
+crossed that with practice some of the things that are now intuitive with =R= become so
+with at least /one/ =python= library that I'd stick with. I'm an impossible 
