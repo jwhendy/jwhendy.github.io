@@ -551,12 +551,12 @@ alt.Chart(df).mark_point().encode(x='wt', y='mpg', color='car')
 <table>
   <td>
     <tr>
-      <a href="../../img/cf_mtcars_bar.png"><img src="../../img/cf_mtcars_bar.png" width="30%" /></a>
+      <a href="../../img/alt_mtcars_bar.png"><img src="../../img/cf_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/cf_mtcars_dot.png"><img src="../../img/cf_mtcars_dot.png" width="30%" /></a>
+      <a href="../../img/alt_mtcars_dot.png"><img src="../../img/cf_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
