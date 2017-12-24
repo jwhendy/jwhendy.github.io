@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about r)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/r.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 04:36:14 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org8a06c93" class="outline-2"&gt;
-&lt;h2 id="org8a06c93"&gt;Introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org8a06c93"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about r)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/r.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 05:00:51 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orgfcaebdd" class="outline-2"&gt;
+&lt;h2 id="orgfcaebdd"&gt;Introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgfcaebdd"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up &lt;code&gt;python&lt;/code&gt;, coming from mostly
 using &lt;code&gt;R&lt;/code&gt; over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -31,9 +31,9 @@ libraries:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org69d7a4f" class="outline-2"&gt;
-&lt;h2 id="org69d7a4f"&gt;The example&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org69d7a4f"&gt;
+&lt;div id="outline-container-org5f07db5" class="outline-2"&gt;
+&lt;h2 id="org5f07db5"&gt;The example&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org5f07db5"&gt;
 &lt;p&gt;
 I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -95,9 +95,9 @@ Here are our three plots:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org46deb3b" class="outline-2"&gt;
-&lt;h2 id="org46deb3b"&gt;ggpy&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org46deb3b"&gt;
+&lt;div id="outline-container-org42b13f0" class="outline-2"&gt;
+&lt;h2 id="org42b13f0"&gt;ggpy&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org42b13f0"&gt;
 &lt;p&gt;
 Porting &lt;code&gt;ggplot2&lt;/code&gt; to &lt;code&gt;python&lt;/code&gt; is an &lt;i&gt;amazing&lt;/i&gt; concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -205,9 +205,9 @@ Here's what we get!
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-org2ad7f14" class="outline-2"&gt;
-&lt;h2 id="org2ad7f14"&gt;matplotlib&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org2ad7f14"&gt;
+&lt;div id="outline-container-org5b3d84d" class="outline-2"&gt;
+&lt;h2 id="org5b3d84d"&gt;matplotlib&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org5b3d84d"&gt;
 &lt;p&gt;
 From my reading, this looks like the loved and hated "bread and butter" of &lt;code&gt;python&lt;/code&gt;
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -282,9 +282,9 @@ command.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org64215d4" class="outline-2"&gt;
-&lt;h2 id="org64215d4"&gt;seaborn&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org64215d4"&gt;
+&lt;div id="outline-container-orgfb437c4" class="outline-2"&gt;
+&lt;h2 id="orgfb437c4"&gt;seaborn&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgfb437c4"&gt;
 &lt;p&gt;
 Seaborn was pretty straightforward. Not much else to say!
 &lt;/p&gt;
@@ -328,9 +328,9 @@ Seaborn was pretty straightforward. Not much else to say!
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org06ea787" class="outline-2"&gt;
-&lt;h2 id="org06ea787"&gt;plotly&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org06ea787"&gt;
+&lt;div id="outline-container-org8f55db4" class="outline-2"&gt;
+&lt;h2 id="org8f55db4"&gt;plotly&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org8f55db4"&gt;
 &lt;p&gt;
 For these plots, I left in the &lt;code&gt;jupyter lab&lt;/code&gt; commands for plotting. To save them out, I
 clicked the camera icon in the &lt;code&gt;plotly&lt;/code&gt; embedded plot. Surprisingly, you can &lt;a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28"&gt;find evidence&lt;/a&gt;
@@ -512,9 +512,9 @@ colors are hard to distinguish. The ability to put in &lt;code&gt;text=foo&lt;/c
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-org725accf" class="outline-2"&gt;
-&lt;h2 id="org725accf"&gt;cufflinks&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org725accf"&gt;
+&lt;div id="outline-container-orgf8a04da" class="outline-2"&gt;
+&lt;h2 id="orgf8a04da"&gt;cufflinks&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgf8a04da"&gt;
 &lt;p&gt;
 I don't have much to say here; it's supposed to be a way to sort of layer &lt;code&gt;plotly&lt;/code&gt; right
 onto &lt;code&gt;pd.DataFrame&lt;/code&gt; objects. That makes it really succinct, but I also find the
@@ -575,9 +575,9 @@ So, I'll pass since I did this with &lt;code&gt;plotly&lt;/code&gt; above alread
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-org7fde76e" class="outline-2"&gt;
-&lt;h2 id="org7fde76e"&gt;altair&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org7fde76e"&gt;
+&lt;div id="outline-container-org3149cd6" class="outline-2"&gt;
+&lt;h2 id="org3149cd6"&gt;altair&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org3149cd6"&gt;
 &lt;p&gt;
 I learned about &lt;code&gt;altair&lt;/code&gt; from one of the inspirations between this exercise, which was a
 &lt;a href="https://www.youtube.com/watch?v=FytuB8nFHPQ"&gt;talk from Jake VanderPlas&lt;/a&gt; on the &lt;code&gt;python&lt;/code&gt; visualization landscape. It was a great overview
@@ -627,6 +627,67 @@ looking at the syntax!
   
 &lt;/table&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="outline-container-org8c5e344" class="outline-2"&gt;
+&lt;h2 id="org8c5e344"&gt;bokeh&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org8c5e344"&gt;
+&lt;p&gt;
+The first two are fairly uninteresting. I was excited to see that they'd
+&lt;a href="https://github.com/bokeh/bokeh/issues/1645#issuecomment-75697289"&gt;put some nice thought&lt;/a&gt; into colors! Indeed, that ability to select a &lt;code&gt;colorBrewer&lt;/code&gt; palette
+was quite nice. Even better might be a simple &lt;code&gt;color=var&lt;/code&gt; argument to the call, with a
+global &lt;code&gt;palette=foo&lt;/code&gt;, but this isn't &lt;i&gt;that&lt;/i&gt; bad as-is.
+&lt;/p&gt;
+
+&lt;p&gt;
+Now, once the colors were all set… there was no legend! I looked into it, and in my skim
+of &lt;a href="https://bokeh.pydata.org/en/latest/docs/user_guide/styling.html#legends"&gt;how to futz with legends&lt;/a&gt;, I decided I didn't care enough to press on. I left it with the
+legend plastered over the data so you can examine the default.
+&lt;/p&gt;
+
+&lt;p&gt;
+For whatever reason, plotting discrete variables required me having to tell &lt;code&gt;bokeh&lt;/code&gt; what
+the &lt;code&gt;x_range&lt;/code&gt; should be for the figure. I think that's odd.
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bokeh.plotting&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;output_notebook&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;show&lt;/span&gt;
+
+&lt;span class="n"&gt;output_notebook&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_range&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt; &lt;span class="n"&gt;plot_width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;600&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;plot_height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vbar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+       &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bottom&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;
+Pretty similar for the dot plot:
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_range&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt; &lt;span class="n"&gt;y_range&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mf"&gt;1.1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;plot_width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;600&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;plot_height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+And the scatter plot attempt:
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bokeh.palettes&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;brewer&lt;/span&gt;
+&lt;span class="n"&gt;palette&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;brewer&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'Set3'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;plot_width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;600&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;plot_height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+    &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'wt'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+	      &lt;span class="n"&gt;legend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;palette&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-org07198a4" class="outline-2"&gt;
+&lt;h2 id="org07198a4"&gt;pygal&lt;/h2&gt;
 &lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</guid><pubDate>Sat, 23 Dec 2017 19:33:34 GMT</pubDate></item><item><title>Translating R to python</title><link>https://jwhendy.github.io/blog/translating-r-to-python/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org5c88a44" class="outline-2"&gt;
 &lt;h2 id="org5c88a44"&gt;Background&lt;/h2&gt;
 &lt;div class="outline-text-2" id="text-org5c88a44"&gt;

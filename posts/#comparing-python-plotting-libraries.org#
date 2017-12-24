@@ -616,5 +616,27 @@ for i in range(len(df)):
 
 show(p)
 #+end_src
+
+#+begin_export html 
+<table>
+  <td>
+    <tr>
+      <a href="../../img/bok_mtcars_bar.png"><img src="../../img/cf_mtcars_bar.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/bok_mtcars_dot.png"><img src="../../img/cf_mtcars_dot.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/bok_mtcars_scatter_color.png"><img src="../../img/bok_mtcars_scatter_color.png" width="30%" /></a>
+    </tr>
+  </td>
+</table>
+#+end_export
+
+
 * pygal
 

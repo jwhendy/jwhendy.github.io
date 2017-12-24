@@ -566,3 +566,55 @@ alt.Chart(df).mark_point().encode(x='wt', y='mpg', color='car')
   </td>
 </table>
 #+end_export
+
+* bokeh
+
+The first two are fairly uninteresting. I was excited to see that they'd
+[[https://github.com/bokeh/bokeh/issues/1645#issuecomment-75697289][put some nice thought]] into colors! Indeed, that ability to select a =colorBrewer= palette
+was quite nice. Even better might be a simple ~color=var~ argument to the call, with a
+global ~palette=foo~, but this isn't /that/ bad as-is.
+
+Now, once the colors were all set... there was no legend! I looked into it, and in my skim
+of [[https://bokeh.pydata.org/en/latest/docs/user_guide/styling.html#legends][how to futz with legends]], I decided I didn't care enough to press on. I left it with the
+legend plastered over the data so you can examine the default.
+
+For whatever reason, plotting discrete variables required me having to tell =bokeh= what
+the =x_range= should be for the figure. I think that's odd.
+
+#+begin_src python 
+
+from bokeh.plotting import figure, output_notebook, show
+
+output_notebook()
+
+p = figure(x_range=list(df['car']), plot_width=600, plot_height=400)
+p.vbar(x=df['car'], top=df['mpg'],
+       width=0.9, bottom=0)
+show(p)
+
+#+end_src
+
+
+Pretty similar for the dot plot:
+
+#+begin_src python  
+p = figure(x_range=list(df['car']), y_range=[0, max(df['mpg'])*1.1], plot_width=600, plot_height=400)
+p.scatter(x=df['car'], y=df['mpg'])
+show(p)
+#+end_src
+
+And the scatter plot attempt:
+
+#+begin_src python 
+from bokeh.palettes import brewer
+palette = brewer['Set3'][len(df)]
+
+p = figure(plot_width=600, plot_height=400)
+for i in range(len(df)):
+    p.scatter(x=df['wt'][i], y=df['mpg'][i],
+              legend=df['car'][i], color=palette[i])
+
+show(p)
+#+end_src
+* pygal
+
