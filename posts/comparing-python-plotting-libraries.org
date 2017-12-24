@@ -515,3 +515,54 @@ So, I'll pass since I did this with =plotly= above already...
   </td>
 </table>
 #+end_export
+
+
+* altair
+
+I learned about =altair= from one of the inspirations between this exercise, which was a
+[[https://www.youtube.com/watch?v=FytuB8nFHPQ][talk from Jake VanderPlas]] on the =python= visualization landscape. It was a great overview
+of a bunch of what's out there, and it's even more impressive that he traced their sort of
+"lineage" and how they relate to one another.
+
+I quite enjoy =altair=; I feel like it does the grammar of graphics nicely, and it's not
+too cumbersome. One downside is that I couldn't get the chart size to play along, but it
+apparently works for other types, maybe just [[https://github.com/altair-viz/altair/issues/173#issuecomment-353702876][not bars]]?
+
+#+begin_src python 
+import altair as alt
+alt.enable_mime_rendering()
+
+alt.Chart(df).mark_bar().encode(x='car', y='mpg')
+#+end_src
+
+
+#+begin_src python 
+alt.Chart(df).mark_point().encode(x='car', y='mpg')
+#+end_src
+
+Awesomely, the mapping was perfectly beautiful for adding color and I guessed, not even
+looking at the syntax!
+
+#+begin_src python 
+alt.Chart(df).mark_point().encode(x='wt', y='mpg', color='car')
+#+end_src
+
+#+begin_export html 
+<table>
+  <td>
+    <tr>
+      <a href="../../img/cf_mtcars_bar.png"><img src="../../img/cf_mtcars_bar.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/cf_mtcars_dot.png"><img src="../../img/cf_mtcars_dot.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/alt_mtcars_scatter_color.png"><img src="../../img/alt_mtcars_scatter_color.png" width="30%" /></a>
+    </tr>
+  </td>
+</table>
+#+end_export

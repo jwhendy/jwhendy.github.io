@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 04:27:40 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orgab5deda" class="outline-2"&gt;
-&lt;h2 id="orgab5deda"&gt;Introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgab5deda"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 04:34:43 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org63a2666" class="outline-2"&gt;
+&lt;h2 id="org63a2666"&gt;Introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org63a2666"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up &lt;code&gt;python&lt;/code&gt;, coming from mostly
 using &lt;code&gt;R&lt;/code&gt; over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -31,9 +31,9 @@ libraries:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org49a628e" class="outline-2"&gt;
-&lt;h2 id="org49a628e"&gt;The example&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org49a628e"&gt;
+&lt;div id="outline-container-orgca48093" class="outline-2"&gt;
+&lt;h2 id="orgca48093"&gt;The example&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgca48093"&gt;
 &lt;p&gt;
 I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -95,9 +95,9 @@ Here are our three plots:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org39cf77b" class="outline-2"&gt;
-&lt;h2 id="org39cf77b"&gt;ggpy&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org39cf77b"&gt;
+&lt;div id="outline-container-org98ab940" class="outline-2"&gt;
+&lt;h2 id="org98ab940"&gt;ggpy&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org98ab940"&gt;
 &lt;p&gt;
 Porting &lt;code&gt;ggplot2&lt;/code&gt; to &lt;code&gt;python&lt;/code&gt; is an &lt;i&gt;amazing&lt;/i&gt; concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -205,9 +205,9 @@ Here's what we get!
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-org58f4d7b" class="outline-2"&gt;
-&lt;h2 id="org58f4d7b"&gt;matplotlib&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org58f4d7b"&gt;
+&lt;div id="outline-container-orgc1fbfbf" class="outline-2"&gt;
+&lt;h2 id="orgc1fbfbf"&gt;matplotlib&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgc1fbfbf"&gt;
 &lt;p&gt;
 From my reading, this looks like the loved and hated "bread and butter" of &lt;code&gt;python&lt;/code&gt;
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -282,9 +282,9 @@ command.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orge0bd0d9" class="outline-2"&gt;
-&lt;h2 id="orge0bd0d9"&gt;seaborn&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orge0bd0d9"&gt;
+&lt;div id="outline-container-org53ab9f6" class="outline-2"&gt;
+&lt;h2 id="org53ab9f6"&gt;seaborn&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org53ab9f6"&gt;
 &lt;p&gt;
 Seaborn was pretty straightforward. Not much else to say!
 &lt;/p&gt;
@@ -328,9 +328,9 @@ Seaborn was pretty straightforward. Not much else to say!
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgcc6f3b0" class="outline-2"&gt;
-&lt;h2 id="orgcc6f3b0"&gt;plotly&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgcc6f3b0"&gt;
+&lt;div id="outline-container-org7e64c16" class="outline-2"&gt;
+&lt;h2 id="org7e64c16"&gt;plotly&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org7e64c16"&gt;
 &lt;p&gt;
 For these plots, I left in the &lt;code&gt;jupyter lab&lt;/code&gt; commands for plotting. To save them out, I
 clicked the camera icon in the &lt;code&gt;plotly&lt;/code&gt; embedded plot. Surprisingly, you can &lt;a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28"&gt;find evidence&lt;/a&gt;
@@ -512,9 +512,9 @@ colors are hard to distinguish. The ability to put in &lt;code&gt;text=foo&lt;/c
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-org1861c78" class="outline-2"&gt;
-&lt;h2 id="org1861c78"&gt;cufflinks&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org1861c78"&gt;
+&lt;div id="outline-container-orgb93e9ad" class="outline-2"&gt;
+&lt;h2 id="orgb93e9ad"&gt;cufflinks&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgb93e9ad"&gt;
 &lt;p&gt;
 I don't have much to say here; it's supposed to be a way to sort of layer &lt;code&gt;plotly&lt;/code&gt; right
 onto &lt;code&gt;pd.DataFrame&lt;/code&gt; objects. That makes it really succinct, but I also find the
@@ -568,6 +568,61 @@ So, I'll pass since I did this with &lt;code&gt;plotly&lt;/code&gt; above alread
   &lt;td&gt;
     &lt;/td&gt;&lt;tr&gt;
       &lt;a href="https://jwhendy.github.io/img/plotly_mtcars_scatter_color.png"&gt;&lt;img src="https://jwhendy.github.io/img/plotly_mtcars_scatter_color.png" width="30%"&gt;&lt;/a&gt;
+    &lt;/tr&gt;
+  
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div id="outline-container-org4c50cf9" class="outline-2"&gt;
+&lt;h2 id="org4c50cf9"&gt;altair&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org4c50cf9"&gt;
+&lt;p&gt;
+I learned about &lt;code&gt;altair&lt;/code&gt; from one of the inspirations between this exercise, which was a
+&lt;a href="https://www.youtube.com/watch?v=FytuB8nFHPQ"&gt;talk from Jake VanderPlas&lt;/a&gt; on the &lt;code&gt;python&lt;/code&gt; visualization landscape. It was a great overview
+of a bunch of what's out there, and it's even more impressive that he traced their sort of
+"lineage" and how they relate to one another.
+&lt;/p&gt;
+
+&lt;p&gt;
+I quite enjoy &lt;code&gt;altair&lt;/code&gt;; I feel like it does the grammar of graphics nicely, and it's not
+too cumbersome. One downside is that I couldn't get the chart size to play along, but it
+apparently works for other types, maybe just &lt;a href="https://github.com/altair-viz/altair/issues/173#issuecomment-353702876"&gt;not bars&lt;/a&gt;?
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;altair&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;alt&lt;/span&gt;
+&lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enable_mime_rendering&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Chart&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mark_bar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Chart&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mark_point&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+Awesomely, the mapping was perfectly beautiful for adding color and I guessed, not even
+looking at the syntax!
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Chart&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mark_point&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'wt'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;td&gt;
+    &lt;/td&gt;&lt;tr&gt;
+      &lt;a href="https://jwhendy.github.io/img/cf_mtcars_bar.png"&gt;&lt;img src="https://jwhendy.github.io/img/cf_mtcars_bar.png" width="30%"&gt;&lt;/a&gt;
+    &lt;/tr&gt;
+  
+  &lt;td&gt;
+    &lt;/td&gt;&lt;tr&gt;
+      &lt;a href="https://jwhendy.github.io/img/cf_mtcars_dot.png"&gt;&lt;img src="https://jwhendy.github.io/img/cf_mtcars_dot.png" width="30%"&gt;&lt;/a&gt;
+    &lt;/tr&gt;
+  
+  &lt;td&gt;
+    &lt;/td&gt;&lt;tr&gt;
+      &lt;a href="https://jwhendy.github.io/img/alt_mtcars_scatter_color.png"&gt;&lt;img src="https://jwhendy.github.io/img/alt_mtcars_scatter_color.png" width="30%"&gt;&lt;/a&gt;
     &lt;/tr&gt;
   
 &lt;/table&gt;
