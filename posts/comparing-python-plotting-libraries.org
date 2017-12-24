@@ -12,16 +12,16 @@
 
 * Introduction
 
-As mentioned in a [[https://jwhendy.github.io/blog/translating-r-to-python/][previous post]], I've been trying to pick up `python`, coming from mostly
-using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
-`python`'s plotting landscape quite a bit more confusing than I expected, with tons of
-options compared to the typical reigning `R` champions: `base`, [[http://lattice.r-forge.r-project.org/][=lattice=]], and [[http://ggplot2.org/][=ggplot2=]]. 
+As mentioned in a [[https://jwhendy.github.io/blog/translating-r-to-python/][previous post]], I've been trying to pick up =python=, coming from mostly
+using =R= over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
+=python='s plotting landscape quite a bit more confusing than I expected, with tons of
+options compared to the typical reigning =R= champions: =base=, [[http://lattice.r-forge.r-project.org/][=lattice=]], and [[http://ggplot2.org/][=ggplot2=]]. 
 
 Granted, there are a ton of other R contenders as well, such as [[https://plot.ly/r/][=plotly=]] and [[https://ramnathv.github.io/rCharts/][=rCharts=]],
-but the three above are the most common. I stick almost exclusively to `ggplot2`, and
+but the three above are the most common. I stick almost exclusively to =ggplot2=, and
 rarely find something I can't do (granted, this is typical science-y stuff, not
 infographics or really complicated stuff). To educate myself, I went through and plotted a
-pretty standard dataset in various ways to see how one would do it in a bunch of `python`
+pretty standard dataset in various ways to see how one would do it in a bunch of =python=
 libraries:
 
 - [[http://ggplot.yhathq.com/][=ggpy=]]
@@ -98,14 +98,14 @@ Here are our three plots:
 
 * ggpy
 
-Porting `ggplot2` to `python` is an /amazing/ concept. The whole idea behind the grammar
+Porting =ggplot2= to =python= is an /amazing/ concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
 only changing some mappings (some aspect of the data leads to some aesthetic) and the
 geometry being used.
 
 The above is /almost/ identical using the port for the bar chart. I dislike that the
 aesthetic keyword is =weight= and not simply =y=. This [[https://github.com/yhat/ggpy/issues/373][surprised someone else]], too. It
-also causes there to be no `y-axis` label by default; I had to manually add it in.
+also causes there to be no y-axis label by default; I had to manually add it in.
 
 I also don't love how =ggpy= handles limits. Note the dot plot from =ggplot2= and the
 nice little padding above the highest dot. In =ggpy=, this didn't seem to work well out of
@@ -161,8 +161,7 @@ ggplot(df, aes(x='wt', y='mpg', color='car')) + geom_point()
 
 Here's what we get!
 
-#+begin_export html 
-
+#+begin_export html
 <table>
   <td>
     <tr>
@@ -180,13 +179,12 @@ Here's what we get!
     </tr>
   </td>
 </table>
-
 #+end_export
 
 
 * matplotlib
 
-From my reading, this looks like the loved and hated "bread and butter" of `python`
+From my reading, this looks like the loved and hated "bread and butter" of =python=
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
 much of this, likely due to how simple these examples are.
 
@@ -218,11 +216,13 @@ plt.show()
 #+end_src
 
 For the colored scatter plot, which I had a [[https://stackoverflow.com/questions/47956746/saving-matplotlib-subplot-axes-as-png-file][helluva time]] getting to save as a file. I
-ended up having to just screenshot the plot from =jupyter lab=.
+originally had to just screenshot the plot from =jupyter lab=, but ended up getting the
+answer, which was that my =plt.figure()= (now commented) goofs with the =plt.subplots()=
+command.
 
 #+begin_src python 
 fig, ax = plt.subplots()
-plt.figure(figsize=(12, 9))
+# plt.figure(figsize=(12, 9))
 for ind in df.index:
     ax.scatter(df.loc[ind, 'wt'], df.loc[ind, 'mpg'], label=ind)
 ax.legend(bbox_to_anchor=(1.05, 1), loc=2)
@@ -230,7 +230,6 @@ plt.show()
 #+end_src
 
 #+begin_export html 
-
 <table>
   <td>
     <tr>
@@ -245,6 +244,53 @@ plt.show()
   <td>
     <tr>
       <a href="../../img/mat_mtcars_scatter_color.png"><img src="../../img/mat_mtcars_scatter_color.png" width="30%" /></a>
+    </tr>
+  </td>
+</table>
+
+#+end_export
+
+* Seaborn
+
+Seaborn was pretty straightforward. Not much else to say!
+
+
+#+begin_src python :eval no 
+import seaborn as sns
+
+plt.figure(figsize=(9, 6))
+sns.barplot(x='car', y='mpg', data=df)
+plt.show()
+#+end_src
+
+#+begin_src python :eval no
+plt.figure(figsize=(9, 6))
+sns.stripplot(x='car', y='mpg', data=df)
+plt.ylim(0)
+plt.show()
+#+end_src
+
+#+begin_src python :eval no 
+sns.lmplot(x='wt', y='mpg', hue='car',
+           data=df, fit_reg=False)
+plt.show()
+#+end_src
+
+#+begin_export html 
+<table>
+  <td>
+    <tr>
+      <a href="../../img/sea_mtcars_bar.png"><img src="../../img/sea_mtcars_bar.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/sea_mtcars_dot.png"><img src="../../img/sea_mtcars_dot.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/sea_mtcars_scatter_color.png"><img src="../../img/sea_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>

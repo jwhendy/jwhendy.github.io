@@ -72,22 +72,22 @@
             <p class="dateline"><a href="comparing-python-plotting-libraries/" rel="bookmark"><time class="published dt-published" datetime="2017-12-23T13:33:34-06:00" title="2017-12-23 13:33">2017-12-23 13:33</time></a></p>
         </div>
     </header><div class="p-summary entry-summary">
-    <div id="outline-container-org9a2b9da" class="outline-2">
-<h2 id="org9a2b9da">Introduction</h2>
-<div class="outline-text-2" id="text-org9a2b9da">
+    <div id="outline-container-orgdeff1c1" class="outline-2">
+<h2 id="orgdeff1c1">Introduction</h2>
+<div class="outline-text-2" id="text-orgdeff1c1">
 <p>
-As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up `python`, coming from mostly
-using `R` over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
-`python`'s plotting landscape quite a bit more confusing than I expected, with tons of
-options compared to the typical reigning `R` champions: `base`, <a href="http://lattice.r-forge.r-project.org/"><code>lattice</code></a>, and <a href="http://ggplot2.org/"><code>ggplot2</code></a>. 
+As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up <code>python</code>, coming from mostly
+using <code>R</code> over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
+<code>python</code>'s plotting landscape quite a bit more confusing than I expected, with tons of
+options compared to the typical reigning <code>R</code> champions: <code>base</code>, <a href="http://lattice.r-forge.r-project.org/"><code>lattice</code></a>, and <a href="http://ggplot2.org/"><code>ggplot2</code></a>. 
 </p>
 
 <p>
 Granted, there are a ton of other R contenders as well, such as <a href="https://plot.ly/r/"><code>plotly</code></a> and <a href="https://ramnathv.github.io/rCharts/"><code>rCharts</code></a>,
-but the three above are the most common. I stick almost exclusively to `ggplot2`, and
+but the three above are the most common. I stick almost exclusively to <code>ggplot2</code>, and
 rarely find something I can't do (granted, this is typical science-y stuff, not
 infographics or really complicated stuff). To educate myself, I went through and plotted a
-pretty standard dataset in various ways to see how one would do it in a bunch of `python`
+pretty standard dataset in various ways to see how one would do it in a bunch of <code>python</code>
 libraries:
 </p>
 
@@ -104,9 +104,9 @@ libraries:
 </div>
 </div>
 
-<div id="outline-container-org126139e" class="outline-2">
-<h2 id="org126139e">The example</h2>
-<div class="outline-text-2" id="text-org126139e">
+<div id="outline-container-org4f41e97" class="outline-2">
+<h2 id="org4f41e97">The example</h2>
+<div class="outline-text-2" id="text-org4f41e97">
 <p>
 I started <i>really</i> simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -168,11 +168,11 @@ Here are our three plots:
 </div>
 </div>
 
-<div id="outline-container-org15512fc" class="outline-2">
-<h2 id="org15512fc">ggpy</h2>
-<div class="outline-text-2" id="text-org15512fc">
+<div id="outline-container-orgccd97a0" class="outline-2">
+<h2 id="orgccd97a0">ggpy</h2>
+<div class="outline-text-2" id="text-orgccd97a0">
 <p>
-Porting `ggplot2` to `python` is an <i>amazing</i> concept. The whole idea behind the grammar
+Porting <code>ggplot2</code> to <code>python</code> is an <i>amazing</i> concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
 only changing some mappings (some aspect of the data leads to some aesthetic) and the
 geometry being used.
@@ -181,7 +181,7 @@ geometry being used.
 <p>
 The above is <i>almost</i> identical using the port for the bar chart. I dislike that the
 aesthetic keyword is <code>weight</code> and not simply <code>y</code>. This <a href="https://github.com/yhat/ggpy/issues/373">surprised someone else</a>, too. It
-also causes there to be no `y-axis` label by default; I had to manually add it in.
+also causes there to be no y-axis label by default; I had to manually add it in.
 </p>
 
 <p>
@@ -256,7 +256,6 @@ ggplot(df, aes(x='wt', y='mpg', color='car')) + geom_point()
 Here's what we get!
 </p>
 
-
 <table>
 <td>
     </td>
@@ -278,11 +277,11 @@ Here's what we get!
 </div>
 
 
-<div id="outline-container-org33a71d2" class="outline-2">
-<h2 id="org33a71d2">matplotlib</h2>
-<div class="outline-text-2" id="text-org33a71d2">
+<div id="outline-container-org7c837de" class="outline-2">
+<h2 id="org7c837de">matplotlib</h2>
+<div class="outline-text-2" id="text-org7c837de">
 <p>
-From my reading, this looks like the loved and hated "bread and butter" of `python`
+From my reading, this looks like the loved and hated "bread and butter" of <code>python</code>
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
 much of this, likely due to how simple these examples are.
 </p>
@@ -303,10 +302,10 @@ adding a layer of dots for each group. That also required some fiddling with the
 The bar plot:
 </p>
 
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="n">import</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="k">as</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="n">plt</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'car'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'car'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">'mpg'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -315,24 +314,25 @@ Dot plot:
 </p>
 
 <div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'car'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="nb">max</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">])</span><span class="o">*</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'car'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">'mpg'</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'mpg'</span><span class="p">])</span><span class="o">*</span><span class="mf">1.1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
 <p>
 For the colored scatter plot, which I had a <a href="https://stackoverflow.com/questions/47956746/saving-matplotlib-subplot-axes-as-png-file">helluva time</a> getting to save as a file. I
-ended up having to just screenshot the plot from <code>jupyter lab</code>.
+originally had to just screenshot the plot from <code>jupyter lab</code>, but ended up getting the
+answer, which was that my <code>plt.figure()</code> (now commented) goofs with the <code>plt.subplots()</code>
+command.
 </p>
 
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold; font-style: italic;"</span><span class="o">&gt;</span><span class="n">fig</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold; font-style: italic;"</span><span class="o">&gt;</span><span class="n">ax</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="k">for</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="n">ind</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-weight: bold;"</span><span class="o">&gt;</span><span class="ow">in</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'wt'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-style: italic;"</span><span class="o">&gt;</span><span class="s1">'mpg'</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="c1"># plt.figure(figsize=(12, 9))</span>
+<span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">'wt'</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">'mpg'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
-
 
 <table>
 <td>
@@ -349,6 +349,52 @@ ended up having to just screenshot the plot from <code>jupyter lab</code>.
     </td>
 <tr>
 <a href="../img/mat_mtcars_scatter_color.png"><img src="../img/mat_mtcars_scatter_color.png" width="30%"></a>
+    </tr>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgd0c0a87" class="outline-2">
+<h2 id="orgd0c0a87">Seaborn</h2>
+<div class="outline-text-2" id="text-orgd0c0a87">
+<p>
+Seaborn was pretty straightforward. Not much else to say!
+</p>
+
+
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'car'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'mpg'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'car'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'mpg'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'wt'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'mpg'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">'car'</span><span class="p">,</span>
+	   <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">fit_reg</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+<table>
+<td>
+    </td>
+<tr>
+<a href="../img/sea_mtcars_bar.png"><img src="../img/sea_mtcars_bar.png" width="30%"></a>
+    </tr>
+<td>
+    </td>
+<tr>
+<a href="../img/sea_mtcars_dot.png"><img src="../img/sea_mtcars_dot.png" width="30%"></a>
+    </tr>
+<td>
+    </td>
+<tr>
+<a href="../img/sea_mtcars_scatter_color.png"><img src="../img/sea_mtcars_scatter_color.png" width="30%"></a>
     </tr>
 </table>
 </div>
