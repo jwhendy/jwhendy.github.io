@@ -1,6 +1,6 @@
-<div id="outline-container-org8a06c93" class="outline-2">
-<h2 id="org8a06c93">Introduction</h2>
-<div class="outline-text-2" id="text-org8a06c93">
+<div id="outline-container-orgfcaebdd" class="outline-2">
+<h2 id="orgfcaebdd">Introduction</h2>
+<div class="outline-text-2" id="text-orgfcaebdd">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up <code>python</code>, coming from mostly
 using <code>R</code> over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -30,9 +30,9 @@ libraries:
 </div>
 </div>
 
-<div id="outline-container-org69d7a4f" class="outline-2">
-<h2 id="org69d7a4f">The example</h2>
-<div class="outline-text-2" id="text-org69d7a4f">
+<div id="outline-container-org5f07db5" class="outline-2">
+<h2 id="org5f07db5">The example</h2>
+<div class="outline-text-2" id="text-org5f07db5">
 <p>
 I started <i>really</i> simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -94,9 +94,9 @@ Here are our three plots:
 </div>
 </div>
 
-<div id="outline-container-org46deb3b" class="outline-2">
-<h2 id="org46deb3b">ggpy</h2>
-<div class="outline-text-2" id="text-org46deb3b">
+<div id="outline-container-org42b13f0" class="outline-2">
+<h2 id="org42b13f0">ggpy</h2>
+<div class="outline-text-2" id="text-org42b13f0">
 <p>
 Porting <code>ggplot2</code> to <code>python</code> is an <i>amazing</i> concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -204,9 +204,9 @@ Here's what we get!
 </div>
 
 
-<div id="outline-container-org2ad7f14" class="outline-2">
-<h2 id="org2ad7f14">matplotlib</h2>
-<div class="outline-text-2" id="text-org2ad7f14">
+<div id="outline-container-org5b3d84d" class="outline-2">
+<h2 id="org5b3d84d">matplotlib</h2>
+<div class="outline-text-2" id="text-org5b3d84d">
 <p>
 From my reading, this looks like the loved and hated "bread and butter" of <code>python</code>
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -281,9 +281,9 @@ command.
 </div>
 </div>
 
-<div id="outline-container-org64215d4" class="outline-2">
-<h2 id="org64215d4">seaborn</h2>
-<div class="outline-text-2" id="text-org64215d4">
+<div id="outline-container-orgfb437c4" class="outline-2">
+<h2 id="orgfb437c4">seaborn</h2>
+<div class="outline-text-2" id="text-orgfb437c4">
 <p>
 Seaborn was pretty straightforward. Not much else to say!
 </p>
@@ -327,9 +327,9 @@ Seaborn was pretty straightforward. Not much else to say!
 </div>
 </div>
 
-<div id="outline-container-org06ea787" class="outline-2">
-<h2 id="org06ea787">plotly</h2>
-<div class="outline-text-2" id="text-org06ea787">
+<div id="outline-container-org8f55db4" class="outline-2">
+<h2 id="org8f55db4">plotly</h2>
+<div class="outline-text-2" id="text-org8f55db4">
 <p>
 For these plots, I left in the <code>jupyter lab</code> commands for plotting. To save them out, I
 clicked the camera icon in the <code>plotly</code> embedded plot. Surprisingly, you can <a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28">find evidence</a>
@@ -511,9 +511,9 @@ colors are hard to distinguish. The ability to put in <code>text=foo</code> is s
 </div>
 
 
-<div id="outline-container-org725accf" class="outline-2">
-<h2 id="org725accf">cufflinks</h2>
-<div class="outline-text-2" id="text-org725accf">
+<div id="outline-container-orgf8a04da" class="outline-2">
+<h2 id="orgf8a04da">cufflinks</h2>
+<div class="outline-text-2" id="text-orgf8a04da">
 <p>
 I don't have much to say here; it's supposed to be a way to sort of layer <code>plotly</code> right
 onto <code>pd.DataFrame</code> objects. That makes it really succinct, but I also find the
@@ -574,9 +574,9 @@ So, I'll pass since I did this with <code>plotly</code> above already&#x2026;
 </div>
 
 
-<div id="outline-container-org7fde76e" class="outline-2">
-<h2 id="org7fde76e">altair</h2>
-<div class="outline-text-2" id="text-org7fde76e">
+<div id="outline-container-org3149cd6" class="outline-2">
+<h2 id="org3149cd6">altair</h2>
+<div class="outline-text-2" id="text-org3149cd6">
 <p>
 I learned about <code>altair</code> from one of the inspirations between this exercise, which was a
 <a href="https://www.youtube.com/watch?v=FytuB8nFHPQ">talk from Jake VanderPlas</a> on the <code>python</code> visualization landscape. It was a great overview
@@ -626,4 +626,65 @@ looking at the syntax!
   </td>
 </table>
 </div>
+</div>
+
+<div id="outline-container-org8c5e344" class="outline-2">
+<h2 id="org8c5e344">bokeh</h2>
+<div class="outline-text-2" id="text-org8c5e344">
+<p>
+The first two are fairly uninteresting. I was excited to see that they'd
+<a href="https://github.com/bokeh/bokeh/issues/1645#issuecomment-75697289">put some nice thought</a> into colors! Indeed, that ability to select a <code>colorBrewer</code> palette
+was quite nice. Even better might be a simple <code>color=var</code> argument to the call, with a
+global <code>palette=foo</code>, but this isn't <i>that</i> bad as-is.
+</p>
+
+<p>
+Now, once the colors were all set&#x2026; there was no legend! I looked into it, and in my skim
+of <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/styling.html#legends">how to futz with legends</a>, I decided I didn't care enough to press on. I left it with the
+legend plastered over the data so you can examine the default.
+</p>
+
+<p>
+For whatever reason, plotting discrete variables required me having to tell <code>bokeh</code> what
+the <code>x_range</code> should be for the figure. I think that's odd.
+</p>
+
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">output_notebook</span><span class="p">,</span> <span class="n">show</span>
+
+<span class="n">output_notebook</span><span class="p">()</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">]),</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">],</span> <span class="n">top</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">],</span>
+       <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+
+<p>
+Pretty similar for the dot plot:
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">]),</span> <span class="n">y_range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span><span class="o">*</span><span class="mf">1.1</span><span class="p">],</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+<p>
+And the scatter plot attempt:
+</p>
+
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">brewer</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="n">brewer</span><span class="p">[</span><span class="s1">&#39;Set3&#39;</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;wt&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+	      <span class="n">legend</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div id="outline-container-org07198a4" class="outline-2">
+<h2 id="org07198a4">pygal</h2>
 </div>
