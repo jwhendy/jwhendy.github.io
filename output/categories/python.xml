@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 00:03:38 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orgdeff1c1" class="outline-2"&gt;
-&lt;h2 id="orgdeff1c1"&gt;Introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgdeff1c1"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 03:51:55 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orgd630d49" class="outline-2"&gt;
+&lt;h2 id="orgd630d49"&gt;Introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgd630d49"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up &lt;code&gt;python&lt;/code&gt;, coming from mostly
 using &lt;code&gt;R&lt;/code&gt; over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -31,9 +31,9 @@ libraries:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org4f41e97" class="outline-2"&gt;
-&lt;h2 id="org4f41e97"&gt;The example&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org4f41e97"&gt;
+&lt;div id="outline-container-orgf78588f" class="outline-2"&gt;
+&lt;h2 id="orgf78588f"&gt;The example&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgf78588f"&gt;
 &lt;p&gt;
 I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -95,9 +95,9 @@ Here are our three plots:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgccd97a0" class="outline-2"&gt;
-&lt;h2 id="orgccd97a0"&gt;ggpy&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgccd97a0"&gt;
+&lt;div id="outline-container-orgd43dffb" class="outline-2"&gt;
+&lt;h2 id="orgd43dffb"&gt;ggpy&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgd43dffb"&gt;
 &lt;p&gt;
 Porting &lt;code&gt;ggplot2&lt;/code&gt; to &lt;code&gt;python&lt;/code&gt; is an &lt;i&gt;amazing&lt;/i&gt; concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -205,9 +205,9 @@ Here's what we get!
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-org7c837de" class="outline-2"&gt;
-&lt;h2 id="org7c837de"&gt;matplotlib&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org7c837de"&gt;
+&lt;div id="outline-container-org8a69f2b" class="outline-2"&gt;
+&lt;h2 id="org8a69f2b"&gt;matplotlib&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org8a69f2b"&gt;
 &lt;p&gt;
 From my reading, this looks like the loved and hated "bread and butter" of &lt;code&gt;python&lt;/code&gt;
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -282,9 +282,9 @@ command.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgd0c0a87" class="outline-2"&gt;
-&lt;h2 id="orgd0c0a87"&gt;Seaborn&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgd0c0a87"&gt;
+&lt;div id="outline-container-orgbb521cb" class="outline-2"&gt;
+&lt;h2 id="orgbb521cb"&gt;Seaborn&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgbb521cb"&gt;
 &lt;p&gt;
 Seaborn was pretty straightforward. Not much else to say!
 &lt;/p&gt;
@@ -325,6 +325,163 @@ Seaborn was pretty straightforward. Not much else to say!
     &lt;/tr&gt;
   
 &lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="outline-container-org23faf34" class="outline-2"&gt;
+&lt;h2 id="org23faf34"&gt;plotly&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org23faf34"&gt;
+&lt;p&gt;
+For these plots, I left in the &lt;code&gt;jupyter lab&lt;/code&gt; commands for plotting. To save them out, I
+clicked the camera icon in the &lt;code&gt;plotly&lt;/code&gt; embedded plot. Surprisingly, you can &lt;a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28"&gt;find evidence&lt;/a&gt;
+that people want to save directly, and &lt;a href="https://stackoverflow.com/questions/40243446/how-to-save-plotly-offline-graph-in-format-png"&gt;the solution&lt;/a&gt; is not awesome:
+&lt;/p&gt;
+
+&lt;pre class="example"&gt;
+plotly.offline.plot(trace, image='png', image_filename='filename')
+&lt;/pre&gt;
+
+&lt;p&gt;
+For me, this opens a new tab and automatically saves the file. It saves it in
+&lt;code&gt;~/Downloads&lt;/code&gt;, not my current directory, though.
+&lt;/p&gt;
+
+&lt;p&gt;
+The bar plot was pretty straightforward:
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;plotly&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;plotly.graph_objs&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;go&lt;/span&gt;
+
+&lt;span class="n"&gt;plotly&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;offline&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;init_notebook_mode&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;trace&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Bar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+		&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;])]&lt;/span&gt;
+&lt;span class="n"&gt;plotly&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;offline&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trace&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+Same for the dot plot, though note we have to fiddle with the &lt;code&gt;layout&lt;/code&gt; object to expand
+our y-axis limits.
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+		    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+		    &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'markers'&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="n"&gt;layout&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Layout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;yaxis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'range'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mf"&gt;1.1&lt;/span&gt;&lt;span class="p"&gt;]})&lt;/span&gt;
+&lt;span class="n"&gt;fig&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Figure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;plotly&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;offline&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+The colored scatter plot were where things really broke down for me. I admit that I really
+&lt;i&gt;want&lt;/i&gt; to love &lt;code&gt;python&lt;/code&gt; and have heard it touted as one of the top data science/analysis
+languages. Waaayyy back, I took quite a bit of time to research programmatic ways to do
+analysis, stats, and plotting. I was really just trying to find some alternative to my
+company's typical option of Minitab for this type of work. I wanted it to work from linux,
+and ideally be compatible with my beloved &lt;a href="http://orgmode.org/"&gt;&lt;code&gt;orgmode&lt;/code&gt;&lt;/a&gt;. Typical contenders included &lt;code&gt;R&lt;/code&gt;,
+&lt;code&gt;python&lt;/code&gt;, and &lt;code&gt;octave&lt;/code&gt;. For better or worse, I went with &lt;code&gt;R&lt;/code&gt; and sort of didn't look
+back.
+&lt;/p&gt;
+
+&lt;p&gt;
+Now, I'm coming into &lt;code&gt;python&lt;/code&gt; for some other work projects and am honestly sort of feeling
+spoiled coming from &lt;code&gt;R&lt;/code&gt;. It's so concise and, well, easy! It had some odd syntax for sure,
+but it just feels so easy to accomplish what I want.
+&lt;/p&gt;
+
+&lt;p&gt;
+So, all of this is to say that I was a bit blown away going to find out how to color by
+group in one of the fancy new plotting libraries (which includes paid options!) and
+finding things like:
+&lt;/p&gt;
+
+&lt;p&gt;
+Plotly's &lt;a href="https://plot.ly/python/line-and-scatter/#scatter-with-a-color-dimension"&gt;example&lt;/a&gt; of "scatter with a color dimension", which is also the &lt;a href="https://www.google.com/search?q=color+by+group+plotly+python"&gt;top google hit&lt;/a&gt; for
+"color by group plotly python."
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;trace1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;500&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'markers'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;marker&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+	&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'16'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+	&lt;span class="n"&gt;color&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;500&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="c1"&gt;#set color equal to a variable&lt;/span&gt;
+	&lt;span class="n"&gt;colorscale&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'Viridis'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+	&lt;span class="n"&gt;showscale&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+That's it. The key line in there is &lt;code&gt;color=foo&lt;/code&gt;, which only addresses a continuous color
+scale.
+&lt;/p&gt;
+
+&lt;p&gt;
+A little further up, we have this kludge:
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'hsl('&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;',50%'&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;',50%)'&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;360&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="n"&gt;trace0&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+	&lt;span class="n"&gt;marker&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+	    &lt;span class="o"&gt;...&lt;/span&gt;
+	    &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+	&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trace0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+&lt;a href="https://plot.ly/python/group-by/"&gt;Elsewhere&lt;/a&gt;, &lt;code&gt;plotly&lt;/code&gt; suggests this, which seems silly in and of itself, but especially for a large set:
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;transforms&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="nb"&gt;type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'groupby'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;groups&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;styles&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+	&lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'Moe'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;marker&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'blue'&lt;/span&gt;&lt;span class="p"&gt;))),&lt;/span&gt;
+	&lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'Larry'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;marker&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'red'&lt;/span&gt;&lt;span class="p"&gt;))),&lt;/span&gt;
+	&lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'Curly'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;marker&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'black'&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+The &lt;a href="https://stackoverflow.com/questions/43596354/plotly-change-color-by-group"&gt;highest search result&lt;/a&gt; from SO just says to use another library (&lt;code&gt;colorlover&lt;/code&gt;)!
+&lt;/p&gt;
+
+&lt;p&gt;
+When I see things like this, my first reaction is honestly that it must not be true;
+there's &lt;i&gt;no way&lt;/i&gt; I'm reading the documentation right. This is after spending a long time 
+with &lt;code&gt;ggplot2&lt;/code&gt;, however, where the key point is that visualization is simply about mapping
+aesthetics to aspects of the data.
+&lt;/p&gt;
+
+&lt;p&gt;
+The above seems to make me a slave to the data… it already constains distinctions
+(unique values); why do I need to tell my plotting library how to map these to colors?
+This strikes me as having to create a &lt;code&gt;dict()&lt;/code&gt; mapping x and y numeric values to their
+eventual locations in pixels.
+&lt;/p&gt;
+
+&lt;p&gt;
+Sort of by accident I stumbled on &lt;a href="https://plot.ly/python/line-and-scatter/"&gt;this doc page&lt;/a&gt; that didn't appear to be trying to tell me
+anything about groups, but inadvertently made it evident a separate list of &lt;code&gt;go.Scatter&lt;/code&gt;
+objects would get me discrete colors for free. So I ended up with this:
+&lt;/p&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'wt'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt;
+		   &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt;
+		   &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'markers'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+		   &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;))]&lt;/span&gt;
+
+&lt;span class="n"&gt;plotly&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;offline&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</guid><pubDate>Sat, 23 Dec 2017 19:33:34 GMT</pubDate></item><item><title>Translating R to python</title><link>https://jwhendy.github.io/blog/translating-r-to-python/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org5c88a44" class="outline-2"&gt;
 &lt;h2 id="org5c88a44"&gt;Background&lt;/h2&gt;

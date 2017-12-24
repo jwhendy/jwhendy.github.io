@@ -294,5 +294,144 @@ plt.show()
     </tr>
   </td>
 </table>
-
 #+end_export
+
+* plotly
+
+For these plots, I left in the =jupyter lab= commands for plotting. To save them out, I
+clicked the camera icon in the =plotly= embedded plot. Surprisingly, you can [[https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28][find evidence]]
+that people want to save directly, and [[https://stackoverflow.com/questions/40243446/how-to-save-plotly-offline-graph-in-format-png][the solution]] is not awesome:
+
+#+begin_example 
+plotly.offline.plot(trace, image='png', image_filename='filename')
+#+end_example
+
+For me, this opens a new tab and automatically saves the file. It saves it in
+=~/Downloads=, not my current directory, though.
+
+The bar plot was pretty straightforward:
+
+#+begin_src python :eval no 
+
+import plotly
+import plotly.graph_objs as go
+
+plotly.offline.init_notebook_mode()
+
+trace = [go.Bar(x = df['car'],
+                y = df['mpg'])]
+plotly.offline.iplot(trace)
+
+#+end_src
+
+Same for the dot plot, though note we have to fiddle with the =layout= object to expand
+our y-axis limits.
+
+#+begin_src python :eval no 
+
+data = [go.Scatter(x = df['car'],
+                    y = df['mpg'],
+                    mode='markers')]
+layout = go.Layout(yaxis={'range': [0, max(df['mpg'])*1.1]})
+fig = go.Figure(data=data, layout=layout)
+
+plotly.offline.iplot(fig)
+
+#+end_src
+
+The colored scatter plot were where things really broke down for me. I admit that I really
+/want/ to love =python= and have heard it touted as one of the top data science/analysis
+languages. Waaayyy back, I took quite a bit of time to research programmatic ways to do
+analysis, stats, and plotting. I was really just trying to find some alternative to my
+company's typical option of Minitab for this type of work. I wanted it to work from linux,
+and ideally be compatible with my beloved [[http://orgmode.org/][=orgmode=]]. Typical contenders included =R=,
+=python=, and =octave=. For better or worse, I went with =R= and sort of didn't look
+back.
+
+Now, I'm coming into =python= for some other work projects and am honestly sort of feeling
+spoiled coming from =R=. It's so concise and, well, easy! It had some odd syntax for sure,
+but it just feels so easy to accomplish what I want.
+
+So, all of this is to say that I was a bit blown away going to find out how to color by
+group in one of the fancy new plotting libraries (which includes paid options!) and
+finding things like:
+
+Plotly's [[https://plot.ly/python/line-and-scatter/#scatter-with-a-color-dimension][example]] of "scatter with a color dimension", which is also the [[https://www.google.com/search?q=color+by+group+plotly+python][top google hit]] for
+"color by group plotly python."
+
+#+begin_src python
+
+trace1 = [go.Scatter(
+    y = np.random.randn(500),
+    mode='markers',
+    marker=dict(
+        size='16',
+        color = np.random.randn(500), #set color equal to a variable
+        colorscale='Viridis',
+        showscale=True
+    )
+)]
+
+#+end_src
+
+That's it. The key line in there is ~color=foo~, which only addresses a continuous color
+scale.
+
+A little further up, we have this kludge:
+
+#+begin_src python 
+c= ['hsl('+str(h)+',50%'+',50%)' for h in np.linspace(0, 360, N)]
+
+for i in range(int(N)):
+    ...
+    trace0= go.Scatter(
+    ...
+        marker= dict(
+	    ...
+            color= c[i]
+        ), name= y[i],
+    l.append(trace0);
+#+end_src
+
+[[https://plot.ly/python/group-by/][Elsewhere]], =plotly= suggests this, which seems silly in and of itself, but especially for a large set:
+
+#+begin_src python 
+
+transforms = [dict(
+    type = 'groupby',
+    groups = subject,
+    styles = [
+        dict(target = 'Moe', value = dict(marker = dict(color = 'blue'))),
+        dict(target = 'Larry', value = dict(marker = dict(color = 'red'))),
+        dict(target = 'Curly', value = dict(marker = dict(color = 'black')))
+    ]
+  )]
+
+#+end_src
+
+The [[https://stackoverflow.com/questions/43596354/plotly-change-color-by-group][highest search result]] from SO just says to use another library (=colorlover=)!
+
+When I see things like this, my first reaction is honestly that it must not be true;
+there's /no way/ I'm reading the documentation right. This is after spending a long time 
+with =ggplot2=, however, where the key point is that visualization is simply about mapping
+aesthetics to aspects of the data.
+
+The above seems to make me a slave to the data... it already constains distinctions
+(unique values); why do I need to tell my plotting library how to map these to colors?
+This strikes me as having to create a =dict()= mapping x and y numeric values to their
+eventual locations in pixels.
+
+Sort of by accident I stumbled on [[https://plot.ly/python/line-and-scatter/][this doc page]] that didn't appear to be trying to tell me
+anything about groups, but inadvertently made it evident a separate list of =go.Scatter=
+objects would get me discrete colors for free. So I ended up with this:
+
+#+begin_src python
+
+data = [go.Scatter(x=[df['wt'][i]],
+                   y=[df['mpg'][i]],
+                   mode='markers',
+                   name=df['car'][i]) for i in range(len(df))]
+
+plotly.offline.iplot(data)
+
+#+end_src
