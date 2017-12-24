@@ -1,6 +1,6 @@
-<div id="outline-container-orgfcaebdd" class="outline-2">
-<h2 id="orgfcaebdd">Introduction</h2>
-<div class="outline-text-2" id="text-orgfcaebdd">
+<div id="outline-container-org2cb65fb" class="outline-2">
+<h2 id="org2cb65fb">Introduction</h2>
+<div class="outline-text-2" id="text-org2cb65fb">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up <code>python</code>, coming from mostly
 using <code>R</code> over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -30,9 +30,9 @@ libraries:
 </div>
 </div>
 
-<div id="outline-container-org5f07db5" class="outline-2">
-<h2 id="org5f07db5">The example</h2>
-<div class="outline-text-2" id="text-org5f07db5">
+<div id="outline-container-orgb665319" class="outline-2">
+<h2 id="orgb665319">The example</h2>
+<div class="outline-text-2" id="text-orgb665319">
 <p>
 I started <i>really</i> simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -94,9 +94,9 @@ Here are our three plots:
 </div>
 </div>
 
-<div id="outline-container-org42b13f0" class="outline-2">
-<h2 id="org42b13f0">ggpy</h2>
-<div class="outline-text-2" id="text-org42b13f0">
+<div id="outline-container-org62cbd0f" class="outline-2">
+<h2 id="org62cbd0f">ggpy</h2>
+<div class="outline-text-2" id="text-org62cbd0f">
 <p>
 Porting <code>ggplot2</code> to <code>python</code> is an <i>amazing</i> concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -204,9 +204,9 @@ Here's what we get!
 </div>
 
 
-<div id="outline-container-org5b3d84d" class="outline-2">
-<h2 id="org5b3d84d">matplotlib</h2>
-<div class="outline-text-2" id="text-org5b3d84d">
+<div id="outline-container-org55ae415" class="outline-2">
+<h2 id="org55ae415">matplotlib</h2>
+<div class="outline-text-2" id="text-org55ae415">
 <p>
 From my reading, this looks like the loved and hated "bread and butter" of <code>python</code>
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -281,9 +281,9 @@ command.
 </div>
 </div>
 
-<div id="outline-container-orgfb437c4" class="outline-2">
-<h2 id="orgfb437c4">seaborn</h2>
-<div class="outline-text-2" id="text-orgfb437c4">
+<div id="outline-container-orgafef6d2" class="outline-2">
+<h2 id="orgafef6d2">seaborn</h2>
+<div class="outline-text-2" id="text-orgafef6d2">
 <p>
 Seaborn was pretty straightforward. Not much else to say!
 </p>
@@ -327,9 +327,9 @@ Seaborn was pretty straightforward. Not much else to say!
 </div>
 </div>
 
-<div id="outline-container-org8f55db4" class="outline-2">
-<h2 id="org8f55db4">plotly</h2>
-<div class="outline-text-2" id="text-org8f55db4">
+<div id="outline-container-orgf978018" class="outline-2">
+<h2 id="orgf978018">plotly</h2>
+<div class="outline-text-2" id="text-orgf978018">
 <p>
 For these plots, I left in the <code>jupyter lab</code> commands for plotting. To save them out, I
 clicked the camera icon in the <code>plotly</code> embedded plot. Surprisingly, you can <a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28">find evidence</a>
@@ -511,9 +511,9 @@ colors are hard to distinguish. The ability to put in <code>text=foo</code> is s
 </div>
 
 
-<div id="outline-container-orgf8a04da" class="outline-2">
-<h2 id="orgf8a04da">cufflinks</h2>
-<div class="outline-text-2" id="text-orgf8a04da">
+<div id="outline-container-org2b9d2f5" class="outline-2">
+<h2 id="org2b9d2f5">cufflinks</h2>
+<div class="outline-text-2" id="text-org2b9d2f5">
 <p>
 I don't have much to say here; it's supposed to be a way to sort of layer <code>plotly</code> right
 onto <code>pd.DataFrame</code> objects. That makes it really succinct, but I also find the
@@ -574,9 +574,9 @@ So, I'll pass since I did this with <code>plotly</code> above already&#x2026;
 </div>
 
 
-<div id="outline-container-org3149cd6" class="outline-2">
-<h2 id="org3149cd6">altair</h2>
-<div class="outline-text-2" id="text-org3149cd6">
+<div id="outline-container-orga6a7112" class="outline-2">
+<h2 id="orga6a7112">altair</h2>
+<div class="outline-text-2" id="text-orga6a7112">
 <p>
 I learned about <code>altair</code> from one of the inspirations between this exercise, which was a
 <a href="https://www.youtube.com/watch?v=FytuB8nFHPQ">talk from Jake VanderPlas</a> on the <code>python</code> visualization landscape. It was a great overview
@@ -628,9 +628,9 @@ looking at the syntax!
 </div>
 </div>
 
-<div id="outline-container-org8c5e344" class="outline-2">
-<h2 id="org8c5e344">bokeh</h2>
-<div class="outline-text-2" id="text-org8c5e344">
+<div id="outline-container-org1495258" class="outline-2">
+<h2 id="org1495258">bokeh</h2>
+<div class="outline-text-2" id="text-org1495258">
 <p>
 The first two are fairly uninteresting. I was excited to see that they'd
 <a href="https://github.com/bokeh/bokeh/issues/1645#issuecomment-75697289">put some nice thought</a> into colors! Indeed, that ability to select a <code>colorBrewer</code> palette
@@ -683,8 +683,100 @@ And the scatter plot attempt:
 
 <span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
+
+<table>
+  <td>
+    <tr>
+      <a href="../../img/bok_mtcars_bar.png"><img src="../../img/cf_mtcars_bar.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/bok_mtcars_dot.png"><img src="../../img/cf_mtcars_dot.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/bok_mtcars_scatter_color.png"><img src="../../img/bok_mtcars_scatter_color.png" width="30%" /></a>
+    </tr>
+  </td>
+</table>
 </div>
 </div>
-<div id="outline-container-org07198a4" class="outline-2">
-<h2 id="org07198a4">pygal</h2>
+
+
+<div id="outline-container-orgff1556d" class="outline-2">
+<h2 id="orgff1556d">pygal</h2>
+<div class="outline-text-2" id="text-orgff1556d">
+<p>
+<code>pygal</code> was certainly interesting. It's a little different than the others, but was more
+or less straightforward. 
+</p>
+
+<p>
+I found I had to pass an empty argument for <code>y_labels_major</code> or I'd get these sort of
+<a href="https://github.com/Kozea/pygal/issues/416">heavy weighted grid lines</a> which I didn't want. It also looks to suffer from needing the
+x-axis marks to be labeled. I wish it was just as easy as <code>x=foo, y=bar</code>. Oh well.
+</p>
+
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygal</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">pygal</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+		  <span class="n">explicit_size</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">y_labels_major</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">x_labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">]</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
+
+<span class="n">chart</span>
+</pre></div>
+
+<p>
+Same issue other libraries suffer from with respect to the limits as well. Without telling
+<code>pygal</code> to increase the range, the top tick mark was much lower than the highest
+dot. Since I wanted to expand to include <code>y=0</code> anyway, it wasn't a big deal. Just an
+observation of something I don't think should be necessary.
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">pygal</span><span class="o">.</span><span class="n">XY</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+		 <span class="n">explicit_size</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+		 <span class="n">stroke</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="c1">#, range=(0, max(df[&#39;mpg&#39;])*1.1))</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">y_labels_major</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">x_labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">]</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))])</span>
+<span class="n">chart</span>
+</pre></div>
+
+<p>
+Colors came for free with grouping! I <i>did</i> get hung up a bit on the fact that you
+apparently need the points to be <code>tuples</code> inside of a list. I didn't get that initially
+and found that <code>chart.add(name, [x, y])</code> was ignoreing the values for <code>y</code>. I'd get a bunch
+of points on the x-axis instead.
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">pygal</span><span class="o">.</span><span class="n">XY</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+		 <span class="n">explicit_size</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">y_labels_major</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+    <span class="n">chart</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;wt&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])])</span>
+<span class="n">chart</span>   
+</pre></div>
+
+<table>
+  <td>
+    <tr>
+      <a href="../../img/pygal_mtcars_bar.png"><img src="../../img/cf_mtcars_bar.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/pygal_mtcars_dot.png"><img src="../../img/cf_mtcars_dot.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/pygal_mtcars_scatter_color.png"><img src="../../img/pygal_mtcars_scatter_color.png" width="30%" /></a>
+    </tr>
+  </td>
+</table>
+</div>
 </div>
