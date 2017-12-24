@@ -1,6 +1,6 @@
-<div id="outline-container-orgd87ac2f" class="outline-2">
-<h2 id="orgd87ac2f">Introduction</h2>
-<div class="outline-text-2" id="text-orgd87ac2f">
+<div id="outline-container-org101d8c9" class="outline-2">
+<h2 id="org101d8c9">Introduction</h2>
+<div class="outline-text-2" id="text-org101d8c9">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up <code>python</code>, coming from mostly
 using <code>R</code> over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -30,9 +30,9 @@ libraries:
 </div>
 </div>
 
-<div id="outline-container-orgb082af7" class="outline-2">
-<h2 id="orgb082af7">The example</h2>
-<div class="outline-text-2" id="text-orgb082af7">
+<div id="outline-container-orgd980359" class="outline-2">
+<h2 id="orgd980359">The example</h2>
+<div class="outline-text-2" id="text-orgd980359">
 <p>
 I started <i>really</i> simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -94,9 +94,9 @@ Here are our three plots:
 </div>
 </div>
 
-<div id="outline-container-org5e1e851" class="outline-2">
-<h2 id="org5e1e851">ggpy</h2>
-<div class="outline-text-2" id="text-org5e1e851">
+<div id="outline-container-orge4257d7" class="outline-2">
+<h2 id="orge4257d7">ggpy</h2>
+<div class="outline-text-2" id="text-orge4257d7">
 <p>
 Porting <code>ggplot2</code> to <code>python</code> is an <i>amazing</i> concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -204,9 +204,9 @@ Here's what we get!
 </div>
 
 
-<div id="outline-container-orga5cb161" class="outline-2">
-<h2 id="orga5cb161">matplotlib</h2>
-<div class="outline-text-2" id="text-orga5cb161">
+<div id="outline-container-orgb0aa0ac" class="outline-2">
+<h2 id="orgb0aa0ac">matplotlib</h2>
+<div class="outline-text-2" id="text-orgb0aa0ac">
 <p>
 From my reading, this looks like the loved and hated "bread and butter" of <code>python</code>
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -281,9 +281,9 @@ command.
 </div>
 </div>
 
-<div id="outline-container-org5a1868f" class="outline-2">
-<h2 id="org5a1868f">seaborn</h2>
-<div class="outline-text-2" id="text-org5a1868f">
+<div id="outline-container-org3be6219" class="outline-2">
+<h2 id="org3be6219">seaborn</h2>
+<div class="outline-text-2" id="text-org3be6219">
 <p>
 Seaborn was pretty straightforward. Not much else to say!
 </p>
@@ -327,9 +327,9 @@ Seaborn was pretty straightforward. Not much else to say!
 </div>
 </div>
 
-<div id="outline-container-org703f7fc" class="outline-2">
-<h2 id="org703f7fc">plotly</h2>
-<div class="outline-text-2" id="text-org703f7fc">
+<div id="outline-container-org12170c6" class="outline-2">
+<h2 id="org12170c6">plotly</h2>
+<div class="outline-text-2" id="text-org12170c6">
 <p>
 For these plots, I left in the <code>jupyter lab</code> commands for plotting. To save them out, I
 clicked the camera icon in the <code>plotly</code> embedded plot. Surprisingly, you can <a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28">find evidence</a>
@@ -414,15 +414,16 @@ Plotly's <a href="https://plot.ly/python/line-and-scatter/#scatter-with-a-color-
 </pre></div>
 
 <p>
-That's it. The key line in there is <code>color=foo</code>, which only addresses a continuous color
-scale.
+That's it. The key line in there is <code>color=np.random()</code>, which only addresses a continuous color
+scale. Thinking looking for <a href="https://plot.ly/python/colorscales/">color scale</a> information would be helpful also wasn't. It just
+shows a bunch of ways to put up continuous colors scales, not discrete for groups.
 </p>
 
 <p>
 A little further up, we have this kludge:
 </p>
 
-<div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hsl(&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;,50%&#39;</span><span class="o">+</span><span class="s1">&#39;,50%)&#39;</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">N</span><span class="p">)]</span>
+<div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hsl(&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;,50%&#39;</span><span class="o">+</span><span class="s1">&#39;,50%)&#39;</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">N</span><span class="p">)]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="p">)):</span>
     <span class="o">...</span>
@@ -506,5 +507,46 @@ colors are hard to distinguish. The ability to put in <code>text=foo</code> is s
     </tr>
   </td>
 </table>
+</div>
+</div>
+
+
+<div id="outline-container-org9d0f888" class="outline-2">
+<h2 id="org9d0f888">cufflinks</h2>
+<div class="outline-text-2" id="text-org9d0f888">
+<p>
+I don't have much to say here; it's supposed to be a way to sort of layer <code>plotly</code> right
+onto <code>pd.DataFrame</code> objects. That makes it really succinct, but I also find the
+documentation lacking.
+</p>
+
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cufflinks</span> <span class="kn">as</span> <span class="nn">cf</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mpg&#39;</span><span class="p">)</span>
+</pre></div>
+
+<p>
+This <i>does</i> show how nice the grammar of graphics is. Other than needing to specify that
+we want <code>markers</code>, we're literally just changing the <code>kind</code> of plot with the mappings
+staying the same. It's just a different way to draw the same thing.
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mpg&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">)</span>
+</pre></div>
+
+<p>
+The grouped colors fell apart a bit for me again, perhaps because at the end of the day
+<code>cufflinks</code> is just <code>plotly</code>. I found <a href="https://github.com/santosjorge/cufflinks/blob/master/Cufflinks%20Tutorial%20-%20Colors.ipynb">this promising</a> walkthrough, but one of the
+colorscale generation examples failed me. In the
+<a href="https://plot.ly/ipython-notebooks/cufflinks/#scatter-plot">cufflinks docs</a> themselves, they basically say this isn't possible and just fallback to
+<code>plotly</code> syntax:
+</p>
+
+<blockquote>
+<p>
+Plotting multiple column scatter plots isn't as easy with cufflinks. Here is an example
+with Plotly's native syntax
+</p>
+</blockquote>
 </div>
 </div>
