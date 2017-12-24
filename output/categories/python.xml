@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 03:51:55 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orgd630d49" class="outline-2"&gt;
-&lt;h2 id="orgd630d49"&gt;Introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgd630d49"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about python)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 24 Dec 2017 03:55:41 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orgd87ac2f" class="outline-2"&gt;
+&lt;h2 id="orgd87ac2f"&gt;Introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgd87ac2f"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up &lt;code&gt;python&lt;/code&gt;, coming from mostly
 using &lt;code&gt;R&lt;/code&gt; over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -31,9 +31,9 @@ libraries:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgf78588f" class="outline-2"&gt;
-&lt;h2 id="orgf78588f"&gt;The example&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgf78588f"&gt;
+&lt;div id="outline-container-orgb082af7" class="outline-2"&gt;
+&lt;h2 id="orgb082af7"&gt;The example&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgb082af7"&gt;
 &lt;p&gt;
 I started &lt;i&gt;really&lt;/i&gt; simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -95,9 +95,9 @@ Here are our three plots:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgd43dffb" class="outline-2"&gt;
-&lt;h2 id="orgd43dffb"&gt;ggpy&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgd43dffb"&gt;
+&lt;div id="outline-container-org5e1e851" class="outline-2"&gt;
+&lt;h2 id="org5e1e851"&gt;ggpy&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org5e1e851"&gt;
 &lt;p&gt;
 Porting &lt;code&gt;ggplot2&lt;/code&gt; to &lt;code&gt;python&lt;/code&gt; is an &lt;i&gt;amazing&lt;/i&gt; concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -205,9 +205,9 @@ Here's what we get!
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-org8a69f2b" class="outline-2"&gt;
-&lt;h2 id="org8a69f2b"&gt;matplotlib&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org8a69f2b"&gt;
+&lt;div id="outline-container-orga5cb161" class="outline-2"&gt;
+&lt;h2 id="orga5cb161"&gt;matplotlib&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orga5cb161"&gt;
 &lt;p&gt;
 From my reading, this looks like the loved and hated "bread and butter" of &lt;code&gt;python&lt;/code&gt;
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -282,9 +282,9 @@ command.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgbb521cb" class="outline-2"&gt;
-&lt;h2 id="orgbb521cb"&gt;Seaborn&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgbb521cb"&gt;
+&lt;div id="outline-container-org5a1868f" class="outline-2"&gt;
+&lt;h2 id="org5a1868f"&gt;seaborn&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org5a1868f"&gt;
 &lt;p&gt;
 Seaborn was pretty straightforward. Not much else to say!
 &lt;/p&gt;
@@ -328,9 +328,9 @@ Seaborn was pretty straightforward. Not much else to say!
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org23faf34" class="outline-2"&gt;
-&lt;h2 id="org23faf34"&gt;plotly&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org23faf34"&gt;
+&lt;div id="outline-container-org703f7fc" class="outline-2"&gt;
+&lt;h2 id="org703f7fc"&gt;plotly&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org703f7fc"&gt;
 &lt;p&gt;
 For these plots, I left in the &lt;code&gt;jupyter lab&lt;/code&gt; commands for plotting. To save them out, I
 clicked the camera icon in the &lt;code&gt;plotly&lt;/code&gt; embedded plot. Surprisingly, you can &lt;a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28"&gt;find evidence&lt;/a&gt;
@@ -478,10 +478,35 @@ objects would get me discrete colors for free. So I ended up with this:
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'wt'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt;
 		   &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'mpg'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt;
 		   &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'markers'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-		   &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;))]&lt;/span&gt;
+		   &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+		   &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'car'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;))]&lt;/span&gt;
 
 &lt;span class="n"&gt;plotly&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;offline&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+To be fair, I like plotly. I like the hover text, especially for larger datasets where
+colors actually aren't the best way to tell them apart. Even with these 10 cars, the
+colors are hard to distinguish. The ability to put in &lt;code&gt;text=foo&lt;/code&gt; is super handy. Our finished result:
+&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;td&gt;
+    &lt;/td&gt;&lt;tr&gt;
+      &lt;a href="https://jwhendy.github.io/img/plotly_mtcars_bar.png"&gt;&lt;img src="https://jwhendy.github.io/img/plotly_mtcars_bar.png" width="30%"&gt;&lt;/a&gt;
+    &lt;/tr&gt;
+  
+  &lt;td&gt;
+    &lt;/td&gt;&lt;tr&gt;
+      &lt;a href="https://jwhendy.github.io/img/plotly_mtcars_dot.png"&gt;&lt;img src="https://jwhendy.github.io/img/plotly_mtcars_dot.png" width="30%"&gt;&lt;/a&gt;
+    &lt;/tr&gt;
+  
+  &lt;td&gt;
+    &lt;/td&gt;&lt;tr&gt;
+      &lt;a href="https://jwhendy.github.io/img/plotly_mtcars_scatter_color.png"&gt;&lt;img src="https://jwhendy.github.io/img/plotly_mtcars_scatter_color.png" width="30%"&gt;&lt;/a&gt;
+    &lt;/tr&gt;
+  
+&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</guid><pubDate>Sat, 23 Dec 2017 19:33:34 GMT</pubDate></item><item><title>Translating R to python</title><link>https://jwhendy.github.io/blog/translating-r-to-python/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org5c88a44" class="outline-2"&gt;
 &lt;h2 id="org5c88a44"&gt;Background&lt;/h2&gt;

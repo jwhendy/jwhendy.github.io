@@ -250,7 +250,7 @@ plt.show()
 
 #+end_export
 
-* Seaborn
+* seaborn
 
 Seaborn was pretty straightforward. Not much else to say!
 
@@ -430,8 +430,33 @@ objects would get me discrete colors for free. So I ended up with this:
 data = [go.Scatter(x=[df['wt'][i]],
                    y=[df['mpg'][i]],
                    mode='markers',
-                   name=df['car'][i]) for i in range(len(df))]
+                   name=df['car'][i],
+                   text=df['car'][i]) for i in range(len(df))]
 
 plotly.offline.iplot(data)
 
 #+end_src
+
+To be fair, I like plotly. I like the hover text, especially for larger datasets where
+colors actually aren't the best way to tell them apart. Even with these 10 cars, the
+colors are hard to distinguish. The ability to put in ~text=foo~ is super handy. Our finished result:
+
+#+begin_export html 
+<table>
+  <td>
+    <tr>
+      <a href="../../img/plotly_mtcars_bar.png"><img src="../../img/plotly_mtcars_bar.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/plotly_mtcars_dot.png"><img src="../../img/plotly_mtcars_dot.png" width="30%" /></a>
+    </tr>
+  </td>
+  <td>
+    <tr>
+      <a href="../../img/plotly_mtcars_scatter_color.png"><img src="../../img/plotly_mtcars_scatter_color.png" width="30%" /></a>
+    </tr>
+  </td>
+</table>
+#+end_export

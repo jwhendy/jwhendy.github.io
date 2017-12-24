@@ -1,6 +1,6 @@
-<div id="outline-container-orgdeff1c1" class="outline-2">
-<h2 id="orgdeff1c1">Introduction</h2>
-<div class="outline-text-2" id="text-orgdeff1c1">
+<div id="outline-container-orgd630d49" class="outline-2">
+<h2 id="orgd630d49">Introduction</h2>
+<div class="outline-text-2" id="text-orgd630d49">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up <code>python</code>, coming from mostly
 using <code>R</code> over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -30,9 +30,9 @@ libraries:
 </div>
 </div>
 
-<div id="outline-container-org4f41e97" class="outline-2">
-<h2 id="org4f41e97">The example</h2>
-<div class="outline-text-2" id="text-org4f41e97">
+<div id="outline-container-orgf78588f" class="outline-2">
+<h2 id="orgf78588f">The example</h2>
+<div class="outline-text-2" id="text-orgf78588f">
 <p>
 I started <i>really</i> simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -94,9 +94,9 @@ Here are our three plots:
 </div>
 </div>
 
-<div id="outline-container-orgccd97a0" class="outline-2">
-<h2 id="orgccd97a0">ggpy</h2>
-<div class="outline-text-2" id="text-orgccd97a0">
+<div id="outline-container-orgd43dffb" class="outline-2">
+<h2 id="orgd43dffb">ggpy</h2>
+<div class="outline-text-2" id="text-orgd43dffb">
 <p>
 Porting <code>ggplot2</code> to <code>python</code> is an <i>amazing</i> concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -204,9 +204,9 @@ Here's what we get!
 </div>
 
 
-<div id="outline-container-org7c837de" class="outline-2">
-<h2 id="org7c837de">matplotlib</h2>
-<div class="outline-text-2" id="text-org7c837de">
+<div id="outline-container-org8a69f2b" class="outline-2">
+<h2 id="org8a69f2b">matplotlib</h2>
+<div class="outline-text-2" id="text-org8a69f2b">
 <p>
 From my reading, this looks like the loved and hated "bread and butter" of <code>python</code>
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -281,9 +281,9 @@ command.
 </div>
 </div>
 
-<div id="outline-container-orgd0c0a87" class="outline-2">
-<h2 id="orgd0c0a87">Seaborn</h2>
-<div class="outline-text-2" id="text-orgd0c0a87">
+<div id="outline-container-orgbb521cb" class="outline-2">
+<h2 id="orgbb521cb">Seaborn</h2>
+<div class="outline-text-2" id="text-orgbb521cb">
 <p>
 Seaborn was pretty straightforward. Not much else to say!
 </p>
@@ -324,5 +324,162 @@ Seaborn was pretty straightforward. Not much else to say!
     </tr>
   </td>
 </table>
+</div>
+</div>
+
+<div id="outline-container-org23faf34" class="outline-2">
+<h2 id="org23faf34">plotly</h2>
+<div class="outline-text-2" id="text-org23faf34">
+<p>
+For these plots, I left in the <code>jupyter lab</code> commands for plotting. To save them out, I
+clicked the camera icon in the <code>plotly</code> embedded plot. Surprisingly, you can <a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28">find evidence</a>
+that people want to save directly, and <a href="https://stackoverflow.com/questions/40243446/how-to-save-plotly-offline-graph-in-format-png">the solution</a> is not awesome:
+</p>
+
+<pre class="example">
+plotly.offline.plot(trace, image='png', image_filename='filename')
+</pre>
+
+<p>
+For me, this opens a new tab and automatically saves the file. It saves it in
+<code>~/Downloads</code>, not my current directory, though.
+</p>
+
+<p>
+The bar plot was pretty straightforward:
+</p>
+
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="kn">as</span> <span class="nn">go</span>
+
+<span class="n">plotly</span><span class="o">.</span><span class="n">offline</span><span class="o">.</span><span class="n">init_notebook_mode</span><span class="p">()</span>
+
+<span class="n">trace</span> <span class="o">=</span> <span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">],</span>
+		<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])]</span>
+<span class="n">plotly</span><span class="o">.</span><span class="n">offline</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+</pre></div>
+
+<p>
+Same for the dot plot, though note we have to fiddle with the <code>layout</code> object to expand
+our y-axis limits.
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">],</span>
+		    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">],</span>
+		    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">)]</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">yaxis</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span><span class="o">*</span><span class="mf">1.1</span><span class="p">]})</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+
+<span class="n">plotly</span><span class="o">.</span><span class="n">offline</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+
+<p>
+The colored scatter plot were where things really broke down for me. I admit that I really
+<i>want</i> to love <code>python</code> and have heard it touted as one of the top data science/analysis
+languages. Waaayyy back, I took quite a bit of time to research programmatic ways to do
+analysis, stats, and plotting. I was really just trying to find some alternative to my
+company's typical option of Minitab for this type of work. I wanted it to work from linux,
+and ideally be compatible with my beloved <a href="http://orgmode.org/"><code>orgmode</code></a>. Typical contenders included <code>R</code>,
+<code>python</code>, and <code>octave</code>. For better or worse, I went with <code>R</code> and sort of didn't look
+back.
+</p>
+
+<p>
+Now, I'm coming into <code>python</code> for some other work projects and am honestly sort of feeling
+spoiled coming from <code>R</code>. It's so concise and, well, easy! It had some odd syntax for sure,
+but it just feels so easy to accomplish what I want.
+</p>
+
+<p>
+So, all of this is to say that I was a bit blown away going to find out how to color by
+group in one of the fancy new plotting libraries (which includes paid options!) and
+finding things like:
+</p>
+
+<p>
+Plotly's <a href="https://plot.ly/python/line-and-scatter/#scatter-with-a-color-dimension">example</a> of "scatter with a color dimension", which is also the <a href="https://www.google.com/search?q=color+by+group+plotly+python">top google hit</a> for
+"color by group plotly python."
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">trace1</span> <span class="o">=</span> <span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+	<span class="n">size</span><span class="o">=</span><span class="s1">&#39;16&#39;</span><span class="p">,</span>
+	<span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span> <span class="c1">#set color equal to a variable</span>
+	<span class="n">colorscale</span><span class="o">=</span><span class="s1">&#39;Viridis&#39;</span><span class="p">,</span>
+	<span class="n">showscale</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+<span class="p">)]</span>
+</pre></div>
+
+<p>
+That's it. The key line in there is <code>color=foo</code>, which only addresses a continuous color
+scale.
+</p>
+
+<p>
+A little further up, we have this kludge:
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hsl(&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;,50%&#39;</span><span class="o">+</span><span class="s1">&#39;,50%)&#39;</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">N</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="p">)):</span>
+    <span class="o">...</span>
+    <span class="n">trace0</span><span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+    <span class="o">...</span>
+	<span class="n">marker</span><span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+	    <span class="o">...</span>
+	    <span class="n">color</span><span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+	<span class="p">),</span> <span class="n">name</span><span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trace0</span><span class="p">);</span>
+</pre></div>
+
+<p>
+<a href="https://plot.ly/python/group-by/">Elsewhere</a>, <code>plotly</code> suggests this, which seems silly in and of itself, but especially for a large set:
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">transforms</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;groupby&#39;</span><span class="p">,</span>
+    <span class="n">groups</span> <span class="o">=</span> <span class="n">subject</span><span class="p">,</span>
+    <span class="n">styles</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="nb">dict</span><span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;Moe&#39;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">))),</span>
+	<span class="nb">dict</span><span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;Larry&#39;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">))),</span>
+	<span class="nb">dict</span><span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;Curly&#39;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)))</span>
+    <span class="p">]</span>
+  <span class="p">)]</span>
+</pre></div>
+
+<p>
+The <a href="https://stackoverflow.com/questions/43596354/plotly-change-color-by-group">highest search result</a> from SO just says to use another library (<code>colorlover</code>)!
+</p>
+
+<p>
+When I see things like this, my first reaction is honestly that it must not be true;
+there's <i>no way</i> I'm reading the documentation right. This is after spending a long time 
+with <code>ggplot2</code>, however, where the key point is that visualization is simply about mapping
+aesthetics to aspects of the data.
+</p>
+
+<p>
+The above seems to make me a slave to the data&#x2026; it already constains distinctions
+(unique values); why do I need to tell my plotting library how to map these to colors?
+This strikes me as having to create a <code>dict()</code> mapping x and y numeric values to their
+eventual locations in pixels.
+</p>
+
+<p>
+Sort of by accident I stumbled on <a href="https://plot.ly/python/line-and-scatter/">this doc page</a> that didn't appear to be trying to tell me
+anything about groups, but inadvertently made it evident a separate list of <code>go.Scatter</code>
+objects would get me discrete colors for free. So I ended up with this:
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;wt&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]],</span>
+		   <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]],</span>
+		   <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span>
+		   <span class="n">name</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+
+<span class="n">plotly</span><span class="o">.</span><span class="n">offline</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
