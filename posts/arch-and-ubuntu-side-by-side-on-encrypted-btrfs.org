@@ -1,0 +1,465 @@
+#+BEGIN_COMMENT
+.. title: Arch and Ubuntu side-by-side on encrypted btrfs
+.. slug: arch-and-ubuntu-side-by-side-on-encrypted-btrfs
+.. date: 2018-04-28 09:17:26 UTC-05:00
+.. tags: linux
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+* background
+
+I've used Arch linux for about 8 years from [[https://bbs.archlinux.org/profile.php?id=35588][what I can tell]]. I love the minimalistic
+nature, and also think =pacman= and =pacaur= are pretty great for package management. Arch
+doesn't give me stuff I don't need, stays out of my way, and has [[https://wiki.archlinux.org/][fantastic
+documentation]]. That said, at work I need Ubuntu due to some pre-built binary availability
+and the lack of desire to build all of them each time they update. I decided to go with
+both so I could use Ubuntu for specific tasks and Arch for my daily driver.
+
+I was curious if I could use =btrfs= to create one main shared space for both, choosing
+which subvolume to mount at boot. This eliminates the need to partition the disk and guess
+sizes for each. I also encrypt my drives, so it required the ability to create an
+encrypted container on =btrfs= and point the bootloader to that specific container based
+no which distro I was booting. Lastly, my newest company issued computer shipped with UEFI
+and Secure Boot, which was entirely new to me.
+
+About ~15hrs later, I've got base systems installed and am feeling pretty happy.
+
+#+begin_export html
+<!-- TEASER_END -->
+#+end_export
+
+* hardware
+
+I first went through this (minus UEFI stuff) on an HP Zbook 15 G2 and I'm using a Zbook 15
+G4 to recreate the setup and write this guide (I didn't take very good notes last
+time). I'm using a [[https://www.amazon.com/dp/B01LYFKX41/ref=twister_B01N78T39B?_encoding=UTF8&psc=1][Samsung NVM3 M.2]] as my install target.
+
+I won't cover making your install media, but as a heads up, to even boot my USB install
+media with Secure Boot in place, I had to follow [[https://unix.stackexchange.com/questions/320078/how-to-boot-arch-linux-installation-medium-with-secure-boot-enabled][these instructions]] on modifying the image
+with a couple signed =.efi= files, and upon boot I followed [[https://wiki.archlinux.org/index.php/Secure_Boot#Booting_archiso][these steps]] to enroll the
+USB's hashes with Secure Boot.
+
+* prepping the drive
+
+This is pretty straightforward stuff, though I ended up doing all of this /twice/ because
+I didn't realize one gotcha. When it comes to partitioning, the bootloader will need to
+live on the EFI System Partition (esp). I interpreted [[https://wiki.archlinux.org/index.php/Category:Boot_loaders][the wiki on bootloaders]] to believe
+that the one I choose, rEFInd, could read from various filesystems like =ext4=.
+
+In actuality, it seems the loader/esp /must/ live on =vfat=, but from there it can load
+things (kernel image, initramfs) from other filesystems. Why does this matter? Well, I
+didn't know that you can't sym/hard link on =vfat=. When it comes to ubuntu, I like to
+maintain a symlink from =vmlinuz-xenial= to the versioned name of the latest kernel. This
+avoids having to change the bootloader entry all the time with the new numbers. This is
+probably fringe, and maybe not worth the effort, but it bothers me and this will stick
+with me. I opted to go through the pain now and keep the flexibility!
+
+For actual steps:
+
+- I wiped the drive with random data using the =cryptsetup= container and =/dev/zero=
+  [[https://wiki.archlinux.org/index.php/Dm-crypt/Drive_preparation][method]]
+- partition the disk, creating an esp ([[https://wiki.archlinux.org/index.php/EFI_System_Partition][EFI system partition]]), separate =/boot= partition (if
+  you desire), and main container for =btrfs=. Be sure to use =gpt=, not =mbr= for for the
+  partition table!
+
+#+begin_example  
+# fdisk -l
+Device           Start       End   Sectors   Size Type
+/dev/nvme0n1p1    2048   1050623   1048576   512M EFI System
+/dev/nvme0n1p2 1050624   3147775   2097152     1G Linux filesystem
+/dev/nvme0n1p3 2099200 488397134 486297935 231.9G Linux filesystem
+
+# mkfs.fat -F32 /dev/nvme0n1p1
+# mkfs.ext4 /dev/nvme0n1p2
+#+end_example
+
+- [[https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption#Encryption_options_for_LUKS_mode][create]] and open the encrypted device and [[https://wiki.archlinux.org/index.php/Btrfs#File_system_on_a_single_device][format]] as =btrfs=.
+
+#+begin_example
+
+# cryptsetup -v --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 2000 \
+                --use-urandom -y luksFormat /dev/nvme0n1p2
+
+# cryptsetup open /dev/nvme0n1p3 root
+# mkfs.btrfs /dev/mapper/root
+#+end_example
+
+With that done, we're ready for installs. For what it's worth, I've arch first, then
+ubuntu, and vice versa and have yet to get ubuntu to succeed on the install. I couldn't
+find an way to disable the bootloader install altogether, and on two occasions tried
+pointing it at both my EFI partition as well as the =ext4= one for the bootloader and both
+failed. In looking around, it [[https://askubuntu.com/questions/689595/bootloader-install-failed][may be due]] to Secure Boot. I gave up and write the rest of
+this with respect to installing arch first, then ubuntu.
+
+* installing arch
+
+We need to create the subvolumes we'd like to use, as well as the boot structure. I used
+the following for my =btrfs= setup (we'll create subvols for ubuntu later):
+
+#+begin_example 
+/arch: arch system
+/vault: repository for shared data
+/jwhendy: separate arch home dir which I also mount at /mnt/homie for ubuntu access
+#+end_example
+
+Here we make the subvolumes and then re-mount the arch root target for installation:
+
+#+begin_example 
+# cryptsetup open /dev/nvme0n1p3 root
+# mount /dev/mapper/root /mnt
+
+# btrfs subvol create /mnt/arch
+# btrfs subvol create /mnt/jwhendy
+# btrfs subvol create /mnt/vault
+
+# umount /mnt
+# mount -t btrfs -o subvol=/arch /dev/mapper/root /mnt
+
+#+end_example
+
+In addition, we need to make mount =/boot= and our esp. As mentioned above, having =/boot=
+be =ext4= will let us symlink and do whatever we'd like with =/boot= itself, while
+=rEFInd= can be happy on =/boot/efi=. 
+
+#+begin_example
+# mkdir /mnt/boot
+# mount /dev/nvme0n1p2 /mnt/boot
+# mkdir /mnt/boot/efi
+# mount /dev/nvme0n1p1 /mnt/boot/efi
+#+end_example
+
+Follow the rest of the [[https://wiki.archlinux.org/index.php/installation_guide#Installation][installation instructions]] to install =base= packages, then
+=arch-chroot= into =/mnt=. For =mkinitcipio=, I use the following:
+
+#+begin_example 
+MODULES=(dm_crypt aes_x86_64 dm_mod sd_mod crc32c_intel vfat btrfs nvidia)
+HOOKS=(systemd autodetect modconf block sd-encrypt filesystems keyboard fsck)
+#+end_example
+
+Be sure to install any other packages you want/need, for example =nvidia=, =btrfs-progs=,
+wireless tools, etc.
+
+* bootloader setup
+
+For the bootloader, I'm going with [[https://wiki.archlinux.org/index.php/REFInd][=rEFInd=]], (=refind-efi= package). Since I have Secure
+Boot enabled, I had to do a few more things like installing [[https://aur.archlinux.org/packages/shim-signed/][=shim-signed=]] (AUR), which
+required installing =base-devel= so I could install =pacaur= (which also required
+=cower=).  
+
+This was definitely the most complicated topic of anything I did, in part because it's
+split between universal info like the [[https://wiki.archlinux.org/index.php/EFI_System_Partition][EFI System Partition]], the [[https://wiki.archlinux.org/index.php/REFInd][bootloader itself]],
+specifics about [[https://wiki.archlinux.org/index.php/Secure_Boot][Secure Boot]], and [[http://www.rodsbooks.com/efi-bootloaders/secureboot.html][external references]] that the arch wiki points to.
+
+If I understand things correctly, there are [[http://www.rodsbooks.com/efi-bootloaders/secureboot.html#using_signed][two methods]] to work around Secure Boot. One (=PreLoader=)
+checks the hashes of various binaries to make sure they are trusted, the other (=shim=) relies on
+the binary being signed by a trusted key (and /maybe/ also does hashed?).
+
+I originally went with the preloader method, but found that ubuntu would not load =nvidia=
+drivers because they weren't signed by a trusted key. I've now switched to =shim= and
+/think/ it's working! I'll recommend that way, and the article from Rod Smith suggests
+=shim= is more flexible as well.
+
+I'm following the portion of the wiki about [[https://wiki.archlinux.org/index.php/REFInd#Using_shim][using shim]]. Refer to that, but summarized,
+this is what I did:
+
+- install =shim-signed=
+- follow instructions on [[https://wiki.archlinux.org/index.php/Secure_Boot#shim_with_key][shim with key]] (at this point I've created my user on arch, so I'm
+  in =/home/jwhendy=)
+
+#+begin_example
+$ mkdir .ssl
+$ cd .ssl
+$ openssl req -newkey rsa:2048 -nodes -keyout mok_arch.key -new -x509 -sha256 -days 3650 -subj "/CN=arch_mok_key/" -out mok_arch.crt
+$ openssl x509 -outform DER -in mok_arch.crt -out mok_arch.cer
+#+end_example
+
+Per the tip in using shim with =rEFInd=, you can put these keys in =/etc/refind.d/keys= to
+install them automatically to the esp:
+
+#+begin_example 
+$ sudo mkdir -p /etc/refind.d/keys
+$ sudo cp ./mok_arch.key /etc/refind.d/keys/refind_local.key
+$ sudo cp ./mok_arch.cer /etc/refind.d/keys/refind_local.cer
+$ sudo cp ./mok_arch.crt /etc/refind.d/keys/refind_local.crt
+#+end_example 
+
+- now we install =refind=:
+
+#+begin_example
+$ sudo refind-install --shim /usr/share/shim-signed/shim.efi --localkeys
+#+end_example
+
+I /think/ this signs =shim.efi= with our key. In addition, it copies the =.cer= and =.crt=
+to =efi/EFI/refind/keys= so that we can load them into the trusted key database. My
+understanding is that once enrolled, the system will trust things signed by that key/cert
+pair. 
+
+Make sure you're good with any adds to =mkinitcpio= as that will generate a new
+=vmlinuz-linux= loader which needs to be signed.
+
+#+begin_example
+$ cd /boot
+$ sudo sbsign --key ~/.ssl/mok_arch.key --cert ~/.ssl/mok_arch.crt --output ./vmlinuz-linux ./vmlinux-linux
+#+end_example
+
+For setting up =refind.conf=, my entry looks like this:
+
+#+begin_example 
+menuentry "arch" {
+    icon         /EFI/refind/icons/os_arch.png
+    volume       BOOT_PARTUUID
+    loader       /boot/vmlinuz-linux
+    initrd       /boot/initramfs-linux.img
+    options      "luks.uuid=DEVICE_UUID root=UUID=MAPPER_UUID rootflags=compress=lzo,discard,ssd,subvol=arch luks.allow=discards add_efi_memmap rw"
+}
+#+end_example
+
+For DEVICE_UUID and MAPPER_UUID, use =blkid=
+
+#+begin_example
+# use the boot device (not the ESP) for the volume entry; it tells refind where the kernel is
+/dev/nvme0n1p2: UUID="5efd2b85-7d45-46f4-8407-1f08cca9847f" TYPE="vfat" PARTUUID="5bb27fc4-dbf4-4157-bf94-8dba1fcdabdf"
+
+# use the physical device UUID for luks.uuid
+/dev/nvme0n1p3: UUID="0712af67-3f01-4dde-9d45-194df9d29d14" TYPE="crypto_LUKS" PARTUUID="80262d8f-fc26-45a7-ad8d-1a5bad414250"
+
+# use the mapped UUID for the root UUID
+/dev/mapper/root: UUID="204e2670-ca9a-41fb-b487-2b32076033b1" UUID_SUB="fbd1fe45-760b-4c6e-a17f-74b8cd60edb6" TYPE="btrfs"
+#+end_example  
+
+It took me a while to get this right; use the following for the entries in your =refind.conf=:
+- volume: PARTUUID of the boot partition, not the esp
+- DEVICE_UUID: UUID of the raw partition
+- MAPPER_UUID: UUID that's assigned to the /opened/ cryptdevice
+
+Cross your fingers and reboot!
+
+Upon reboot, get to your boot device screen and choose the UEFI rEFInd entry. I got an
+error about it not being authorized, and then an option to start the MOK utility. I choose to enroll
+keys and then picked the one, really long entry (the others were from the =ARCHISO= or
+maybe elsewhere). Navigate to =EFI/refind/keys= and enroll the =.cer= file.
+
+Reboot again and you should be all set.
+
+As an aside, for long term use (which I haven't looked into yet), I'll be pursuing [[https://wiki.archlinux.org/index.php/Secure_Boot#Signing_kernel_with_pacman_hook][a hook]]
+to sign the kernel image each time it updates. To test how this works, after successfully
+booting with a signed =vmlinuz-linux= I updated the =linux= package manually and booting
+failed. I /was/ able to use the MOK utility to enter the hash of =vmlinuz-linux= and then
+boot. So, I think going forward there are two options: sign the kernel, or deal with
+enrolling the hash at boot each time it updates.
+
+* install ubuntu
+
+Boot into Ubuntu and choose the option to try it (not install). Open a terminal and open
+the existing crypt device:
+
+#+begin_example
+$ sudo cryptsetup open /dev/nvme0n1p3 root
+#+end_example
+
+Now you can double click the installer icon on the desktop. I didn't find any good answers
+on how to prevent ubuntu from trying to install a bootloader altogether, and you also
+don't get to pick a subvolume to install to, which is why we didn't create them earlier.
+
+Go throug the setup, choosing "something else" on the installation type screen:
+
+- point to your opened crypt device (e.g. =/dev/mapper/root=), click change, select it as
+  a btrfs filesystem and =/= for the mount point
+- We're using =rEFInd= to load both arch and ubuntu, but you have to tell it something, so
+  I pointed it at =/dev/nvm0n1p2= (=ext4= partition) to make it happy
+- to move on, you'll get warnings about no swap and should confirm that it won't make any
+  changes to the partition table and won't be formatting anything
+- go through with the rest of the install
+
+The install failed to install =grub=, then popped up a dialog about it and said the
+installer crashed. I couldn't close it. Things still worked fine for me.
+
+It seems that ubuntu insists on making it's own new subvols, which we'll move now. After
+the installer borked, I found 
+
+#+begin_example 
+$ sudo mount /dev/mapper/root /mnt
+$ sudo mv /mnt/@ /mnt/xenial
+$ sudo rm -r /mnt/xenial/home
+$ sudo mv /mnt/@home /mnt/xenial/home
+$ sudo rm -r /mnt/var
+$ sudo rm -r /mnt/ubiquity-apt-clone
+#+end_example
+
+For the final setup, I find it easier to just =chroot=, so that's what I'd suggest:
+
+#+begin_example
+$ sudo umount /mnt
+$ sudo mount -o subvol=xenial /dev/mapper/root /mnt
+#+end_example
+
+Now mount =/dev/nvme0n1p2= somewhere and copy in =initrd-xxx= and =vmlinuz-xxx= from the
+ubuntu =/boot= dir in there. 
+
+#+begin_example
+$ mkdir ~/boot
+$ sudo mount /dev/nvme0n1p2 ~/boot
+$ sudo cp /mnt/boot/initrd.img-4.* ~/boot/
+$ sudo cp /mnt/boot/vmlinuz-4.* ~/boot/
+#+end_example
+
+You can copy everything if you wnat, but this all you need so I blew the rest away and
+then remounted =~/boot= to =/mnt/boot=:
+
+#+begin_example
+$ sudo rm -r /mnt/boot/*
+$ sudo umount ~/boot
+$ sudo mount /dev/nvme0n1p2 /mnt/boot
+$ sudo mount /dev/nvme0n1p1 /mnt/boot/efi
+
+$ sudo mount -t proc /proc /mnt/proc
+$ sudo mount --rbind /sys /mnt/sys
+$ sudo mount --rbind /dev /mnt/dev
+$ sudo cp /etc/resolv.conf /mnt/etc/resolv.conf
+$ sudo chroot /mnt /bin/bash
+# su username
+#+end_example
+
+I [[https://askubuntu.com/questions/860670/can-i-safely-remove-grub-after-installing-refind][removed everything]] related to =grub= and =grub2= since I'm using =rEFInd= to boot both arch
+and ubuntu and don't want the shared =/boot= to get clobbered inadvertently, or for 
+=grub= to try and install it's own bootloader
+
+#+begin_example
+$ apt list --installed |grep grub
+$ sudo apt remove [all packages from above step]
+#+end_example
+
+The way ubuntu handles crypt devices is a little different than arch, so the =rEFInd=
+entry is also slightly different:
+
+#+begin_example 
+menuentry "ubuntu" {
+    icon         /EFI/refind/icons/os_ubuntu.png
+    volume       BOOT_PARTUUID
+    loader       /vmlinuz-xenial
+    initrd       /initrd-linux.img
+    options      "root=UUID=MAPPER_UUID rootflags=compress=lzo,discard,ssd,subvol=xenia luks.options=timeout=30s luks.allow=discards nomodeset $vt_handoff add_efi_memmap rw"
+}
+#+end_example
+
+Note the use of =-xenial= files above for the kernel image/initrd. It's my personal
+preference to maintain links to the most recent files so that I don't have to change my
+boot entry at every update. I simply link these generic files to the versioned ones.
+
+#+begin_example
+$ cd /boot
+$ sudo ln -s initrd.img-4.13.0-39-generic initrd-xenial.img
+$ sudo ln -s vmlinuz-4.13.0-39-generic vmlinuz-xenial
+#+end_example
+
+Ubuntu also requires the use of =/etc/crypttab= to know what to decrypt, hence removing
+our =luks.uuid= bit. Now we need these two entries:
+
+#+begin_example
+$ cat /etc/crypttab
+root   UUID=DEVICE_UUID   none   luks,discard
+
+$ cat /etc/fstab
+/dev/mapper/root   /   btrfs   defaults,subvol=xenial   0 1
+#+end_example
+
+While you're at it, you may want to check that =/boot= and =/boot/efi= also have entries
+in =fstab=. After making these changes, you have to rebuild the boot images:
+=update-initramfs -u -k all=.
+
+Reboot and cross your fingers! I didn't sign the image, but I wasn't prompted to enroll
+anything, so perhaps ubuntu's images are pre-signed (the install media also doesn't
+require fiddling like arch's).
+
+* nvidia drivers
+
+On ubuntu, =nvidia= drivers won't =modprobe= becuase [[https://askubuntu.com/questions/755238/why-disabling-secure-boot-is-enforced-policy-when-installing-3rd-party-modules][ubuntu uses]] the
+=CONFIG_MODULE_SIG_FORCE= option in its kernel. We have to sign them with the keys we
+enrolled earlier. 
+
+#+begin_example 
+$ sudo add-apt-repository ppa:graphics-drivers/ppa
+$ sudo apt update
+$ apt-cache search nvidia # find the package name you want
+$ sudo apt install nvidia-390
+#+end_example
+
+I got burned at some point with hybrid graphics, so I just have them off. Because of that,
+I don't want =nvidia-prime= and =bbswitch-dkms= installed.
+
+#+begin_example 
+$ sudo apt remove nvidia-prime bbswitch-dkms
+#+end_example
+
+We can just copy our keys from arch over to ubuntu.
+
+#+begin_example 
+$ sudo mount -o subvol=jwhendy /mnt
+$ mkdir ~/.ssl
+$ cp /mnt/.ssl/* ~/.ssl/
+#+end_example
+
+Lastly, we need to sign them. Ubuntu ships with it's own script for this, we we can just
+use that. It's located at =/usr/src/linux-headers-$(uname -r)/scripts/sign-file=. I found
+arch vs. ubuntu docs a little confusing in this respect. [[https://wiki.archlinux.org/index.php/Secure_Boot#Creating_keys][Arch generates]] a =.key= and
+=.crt=, then converts the =.crt= into a DER format =.cer=. [[http://www.pellegrino.link/2015/11/29/signing-nvidia-proprietary-driver-on-fedora.html][References]] for [[https://computerlinguist.org/make-dkms-sign-kernel-modules-for-secure-boot-on-ubuntu-1604.html][how to]] do this
+on ubuntu [[https://insights.ubuntu.com/2017/08/11/how-to-sign-things-for-secure-boot][generally show]] creating a =.priv= and =.der= directly. I used my best inference
+to sign wit the ubuntu provided tool, using the =.key= and =.cer= created earlier. Repeat
+the below with =nvidia*.ko= module:
+
+#+begin_example 
+$ cd /lib/modules/4.13.0-39-generic/updates/dkms
+$ sudo /usr/src/linux-headers-4.13.0-39-generic/scripts/sign-file sha256 ~/.ssl/mok_arch.key ~/.ssl/mok_arch.cer nvidia-390.ko
+#+end_example
+
+Installing =nvidia= itself creates a file that blacklists =nouveau= so all you need to do
+is reboot. If you get to a desktop from =lightdm=, it worked! You can verify with =lsmod=,
+checking to make sure =nouveau= is not present and =nvidia= is.
+
+
+* conclusion
+
+So that's it! I /love/ using =btrfs= for this purpose, as you can easily recreate this
+process with any number of distros. My use of ubuntu is for the [[http://www.ros.org/][Robot Operating System]]
+(ROS) pre-compiled binaries, and with new releases coming from both [[http://wiki.ros.org/melodic][ROS]] and [[http://releases.ubuntu.com/18.04/][ubuntu]] coming,
+this is perfect for not having to deal with re-partitioning, worrying about sizing, etc.
+
+* notes
+
+- I found that =refind-install= changed the system boot order. I got a little freaked out
+  at first, thinking something had been overwritten, but it was fine. You can change this
+  via the BIOS or =efibootmgr=.
+- the details are a bit over my head, but I believe it will never be possible to chainload
+  windows from =rEFInd=. When I try to do this, it asks for the BitLocker password. I
+  could find [[https://github.com/systemd/systemd/issues/3948][one other instance]] of this type of behavior. In commenting, it was suggested
+  that windows knows if something has intercepted it's own loader and thus it will force
+  the password ask.
+- in searching around, I founnd various references to bootloader options, but I think
+  they're either outdated, or not specific to using the =sd-encrypt= hook. For example
+  you'll see =cryptdevice= to specify the UUID of a device and the label to create in
+  =/dev/mapper=. [[https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Configuring_the_boot_loader_3][The wiki]] aligns with the fact that =sd-encrypt= uses the options [[https://www.freedesktop.org/software/systemd/man/systemd-cryptsetup-generator.html#][here]]
+  instead (like =luks.uuid=). 
+
+
+* various resources
+
+Other various sites I thought were helpful. This whole exercise felt like putting together
+bits and pieces from a lot of places, comparing them, using what was most consistent, etc.
+
+- [[https://askubuntu.com/questions/760671/could-not-load-vboxdrv-after-upgrade-to-ubuntu-16-04-and-i-want-to-keep-secur][Could not load 'vboxdrv' after upgrade to Ubuntu 16.04]]: helped me figure out why
+  =nvidia= couldn't be loaded and that signing looked to be similar to signing the kernel
+- [[http://www.pellegrino.link/2015/11/29/signing-nvidia-proprietary-driver-on-fedora.html][Signing Nvidia proprietary driver on Fedora]]: just another confirmation of the basic
+  signing method on ubuntu (not sure how the =sign-file= script and =sbsign= compare)
+- [[https://askubuntu.com/questions/717339/should-i-be-worried-about-warning-checksum-areas-are-greater-than-image-size][warning: checksum areas are greater than image size]]: post about a warning I've seen with
+  =sign-file= and =sbsign=. Like it says there, things still worked.
+- [[https://github.com/lcp/mokutil][mokutil]]: I didn't end up using it, but some places use =mokutil --import= and other
+  commands to deal with the keys. I stuck with =rEFInd='s utility and don't know if this
+  does the same thing without having to reboot into said utility or something else.
+- [[https://www.rodsbooks.com/refind/][the authoritative rEFInd site]]: site by the author, Rod Smith, which also contains a ton
+  of information about Secure Boot as well. His page [[http://www.rodsbooks.com/efi-bootloaders/controlling-sb.html#creatingkeys][on keys]] is a good example of the
+  conflicting information out there. While I'm sure his is probably the de facto "right"
+  way, it's either more than I needed or for other applications I'm not running into.

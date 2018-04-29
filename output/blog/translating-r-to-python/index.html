@@ -87,9 +87,9 @@ of them) fr">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-org5c88a44" class="outline-2">
-<h2 id="org5c88a44">Background</h2>
-<div class="outline-text-2" id="text-org5c88a44">
+    <div id="outline-container-orga190b49" class="outline-2">
+<h2 id="orga190b49">Background</h2>
+<div class="outline-text-2" id="text-orga190b49">
 <p>
 I've been using <code>R</code> for at least <a href="https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r">5 years</a>. Lately, I've been trying to pick up <code>python</code> as
 well, which is quite the learning experience! I've been through some tutorials (or pieces
@@ -128,9 +128,9 @@ likely will never use).
 </div>
 </div>
 
-<div id="outline-container-org974e34b" class="outline-2">
-<h2 id="org974e34b">The challenge</h2>
-<div class="outline-text-2" id="text-org974e34b">
+<div id="outline-container-orge52e610" class="outline-2">
+<h2 id="orge52e610">The challenge</h2>
+<div class="outline-text-2" id="text-orge52e610">
 <p>
 The data consists of some raw test data from a sensor. I've anonymized what it is, but the
 gist is as follows:
@@ -151,9 +151,9 @@ if you want to follow along.
 </div>
 </div>
 
-<div id="outline-container-org78690c2" class="outline-2">
-<h2 id="org78690c2">Using R</h2>
-<div class="outline-text-2" id="text-org78690c2">
+<div id="outline-container-org673c84a" class="outline-2">
+<h2 id="org673c84a">Using R</h2>
+<div class="outline-text-2" id="text-org673c84a">
 <p>
 So you can get a sense of how I'm doing this in <code>R</code> (comments/improvements welcome!),
 let's look at the raw data. <code>i</code> here is just the row number, but because of the sampling
@@ -175,6 +175,7 @@ data <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s
 4 4  -0.03  -0.05
 5 5  -0.03  -0.05
 6 6  -0.03  -0.05
+
 </pre>
 
 <p>
@@ -281,13 +282,13 @@ data_all <span class="o">&lt;-</span> <span class="kp">do.call</span><span class
 </div>
 
 
-<div id="outline-container-org5b00cdd" class="outline-2">
-<h2 id="org5b00cdd">The translation</h2>
-<div class="outline-text-2" id="text-org5b00cdd">
+<div id="outline-container-org2d14a11" class="outline-2">
+<h2 id="org2d14a11">The translation</h2>
+<div class="outline-text-2" id="text-org2d14a11">
 </div>
-<div id="outline-container-org2966dce" class="outline-3">
-<h3 id="org2966dce">Moving average</h3>
-<div class="outline-text-3" id="text-org2966dce">
+<div id="outline-container-org22da133" class="outline-3">
+<h3 id="org22da133">Moving average</h3>
+<div class="outline-text-3" id="text-org22da133">
 <p>
 I just went line by line trying to re-create what I wanted. I'll start with the moving
 average, <code>ma()</code> function. When I googles "moving average in R" some years ago, I got the
@@ -315,9 +316,9 @@ I ended up liking <code>pd.rolling</code>, so my new function is:
 </div>
 </div>
 
-<div id="outline-container-org93d5434" class="outline-3">
-<h3 id="org93d5434">Adjusting</h3>
-<div class="outline-text-3" id="text-org93d5434">
+<div id="outline-container-org6b3bf9f" class="outline-3">
+<h3 id="org6b3bf9f">Adjusting</h3>
+<div class="outline-text-3" id="text-org6b3bf9f">
 <p>
 The <code>adjuster()</code> function was <i>much</i> more difficult. Along the way, I ran into a bunch of
 other things I had to get up to speed on.
@@ -362,10 +363,10 @@ what I ended up with:
 </div>
 </div>
 
-<div id="outline-container-orgeec44eb" class="outline-3">
-<h3 id="orgeec44eb">Quasi <code>lapply()</code>
+<div id="outline-container-orgff33aa4" class="outline-3">
+<h3 id="orgff33aa4">Quasi <code>lapply()</code>
 </h3>
-<div class="outline-text-3" id="text-orgeec44eb">
+<div class="outline-text-3" id="text-orgff33aa4">
 <p>
 Next, to cycle through my columns to run them through <code>ma()</code> and <code>adjuster()</code>:
 </p>
@@ -401,9 +402,9 @@ Next, to cycle through my columns to run them through <code>ma()</code> and <cod
 
 
 
-<div id="outline-container-org560cadb" class="outline-3">
-<h3 id="org560cadb">The result</h3>
-<div class="outline-text-3" id="text-org560cadb">
+<div id="outline-container-org100d01b" class="outline-3">
+<h3 id="org100d01b">The result</h3>
+<div class="outline-text-3" id="text-org100d01b">
 <p>
 I'd call this a success!
 </p>
@@ -423,10 +424,10 @@ I'd call this a success!
 </div>
 
 
-<div id="outline-container-org5fad01c" class="outline-2">
-<h2 id="org5fad01c">A gotcha: indices in <code>pandas</code>
+<div id="outline-container-org5c79d7f" class="outline-2">
+<h2 id="org5c79d7f">A gotcha: indices in <code>pandas</code>
 </h2>
-<div class="outline-text-2" id="text-org5fad01c">
+<div class="outline-text-2" id="text-org5c79d7f">
 <p>
 I can't even stress how confused I was when my whole plot was shifted vs. the <code>R</code>
 result. It took me a <i>long</i> time to realize that even though I thought I got <code>loc</code>
@@ -441,8 +442,10 @@ by finding my index-based points, but as a final step doing:
 </p>
 
 <pre class="example">
+
 ## above it's just: start = valley
 start = col.index.get_loc(valley)
+
 </pre>
 
 <p>
@@ -465,6 +468,7 @@ those who are new like me!
 </p>
 
 <pre class="example">
+
 s1 = pd.Series(1, index = np.arange(0, 4))
 s2 = pd.Series(2, index = np.arange(2, 6))
 pd.DataFrame({'s1' : s1, 's2' : s2}) 
@@ -476,6 +480,7 @@ pd.DataFrame({'s1' : s1, 's2' : s2})
 3  1.0  2.0
 4  NaN  2.0
 5  NaN  2.0
+
 </pre>
 
 <p>
@@ -485,9 +490,9 @@ scratcher!
 </div>
 </div>
 
-<div id="outline-container-org652d038" class="outline-2">
-<h2 id="org652d038">Takeaway</h2>
-<div class="outline-text-2" id="text-org652d038">
+<div id="outline-container-orgd48ec04" class="outline-2">
+<h2 id="orgd48ec04">Takeaway</h2>
+<div class="outline-text-2" id="text-orgd48ec04">
 <p>
 Most of this was <i>relatively</i> straightforward, granted it still required a lot of
 digging. To conclude, this was immensely helpful. It seems like I should have figured this out a

@@ -13,6 +13,7 @@
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><style>body{font-size:17px;}</style>
 <meta name="author" content="John Henderson">
 <link rel="prev" href="../translating-r-to-python/" title="Translating R to python" type="text/html">
+<link rel="next" href="../arch-and-ubuntu-side-by-side-on-encrypted-btrfs/" title="Arch and Ubuntu side-by-side on encrypted btrfs" type="text/html">
 <meta property="og:site_name" content="jwhendy">
 <meta property="og:title" content="Comparing python plotting libraries">
 <meta property="og:url" content="https://jwhendy.github.io/blog/comparing-python-plotting-libraries/">
@@ -86,9 +87,9 @@ python's">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-org909e07f" class="outline-2">
-<h2 id="org909e07f">introduction</h2>
-<div class="outline-text-2" id="text-org909e07f">
+    <div id="outline-container-org0b67aa1" class="outline-2">
+<h2 id="org0b67aa1">introduction</h2>
+<div class="outline-text-2" id="text-org0b67aa1">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up <code>python</code>, coming from mostly
 using <code>R</code> over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -115,12 +116,14 @@ libraries:
 <li><a href="https://bokeh.pydata.org/en/latest/"><code>bokeh</code></a></li>
 <li><a href="http://pygal.org/en/stable/"><code>pygal</code></a></li>
 </ul>
+<!-- TEASER_END -->
 </div>
 </div>
 
-<div id="outline-container-orgcb3969f" class="outline-2">
-<h2 id="orgcb3969f">the example</h2>
-<div class="outline-text-2" id="text-orgcb3969f">
+
+<div id="outline-container-orga8e6cab" class="outline-2">
+<h2 id="orga8e6cab">the example</h2>
+<div class="outline-text-2" id="text-orga8e6cab">
 <p>
 I started <i>really</i> simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -182,9 +185,9 @@ Here are our three plots:
 </div>
 </div>
 
-<div id="outline-container-org90a4a31" class="outline-2">
-<h2 id="org90a4a31">ggpy</h2>
-<div class="outline-text-2" id="text-org90a4a31">
+<div id="outline-container-org1fb77d5" class="outline-2">
+<h2 id="org1fb77d5">ggpy</h2>
+<div class="outline-text-2" id="text-org1fb77d5">
 <p>
 Porting <code>ggplot2</code> to <code>python</code> is an <i>amazing</i> concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -291,9 +294,9 @@ Here's what we get!
 </div>
 
 
-<div id="outline-container-org4795ea3" class="outline-2">
-<h2 id="org4795ea3">matplotlib</h2>
-<div class="outline-text-2" id="text-org4795ea3">
+<div id="outline-container-orgfee3605" class="outline-2">
+<h2 id="orgfee3605">matplotlib</h2>
+<div class="outline-text-2" id="text-orgfee3605">
 <p>
 From my reading, this looks like the loved and hated "bread and butter" of <code>python</code>
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -368,9 +371,9 @@ command.
 </div>
 </div>
 
-<div id="outline-container-org82b0a8a" class="outline-2">
-<h2 id="org82b0a8a">seaborn</h2>
-<div class="outline-text-2" id="text-org82b0a8a">
+<div id="outline-container-org2c81982" class="outline-2">
+<h2 id="org2c81982">seaborn</h2>
+<div class="outline-text-2" id="text-org2c81982">
 <p>
 Seaborn was pretty straightforward. Not much else to say!
 </p>
@@ -414,9 +417,9 @@ Seaborn was pretty straightforward. Not much else to say!
 </div>
 </div>
 
-<div id="outline-container-orgd0188a8" class="outline-2">
-<h2 id="orgd0188a8">plotly</h2>
-<div class="outline-text-2" id="text-orgd0188a8">
+<div id="outline-container-org3e9dc39" class="outline-2">
+<h2 id="org3e9dc39">plotly</h2>
+<div class="outline-text-2" id="text-org3e9dc39">
 <p>
 For these plots, I left in the <code>jupyter lab</code> commands for plotting. To save them out, I
 clicked the camera icon in the <code>plotly</code> embedded plot. Surprisingly, you can <a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28">find evidence</a>
@@ -598,9 +601,9 @@ colors are hard to distinguish. The ability to put in <code>text=foo</code> is s
 </div>
 
 
-<div id="outline-container-orga8b7a1a" class="outline-2">
-<h2 id="orga8b7a1a">cufflinks</h2>
-<div class="outline-text-2" id="text-orga8b7a1a">
+<div id="outline-container-org1047174" class="outline-2">
+<h2 id="org1047174">cufflinks</h2>
+<div class="outline-text-2" id="text-org1047174">
 <p>
 I don't have much to say here; it's supposed to be a way to sort of layer <code>plotly</code> right
 onto <code>pd.DataFrame</code> objects. That makes it really succinct, but I also find the
@@ -661,9 +664,9 @@ So, I'll pass since I did this with <code>plotly</code> above already…
 </div>
 
 
-<div id="outline-container-orgf985369" class="outline-2">
-<h2 id="orgf985369">altair</h2>
-<div class="outline-text-2" id="text-orgf985369">
+<div id="outline-container-org04027ea" class="outline-2">
+<h2 id="org04027ea">altair</h2>
+<div class="outline-text-2" id="text-org04027ea">
 <p>
 I learned about <code>altair</code> from one of the inspirations between this exercise, which was a
 <a href="https://www.youtube.com/watch?v=FytuB8nFHPQ">talk from Jake VanderPlas</a> on the <code>python</code> visualization landscape. It was a great overview
@@ -715,9 +718,9 @@ looking at the syntax!
 </div>
 </div>
 
-<div id="outline-container-org3f895d0" class="outline-2">
-<h2 id="org3f895d0">bokeh</h2>
-<div class="outline-text-2" id="text-org3f895d0">
+<div id="outline-container-org8111a2b" class="outline-2">
+<h2 id="org8111a2b">bokeh</h2>
+<div class="outline-text-2" id="text-org8111a2b">
 <p>
 The first two are fairly uninteresting. I was excited to see that they'd
 <a href="https://github.com/bokeh/bokeh/issues/1645#issuecomment-75697289">put some nice thought</a> into colors! Indeed, that ability to select a <code>colorBrewer</code> palette
@@ -792,9 +795,9 @@ And the scatter plot attempt:
 </div>
 
 
-<div id="outline-container-org38a6734" class="outline-2">
-<h2 id="org38a6734">pygal</h2>
-<div class="outline-text-2" id="text-org38a6734">
+<div id="outline-container-org67b1181" class="outline-2">
+<h2 id="org67b1181">pygal</h2>
+<div class="outline-text-2" id="text-org67b1181">
 <p>
 <code>pygal</code> was certainly interesting. It's a little different than the others, but was more
 or less straightforward. 
@@ -868,9 +871,9 @@ of points on the x-axis instead.
 </div>
 </div>
 
-<div id="outline-container-org84f0907" class="outline-2">
-<h2 id="org84f0907">closing</h2>
-<div class="outline-text-2" id="text-org84f0907">
+<div id="outline-container-org7f0e6d7" class="outline-2">
+<h2 id="org7f0e6d7">closing</h2>
+<div class="outline-text-2" id="text-org7f0e6d7">
 <p>
 Hopefully for other noobs like myself that was helpful. I hope to continue this exercise with more
 complicated examples. I still feel a bit spoiled with <code>ggplot2</code>, but I have my fingers
@@ -897,6 +900,9 @@ don't think <code>python</code> is there yet.
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../translating-r-to-python/" rel="prev" title="Translating R to python">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../arch-and-ubuntu-side-by-side-on-encrypted-btrfs/" rel="next" title="Arch and Ubuntu side-by-side on encrypted btrfs">Next post</a>
             </li>
         </ul></nav></aside></article>
 </div>
