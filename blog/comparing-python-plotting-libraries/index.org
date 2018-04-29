@@ -33,6 +33,11 @@ libraries:
 - [[https://bokeh.pydata.org/en/latest/][=bokeh=]]
 - [[http://pygal.org/en/stable/][=pygal=]]
 
+#+begin_export html
+<!-- TEASER_END -->
+#+end_export
+
+
 * the example
 
 I started /really/ simple. Three types of plots: a simple bar, a dot plot (basically a

@@ -7,82 +7,94 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://jwhendy.github.io/</loc>
-  <lastmod>2017-08-27T21:34:00Z</lastmod>
+  <lastmod>2018-04-29T23:11:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/2017/</loc>
-  <lastmod>2017-05-15T20:51:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/2018/</loc>
+  <lastmod>2018-04-29T23:11:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/about/</loc>
-  <lastmod>2017-05-15T20:51:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/archive.html</loc>
-  <lastmod>2018-04-28T14:14:00Z</lastmod>
+  <lastmod>2018-04-29T23:11:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/blog/</loc>
-  <lastmod>2017-12-23T20:25:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/blog/2017-05-15-kick-off/</loc>
-  <lastmod>2017-05-15T20:51:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/blog/arch-and-ubuntu-side-by-side-on-encrypted-btrfs/</loc>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</loc>
-  <lastmod>2017-12-23T20:26:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/blog/translating-r-to-python/</loc>
-  <lastmod>2017-08-27T21:34:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/categories/</loc>
-  <lastmod>2017-08-28T02:36:00Z</lastmod>
+  <lastmod>2018-04-29T23:11:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/categories/first/</loc>
-  <lastmod>2017-05-15T23:10:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/categories/github/</loc>
-  <lastmod>2017-05-15T23:10:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/categories/learning/</loc>
-  <lastmod>2017-08-28T02:36:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jwhendy.github.io/categories/linux/</loc>
+  <lastmod>2018-04-29T23:11:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/categories/nikola/</loc>
-  <lastmod>2017-05-15T23:10:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/categories/python/</loc>
-  <lastmod>2017-08-28T02:36:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/categories/r/</loc>
-  <lastmod>2017-08-28T02:36:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/portfolio/</loc>
-  <lastmod>2017-05-15T23:01:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/portfolio/arts/</loc>
-  <lastmod>2017-05-15T22:32:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/portfolio/codey/</loc>
-  <lastmod>2017-05-15T22:32:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/portfolio/electronica/</loc>
-  <lastmod>2017-05-15T23:01:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://jwhendy.github.io/portfolio/house/</loc>
-  <lastmod>2017-05-15T22:32:00Z</lastmod>
+  <lastmod>2018-04-29T23:06:00Z</lastmod>
  </url>
 </urlset>
