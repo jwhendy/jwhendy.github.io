@@ -2,7 +2,7 @@
 .. title: The woes of repointing a stone foundation
 .. slug: the-woes-of-repointing-a-stone-foundation
 .. date: 2017-09-03 18:27:08 UTC-05:00
-.. tags: draft
+.. status: draft
 .. category: 
 .. link: 
 .. description: 

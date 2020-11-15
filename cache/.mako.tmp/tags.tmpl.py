@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1525043919.4286325
+_modified_time = 1605475248.2805614
 _enable_loop = True
 _template_filename = 'themes/jwhendy/templates/tags.tmpl'
 _template_uri = 'tags.tmpl'
@@ -28,16 +28,16 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        range = context.get('range', UNDEFINED)
-        items = context.get('items', UNDEFINED)
         cat_hierarchy = context.get('cat_hierarchy', UNDEFINED)
         title = context.get('title', UNDEFINED)
-        cat_items = context.get('cat_items', UNDEFINED)
-        messages = context.get('messages', UNDEFINED)
         len = context.get('len', UNDEFINED)
-        hidden_tags = context.get('hidden_tags', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        range = context.get('range', UNDEFINED)
+        hidden_tags = context.get('hidden_tags', UNDEFINED)
+        cat_items = context.get('cat_items', UNDEFINED)
+        messages = context.get('messages', UNDEFINED)
+        items = context.get('items', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -53,19 +53,19 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        range = context.get('range', UNDEFINED)
-        items = context.get('items', UNDEFINED)
         cat_hierarchy = context.get('cat_hierarchy', UNDEFINED)
         title = context.get('title', UNDEFINED)
-        cat_items = context.get('cat_items', UNDEFINED)
-        messages = context.get('messages', UNDEFINED)
         len = context.get('len', UNDEFINED)
-        hidden_tags = context.get('hidden_tags', UNDEFINED)
         def content():
             return render_content(context)
+        range = context.get('range', UNDEFINED)
+        hidden_tags = context.get('hidden_tags', UNDEFINED)
+        cat_items = context.get('cat_items', UNDEFINED)
+        messages = context.get('messages', UNDEFINED)
+        items = context.get('items', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n<h1>')
-        __M_writer(filters.html_escape(str(title)))
+        __M_writer(str(title))
         __M_writer('</h1>\n')
         if cat_items:
             if items:
@@ -74,11 +74,11 @@ def render_content(context,**pageargs):
                 __M_writer('</h2>\n')
             for text, full_name, path, link, indent_levels, indent_change_before, indent_change_after in cat_hierarchy:
                 for i in range(indent_change_before):
-                    __M_writer('            <ul class="list-inline">\n')
+                    __M_writer('            <ul class="unstyled">\n')
                 __M_writer('        <li><a class="reference badge" href="')
                 __M_writer(str(link))
                 __M_writer('">')
-                __M_writer(filters.html_escape(str(text)))
+                __M_writer(str(text))
                 __M_writer('</a>\n')
                 if indent_change_after <= 0:
                     __M_writer('            </li>\n')
@@ -97,7 +97,7 @@ def render_content(context,**pageargs):
                     __M_writer('            <li><a class="reference badge" href="')
                     __M_writer(str(link))
                     __M_writer('">')
-                    __M_writer(filters.html_escape(str(text)))
+                    __M_writer(str(text))
                     __M_writer('</a></li>\n')
             __M_writer('    </ul>\n')
         return ''

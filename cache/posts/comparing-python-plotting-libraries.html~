@@ -1,6 +1,6 @@
-<div id="outline-container-org6b24cfb" class="outline-2">
-<h2 id="org6b24cfb">introduction</h2>
-<div class="outline-text-2" id="text-org6b24cfb">
+<div id="outline-container-orgcd4637f" class="outline-2">
+<h2 id="orgcd4637f">introduction</h2>
+<div class="outline-text-2" id="text-orgcd4637f">
 <p>
 As mentioned in a <a href="https://jwhendy.github.io/blog/translating-r-to-python/">previous post</a>, I've been trying to pick up <code>python</code>, coming from mostly
 using <code>R</code> over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -27,12 +27,15 @@ libraries:
 <li><a href="https://bokeh.pydata.org/en/latest/"><code>bokeh</code></a></li>
 <li><a href="http://pygal.org/en/stable/"><code>pygal</code></a></li>
 </ul>
+
+<!-- TEASER_END -->
 </div>
 </div>
 
-<div id="outline-container-org422da44" class="outline-2">
-<h2 id="org422da44">the example</h2>
-<div class="outline-text-2" id="text-org422da44">
+
+<div id="outline-container-orga5d9377" class="outline-2">
+<h2 id="orga5d9377">the example</h2>
+<div class="outline-text-2" id="text-orga5d9377">
 <p>
 I started <i>really</i> simple. Three types of plots: a simple bar, a dot plot (basically a
 bar plot, but makes Tufte proud with a higher data:ink ratio), and a scatter plot colored
@@ -43,30 +46,30 @@ by group.
 The bar chart in R:
 </p>
 
-<div class="highlight"><pre><span></span><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
-data<span class="p">(</span>mtcars<span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">data</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
 
-df <span class="o">&lt;-</span> mtcars<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="p">]</span>
-df<span class="o">$</span>car <span class="o">&lt;-</span> <span class="kp">rownames</span><span class="p">(</span>df<span class="p">)</span>
+<span class="n">df</span> <span class="o">&lt;-</span> <span class="n">mtcars</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="p">]</span>
+<span class="n">df</span><span class="o">$</span><span class="n">car</span> <span class="o">&lt;-</span> <span class="nf">rownames</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> car<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">))</span> <span class="o">+</span> geom_bar<span class="p">(</span>stat<span class="o">=</span><span class="s">&quot;identity&quot;</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">car</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s">&quot;identity&quot;</span><span class="p">)</span>
 </pre></div>
 
 <p>
 A dot plot:
 </p>
 
-<div class="highlight"><pre><span></span>ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> car<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span> <span class="o">+</span> expand_limits<span class="p">(</span>y<span class="o">=</span><span class="m">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">car</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">expand_limits</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
 </pre></div>
 
 <p>
 And lastly, we'll use a bit more data and do a colored scatter plot:
 </p>
 
-<div class="highlight"><pre><span></span>df <span class="o">&lt;-</span> mtcars<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="p">]</span>
-df<span class="o">$</span>car <span class="o">&lt;-</span> <span class="kp">rownames</span><span class="p">(</span>df<span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">&lt;-</span> <span class="n">mtcars</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="p">]</span>
+<span class="n">df</span><span class="o">$</span><span class="n">car</span> <span class="o">&lt;-</span> <span class="nf">rownames</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> wt<span class="p">,</span> y <span class="o">=</span> mpg<span class="p">,</span> colour <span class="o">=</span> car<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">wt</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">car</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span>
 </pre></div>
 
 <p>
@@ -77,26 +80,26 @@ Here are our three plots:
 <table>
   <td>
     <tr>
-      <a href="../../img/r_mtcars_bar.png"><img src="../../img/r_mtcars_bar.png" width="30%" /></a>
+      <a href=".././img/r_mtcars_bar.png"><img src=".././img/r_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/r_mtcars_dot.png"><img src="../../img/r_mtcars_dot.png" width="30%" /></a>
+      <a href=".././img/r_mtcars_dot.png"><img src=".././img/r_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/r_mtcars_scatter_color.png"><img src="../../img/r_mtcars_scatter_color.png" width="30%" /></a>
+      <a href=".././img/r_mtcars_scatter_color.png"><img src=".././img/r_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org438a69f" class="outline-2">
-<h2 id="org438a69f">ggpy</h2>
-<div class="outline-text-2" id="text-org438a69f">
+<div id="outline-container-org1d29879" class="outline-2">
+<h2 id="org1d29879">ggpy</h2>
+<div class="outline-text-2" id="text-org1d29879">
 <p>
 Porting <code>ggplot2</code> to <code>python</code> is an <i>amazing</i> concept. The whole idea behind the grammar
 of graphics is how little the code needs to change for different visualizations. We're
@@ -145,11 +148,9 @@ for the scatter seemed not to incorporate the legend in the width. Using the sam
 got this:
 </p>
 
-
-<div class="figure">
-<p><img src="../../img/ggpy_mtcars_scatter_color_crunch.png" alt="ggpy_mtcars_scatter_color_crunch.png" width="600px" />
+<p width="600px">
+<img src="/img/ggpy_mtcars_scatter_color_crunch.png" alt="nil"/>
 </p>
-</div>
 
 <p>
 To get the legend to fit, I had to bump the size, but that makes the text labels much
@@ -186,17 +187,17 @@ Here's what we get!
 <table>
   <td>
     <tr>
-      <a href="../../img/ggpy_mtcars_bar.png"><img src="../../img/ggpy_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/ggpy_mtcars_bar.png"><img src="/img/ggpy_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/ggpy_mtcars_dot.png"><img src="../../img/ggpy_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/ggpy_mtcars_dot.png"><img src="/img/ggpy_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/ggpy_mtcars_scatter_color.png"><img src="../../img/ggpy_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/ggpy_mtcars_scatter_color.png"><img src="/img/ggpy_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
@@ -204,9 +205,9 @@ Here's what we get!
 </div>
 
 
-<div id="outline-container-orgdd4fefc" class="outline-2">
-<h2 id="orgdd4fefc">matplotlib</h2>
-<div class="outline-text-2" id="text-orgdd4fefc">
+<div id="outline-container-org2118327" class="outline-2">
+<h2 id="org2118327">matplotlib</h2>
+<div class="outline-text-2" id="text-org2118327">
 <p>
 From my reading, this looks like the loved and hated "bread and butter" of <code>python</code>
 plotting. I think the biggest complaint I've seen is the verbosity. I didn't experience
@@ -229,7 +230,7 @@ adding a layer of dots for each group. That also required some fiddling with the
 The bar plot:
 </p>
 
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
@@ -264,32 +265,32 @@ command.
 <table>
   <td>
     <tr>
-      <a href="../../img/mat_mtcars_bar.png"><img src="../../img/mat_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/mat_mtcars_bar.png"><img src="/img/mat_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/mat_mtcars_dot.png"><img src="../../img/mat_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/mat_mtcars_dot.png"><img src="/img/mat_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/mat_mtcars_scatter_color.png"><img src="../../img/mat_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/mat_mtcars_scatter_color.png"><img src="/img/mat_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org63650c7" class="outline-2">
-<h2 id="org63650c7">seaborn</h2>
-<div class="outline-text-2" id="text-org63650c7">
+<div id="outline-container-org391af15" class="outline-2">
+<h2 id="org391af15">seaborn</h2>
+<div class="outline-text-2" id="text-org391af15">
 <p>
 Seaborn was pretty straightforward. Not much else to say!
 </p>
 
 
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mpg&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
@@ -303,33 +304,33 @@ Seaborn was pretty straightforward. Not much else to say!
 </pre></div>
 
 <div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;wt&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mpg&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;car&#39;</span><span class="p">,</span>
-	   <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">fit_reg</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	   <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">fit_reg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
 <table>
   <td>
     <tr>
-      <a href="../../img/sea_mtcars_bar.png"><img src="../../img/sea_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/sea_mtcars_bar.png"><img src="/img/sea_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/sea_mtcars_dot.png"><img src="../../img/sea_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/sea_mtcars_dot.png"><img src="/img/sea_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/sea_mtcars_scatter_color.png"><img src="../../img/sea_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/sea_mtcars_scatter_color.png"><img src="/img/sea_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
 </div>
 </div>
 
-<div id="outline-container-orgcc4be29" class="outline-2">
-<h2 id="orgcc4be29">plotly</h2>
-<div class="outline-text-2" id="text-orgcc4be29">
+<div id="outline-container-orgd1280b0" class="outline-2">
+<h2 id="orgd1280b0">plotly</h2>
+<div class="outline-text-2" id="text-orgd1280b0">
 <p>
 For these plots, I left in the <code>jupyter lab</code> commands for plotting. To save them out, I
 clicked the camera icon in the <code>plotly</code> embedded plot. Surprisingly, you can <a href="https://community.plot.ly/t/use-plotly-offline-to-save-chart-as-image-file/408/28">find evidence</a>
@@ -350,7 +351,7 @@ The bar plot was pretty straightforward:
 </p>
 
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly</span>
-<span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="kn">as</span> <span class="nn">go</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
 
 <span class="n">plotly</span><span class="o">.</span><span class="n">offline</span><span class="o">.</span><span class="n">init_notebook_mode</span><span class="p">()</span>
 
@@ -408,7 +409,7 @@ Plotly's <a href="https://plot.ly/python/line-and-scatter/#scatter-with-a-color-
 	<span class="n">size</span><span class="o">=</span><span class="s1">&#39;16&#39;</span><span class="p">,</span>
 	<span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span> <span class="c1">#set color equal to a variable</span>
 	<span class="n">colorscale</span><span class="o">=</span><span class="s1">&#39;Viridis&#39;</span><span class="p">,</span>
-	<span class="n">showscale</span><span class="o">=</span><span class="bp">True</span>
+	<span class="n">showscale</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 <span class="p">)]</span>
 </pre></div>
@@ -493,17 +494,17 @@ colors are hard to distinguish. The ability to put in <code>text=foo</code> is s
 <table>
   <td>
     <tr>
-      <a href="../../img/plotly_mtcars_bar.png"><img src="../../img/plotly_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/plotly_mtcars_bar.png"><img src="/img/plotly_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/plotly_mtcars_dot.png"><img src="../../img/plotly_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/plotly_mtcars_dot.png"><img src="/img/plotly_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/plotly_mtcars_scatter_color.png"><img src="../../img/plotly_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/plotly_mtcars_scatter_color.png"><img src="/img/plotly_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
@@ -511,16 +512,16 @@ colors are hard to distinguish. The ability to put in <code>text=foo</code> is s
 </div>
 
 
-<div id="outline-container-org42748b9" class="outline-2">
-<h2 id="org42748b9">cufflinks</h2>
-<div class="outline-text-2" id="text-org42748b9">
+<div id="outline-container-org1abecbe" class="outline-2">
+<h2 id="org1abecbe">cufflinks</h2>
+<div class="outline-text-2" id="text-org1abecbe">
 <p>
 I don't have much to say here; it's supposed to be a way to sort of layer <code>plotly</code> right
 onto <code>pd.DataFrame</code> objects. That makes it really succinct, but I also find the
 documentation lacking.
 </p>
 
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cufflinks</span> <span class="kn">as</span> <span class="nn">cf</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cufflinks</span> <span class="k">as</span> <span class="nn">cf</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mpg&#39;</span><span class="p">)</span>
 </pre></div>
@@ -556,17 +557,17 @@ So, I'll pass since I did this with <code>plotly</code> above already&#x2026;
 <table>
   <td>
     <tr>
-      <a href="../../img/cf_mtcars_bar.png"><img src="../../img/cf_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/cf_mtcars_bar.png"><img src="/img/cf_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/cf_mtcars_dot.png"><img src="../../img/cf_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/cf_mtcars_dot.png"><img src="/img/cf_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/plotly_mtcars_scatter_color.png"><img src="../../img/plotly_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/plotly_mtcars_scatter_color.png"><img src="/img/plotly_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
@@ -574,9 +575,9 @@ So, I'll pass since I did this with <code>plotly</code> above already&#x2026;
 </div>
 
 
-<div id="outline-container-org42e6888" class="outline-2">
-<h2 id="org42e6888">altair</h2>
-<div class="outline-text-2" id="text-org42e6888">
+<div id="outline-container-orgf280877" class="outline-2">
+<h2 id="orgf280877">altair</h2>
+<div class="outline-text-2" id="text-orgf280877">
 <p>
 I learned about <code>altair</code> from one of the inspirations between this exercise, which was a
 <a href="https://www.youtube.com/watch?v=FytuB8nFHPQ">talk from Jake VanderPlas</a> on the <code>python</code> visualization landscape. It was a great overview
@@ -590,7 +591,7 @@ too cumbersome. One downside is that I couldn't get the chart size to play along
 apparently works for other types, maybe just <a href="https://github.com/altair-viz/altair/issues/173#issuecomment-353702876">not bars</a>?
 </p>
 
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="kn">as</span> <span class="nn">alt</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
 <span class="n">alt</span><span class="o">.</span><span class="n">enable_mime_rendering</span><span class="p">()</span>
 
 <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mpg&#39;</span><span class="p">)</span>
@@ -611,26 +612,26 @@ looking at the syntax!
 <table>
   <td>
     <tr>
-      <a href="../../img/alt_mtcars_bar.png"><img src="../../img/alt_mtcars_bar.png" width="15%" /></a>
+      <a href="/img/alt_mtcars_bar.png"><img src="/img/alt_mtcars_bar.png" width="15%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/alt_mtcars_dot.png"><img src="../../img/alt_mtcars_dot.png" width="15%" /></a>
+      <a href="/img/alt_mtcars_dot.png"><img src="/img/alt_mtcars_dot.png" width="15%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/alt_mtcars_scatter_color.png"><img src="../../img/alt_mtcars_scatter_color.png" width="40%" /></a>
+      <a href="/img/alt_mtcars_scatter_color.png"><img src="/img/alt_mtcars_scatter_color.png" width="40%" /></a>
     </tr>
   </td>
 </table>
 </div>
 </div>
 
-<div id="outline-container-orgd9db124" class="outline-2">
-<h2 id="orgd9db124">bokeh</h2>
-<div class="outline-text-2" id="text-orgd9db124">
+<div id="outline-container-org118e7e5" class="outline-2">
+<h2 id="org118e7e5">bokeh</h2>
+<div class="outline-text-2" id="text-org118e7e5">
 <p>
 The first two are fairly uninteresting. I was excited to see that they'd
 <a href="https://github.com/bokeh/bokeh/issues/1645#issuecomment-75697289">put some nice thought</a> into colors! Indeed, that ability to select a <code>colorBrewer</code> palette
@@ -687,17 +688,17 @@ And the scatter plot attempt:
 <table>
   <td>
     <tr>
-      <a href="../../img/bok_mtcars_bar.png"><img src="../../img/bok_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/bok_mtcars_bar.png"><img src="/img/bok_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/bok_mtcars_dot.png"><img src="../../img/bok_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/bok_mtcars_dot.png"><img src="/img/bok_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/bok_mtcars_scatter_color.png"><img src="../../img/bok_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/bok_mtcars_scatter_color.png"><img src="/img/bok_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
@@ -705,9 +706,9 @@ And the scatter plot attempt:
 </div>
 
 
-<div id="outline-container-org2b69c6d" class="outline-2">
-<h2 id="org2b69c6d">pygal</h2>
-<div class="outline-text-2" id="text-org2b69c6d">
+<div id="outline-container-orgedce06b" class="outline-2">
+<h2 id="orgedce06b">pygal</h2>
+<div class="outline-text-2" id="text-orgedce06b">
 <p>
 <code>pygal</code> was certainly interesting. It's a little different than the others, but was more
 or less straightforward. 
@@ -722,7 +723,7 @@ x-axis marks to be labeled. I wish it was just as easy as <code>x=foo, y=bar</co
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygal</span>
 
 <span class="n">chart</span> <span class="o">=</span> <span class="n">pygal</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
-		  <span class="n">explicit_size</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+		  <span class="n">explicit_size</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">y_labels_major</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">x_labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">]</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
@@ -738,8 +739,8 @@ observation of something I don't think should be necessary.
 </p>
 
 <div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">pygal</span><span class="o">.</span><span class="n">XY</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
-		 <span class="n">explicit_size</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-		 <span class="n">stroke</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="c1">#, range=(0, max(df[&#39;mpg&#39;])*1.1))</span>
+		 <span class="n">explicit_size</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+		 <span class="n">stroke</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="c1">#, range=(0, max(df[&#39;mpg&#39;])*1.1))</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">y_labels_major</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">x_labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">]</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))])</span>
@@ -754,7 +755,7 @@ of points on the x-axis instead.
 </p>
 
 <div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">pygal</span><span class="o">.</span><span class="n">XY</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
-		 <span class="n">explicit_size</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+		 <span class="n">explicit_size</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">y_labels_major</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
     <span class="n">chart</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;wt&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])])</span>
@@ -764,26 +765,26 @@ of points on the x-axis instead.
 <table>
   <td>
     <tr>
-      <a href="../../img/pygal_mtcars_bar.png"><img src="../../img/pygal_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/pygal_mtcars_bar.png"><img src="/img/pygal_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/pygal_mtcars_dot.png"><img src="../../img/pygal_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/pygal_mtcars_dot.png"><img src="/img/pygal_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/pygal_mtcars_scatter_color.png"><img src="../../img/pygal_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/pygal_mtcars_scatter_color.png"><img src="/img/pygal_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org29c2524" class="outline-2">
-<h2 id="org29c2524">closing</h2>
-<div class="outline-text-2" id="text-org29c2524">
+<div id="outline-container-org1605f6a" class="outline-2">
+<h2 id="org1605f6a">closing</h2>
+<div class="outline-text-2" id="text-org1605f6a">
 <p>
 Hopefully for other noobs like myself that was helpful. I hope to continue this exercise with more
 complicated examples. I still feel a bit spoiled with <code>ggplot2</code>, but I have my fingers

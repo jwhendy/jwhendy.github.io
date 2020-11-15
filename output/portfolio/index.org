@@ -32,9 +32,9 @@
 \end{tikzpicture}
 #+end_src
 
-#+attr_html: :width 75%
+#+attr_html: :width 500px
 #+RESULTS: in-and-out
-[[file:../img/in-and-out.png]]
+[[img-url:/img/in-and-out.png]]
 
 
 
@@ -53,14 +53,14 @@ Take a look around; if you want to get back here, click =portfolio= in the top m
     <div class="col-md-6">
       <a href="codey/"><strong>codey things</strong></a><br/><br/>
       <a href="codey/">
-        <img src="../img/insurance-viz.png" style="max-width: 80%; border-radius: 10px;" alt="frame" />
+        <img src="/img/insurance-viz.png" style="max-width: 80%; border-radius: 10px;" alt="benefits app" />
       </a>
     </div>
 
     <div class="col-md-6">
       <a href="electronica/"><strong>electronica</strong></a><br/><br/>
       <a href="electronica/">
-        <img src="../img/liam-led-matrix.jpg" style="max-width: 80%; border-radius: 10px;" alt="frame" />
+        <img src="/img/liam-led-matrix.jpg" style="max-width: 80%; border-radius: 10px;" alt="led" />
       </a>
     </div>
 
@@ -69,14 +69,14 @@ Take a look around; if you want to get back here, click =portfolio= in the top m
     <div class="col-md-6">
       <a href="arts/"><strong>fine arts</strong></a><br/><br/>
       <a href="arts/">
-        <img src="http://imgur.com/QM93Z.png" style="max-width: 80%; border-radius: 10px;" alt="frame" />
+        <img src="http://i.imgur.com/QM93Z.png" style="max-width: 80%; border-radius: 10px;" alt="frame" />
       </a>
     </div>
 
     <div class="col-md-6">
       <a href="house/"><strong>house</strong></a><br/><br/>
       <a href="house/">
-        <img src="../img/roof.jpg" style="max-width: 80%; border-radius: 10px;" alt="frame" />
+        <img src="/img/roof.jpg" style="max-width: 80%; border-radius: 10px;" alt="roof" />
       </a>
     </div>
 

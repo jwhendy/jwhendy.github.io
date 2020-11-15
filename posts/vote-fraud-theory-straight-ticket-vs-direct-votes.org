@@ -1,0 +1,81 @@
+#+BEGIN_COMMENT
+.. title: Vote fraud theory: straight ticket vs. direct votes
+.. slug: vote-fraud-theory-straight-ticket-vs-direct-votes
+.. date: 2020-11-15 10:50:25 UTC-06:00
+.. tags: 
+.. category: 
+.. status: draft
+.. description: 
+.. type: text
+
+#+END_COMMENT
+
+
+* background
+
+While the 2020 election is behind us, this is not the case with interpretations. Theories
+abound proposing how and why we can /know/ that fraud is the overwhelming conclusion. One
+such theory is contained in [[https://www.youtube.com/watch?v=YRJCB6U-H4E][this video]] by a [[https://en.wikipedia.org/wiki/Shiva_Ayyadurai][Dr. Shiva]]. The gist goes like this:
+- in certain states, one may vote "straight ticket," which means making one choice to
+  select all same-party candidates on the ballot
+- one may also "direct vote," meaning one makes individual choices (which may or may not
+  be for all same-party candidates)
+- for a given party, there is an expected correlation between the percent of straight
+  ticket votes in an area (e.g. precinct, county) and direct votes for others of the same
+  party; deviating from this correlation implies fraud
+
+Let's take a look!
+
+#+begin_export html
+<!-- TEASER_END -->
+#+end_export
+
+Several early warning signs stood out to me ahead of actually digging into the proposed theory:
+
+- MIT is slapped all over this, which I thought implied he was faculty until I re-looked
+  in order to write this post.
+
+#+attr_html: :width 500px
+[[img-url:/blog/img/shiva_intro_creds.png]]
+
+- he includes a long preface citing his pedigree, degrees, and Fullbright scholarship
+- the [[https://en.wikipedia.org/wiki/Shiva_Ayyadurai][wiki page]] on him refers to a past history of promoting conspiracies, and falsely
+  claiming to have invented email
+- his personal behavior after losing an election is [[https://web.archive.org/web/20201115165853if_/https://www.reddit.com/r/boston/comments/ikyqep/shiva_is_an_unhinged_maniac_and_inciting_violence/][less than stellar]]
+
+Nevertheless, we can take the data and reasoning on their own merits, though I think past
+credibility and general conduct is relevant data to consider.
+
+* the lead in
+
+Dr. Shiva's strategy begins by planting seeds of doubt. For example, here he points out
+the lack of traceability and verification abilities for voters:
+
+#+attr_html: :width 500px
+[[img-url:/blog/img/shiva_doubt.png]]
+
+He presents the aility of General Election Management System (GEMS) software to use
+weighted votes (where a vote != 1), and to apparently display/calcualte fractional
+votes. [[http://blackboxvoting.org/fraction-magic-2/][This work]] has been done by Black Box Voting, and led me down a bit of a rabbit
+hole, and I admit that the wiki page on [[https://en.wikipedia.org/wiki/Premier_Election_Solutions][Premier Election Solutions]] doesn't instill
+confidence, but this is a far cry from the type of investigation and evidence one would
+need to show that any of these features or vulnerabilities was used to alter results.
+
+Next, we're shown a table that supposedly comes from FOIA requests for various towns in
+Massachusetts, showing that the number of votes recorded in the MA 2020 primary election
+exceeded the number of voters on "participating voter lists" for 15 cities/downs he
+audited.
+
+#+attr_html: :width 500px
+[[img-url:/blog/img/shiva_excess-votes.png]]
+
+Note that the raw data isn't provided, no context is given (what is a "participating voter
+list"?), 
+
+
+
+
+
+
+
+https://www.techdirt.com/articles/20201101/16264445627/shiva-ayyadurais-lawsuit-against-massachusetts-official-actually-raises-interesting-1st-amendment-question-about-election.shtml
