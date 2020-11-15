@@ -84,17 +84,17 @@ Here are our three plots:
 <table>
   <td>
     <tr>
-      <a href="../../img/r_mtcars_bar.png"><img src="../../img/r_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/r_mtcars_bar.png"><img src="/img/r_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/r_mtcars_dot.png"><img src="../../img/r_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/r_mtcars_dot.png"><img src="/img/r_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/r_mtcars_scatter_color.png"><img src="../../img/r_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/r_mtcars_scatter_color.png"><img src="/img/r_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
@@ -140,7 +140,7 @@ for the scatter seemed not to incorporate the legend in the width. Using the sam
 got this:
 
 #+attr_html: :width 600px
-[[../../img/ggpy_mtcars_scatter_color_crunch.png]]
+[[img-url:/img/ggpy_mtcars_scatter_color_crunch.png]]
 
 To get the legend to fit, I had to bump the size, but that makes the text labels much
 smaller with respect to the plot. In =ggplot=, I could fix this with some =theme()= options; I didn't get far
@@ -170,17 +170,17 @@ Here's what we get!
 <table>
   <td>
     <tr>
-      <a href="../../img/ggpy_mtcars_bar.png"><img src="../../img/ggpy_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/ggpy_mtcars_bar.png"><img src="/img/ggpy_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/ggpy_mtcars_dot.png"><img src="../../img/ggpy_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/ggpy_mtcars_dot.png"><img src="/img/ggpy_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/ggpy_mtcars_scatter_color.png"><img src="../../img/ggpy_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/ggpy_mtcars_scatter_color.png"><img src="/img/ggpy_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
@@ -238,17 +238,17 @@ plt.show()
 <table>
   <td>
     <tr>
-      <a href="../../img/mat_mtcars_bar.png"><img src="../../img/mat_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/mat_mtcars_bar.png"><img src="/img/mat_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/mat_mtcars_dot.png"><img src="../../img/mat_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/mat_mtcars_dot.png"><img src="/img/mat_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/mat_mtcars_scatter_color.png"><img src="../../img/mat_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/mat_mtcars_scatter_color.png"><img src="/img/mat_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
@@ -285,17 +285,17 @@ plt.show()
 <table>
   <td>
     <tr>
-      <a href="../../img/sea_mtcars_bar.png"><img src="../../img/sea_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/sea_mtcars_bar.png"><img src="/img/sea_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/sea_mtcars_dot.png"><img src="../../img/sea_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/sea_mtcars_dot.png"><img src="/img/sea_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/sea_mtcars_scatter_color.png"><img src="../../img/sea_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/sea_mtcars_scatter_color.png"><img src="/img/sea_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
@@ -451,17 +451,17 @@ colors are hard to distinguish. The ability to put in ~text=foo~ is super handy.
 <table>
   <td>
     <tr>
-      <a href="../../img/plotly_mtcars_bar.png"><img src="../../img/plotly_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/plotly_mtcars_bar.png"><img src="/img/plotly_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/plotly_mtcars_dot.png"><img src="../../img/plotly_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/plotly_mtcars_dot.png"><img src="/img/plotly_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/plotly_mtcars_scatter_color.png"><img src="../../img/plotly_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/plotly_mtcars_scatter_color.png"><img src="/img/plotly_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
@@ -505,17 +505,17 @@ So, I'll pass since I did this with =plotly= above already...
 <table>
   <td>
     <tr>
-      <a href="../../img/cf_mtcars_bar.png"><img src="../../img/cf_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/cf_mtcars_bar.png"><img src="/img/cf_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/cf_mtcars_dot.png"><img src="../../img/cf_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/cf_mtcars_dot.png"><img src="/img/cf_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/plotly_mtcars_scatter_color.png"><img src="../../img/plotly_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/plotly_mtcars_scatter_color.png"><img src="/img/plotly_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
@@ -556,17 +556,17 @@ alt.Chart(df).mark_point().encode(x='wt', y='mpg', color='car')
 <table>
   <td>
     <tr>
-      <a href="../../img/alt_mtcars_bar.png"><img src="../../img/alt_mtcars_bar.png" width="15%" /></a>
+      <a href="/img/alt_mtcars_bar.png"><img src="/img/alt_mtcars_bar.png" width="15%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/alt_mtcars_dot.png"><img src="../../img/alt_mtcars_dot.png" width="15%" /></a>
+      <a href="/img/alt_mtcars_dot.png"><img src="/img/alt_mtcars_dot.png" width="15%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/alt_mtcars_scatter_color.png"><img src="../../img/alt_mtcars_scatter_color.png" width="40%" /></a>
+      <a href="/img/alt_mtcars_scatter_color.png"><img src="/img/alt_mtcars_scatter_color.png" width="40%" /></a>
     </tr>
   </td>
 </table>
@@ -626,17 +626,17 @@ show(p)
 <table>
   <td>
     <tr>
-      <a href="../../img/bok_mtcars_bar.png"><img src="../../img/bok_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/bok_mtcars_bar.png"><img src="/img/bok_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/bok_mtcars_dot.png"><img src="../../img/bok_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/bok_mtcars_dot.png"><img src="/img/bok_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/bok_mtcars_scatter_color.png"><img src="../../img/bok_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/bok_mtcars_scatter_color.png"><img src="/img/bok_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>
@@ -700,17 +700,17 @@ chart
 <table>
   <td>
     <tr>
-      <a href="../../img/pygal_mtcars_bar.png"><img src="../../img/pygal_mtcars_bar.png" width="30%" /></a>
+      <a href="/img/pygal_mtcars_bar.png"><img src="/img/pygal_mtcars_bar.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/pygal_mtcars_dot.png"><img src="../../img/pygal_mtcars_dot.png" width="30%" /></a>
+      <a href="/img/pygal_mtcars_dot.png"><img src="/img/pygal_mtcars_dot.png" width="30%" /></a>
     </tr>
   </td>
   <td>
     <tr>
-      <a href="../../img/pygal_mtcars_scatter_color.png"><img src="../../img/pygal_mtcars_scatter_color.png" width="30%" /></a>
+      <a href="/img/pygal_mtcars_scatter_color.png"><img src="/img/pygal_mtcars_scatter_color.png" width="30%" /></a>
     </tr>
   </td>
 </table>

@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width">
 <title>kicking off a github site with nikola | jwhendy</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<meta name="theme-color" content="#5670d4">
-<meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://jwhendy.github.io/blog/2017-05-15-kick-off/">
-<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><style>body{font-size:17px;}</style>
-<meta name="author" content="John Henderson">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="John Henderson">
 <link rel="next" href="../translating-r-to-python/" title="Translating R to python" type="text/html">
 <meta property="og:site_name" content="jwhendy">
 <meta property="og:title" content="kicking off a github site with nikola">
@@ -28,23 +24,24 @@
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-default navbar-static-top"><div class="container">
-<!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
+<div class="navbar navbar-static-top" id="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://jwhendy.github.io/">
+        </a>
+
+            <a class="brand" href="https://jwhendy.github.io/">
 
                 <span id="blog-title">jwhendy</span>
             </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
-            <ul class="nav navbar-nav">
+            <!-- Everything you want hidden at 940px or less, place within here -->
+            <div class="nav-collapse collapse">
+                <ul class="nav">
 <li>
 <a href="../../portfolio/">portfolio</a>
                 </li>
@@ -54,28 +51,42 @@
 <li>
 <a href="../../categories/">tags</a>
 
-                
-            </li>
+                    
+                </li>
 </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav pull-right">
+<li>
+    </li>
+<li>
+    <a href="index.org" id="sourcelink">Source</a>
+    </li>
+
+                
+                </ul>
 </div>
-<!-- /.navbar-collapse -->
+        </div>
     </div>
-<!-- /.container -->
-</nav><!-- End of Menubar --><div class="container" id="content" role="main">
-    <div class="body-content">
-        <!--Body content-->
-        <div class="row">
-            
-            
+</div>
+<!-- End of Menubar -->
+<div class="container-fluid" id="content" role="main">
+    <!--Body content-->
+    <div class="row-fluid">
+    <div class="span2"></div>
+    <div class="span8">
+    
+    
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">kicking off a github site with nikola</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
                     John Henderson
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-05-15T15:12:47-05:00" itemprop="datePublished" title="2017-05-15 15:12">2017-05-15 15:12</time></a></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2017-05-15T15:12:47-05:00" itemprop="datePublished" title="2017-05-15 15:12">2017-05-15 15:12</time></a>
+            </p>
             
+        <p class="sourceline"><a href="index.org" class="sourcelink">Source</a></p>
 
         </div>
         
@@ -96,19 +107,23 @@ trying to see how this works
             </li>
         </ul></nav></aside></article>
 </div>
-        <!--End of body content-->
-
-        <footer id="footer">
-            Contents © 2018         <a href="mailto:jw.hendy@gmail.com">John Henderson</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
-            
-        </footer>
+    </div>
+    <!--End of body content-->
 </div>
+<div class="footerbox">
+    Contents © 2020         <a href="mailto:jw.hendy@gmail.com">John Henderson</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
 </div>
 
-
-            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
 </body>
 </html>

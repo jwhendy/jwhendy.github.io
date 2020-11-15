@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about learning)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/learning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 29 Apr 2018 23:13:44 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org0b67aa1" class="outline-2"&gt;
-&lt;h2 id="org0b67aa1"&gt;introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org0b67aa1"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy (Posts about learning)</title><link>https://jwhendy.github.io/</link><description></description><atom:link href="https://jwhendy.github.io/categories/learning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 15 Nov 2020 18:45:11 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orgbfd2c65" class="outline-2"&gt;
+&lt;h2 id="orgbfd2c65"&gt;introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgbfd2c65"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up &lt;code&gt;python&lt;/code&gt;, coming from mostly
 using &lt;code&gt;R&lt;/code&gt; over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -29,9 +29,9 @@ libraries:
 &lt;li&gt;&lt;a href="http://pygal.org/en/stable/"&gt;&lt;code&gt;pygal&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a href="https://jwhendy.github.io/blog/comparing-python-plotting-libraries/"&gt;Read more…&lt;/a&gt; (20 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</guid><pubDate>Sat, 23 Dec 2017 19:33:34 GMT</pubDate></item><item><title>Translating R to python</title><link>https://jwhendy.github.io/blog/translating-r-to-python/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orga190b49" class="outline-2"&gt;
-&lt;h2 id="orga190b49"&gt;Background&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orga190b49"&gt;
+&lt;p&gt;&lt;a href="https://jwhendy.github.io/blog/comparing-python-plotting-libraries/"&gt;Read more…&lt;/a&gt; (20 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</guid><pubDate>Sat, 23 Dec 2017 19:33:34 GMT</pubDate></item><item><title>Translating R to python</title><link>https://jwhendy.github.io/blog/translating-r-to-python/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orga830a45" class="outline-2"&gt;
+&lt;h2 id="orga830a45"&gt;Background&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orga830a45"&gt;
 &lt;p&gt;
 I've been using &lt;code&gt;R&lt;/code&gt; for at least &lt;a href="https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r"&gt;5 years&lt;/a&gt;. Lately, I've been trying to pick up &lt;code&gt;python&lt;/code&gt; as
 well, which is quite the learning experience! I've been through some tutorials (or pieces
@@ -66,4 +66,4 @@ targetted (I'm extracting the small % of information I need vs. trying to digest
 likely will never use).
 &lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;Read more…&lt;/a&gt; (7 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/translating-r-to-python/</guid><pubDate>Sun, 27 Aug 2017 20:52:28 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;Read more…&lt;/a&gt; (8 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/translating-r-to-python/</guid><pubDate>Sun, 27 Aug 2017 20:52:28 GMT</pubDate></item></channel></rss>

@@ -2,7 +2,7 @@
 .. title: about
 .. slug: index
 .. date: 2017-05-14 20:36:32 UTC-05:00
-.. tags: mathjax
+.. has_math: yes
 .. category: 
 .. link: 
 .. description: 

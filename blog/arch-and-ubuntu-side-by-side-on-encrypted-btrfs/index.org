@@ -212,8 +212,8 @@ For setting up =refind.conf=, my entry looks like this:
 menuentry "arch" {
     icon         /EFI/refind/icons/os_arch.png
     volume       BOOT_PARTUUID
-    loader       /boot/vmlinuz-linux
-    initrd       /boot/initramfs-linux.img
+    loader       /vmlinuz-linux
+    initrd       /initramfs-linux.img
     options      "luks.uuid=DEVICE_UUID root=UUID=MAPPER_UUID rootflags=compress=lzo,discard,ssd,subvol=arch luks.allow=discards add_efi_memmap rw"
 }
 #+end_example

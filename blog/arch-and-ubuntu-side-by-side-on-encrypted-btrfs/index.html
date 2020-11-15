@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width">
 <title>Arch and Ubuntu side-by-side on encrypted btrfs | jwhendy</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<meta name="theme-color" content="#5670d4">
-<meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://jwhendy.github.io/blog/arch-and-ubuntu-side-by-side-on-encrypted-btrfs/">
-<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><style>body{font-size:17px;}</style>
-<meta name="author" content="John Henderson">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="John Henderson">
 <link rel="prev" href="../comparing-python-plotting-libraries/" title="Comparing python plotting libraries" type="text/html">
 <meta property="og:site_name" content="jwhendy">
 <meta property="og:title" content="Arch and Ubuntu side-by-side on encrypted btrfs">
@@ -31,23 +27,24 @@ doesn't give me">
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-default navbar-static-top"><div class="container">
-<!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
+<div class="navbar navbar-static-top" id="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://jwhendy.github.io/">
+        </a>
+
+            <a class="brand" href="https://jwhendy.github.io/">
 
                 <span id="blog-title">jwhendy</span>
             </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
-            <ul class="nav navbar-nav">
+            <!-- Everything you want hidden at 940px or less, place within here -->
+            <div class="nav-collapse collapse">
+                <ul class="nav">
 <li>
 <a href="../../portfolio/">portfolio</a>
                 </li>
@@ -57,36 +54,50 @@ doesn't give me">
 <li>
 <a href="../../categories/">tags</a>
 
-                
-            </li>
+                    
+                </li>
 </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav pull-right">
+<li>
+    </li>
+<li>
+    <a href="index.org" id="sourcelink">Source</a>
+    </li>
+
+                
+                </ul>
 </div>
-<!-- /.navbar-collapse -->
+        </div>
     </div>
-<!-- /.container -->
-</nav><!-- End of Menubar --><div class="container" id="content" role="main">
-    <div class="body-content">
-        <!--Body content-->
-        <div class="row">
-            
-            
+</div>
+<!-- End of Menubar -->
+<div class="container-fluid" id="content" role="main">
+    <!--Body content-->
+    <div class="row-fluid">
+    <div class="span2"></div>
+    <div class="span8">
+    
+    
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Arch and Ubuntu side-by-side on encrypted btrfs</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
                     John Henderson
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2018-04-28T09:17:26-05:00" itemprop="datePublished" title="2018-04-28 09:17">2018-04-28 09:17</time></a></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2018-04-28T09:17:26-05:00" itemprop="datePublished" title="2018-04-28 09:17">2018-04-28 09:17</time></a>
+            </p>
             
+        <p class="sourceline"><a href="index.org" class="sourcelink">Source</a></p>
 
         </div>
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-org496dbc8" class="outline-2">
-<h2 id="org496dbc8">background</h2>
-<div class="outline-text-2" id="text-org496dbc8">
+    <div id="outline-container-org6cb3663" class="outline-2">
+<h2 id="org6cb3663">background</h2>
+<div class="outline-text-2" id="text-org6cb3663">
 <p>
 I've used Arch linux for about 8 years from <a href="https://bbs.archlinux.org/profile.php?id=35588">what I can tell</a>. I love the minimalistic
 nature, and also think <code>pacman</code> and <code>pacaur</code> are pretty great for package management. Arch
@@ -113,9 +124,9 @@ About ~15hrs later, I've got base systems installed and am feeling pretty happy.
 </div>
 </div>
 
-<div id="outline-container-orgaa7de47" class="outline-2">
-<h2 id="orgaa7de47">hardware</h2>
-<div class="outline-text-2" id="text-orgaa7de47">
+<div id="outline-container-org37659c0" class="outline-2">
+<h2 id="org37659c0">hardware</h2>
+<div class="outline-text-2" id="text-org37659c0">
 <p>
 I first went through this (minus UEFI stuff) on an HP Zbook 15 G2 and I'm using a Zbook 15
 G4 to recreate the setup and write this guide (I didn't take very good notes last
@@ -131,9 +142,9 @@ USB's hashes with Secure Boot.
 </div>
 </div>
 
-<div id="outline-container-orgbda6d57" class="outline-2">
-<h2 id="orgbda6d57">prepping the drive</h2>
-<div class="outline-text-2" id="text-orgbda6d57">
+<div id="outline-container-org5461c88" class="outline-2">
+<h2 id="org5461c88">prepping the drive</h2>
+<div class="outline-text-2" id="text-org5461c88">
 <p>
 This is pretty straightforward stuff, though I ended up doing all of this <i>twice</i> because
 I didn't realize one gotcha. When it comes to partitioning, the bootloader will need to
@@ -198,9 +209,9 @@ this with respect to installing arch first, then ubuntu.
 </div>
 </div>
 
-<div id="outline-container-orgb874273" class="outline-2">
-<h2 id="orgb874273">installing arch</h2>
-<div class="outline-text-2" id="text-orgb874273">
+<div id="outline-container-orga4b115b" class="outline-2">
+<h2 id="orga4b115b">installing arch</h2>
+<div class="outline-text-2" id="text-orga4b115b">
 <p>
 We need to create the subvolumes we'd like to use, as well as the boot structure. I used
 the following for my <code>btrfs</code> setup (we'll create subvols for ubuntu later):
@@ -259,9 +270,9 @@ wireless tools, etc.
 </div>
 </div>
 
-<div id="outline-container-orga9ba17a" class="outline-2">
-<h2 id="orga9ba17a">bootloader setup</h2>
-<div class="outline-text-2" id="text-orga9ba17a">
+<div id="outline-container-orge5335a6" class="outline-2">
+<h2 id="orge5335a6">bootloader setup</h2>
+<div class="outline-text-2" id="text-orge5335a6">
 <p>
 For the bootloader, I'm going with <a href="https://wiki.archlinux.org/index.php/REFInd"><code>rEFInd</code></a>, (<code>refind-efi</code> package). Since I have Secure
 Boot enabled, I had to do a few more things like installing <a href="https://aur.archlinux.org/packages/shim-signed/"><code>shim-signed</code></a> (AUR), which
@@ -350,8 +361,8 @@ For setting up <code>refind.conf</code>, my entry looks like this:
 menuentry "arch" {
     icon         /EFI/refind/icons/os_arch.png
     volume       BOOT_PARTUUID
-    loader       /boot/vmlinuz-linux
-    initrd       /boot/initramfs-linux.img
+    loader       /vmlinuz-linux
+    initrd       /initramfs-linux.img
     options      "luks.uuid=DEVICE_UUID root=UUID=MAPPER_UUID rootflags=compress=lzo,discard,ssd,subvol=arch luks.allow=discards add_efi_memmap rw"
 }
 </pre>
@@ -405,9 +416,9 @@ enrolling the hash at boot each time it updates.
 </div>
 </div>
 
-<div id="outline-container-orgdc71ab3" class="outline-2">
-<h2 id="orgdc71ab3">install ubuntu</h2>
-<div class="outline-text-2" id="text-orgdc71ab3">
+<div id="outline-container-org349686a" class="outline-2">
+<h2 id="org349686a">install ubuntu</h2>
+<div class="outline-text-2" id="text-org349686a">
 <p>
 Boot into Ubuntu and choose the option to try it (not install). Open a terminal and open
 the existing crypt device:
@@ -560,9 +571,9 @@ require fiddling like arch's).
 </div>
 </div>
 
-<div id="outline-container-org41df764" class="outline-2">
-<h2 id="org41df764">nvidia drivers</h2>
-<div class="outline-text-2" id="text-org41df764">
+<div id="outline-container-org91608e6" class="outline-2">
+<h2 id="org91608e6">nvidia drivers</h2>
+<div class="outline-text-2" id="text-org91608e6">
 <p>
 On ubuntu, <code>nvidia</code> drivers won't <code>modprobe</code> becuase <a href="https://askubuntu.com/questions/755238/why-disabling-secure-boot-is-enforced-policy-when-installing-3rd-party-modules">ubuntu uses</a> the
 <code>CONFIG_MODULE_SIG_FORCE</code> option in its kernel. We have to sign them with the keys we
@@ -619,9 +630,9 @@ checking to make sure <code>nouveau</code> is not present and <code>nvidia</code
 </div>
 
 
-<div id="outline-container-org144de21" class="outline-2">
-<h2 id="org144de21">conclusion</h2>
-<div class="outline-text-2" id="text-org144de21">
+<div id="outline-container-org42ba5a0" class="outline-2">
+<h2 id="org42ba5a0">conclusion</h2>
+<div class="outline-text-2" id="text-org42ba5a0">
 <p>
 So that's it! I <i>love</i> using <code>btrfs</code> for this purpose, as you can easily recreate this
 process with any number of distros. My use of ubuntu is for the <a href="http://www.ros.org/">Robot Operating System</a>
@@ -631,9 +642,9 @@ this is perfect for not having to deal with re-partitioning, worrying about sizi
 </div>
 </div>
 
-<div id="outline-container-org0a631c5" class="outline-2">
-<h2 id="org0a631c5">notes</h2>
-<div class="outline-text-2" id="text-org0a631c5">
+<div id="outline-container-org8f7a10c" class="outline-2">
+<h2 id="org8f7a10c">notes</h2>
+<div class="outline-text-2" id="text-org8f7a10c">
 <ul class="org-ul">
 <li>I found that <code>refind-install</code> changed the system boot order. I got a little freaked out
 at first, thinking something had been overwritten, but it was fine. You can change this
@@ -653,9 +664,9 @@ instead (like <code>luks.uuid</code>).</li>
 </div>
 
 
-<div id="outline-container-org6485a82" class="outline-2">
-<h2 id="org6485a82">various resources</h2>
-<div class="outline-text-2" id="text-org6485a82">
+<div id="outline-container-org9aeec40" class="outline-2">
+<h2 id="org9aeec40">various resources</h2>
+<div class="outline-text-2" id="text-org9aeec40">
 <p>
 Other various sites I thought were helpful. This whole exercise felt like putting together
 bits and pieces from a lot of places, comparing them, using what was most consistent, etc.
@@ -693,19 +704,23 @@ way, it's either more than I needed or for other applications I'm not running in
             </li>
         </ul></nav></aside></article>
 </div>
-        <!--End of body content-->
-
-        <footer id="footer">
-            Contents © 2018         <a href="mailto:jw.hendy@gmail.com">John Henderson</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
-            
-        </footer>
+    </div>
+    <!--End of body content-->
 </div>
+<div class="footerbox">
+    Contents © 2020         <a href="mailto:jw.hendy@gmail.com">John Henderson</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
 </div>
 
-
-            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
 </body>
 </html>
