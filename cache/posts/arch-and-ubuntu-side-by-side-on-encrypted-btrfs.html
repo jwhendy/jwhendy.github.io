@@ -1,6 +1,6 @@
-<div id="outline-container-orgb5f589b" class="outline-2">
-<h2 id="orgb5f589b">background</h2>
-<div class="outline-text-2" id="text-orgb5f589b">
+<div id="outline-container-org79fbf17" class="outline-2">
+<h2 id="org79fbf17">background</h2>
+<div class="outline-text-2" id="text-org79fbf17">
 <p>
 I've used Arch linux for about 8 years from <a href="https://bbs.archlinux.org/profile.php?id=35588">what I can tell</a>. I love the minimalistic
 nature, and also think <code>pacman</code> and <code>pacaur</code> are pretty great for package management. Arch
@@ -27,9 +27,9 @@ About ~15hrs later, I've got base systems installed and am feeling pretty happy.
 </div>
 </div>
 
-<div id="outline-container-org2571be0" class="outline-2">
-<h2 id="org2571be0">hardware</h2>
-<div class="outline-text-2" id="text-org2571be0">
+<div id="outline-container-orgbcf751f" class="outline-2">
+<h2 id="orgbcf751f">hardware</h2>
+<div class="outline-text-2" id="text-orgbcf751f">
 <p>
 I first went through this (minus UEFI stuff) on an HP Zbook 15 G2 and I'm using a Zbook 15
 G4 to recreate the setup and write this guide (I didn't take very good notes last
@@ -45,9 +45,9 @@ USB's hashes with Secure Boot.
 </div>
 </div>
 
-<div id="outline-container-orge340062" class="outline-2">
-<h2 id="orge340062">prepping the drive</h2>
-<div class="outline-text-2" id="text-orge340062">
+<div id="outline-container-org8955426" class="outline-2">
+<h2 id="org8955426">prepping the drive</h2>
+<div class="outline-text-2" id="text-org8955426">
 <p>
 This is pretty straightforward stuff, though I ended up doing all of this <i>twice</i> because
 I didn't realize one gotcha. When it comes to partitioning, the bootloader will need to
@@ -112,9 +112,9 @@ this with respect to installing arch first, then ubuntu.
 </div>
 </div>
 
-<div id="outline-container-org03cb0f4" class="outline-2">
-<h2 id="org03cb0f4">installing arch</h2>
-<div class="outline-text-2" id="text-org03cb0f4">
+<div id="outline-container-orgc12ca45" class="outline-2">
+<h2 id="orgc12ca45">installing arch</h2>
+<div class="outline-text-2" id="text-orgc12ca45">
 <p>
 We need to create the subvolumes we'd like to use, as well as the boot structure. I used
 the following for my <code>btrfs</code> setup (we'll create subvols for ubuntu later):
@@ -173,9 +173,9 @@ wireless tools, etc.
 </div>
 </div>
 
-<div id="outline-container-org18b7ea4" class="outline-2">
-<h2 id="org18b7ea4">bootloader setup</h2>
-<div class="outline-text-2" id="text-org18b7ea4">
+<div id="outline-container-orgd4d52ac" class="outline-2">
+<h2 id="orgd4d52ac">bootloader setup</h2>
+<div class="outline-text-2" id="text-orgd4d52ac">
 <p>
 For the bootloader, I'm going with <a href="https://wiki.archlinux.org/index.php/REFInd"><code>rEFInd</code></a>, (<code>refind-efi</code> package). Since I have Secure
 Boot enabled, I had to do a few more things like installing <a href="https://aur.archlinux.org/packages/shim-signed/"><code>shim-signed</code></a> (AUR), which
@@ -321,9 +321,9 @@ enrolling the hash at boot each time it updates.
 </div>
 </div>
 
-<div id="outline-container-org7314afd" class="outline-2">
-<h2 id="org7314afd">install ubuntu</h2>
-<div class="outline-text-2" id="text-org7314afd">
+<div id="outline-container-org03683cf" class="outline-2">
+<h2 id="org03683cf">install ubuntu</h2>
+<div class="outline-text-2" id="text-org03683cf">
 <p>
 Boot into Ubuntu and choose the option to try it (not install). Open a terminal and open
 the existing crypt device:
@@ -477,9 +477,9 @@ require fiddling like arch's).
 </div>
 </div>
 
-<div id="outline-container-org2c63310" class="outline-2">
-<h2 id="org2c63310">nvidia drivers</h2>
-<div class="outline-text-2" id="text-org2c63310">
+<div id="outline-container-orgd7c4b1a" class="outline-2">
+<h2 id="orgd7c4b1a">nvidia drivers</h2>
+<div class="outline-text-2" id="text-orgd7c4b1a">
 <p>
 On ubuntu, <code>nvidia</code> drivers won't <code>modprobe</code> becuase <a href="https://askubuntu.com/questions/755238/why-disabling-secure-boot-is-enforced-policy-when-installing-3rd-party-modules">ubuntu uses</a> the
 <code>CONFIG_MODULE_SIG_FORCE</code> option in its kernel. We have to sign them with the keys we
@@ -536,9 +536,9 @@ checking to make sure <code>nouveau</code> is not present and <code>nvidia</code
 </div>
 
 
-<div id="outline-container-orgf609dfb" class="outline-2">
-<h2 id="orgf609dfb">conclusion</h2>
-<div class="outline-text-2" id="text-orgf609dfb">
+<div id="outline-container-org99f78f6" class="outline-2">
+<h2 id="org99f78f6">conclusion</h2>
+<div class="outline-text-2" id="text-org99f78f6">
 <p>
 So that's it! I <i>love</i> using <code>btrfs</code> for this purpose, as you can easily recreate this
 process with any number of distros. My use of ubuntu is for the <a href="http://www.ros.org/">Robot Operating System</a>
@@ -548,9 +548,9 @@ this is perfect for not having to deal with re-partitioning, worrying about sizi
 </div>
 </div>
 
-<div id="outline-container-orgd05a7b4" class="outline-2">
-<h2 id="orgd05a7b4">notes</h2>
-<div class="outline-text-2" id="text-orgd05a7b4">
+<div id="outline-container-org81b970b" class="outline-2">
+<h2 id="org81b970b">notes</h2>
+<div class="outline-text-2" id="text-org81b970b">
 <ul class="org-ul">
 <li>I found that <code>refind-install</code> changed the system boot order. I got a little freaked out
 at first, thinking something had been overwritten, but it was fine. You can change this
@@ -570,9 +570,9 @@ instead (like <code>luks.uuid</code>).</li>
 </div>
 
 
-<div id="outline-container-orgd9ede24" class="outline-2">
-<h2 id="orgd9ede24">various resources</h2>
-<div class="outline-text-2" id="text-orgd9ede24">
+<div id="outline-container-orgf7b84c5" class="outline-2">
+<h2 id="orgf7b84c5">various resources</h2>
+<div class="outline-text-2" id="text-orgf7b84c5">
 <p>
 Other various sites I thought were helpful. This whole exercise felt like putting together
 bits and pieces from a lot of places, comparing them, using what was most consistent, etc.
