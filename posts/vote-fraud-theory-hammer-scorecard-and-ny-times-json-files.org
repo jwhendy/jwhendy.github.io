@@ -16,20 +16,20 @@
 I've been presented with another theory of fraud in the 2020 Presidential election. Have a
 look at [[https://www.youtube.com/watch?v=X1uyg1f0RNA][the video]], which compares snapshots of the election results as extracted from NY Times =.json=
 files to "prove" that votes were switched and lost. This is done via some =python=
-code we'll take a look at in detail below. The video walks through this [[https://www.naturalnews.com/2020-11-11-election-data-analyzed-votes-switched-biden-software.html][Natural News post]] in a very lively and shout-splaining
-fashion. Bold claims are made, including:
+code we'll take a look at below. The video walks through this [[https://www.naturalnews.com/2020-11-11-election-data-analyzed-votes-switched-biden-software.html][Natural News post]] in a very
+lively and shout-splaining fashion. Bold claims are made, including:
 - NY Times =.json= files are analogous to a "Flight Data Recorder (black box)" when it
-  comes to being official transation logs of election night results
+  comes to being official transaction logs of election night results
 - over 500k votes were switched from Trump to Biden
 - Bannon and Giuliani have confirmed whistleblowers from Dominion, a ballot counting
-  software company (that was on 11/11; with all of these things it's the same: dangle some
-  mind-blowing info tidbit and then... why do we never hear about it again? Nevertheless,
+  software company (that was on 11/11; the pattern is always the same: dangle some
+  mind-blowing tidbit and then we never hear about it again? Nevertheless,
   for weeks I'll hear people citing "those Dominion whistleblowers they found")
 - a [[https://everylegalvote.com/country][fraud simulator ]] (spoiler: it just switches key states when you toggle between fraud
-  and no fraud scenarios, with no explanation of how it's calculating this)
+  and no fraud scenarios, with no explanation of how it's calculating anything at all)
 - Trump and DoD personnel watched this fraud happen in real time, have it recorded, and
   /allowed/ the fraud to happen so they'd have proof (but still filed lawsuits [[https://www.theguardian.com/us-news/2020/nov/10/donald-trump-longshot-election-lawsuits][in five
-  states]], just to [[https://www.reuters.com/article/snell-maricopa/snell-wilmer-withdraws-from-election-lawsuit-as-trump-contests-arizona-results-idUSL1N2HY005][withdraw]] from [[https://www.theguardian.com/us-news/2020/nov/13/trump-law-firm-withdraws-pennsylvania-election-case][two]]?)
+  states]], just to [[https://www.reuters.com/article/snell-maricopa/snell-wilmer-withdraws-from-election-lawsuit-as-trump-contests-arizona-results-idUSL1N2HY005][withdraw]] from [[https://www.theguardian.com/us-news/2020/nov/13/trump-law-firm-withdraws-pennsylvania-election-case][two]])
 
 In any case, we'll be focused on the data analysis and short answer: no, there's nothing
 here folks.
@@ -53,13 +53,18 @@ many news organizations... but again, where do /they/ get it? Why do we think th
 Research somehow equals "wired into the mainframe" here? Other sources on election night
 were wrong and [[https://www.vox.com/recode/2020/11/4/21549710/biden-michigan-votes-trump-retweet-election-map][had to be corrected]], why are these magical .json files infallible?
 
-The second key premise is that these findings are at all meaningful. Here's an
-example:
+Just in case it's .json files that somehow raise credibility, if you aren't familiar they
+are literally just another way to store data. There's nothing magical about them. If the
+analysis had downloaded all the Times' Excel or .csv files, the situation would be
+identical.
+
+The second key premise is that these findings are at all meaningful or indicative of
+something specific. Let's look at the example used in their primer section:
 
 #+attr_html: :width 500
-[[img-url:/img/hammer_shapshots.png]]
+[[img-url:/img/hammer_snapshots.png]]
 
-The data is as follows, with some calculated columns added:
+The data is as follows, with columns added for candidate votes (=total votes * %=):
 
 | time                | total votes | trump, % | trump, votes | biden, % | biden, votes |
 |---------------------+-------------+----------+--------------+----------+--------------|
@@ -71,22 +76,21 @@ The data is as follows, with some calculated columns added:
 
 Assuming the first premise (the perfect truth of files used for news article
 visualizations), this does look odd. In ~30 seconds, the total votes went up, but
-somehow one of the candidates lost 10x that, and the other gained 6x, with the net
-exchange being way off from the total vote change.
+somehow one of the candidates lost ~10x that many, and the other gained ~5x that many,
+with the net exchange being way off from the change in total votes.
 
-In any case, someone wrote code which reads through all these snapshots and looks for
-these instances, tallying them all up, and we get to this claim about the magnitude of
-these findings:
+To apply this to all the data, someone wrote code which reads through all these snapshots
+and looks for these instances, tallies them all up, and spits out summary values per
+state, leading to these kinds of magnitudes across various states:
 
 #+attr_html: :width 500
 [[img-url:/img/hammer_counts.png]]
 
-Is it true? Well, at least the presenter repeatedly welcomed folks to try for themselves,
-so I did.
+Is it true? At least the presenter repeatedly welcomed folks to try for themselves, so I did.
 
-Before we move on, I want you to try something. You know the angle this theory takes
-already, and have seen some concrete numbers. In Pennsylvania, votes were "switched" and
-"lost" to the tune of 200k and 900k, respectively. In your mind, or better yet on paper,
+Before we move on, I want you to try something. You now know the angle this theory takes
+and have seen some concrete numbers. In Pennsylvania, votes were "switched" and 
+"lost" to the tune of 220k and 940k, respectively. In your mind, or better yet on paper,
 please draw a plot of ~y=votes~ and ~x=time~ might look like for a state with 6.86 million
 total votes (3% switched, 13% lost during election night).
 
@@ -114,8 +118,8 @@ for state in states.us_state_abbrev.keys():
         f.write(requests.get('{}/{}/president.json'.format(base_url, state_code.lower())).content)
 #+end_src
 
-Next, we run through all the files, and grab all the snapshots, along with the associated
-metadata:
+Next, we run through all the files and grab metadata and each snapshot, along with total
+votes and candidate percentages at that time:
 
 #+begin_src python :eval no
 def proc_results(state):
@@ -137,7 +141,7 @@ results = [pd.DataFrame(r) for r in results]
 df = pd.concat(results)
 #+end_src
 
-Lastly, we do some post-processing and add calculated columns for visualization.
+Lastly, we do some post-processing and add calculated columns.
 
 #+begin_src python :eval no
 df['time'] = pd.to_datetime(df['time'])
@@ -162,7 +166,7 @@ print(df)
 #+end_src
 
 If you haven't used =plotnine=, I /highly/ recommend it. It's the =python= equivalent to
-=ggplot2= in =R=, and I just don't think I'll ever be able to live without facets again.
+=ggplot2= in =R=, and I just don't think I'll ever be able to live without facet plots again.
 
 #+begin_src python :eval no
 p = ggplot(df, aes(x='time', y='votes', color='cand', group='state+cand')) + geom_line() + facet_wrap('~state', ncol=10)
@@ -178,10 +182,10 @@ p = p + theme_minimal() + theme(text=element_text(family='Hack'),
 [[img-url:/img/hammer_votes-vs-time.png]]
 
 What do you see? Per our earlier exercise, when I did this last night, despite already
-thinking NYT json reliability was suspect, this /certainly/ didn't look like I expected
-given the booming voice proclaiming the incontrovertable fact that this shows election
+thinking NYT json reliability was suspect, this /certainly/ didn't look like I
+expected. The video is 18min of yelling the incontrovertable fact that this shows election
 theivery! I see... a bunch of dips followed by recovery and then all is well? Let's pick
-too and take a closer look:
+two and take a closer look:
 
 #+attr_html: :width 500
 [[img-url:/img/hammer_votes-vs-time_fl-pa.png]]
@@ -195,6 +199,7 @@ print(df_sub[df_sub['state']=='Florida'].head())
 print(df_sub[df_sub['votes'] == 0])
 print(df_sub.groupby('state', as_index=False).agg({'time': 'min', 'votes': 'first'}))
 ###
+# first 5 rows for FL
       state                      time  votes_tot    cand   perc   votes  i  votes_perc
 3   Florida 2020-11-04 00:02:01+00:00     560771  bidenj  0.428  240009  1    0.045334
 5   Florida 2020-11-04 00:02:42+00:00     844914  bidenj  0.434  366692  2    0.069263
@@ -202,6 +207,7 @@ print(df_sub.groupby('state', as_index=False).agg({'time': 'min', 'votes': 'firs
 9   Florida 2020-11-04 00:05:44+00:00    1457441  bidenj  0.467  680624  4    0.128559
 11  Florida 2020-11-04 00:07:05+00:00    1515932  bidenj  0.461  698844  5    0.132001
 
+# first 5 rows for PA
            state                      time  votes_tot    cand   perc  votes  i  votes_perc
 2   Pennsylvania 2020-11-04 00:19:27+00:00         77  bidenj  0.571     43  1    0.000013
 5   Pennsylvania 2020-11-04 00:30:20+00:00          0  bidenj  0.000      0  2    0.000000
@@ -220,7 +226,7 @@ print(df_sub.groupby('state', as_index=False).agg({'time': 'min', 'votes': 'firs
 8  Pennsylvania 2020-11-04 00:59:15+00:00          0  trumpd   0.0      0  4         0.0
 0  Pennsylvania 2020-11-04 09:25:23+00:00          0  trumpd   0.0      0  0         0.0
 
-# min timestamp per state
+# earliest time in each state
           state                      time
 0       Florida 2020-11-04 00:02:01+00:00
 1  Pennsylvania 2020-11-04 00:19:27+00:00
@@ -230,21 +236,42 @@ Honestly, who knows, but at this point we can see a few things:
 - the data is in order of increasing time
 - the first entries have non-zero votes
 - later, both states have votes=0 entries
-- in each graph, you can see that the plot recovers, and near the same pre-dip total /and/
-  in the same relative ranking
+- even so, each plot recovers, and near the same pre-dip total /and/ in the same relative
+  ranking (Biden or Trump ahead pre/post-dip) 
+- the =i= column matches the order of the data; I added it before sorting by time. Note
+  that in both cases the ~i=0~ timestamp is /not/ the earliest in the data. In the PA
+  case, the first entry in the series (~i=0~) has a timestamp /9 hours/ later than the
+  earliest timestamp 
 
-So... what if we just treat ~votes=0~ as a fluke and remove those rows (2 for FL, 6 for
-PA)? I don't suppose you drew a plot of what 220k switched votes and 900k lost votes looks
+How those zeros got entered with later times, I have no idea, but if you do any data
+analysis or write code, this is not that surprising. Again, this is /data
+used for a news site graphic/. Maybe they started collecting data from Edison's API (and
+again, this is not to say that Edison is ground truth vote source), and someone
+noticed all their plots were missing a starting point where ~votes=0~ so they manually
+entered it. Or the endpoint went down and logged a zero entry because it failed to collect
+any data? We don't even know if total votes and candidate percents were calculated with
+respect to the same source data.
+
+What if we just treat ~votes=0~ as a fluke and remove those rows (2 for FL, 6 for
+PA)? I don't suppose you drew a plot of what 220k switched votes and 940k lost votes looks
 like, did you? I'm guessing it isn't this:
 
 #+attr_html: :width 500
 [[img-url:/img/hammer_votes-vs-time_fl-pa_no0.png]]
 
+And if we leave in the zeros and just plot the data in the order of the snapshots, here's
+what we see. Again, I doubt this matches anyone's intuitive interpretation of "Trump lost
+940k votes during the PA election."
+
+#+attr_html: :width 500
+[[img-url:/img/hammer_votes-vs-i_fl-pa.png]]
+
+
 * the code
 
 Now, what's the code behind this, anyway? Well, again, while I admit I think this theory
-is absolutely preposterous, kudos for open sourcing the code. If you know =python=, I'm
-sorry that this will probably give you nightmares tonight:
+is absolutely preposterous, kudos for sharing the source the code. If you know =python=, I'm
+sorry nightmares are inevitable for you tonight:
 
 #+begin_src python :eval no
 def findfraud(NAME):
@@ -296,9 +323,10 @@ def findfraud(NAME):
 #+end_src
 
 That's just /one/ of the three main logic branches. There's two others for Biden and third
-party votes just like it. I admit I don't even follow all of this, but I get the gist is
+party votes just like it. I admit I don't follow all of this. Reading someone else's code,
+particularly heavily nested and inefficient like this is tedious. The gist is
 comparing timeseries indices for changes in vote counts, and trying to infer who they went
-to, hence printing out this summary at the end:
+to by comparing the shifts in other parties as well, hence printing out this summary at the end:
 
 #+begin_src python :eval no
     print (str(str(TotalVotesLostTrump)  + " TRUMP LOST"))
@@ -469,14 +497,13 @@ findfraud('Wisconsin')
 5800.282999999821 TRUMP
 #+end_src
 
-
-Are you seeing the pattern here? No matter how we slice and dice this thing, there's just
-nothing there. In three of four cases, Biden lost more votes to Trump than the other way
+Are you seeing a pattern here? No matter how we slice and dice this thing, there's just
+no substance. In three of four cases, Biden lost more votes to Trump than the other way
 around (and I think the print out at the bottom is the net result, so Trump came out net
 beneffiting from this). Ironically, the one where Biden supposedly had an advantage was Georgia which was
 the closest of the four.
 
-To close out, here's all 50 states again, with zero entries removed:
+To close out, here's all 50 states again, with the ~votes=0~ entries removed:
 
 #+attr_html: :width 500
 [[img-url:/img/hammer_votes-vs-time_no0.png]]
@@ -486,27 +513,28 @@ Is it everything you imagined?
 * conclusion
 
 I hate to say it, but this feels like the kind of thing wide eyed kids do when they've
-just had the epiphany that maybe with magnets in the right positions, they could create a
+just had the epiphany that maybe with magnets in just the right positions, they could create a
 perpetual motion machine. A bit of sketchy code on the internet pumped out numbers that
 said what people wanted to hear, and now this is holy fact etched in stone.
 
 Take a moment to recall what you were /actually/ presented with, not what you thought you
-saw, or hoped you saw.
+saw, or hoped you saw:
 - someone told you that New York Times data files were equivalent to official, government
   records, functioning "like a flight recorder black box"
-- code you don't understand and never looked at did something, and said votes were
-  switched and were lost
-- across the board, these large numbers were presented as having moved from Biden to Trump
-- a map, possibly based on this data, was created where you can click around and "see for
-  yourself" what the election /really/ should have looked like
+- code you don't understand and never looked at ran some =if/else= logic and proclaimed
+  that votes were switched and were lost between candidates 
+- these lost votes were presented as having moved from Biden to Trump
 
-I think it's easy to be sort of cheap on the internet. Every idea you're presented with is
-like a transaction. Someone's selling you something in return for your "mental bet." But
-with these things, the bet is cheap. Well, if it's wrong, I still know the overall fact is
-true, even if this thing didn't manage to show it. What if it were in real life and I
-asked you for a million dollars to save our country from an attack against democracy.
+Every idea you're presented with is a transaction. Someone's pitching you something in
+return for your "mental bet." With ideas on the internet, I think it feels like the bet is
+cheap: "Well, if /this/ is wrong, I still know the overall story is true, even if this
+thing didn't manage to show it." If you bet wrong, what's the cost? Just move on to
+another theory, and no one will be tracking you down to pay up on all the comments,
+tweets, and posts re-circulating this information you ended up being wrong about.
 
-I mean, aren't those what the stakes /really/ are? If this is true, soemthing awful
-happened. Given what you've seen, will you step up materially and tangibly for the cause?
-Would you find a million dollars, no matter the personal cost, to save our country? If
-not, consider not betting with your neurons so cheaply.
+Now, what if someone was selling you this story in exchange for a million dollars to save
+our country from an aggregious attack against democracy? I mean, aren't those what the stakes
+/really/ are here? If this is true, soemthing criminally awful happened. Given what you've seen, will you
+step up materially and tangibly for the cause? Will you find a million dollars, no matter
+the personal cost, to save our country? If not, consider not betting with your neurons so
+cheaply, or at least taking a harder look before doing so.

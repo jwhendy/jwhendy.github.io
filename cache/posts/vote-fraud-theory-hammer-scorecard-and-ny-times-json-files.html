@@ -1,26 +1,26 @@
-<div id="outline-container-org8e73130" class="outline-2">
-<h2 id="org8e73130">background</h2>
-<div class="outline-text-2" id="text-org8e73130">
+<div id="outline-container-org9e3f09c" class="outline-2">
+<h2 id="org9e3f09c">background</h2>
+<div class="outline-text-2" id="text-org9e3f09c">
 <p>
 I've been presented with another theory of fraud in the 2020 Presidential election. Have a
 look at <a href="https://www.youtube.com/watch?v=X1uyg1f0RNA">the video</a>, which compares snapshots of the election results as extracted from NY Times <code>.json</code>
 files to "prove" that votes were switched and lost. This is done via some <code>python</code>
-code we'll take a look at in detail below. The video walks through this <a href="https://www.naturalnews.com/2020-11-11-election-data-analyzed-votes-switched-biden-software.html">Natural News post</a> in a very lively and shout-splaining
-fashion. Bold claims are made, including:
+code we'll take a look at below. The video walks through this <a href="https://www.naturalnews.com/2020-11-11-election-data-analyzed-votes-switched-biden-software.html">Natural News post</a> in a very
+lively and shout-splaining fashion. Bold claims are made, including:
 </p>
 <ul class="org-ul">
 <li>NY Times <code>.json</code> files are analogous to a "Flight Data Recorder (black box)" when it
-comes to being official transation logs of election night results</li>
+comes to being official transaction logs of election night results</li>
 <li>over 500k votes were switched from Trump to Biden</li>
 <li>Bannon and Giuliani have confirmed whistleblowers from Dominion, a ballot counting
-software company (that was on 11/11; with all of these things it's the same: dangle some
-mind-blowing info tidbit and then&#x2026; why do we never hear about it again? Nevertheless,
+software company (that was on 11/11; the pattern is always the same: dangle some
+mind-blowing tidbit and then we never hear about it again? Nevertheless,
 for weeks I'll hear people citing "those Dominion whistleblowers they found")</li>
 <li>a <a href="https://everylegalvote.com/country">fraud simulator </a> (spoiler: it just switches key states when you toggle between fraud
-and no fraud scenarios, with no explanation of how it's calculating this)</li>
+and no fraud scenarios, with no explanation of how it's calculating anything at all)</li>
 <li>Trump and DoD personnel watched this fraud happen in real time, have it recorded, and
 <i>allowed</i> the fraud to happen so they'd have proof (but still filed lawsuits <a href="https://www.theguardian.com/us-news/2020/nov/10/donald-trump-longshot-election-lawsuits">in five
-states</a>, just to <a href="https://www.reuters.com/article/snell-maricopa/snell-wilmer-withdraws-from-election-lawsuit-as-trump-contests-arizona-results-idUSL1N2HY005">withdraw</a> from <a href="https://www.theguardian.com/us-news/2020/nov/13/trump-law-firm-withdraws-pennsylvania-election-case">two</a>?)</li>
+states</a>, just to <a href="https://www.reuters.com/article/snell-maricopa/snell-wilmer-withdraws-from-election-lawsuit-as-trump-contests-arizona-results-idUSL1N2HY005">withdraw</a> from <a href="https://www.theguardian.com/us-news/2020/nov/13/trump-law-firm-withdraws-pennsylvania-election-case">two</a>)</li>
 </ul>
 
 <p>
@@ -32,9 +32,9 @@ here folks.
 </div>
 </div>
 
-<div id="outline-container-org56ef7ae" class="outline-2">
-<h2 id="org56ef7ae">explanation</h2>
-<div class="outline-text-2" id="text-org56ef7ae">
+<div id="outline-container-orgb29716f" class="outline-2">
+<h2 id="orgb29716f">explanation</h2>
+<div class="outline-text-2" id="text-orgb29716f">
 <p>
 The gist of the theory is simple:
 </p>
@@ -55,16 +55,23 @@ were wrong and <a href="https://www.vox.com/recode/2020/11/4/21549710/biden-mich
 </p>
 
 <p>
-The second key premise is that these findings are at all meaningful. Here's an
-example:
-</p>
-
-<p width="500">
-<img src="/img/hammer_shapshots.png" alt="nil"/>
+Just in case it's .json files that somehow raise credibility, if you aren't familiar they
+are literally just another way to store data. There's nothing magical about them. If the
+analysis had downloaded all the Times' Excel or .csv files, the situation would be
+identical.
 </p>
 
 <p>
-The data is as follows, with some calculated columns added:
+The second key premise is that these findings are at all meaningful or indicative of
+something specific. Let's look at the example used in their primer section:
+</p>
+
+<p width="500">
+<img src="/img/hammer_snapshots.png" alt="nil"/>
+</p>
+
+<p>
+The data is as follows, with columns added for candidate votes (<code>total votes * %</code>):
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -127,14 +134,14 @@ The data is as follows, with some calculated columns added:
 <p>
 Assuming the first premise (the perfect truth of files used for news article
 visualizations), this does look odd. In ~30 seconds, the total votes went up, but
-somehow one of the candidates lost 10x that, and the other gained 6x, with the net
-exchange being way off from the total vote change.
+somehow one of the candidates lost ~10x that many, and the other gained ~5x that many,
+with the net exchange being way off from the change in total votes.
 </p>
 
 <p>
-In any case, someone wrote code which reads through all these snapshots and looks for
-these instances, tallying them all up, and we get to this claim about the magnitude of
-these findings:
+To apply this to all the data, someone wrote code which reads through all these snapshots
+and looks for these instances, tallies them all up, and spits out summary values per
+state, leading to these kinds of magnitudes across various states:
 </p>
 
 <p width="500">
@@ -142,23 +149,22 @@ these findings:
 </p>
 
 <p>
-Is it true? Well, at least the presenter repeatedly welcomed folks to try for themselves,
-so I did.
+Is it true? At least the presenter repeatedly welcomed folks to try for themselves, so I did.
 </p>
 
 <p>
-Before we move on, I want you to try something. You know the angle this theory takes
-already, and have seen some concrete numbers. In Pennsylvania, votes were "switched" and
-"lost" to the tune of 200k and 900k, respectively. In your mind, or better yet on paper,
+Before we move on, I want you to try something. You now know the angle this theory takes
+and have seen some concrete numbers. In Pennsylvania, votes were "switched" and 
+"lost" to the tune of 220k and 940k, respectively. In your mind, or better yet on paper,
 please draw a plot of <code>y=votes</code> and <code>x=time</code> might look like for a state with 6.86 million
 total votes (3% switched, 13% lost during election night).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7a42051" class="outline-2">
-<h2 id="org7a42051">digging in</h2>
-<div class="outline-text-2" id="text-org7a42051">
+<div id="outline-container-orgfca074c" class="outline-2">
+<h2 id="orgfca074c">digging in</h2>
+<div class="outline-text-2" id="text-orgfca074c">
 <p>
 I'd already been playing with voting data pulled from the Times, so it was a relatively
 simple matter to get all the timestamped files vs. the state and county results. I'm
@@ -183,8 +189,8 @@ used as <code>states</code> below), but this will get you close.
 </pre></div>
 
 <p>
-Next, we run through all the files, and grab all the snapshots, along with the associated
-metadata:
+Next, we run through all the files and grab metadata and each snapshot, along with total
+votes and candidate percentages at that time:
 </p>
 
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">proc_results</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
@@ -207,7 +213,7 @@ metadata:
 </pre></div>
 
 <p>
-Lastly, we do some post-processing and add calculated columns for visualization.
+Lastly, we do some post-processing and add calculated columns.
 </p>
 
 <div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
@@ -233,7 +239,7 @@ Lastly, we do some post-processing and add calculated columns for visualization.
 
 <p>
 If you haven't used <code>plotnine</code>, I <i>highly</i> recommend it. It's the <code>python</code> equivalent to
-<code>ggplot2</code> in <code>R</code>, and I just don't think I'll ever be able to live without facets again.
+<code>ggplot2</code> in <code>R</code>, and I just don't think I'll ever be able to live without facet plots again.
 </p>
 
 <div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;votes&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cand&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;state+cand&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_line</span><span class="p">()</span> <span class="o">+</span> <span class="n">facet_wrap</span><span class="p">(</span><span class="s1">&#39;~state&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -251,10 +257,10 @@ If you haven't used <code>plotnine</code>, I <i>highly</i> recommend it. It's th
 
 <p>
 What do you see? Per our earlier exercise, when I did this last night, despite already
-thinking NYT json reliability was suspect, this <i>certainly</i> didn't look like I expected
-given the booming voice proclaiming the incontrovertable fact that this shows election
+thinking NYT json reliability was suspect, this <i>certainly</i> didn't look like I
+expected. The video is 18min of yelling the incontrovertable fact that this shows election
 theivery! I see&#x2026; a bunch of dips followed by recovery and then all is well? Let's pick
-too and take a closer look:
+two and take a closer look:
 </p>
 
 <p width="500">
@@ -271,6 +277,7 @@ Hmmm. Let's look at the area around zero.
 <span class="nb">print</span><span class="p">(</span><span class="n">df_sub</span><span class="p">[</span><span class="n">df_sub</span><span class="p">[</span><span class="s1">&#39;votes&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_sub</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;votes&#39;</span><span class="p">:</span> <span class="s1">&#39;first&#39;</span><span class="p">}))</span>
 <span class="c1">###</span>
+<span class="c1"># first 5 rows for FL</span>
       <span class="n">state</span>                      <span class="n">time</span>  <span class="n">votes_tot</span>    <span class="n">cand</span>   <span class="n">perc</span>   <span class="n">votes</span>  <span class="n">i</span>  <span class="n">votes_perc</span>
 <span class="mi">3</span>   <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">01</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">560771</span>  <span class="n">bidenj</span>  <span class="mf">0.428</span>  <span class="mi">240009</span>  <span class="mi">1</span>    <span class="mf">0.045334</span>
 <span class="mi">5</span>   <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">42</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">844914</span>  <span class="n">bidenj</span>  <span class="mf">0.434</span>  <span class="mi">366692</span>  <span class="mi">2</span>    <span class="mf">0.069263</span>
@@ -278,6 +285,7 @@ Hmmm. Let's look at the area around zero.
 <span class="mi">9</span>   <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">44</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">1457441</span>  <span class="n">bidenj</span>  <span class="mf">0.467</span>  <span class="mi">680624</span>  <span class="mi">4</span>    <span class="mf">0.128559</span>
 <span class="mi">11</span>  <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">05</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">1515932</span>  <span class="n">bidenj</span>  <span class="mf">0.461</span>  <span class="mi">698844</span>  <span class="mi">5</span>    <span class="mf">0.132001</span>
 
+<span class="c1"># first 5 rows for PA</span>
 	   <span class="n">state</span>                      <span class="n">time</span>  <span class="n">votes_tot</span>    <span class="n">cand</span>   <span class="n">perc</span>  <span class="n">votes</span>  <span class="n">i</span>  <span class="n">votes_perc</span>
 <span class="mi">2</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">27</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>         <span class="mi">77</span>  <span class="n">bidenj</span>  <span class="mf">0.571</span>     <span class="mi">43</span>  <span class="mi">1</span>    <span class="mf">0.000013</span>
 <span class="mi">5</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">20</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">bidenj</span>  <span class="mf">0.000</span>      <span class="mi">0</span>  <span class="mi">2</span>    <span class="mf">0.000000</span>
@@ -296,7 +304,7 @@ Hmmm. Let's look at the area around zero.
 <span class="mi">8</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">trumpd</span>   <span class="mf">0.0</span>      <span class="mi">0</span>  <span class="mi">4</span>         <span class="mf">0.0</span>
 <span class="mi">0</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">09</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">23</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">trumpd</span>   <span class="mf">0.0</span>      <span class="mi">0</span>  <span class="mi">0</span>         <span class="mf">0.0</span>
 
-<span class="c1"># min timestamp per state</span>
+<span class="c1"># earliest time in each state</span>
 	  <span class="n">state</span>                      <span class="n">time</span>
 <span class="mi">0</span>       <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">01</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
 <span class="mi">1</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">27</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
@@ -309,29 +317,55 @@ Honestly, who knows, but at this point we can see a few things:
 <li>the data is in order of increasing time</li>
 <li>the first entries have non-zero votes</li>
 <li>later, both states have votes=0 entries</li>
-<li>in each graph, you can see that the plot recovers, and near the same pre-dip total <i>and</i>
-in the same relative ranking</li>
+<li>even so, each plot recovers, and near the same pre-dip total <i>and</i> in the same relative
+ranking (Biden or Trump ahead pre/post-dip)</li>
+<li>the <code>i</code> column matches the order of the data; I added it before sorting by time. Note
+that in both cases the <code>i=0</code> timestamp is <i>not</i> the earliest in the data. In the PA
+case, the first entry in the series (<code>i=0</code>) has a timestamp <i>9 hours</i> later than the
+earliest timestamp</li>
 </ul>
 
 <p>
-So&#x2026; what if we just treat <code>votes=0</code> as a fluke and remove those rows (2 for FL, 6 for
-PA)? I don't suppose you drew a plot of what 220k switched votes and 900k lost votes looks
+How those zeros got entered with later times, I have no idea, but if you do any data
+analysis or write code, this is not that surprising. Again, this is <i>data
+used for a news site graphic</i>. Maybe they started collecting data from Edison's API (and
+again, this is not to say that Edison is ground truth vote source), and someone
+noticed all their plots were missing a starting point where <code>votes=0</code> so they manually
+entered it. Or the endpoint went down and logged a zero entry because it failed to collect
+any data? We don't even know if total votes and candidate percents were calculated with
+respect to the same source data.
+</p>
+
+<p>
+What if we just treat <code>votes=0</code> as a fluke and remove those rows (2 for FL, 6 for
+PA)? I don't suppose you drew a plot of what 220k switched votes and 940k lost votes looks
 like, did you? I'm guessing it isn't this:
 </p>
 
 <p width="500">
 <img src="/img/hammer_votes-vs-time_fl-pa_no0.png" alt="nil"/>
 </p>
+
+<p>
+And if we leave in the zeros and just plot the data in the order of the snapshots, here's
+what we see. Again, I doubt this matches anyone's intuitive interpretation of "Trump lost
+940k votes during the PA election."
+</p>
+
+<p width="500">
+<img src="/img/hammer_votes-vs-i_fl-pa.png" alt="nil"/>
+</p>
 </div>
 </div>
 
-<div id="outline-container-org5e1dcc3" class="outline-2">
-<h2 id="org5e1dcc3">the code</h2>
-<div class="outline-text-2" id="text-org5e1dcc3">
+
+<div id="outline-container-orge33bfa9" class="outline-2">
+<h2 id="orge33bfa9">the code</h2>
+<div class="outline-text-2" id="text-orge33bfa9">
 <p>
 Now, what's the code behind this, anyway? Well, again, while I admit I think this theory
-is absolutely preposterous, kudos for open sourcing the code. If you know <code>python</code>, I'm
-sorry that this will probably give you nightmares tonight:
+is absolutely preposterous, kudos for sharing the source the code. If you know <code>python</code>, I'm
+sorry nightmares are inevitable for you tonight:
 </p>
 
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">findfraud</span><span class="p">(</span><span class="n">NAME</span><span class="p">):</span>
@@ -384,9 +418,10 @@ sorry that this will probably give you nightmares tonight:
 
 <p>
 That's just <i>one</i> of the three main logic branches. There's two others for Biden and third
-party votes just like it. I admit I don't even follow all of this, but I get the gist is
+party votes just like it. I admit I don't follow all of this. Reading someone else's code,
+particularly heavily nested and inefficient like this is tedious. The gist is
 comparing timeseries indices for changes in vote counts, and trying to infer who they went
-to, hence printing out this summary at the end:
+to by comparing the shifts in other parties as well, hence printing out this summary at the end:
 </p>
 
 <div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">TotalVotesLostTrump</span><span class="p">)</span>  <span class="o">+</span> <span class="s2">&quot; TRUMP LOST&quot;</span><span class="p">))</span>
@@ -565,17 +600,16 @@ states? <code>lostvotes()</code> returned all zeros for Arizona, Georgia, Michig
 <span class="mf">5800.282999999821</span> <span class="n">TRUMP</span>
 </pre></div>
 
-
 <p>
-Are you seeing the pattern here? No matter how we slice and dice this thing, there's just
-nothing there. In three of four cases, Biden lost more votes to Trump than the other way
+Are you seeing a pattern here? No matter how we slice and dice this thing, there's just
+no substance. In three of four cases, Biden lost more votes to Trump than the other way
 around (and I think the print out at the bottom is the net result, so Trump came out net
 beneffiting from this). Ironically, the one where Biden supposedly had an advantage was Georgia which was
 the closest of the four.
 </p>
 
 <p>
-To close out, here's all 50 states again, with zero entries removed:
+To close out, here's all 50 states again, with the <code>votes=0</code> entries removed:
 </p>
 
 <p width="500">
@@ -588,43 +622,44 @@ Is it everything you imagined?
 </div>
 </div>
 
-<div id="outline-container-orgd33dab1" class="outline-2">
-<h2 id="orgd33dab1">conclusion</h2>
-<div class="outline-text-2" id="text-orgd33dab1">
+<div id="outline-container-org7793376" class="outline-2">
+<h2 id="org7793376">conclusion</h2>
+<div class="outline-text-2" id="text-org7793376">
 <p>
 I hate to say it, but this feels like the kind of thing wide eyed kids do when they've
-just had the epiphany that maybe with magnets in the right positions, they could create a
+just had the epiphany that maybe with magnets in just the right positions, they could create a
 perpetual motion machine. A bit of sketchy code on the internet pumped out numbers that
 said what people wanted to hear, and now this is holy fact etched in stone.
 </p>
 
 <p>
 Take a moment to recall what you were <i>actually</i> presented with, not what you thought you
-saw, or hoped you saw.
+saw, or hoped you saw:
 </p>
 <ul class="org-ul">
 <li>someone told you that New York Times data files were equivalent to official, government
 records, functioning "like a flight recorder black box"</li>
-<li>code you don't understand and never looked at did something, and said votes were
-switched and were lost</li>
-<li>across the board, these large numbers were presented as having moved from Biden to Trump</li>
-<li>a map, possibly based on this data, was created where you can click around and "see for
-yourself" what the election <i>really</i> should have looked like</li>
+<li>code you don't understand and never looked at ran some <code>if/else</code> logic and proclaimed
+that votes were switched and were lost between candidates</li>
+<li>these lost votes were presented as having moved from Biden to Trump</li>
 </ul>
 
 <p>
-I think it's easy to be sort of cheap on the internet. Every idea you're presented with is
-like a transaction. Someone's selling you something in return for your "mental bet." But
-with these things, the bet is cheap. Well, if it's wrong, I still know the overall fact is
-true, even if this thing didn't manage to show it. What if it were in real life and I
-asked you for a million dollars to save our country from an attack against democracy.
+Every idea you're presented with is a transaction. Someone's pitching you something in
+return for your "mental bet." With ideas on the internet, I think it feels like the bet is
+cheap: "Well, if <i>this</i> is wrong, I still know the overall story is true, even if this
+thing didn't manage to show it." If you bet wrong, what's the cost? Just move on to
+another theory, and no one will be tracking you down to pay up on all the comments,
+tweets, and posts re-circulating this information you ended up being wrong about.
 </p>
 
 <p>
-I mean, aren't those what the stakes <i>really</i> are? If this is true, soemthing awful
-happened. Given what you've seen, will you step up materially and tangibly for the cause?
-Would you find a million dollars, no matter the personal cost, to save our country? If
-not, consider not betting with your neurons so cheaply.
+Now, what if someone was selling you this story in exchange for a million dollars to save
+our country from an aggregious attack against democracy? I mean, aren't those what the stakes
+<i>really</i> are here? If this is true, soemthing criminally awful happened. Given what you've seen, will you
+step up materially and tangibly for the cause? Will you find a million dollars, no matter
+the personal cost, to save our country? If not, consider not betting with your neurons so
+cheaply, or at least taking a harder look before doing so.
 </p>
 </div>
 </div>
