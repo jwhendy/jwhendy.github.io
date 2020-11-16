@@ -3,6 +3,7 @@
 .. slug: arts
 .. date: 2017-05-15 15:11:05 UTC-05:00
 .. tags: 
+.. status: draft
 .. category: 
 .. link: 
 .. description: 

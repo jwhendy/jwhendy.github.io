@@ -1,0 +1,129 @@
+#+BEGIN_COMMENT
+.. title: Vote fraud theory: straight ticket vs. direct votes
+.. slug: vote-fraud-theory-straight-ticket-vs-direct-votes
+.. date: 2020-11-15 10:50:25 UTC-06:00
+.. tags: 
+.. category: 
+.. status: 
+.. description: 
+.. type: text
+
+#+END_COMMENT
+
+
+* background
+
+While the 2020 election is behind us, this is not the case with interpretations. Theories
+abound proposing how and why we can /know/ that fraud is the overwhelming conclusion. One
+such theory is contained in [[https://www.youtube.com/watch?v=YRJCB6U-H4E][this video]] by a [[https://en.wikipedia.org/wiki/Shiva_Ayyadurai][Dr. Shiva]]. The gist goes like this:
+- in certain states, one may vote "straight ticket," which means making one choice to
+  select all same-party candidates on the ballot
+- one may also "direct vote," meaning one makes individual choices (which may or may not
+  be for all same-party candidates)
+- for a given party, there is an expected correlation between the percent of straight
+  ticket votes in an area (e.g. precinct, county) and direct votes for others of the same
+  party; deviating from this correlation implies fraud
+
+Let's take a look!
+
+#+begin_export html
+<!-- TEASER_END -->
+#+end_export
+
+Several early warning signs stood out to me ahead of actually digging into the proposed theory:
+
+- MIT is slapped all over this, which I thought implied he was faculty until I re-looked
+  in order to write this post.
+
+#+attr_html: :width 500
+[[img-url:/img/shiva_intro_creds.png]]
+
+- he includes a long preface citing his pedigree, degrees, and Fullbright scholarship
+- the [[https://en.wikipedia.org/wiki/Shiva_Ayyadurai][wiki page]] on him refers to a past history of promoting conspiracies, and falsely
+  claiming to have invented email
+- his personal behavior after losing an election is [[https://web.archive.org/web/20201115165853if_/https://www.reddit.com/r/boston/comments/ikyqep/shiva_is_an_unhinged_maniac_and_inciting_violence/][less than stellar]]
+
+Nevertheless, we can take the data and reasoning on their own merits, though I think past
+credibility and general conduct is relevant data to consider.
+
+* the lead in
+
+Dr. Shiva's strategy begins by planting seeds of doubt. For example, here he points out
+the lack of traceability and verification abilities for voters:
+
+#+attr_html: :width 500px
+[[img-url:/blog/img/shiva_doubt.png]]
+
+He presents the aility of General Election Management System (GEMS) software to use
+weighted votes (where a vote != 1), and to apparently display/calcualte fractional
+votes. [[http://blackboxvoting.org/fraction-magic-2/][This work]] has been done by Black Box Voting, and led me down a bit of a rabbit
+hole, and I admit that the wiki page on [[https://en.wikipedia.org/wiki/Premier_Election_Solutions][Premier Election Solutions]] doesn't instill
+confidence, but this is a far cry from the type of investigation and evidence one would
+need to show that any of these features or vulnerabilities was used to alter results.
+
+Next, we're shown a table that supposedly comes from FOIA requests for various towns in
+Massachusetts, showing that the number of votes recorded in the MA 2020 primary election
+exceeded the number of voters on "participating voter lists" for 15 cities/downs he
+audited.
+
+#+attr_html: :width 500px
+[[img-url:/blog/img/shiva_excess-votes.png]]
+
+Note that the raw data isn't provided, no context is given (what is a "participating voter
+list"?), and we have no input from anyone in MA government to comment. Could the list be a
+past snapshot of prior registered voters compared with actual tallied voters (which
+include [[https://www.boston.gov/departments/elections/how-register-vote][late-registered]] voters)? The point is, we don't know. One can suspect all sorts of
+things, but how can we say what this means conclusively?
+
+On top of that, trying to look around for this reveals [[https://www.reuters.com/article/uk-factcheck-table-voter-registration-st/fact-checktable-shows-outdated-voter-registration-numbers-for-eight-key-states-idUSKBN27L2Y8][plenty of]] fact-checking [[https://apnews.com/article/fact-check-wisconsin-vote-vs-voters-afs:Content:9672223878][responses]]
+to claims like this, namely that there were [[https://www.snopes.com/fact-check/voter-fraud-more-votes-voters-2020/][more votes than voters]]. Sure, /could be/, but
+we'd need more and we don't have it. These excess vote investigations, by the way, were
+obtained via his insistence on voter fraud to [[https://shiva4senate.com/election-fraud/][explain his loss]] when running in the
+MA primary for [[https://www.washingtonpost.com/elections/election-results/massachusetts-primaries-2020/][state senator]]. When he lost, he filed a request to see ballot images, was told
+that only the original ballots are kept per law, and he began [[https://www.techdirt.com/articles/20201101/16264445627/shiva-ayyadurais-lawsuit-against-massachusetts-official-actually-raises-interesting-1st-amendment-question-about-election.shtml][falsely claiming]] MA was
+destroying ballots on twitter (and [[https://www.bostonherald.com/2020/09/06/howie-carr-good-thing-shiva-isnt-taking-his-gop-primary-loss-personally/][ranting via bullhorn]] in the streets). When his posts
+were taken down, he sued for $1.2B in damages...
+
+Moving on, he moves on to discussing what % votes over time during an election should look
+like, using this example from Franklin county, which settles in early and stays constant:
+
+#+attr_html: :width 500px
+[[img-url:/blog/img/shiva_franklin-county.png]]
+
+He then compares this to a "suspect" plot, which he says diverges:
+
+#+attr_html: :width 500px
+[[img-url:/blog/img/shiva_suspect-county.png]]
+
+There are a few problems with this. 
+- note how close Franklin is to 50/50 and that the margin is <10%, as votes come in (which
+  can be thought of as   randomly sampling the population), further sampling will not
+  drastically affect the net result if the true breakdown is something like 47% vs. 53%. 
+- in the second graph, the margin between red/blue is >25%, so one would expect that early
+  sampling will not reflect the end state (mandating divergence). In other words, in a bag
+  with 600 blue marbles and 350 red, the early results will start much closer to 50/50
+  before settling in to their truer distributions
+- the lines are smooth for Franklin and the x-axis is shown; the lines are jittery for the
+  other county, and we are not shown the x-axis. This tells me that we are seeing an
+  early, zoomed in view and one might see what looks like relatively wonky behavior if
+  zooming into Franklin for <500 votes, too.
+- as more of a continued gut feeling/indirect assessment about what I'm seeing, the plots
+  are pictures of a computer screen vs. included directly in the presentation, which is
+  weird for MIT PhD standards
+
+I admit I didn't watch the full end of this video, so I'm not sure if these patterns are
+revisited, but they originate from [[http://www.electoralsystemincrisis.org/2016-democratic-primary-graphs][the work of Phil Evans]]. Having skimmed this... I find
+it bizarre. I would describe the entire hypothesis as: "I can't explain reality, therefore
+fraud."
+
+
+
+
+
+
+
+
+
+
+
+https://www.techdirt.com/articles/20201101/16264445627/shiva-ayyadurais-lawsuit-against-massachusetts-official-actually-raises-interesting-1st-amendment-question-about-election.shtml

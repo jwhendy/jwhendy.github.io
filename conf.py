@@ -73,11 +73,17 @@ TRANSLATIONS_PATTERN = '{path}.{lang}.{ext}'
 #          with a ``/``, otherwise end them with ``/index.html`` — or
 #          else they won’t be highlighted when active.
 
+#NAVIGATION_LINKS = {
+#    DEFAULT_LANG: (
+#        ("/portfolio/", "portfolio"),
+#        ("/blog/", "blog"),
+#        ("/categories/", "tags"),
+#    ),
+#}
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        ("/portfolio/", "portfolio"),
         ("/blog/", "blog"),
-        ("/categories/", "tags"),
+	("/categories/", "tags")
     ),
 }
 

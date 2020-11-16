@@ -1,6 +1,6 @@
-<div id="outline-container-orgb6ad329" class="outline-2">
-<h2 id="orgb6ad329">background</h2>
-<div class="outline-text-2" id="text-orgb6ad329">
+<div id="outline-container-org0902eaf" class="outline-2">
+<h2 id="org0902eaf">background</h2>
+<div class="outline-text-2" id="text-org0902eaf">
 <p>
 While the 2020 election is behind us, this is not the case with interpretations. Theories
 abound proposing how and why we can <i>know</i> that fraud is the overwhelming conclusion. One
@@ -31,8 +31,8 @@ Several early warning signs stood out to me ahead of actually digging into the p
 in order to write this post.</li>
 </ul>
 
-<p width="500px">
-<img src="/blog/img/shiva_intro_creds.png" alt="nil"/>
+<p width="500">
+<img src="/img/shiva_intro_creds.png" alt="nil"/>
 </p>
 
 <ul class="org-ul">
@@ -49,25 +49,26 @@ credibility and general conduct is relevant data to consider.
 </div>
 </div>
 
-<div id="outline-container-org3d0956f" class="outline-2">
-<h2 id="org3d0956f">the lead in</h2>
-<div class="outline-text-2" id="text-org3d0956f">
+<div id="outline-container-org54fe356" class="outline-2">
+<h2 id="org54fe356">the lead in</h2>
+<div class="outline-text-2" id="text-org54fe356">
 <p>
 Dr. Shiva's strategy begins by planting seeds of doubt. For example, here he points out
-the lack of traceability and verification abilities for voters:
+the lack of traceability and verification abilities for voters. I don't disagree, I just
+disagree that this is somehow novel this year in particular.
 </p>
 
 <p width="500px">
-<img src="/blog/img/shiva_doubt.png" alt="nil"/>
+<img src="/img/shiva_doubt.png" alt="nil"/>
 </p>
 
 <p>
 He presents the aility of General Election Management System (GEMS) software to use
-weighted votes (where a vote != 1), and to apparently display/calcualte fractional
+weighted votes (where a <code>vote != 1</code>), and to apparently display/calcualte fractional
 votes. <a href="http://blackboxvoting.org/fraction-magic-2/">This work</a> has been done by Black Box Voting, and led me down a bit of a rabbit
-hole, and I admit that the wiki page on <a href="https://en.wikipedia.org/wiki/Premier_Election_Solutions">Premier Election Solutions</a> doesn't instill
+hole. I admit that some aspects of the wiki page on <a href="https://en.wikipedia.org/wiki/Premier_Election_Solutions">Premier Election Solutions</a> doesn't instill
 confidence, but this is a far cry from the type of investigation and evidence one would
-need to show that any of these features or vulnerabilities was used to alter results.
+need to show that these features or vulnerabilities were used to alter results.
 </p>
 
 <p>
@@ -78,22 +79,369 @@ audited.
 </p>
 
 <p width="500px">
-<img src="/blog/img/shiva_excess-votes.png" alt="nil"/>
+<img src="/img/shiva_excess-votes.png" alt="nil"/>
 </p>
 
 <p>
 Note that the raw data isn't provided, no context is given (what is a "participating voter
-list"?), 
+list"?), and we have no input from anyone in MA government. Could the list be a
+past snapshot of prior registered voters compared with actual tallied voters (which
+include <a href="https://www.boston.gov/departments/elections/how-register-vote">late-registrations</a>)? How do they calculate these numbers? Is the same group/entity
+providing both numbers? The point is, we don't know. One can suspect all sorts of
+things, but how can we say what this means conclusively?
 </p>
 
-
-
-
-
-
+<p>
+On top of that, trying to look around at this issue reveals <a href="https://www.reuters.com/article/uk-factcheck-table-voter-registration-st/fact-checktable-shows-outdated-voter-registration-numbers-for-eight-key-states-idUSKBN27L2Y8">plenty of</a> fact-checking <a href="https://apnews.com/article/fact-check-wisconsin-vote-vs-voters-afs:Content:9672223878">responses</a>
+to claims like this, namely that there were <a href="https://www.snopes.com/fact-check/voter-fraud-more-votes-voters-2020/">more votes than voters</a>. Sure, <i>could be</i>, but
+we'd need more and we don't have it. These excess vote investigations, by the way, were
+obtained via his insistence on voter fraud to <a href="https://shiva4senate.com/election-fraud/">explain his loss</a> when running in the
+MA primary for <a href="https://www.washingtonpost.com/elections/election-results/massachusetts-primaries-2020/">state senator</a>. When he lost, he filed a request to see ballot images, was told
+that only the original ballots are kept per law, and he subsequently began <a href="https://www.techdirt.com/articles/20201101/16264445627/shiva-ayyadurais-lawsuit-against-massachusetts-official-actually-raises-interesting-1st-amendment-question-about-election.shtml">falsely
+claiming</a> on twitter that MA destroying ballots (and <a href="https://www.bostonherald.com/2020/09/06/howie-carr-good-thing-shiva-isnt-taking-his-gop-primary-loss-personally/">ranting via bullhorn</a> in the
+streets). When his posts were taken down as disinformation, he sued for $1.2B in damages&#x2026;
+</p>
 
 <p>
-<a href="https://www.techdirt.com/articles/20201101/16264445627/shiva-ayyadurais-lawsuit-against-massachusetts-official-actually-raises-interesting-1st-amendment-question-about-election.shtml">https://www.techdirt.com/articles/20201101/16264445627/shiva-ayyadurais-lawsuit-against-massachusetts-official-actually-raises-interesting-1st-amendment-question-about-election.shtml</a>
+Moving on, he begins discussing what % votes over time should look like, using this
+example from Franklin county, which settles in early and stays constant: 
+</p>
+
+<p width="500px">
+<img src="/img/shiva_franklin-county.png" alt="nil"/>
+</p>
+
+<p>
+He then compares this to a "suspect" plot, which he says diverges suspiciously:
+</p>
+
+<p width="500px">
+<img src="/img/shiva_suspect-county.png" alt="nil"/>
+</p>
+
+<p>
+There are a few problems with this. 
+</p>
+<ul class="org-ul">
+<li>note how close Franklin is to 50/50 and the margin is &lt;10%. As votes come in (which
+can be thought of as randomly sampling the population), further sampling will not
+drastically affect the net result if the true breakdown is something like 47% vs. 53%.</li>
+<li>in the second graph, the margin between red/blue is &gt;25%, so there's no way that early
+ratios will reflect the end state (mandating divergence). In other words, in a bag 
+with 600 blue marbles and 350 red, the early results will start much closer to 50/50
+before settling at their true distribution</li>
+<li>the lines are smooth for Franklin and the x-axis is shown; the lines are jittery for the
+other county, and we are not shown the x-axis. This tells me that we are seeing an
+zoomed in view. Franklin county would look pretty wonky we zoomed in on &lt;500 votes, too.</li>
+<li>as more of a continued gut feeling/indirect assessment about what I'm seeing, the plots
+are pictures of a computer screen vs. included directly in the presentation, which is
+lower than I expect for MIT PhD standards</li>
+</ul>
+
+<p>
+I admit I didn't watch the full end of this video, so I'm not sure if these patterns are
+revisited, but they originate from <a href="http://www.electoralsystemincrisis.org/2016-democratic-primary-graphs">the work of Phil Evans</a>. Having skimmed this&#x2026; I find
+it bizarre. I would describe the entire hypothesis as: "I can't explain reality, therefore
+fraud." Really, take a look yourself:
+</p>
+
+<p width="500px">
+<img src="/img/shiva_phil-evans-al.png" alt="nil"/>
+</p>
+
+<p>
+I think I'll revisit this at a later time in more detail, as this isn't at the heart of
+Dr. Shiva's argument. For now, here's the synopsis of the method from <a href="http://www.electoralsystemincrisis.org/">his report</a>:
+</p>
+
+<pre class="example">
+The technique [Cumulative Precinct Vote Tally Chart, CVT] is based on the Law of Large
+Numbers. Investopedia provides a straight-forward explanation, “A principle of probability
+and statistics which states that as a sample size grows, its mean will get closer and
+closer to the average of the whole population.” 
+
+The CVT graph shows the precincts added together cumulatively from the smallest to the
+largest along the X-axis. On the Y-axis it shows the two candidates’ percentages.
+</pre>
+
+<p>
+The problem is, the heavy R leaning in small, rural areas, and strong D leaning in cities
+is well known. Depending on a state's overall population, ratio of total city 
+vs. total rural population, overall leaning, and the dynamics of each year's candidates&#x2026; these
+kinds of curves could literally be <i>anything</i> when plotted from smallest to largest precinct.
+</p>
+
+<p>
+In the AL example above the dotted reference lines amount to this hypothesis: "the end
+results should be about the same as the result very early." But the problem in expecting
+convergence "closer and closer to the average of the whole population," is that the
+population is bi-modal. Here's the 2020 county level breakdown for the 2020 presidential
+election in Alabama (62.1% Trump vs. 36.5%):
+</p>
+
+<p width="500px">
+<img src="/img/shiva_alabama-county-2020-pres.png" alt="nil"/>
+</p>
+
+<p>
+By exploing <a href="https://www.nytimes.com/interactive/2020/11/03/us/elections/results-alabama.html">the NY Times results for AL</a>, Jefferson County (Birmingham) was 55.7% Biden vs. 42.6% Trump, with
+over 300k votes. Surrounding counties favored Trump anywhere from 75/25% to 95/5%, but
+with populations of 7-40k. This doesn't even pass the smell test. The state is
+not one bag of marbles; you're sampling n times from one bag containing 90 red
+and 10 blue, then switching to a much different bag and sampling 10x the number of times.
+</p>
+
+<p>
+I happen to have the county level presdential election results, so here's Alabama to show
+exactly what I mean:
+</p>
+
+<p width="500px">
+<img src="/img/shiva_perc-vs-votes_al.png" alt="nil"/>
+</p>
+
+<p>
+I hope to come back to this in detail some other time, but for now I wanted to illustrate
+preliminary thoughts on his collaborator's idea.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2a169d4" class="outline-2">
+<h2 id="org2a169d4">the meat</h2>
+<div class="outline-text-2" id="text-org2a169d4">
+<p>
+Here is the central theory presented, which has already (4 days later as of now) been
+parroted around as <a href="https://joannenova.com.au/2020/11/electronic-vote-fraud-equation-revealed-in-michigan-in-4-counties-138000-fake-votes-for-biden/">proof of 69,000</a> switched votes (or <a href="https://joannenova.com.au/2020/11/electronic-vote-fraud-equation-revealed-in-michigan-in-4-counties-138000-fake-votes-for-biden/">is it 138,000</a>?).
+</p>
+
+<p width="500px">
+<img src="/img/shiva_st-vs-direct-theory.png" alt="nil"/>
+</p>
+
+<p>
+The observation works like this:
+</p>
+<ul class="org-ul">
+<li>in various Michigan precincts, they looked at straight party % (percent of voters
+choosing to vote straight-R) vs. % Trump votes for those who did <i>not</i> vote straight-R
+(referred to as direct votes)</li>
+<li>on the x-axis is straight-R %</li>
+<li>on the y-axis is Trump % among direct votes minus straight-R %</li>
+</ul>
+
+<p>
+This is what Dr. Shiva says these plots should look like:
+</p>
+
+<p width="500px">
+<img src="/img/shiva_st-expected.png" alt="nil"/>
+</p>
+
+<p>
+The layman's explanation is that straight-R % in a precinct is a measure
+of "republican-ness." If you have a very high % of straight-R voters, the precinct
+population is very R loyal. For the direct voters, should expect this loyalty to be
+similar, so you should expect a constant offset. So among direct voters, Trump support
+might vary +/-10% vs. the straight-R %, and that level will be consistent across all
+state's precincts.
+</p>
+
+<p>
+Compare this to what he presents as a suspect precinct:
+</p>
+
+<p width="500px">
+<img src="/img/shiva_st-suspect.png" alt="nil"/>
+</p>
+
+<p>
+He points out that the fit line features an early plateau and then a steep
+decline. Similar to Phil Evans' theory, the claim is that Trump's positive margin in low
+straight-R % precincts should be representative of the whole population and carry across
+the board. He doesn't show his work, but I think he uses the early plateau vs. the
+downward trend line to calculate and estimate of ~40k lost votes. Is this reasonable? Not remotely.
+</p>
+
+<p>
+For one, what are we really plotting? We have <code>y-x</code> vs <code>x</code>; what should that
+look like? For both straight-R and direct-R voters, we have a range of 0-100%. The cells
+below show what the extremes of <code>y</code> will be for each combination (direct-R - straight-R):
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>straight-R=0</b></td>
+<td class="org-left"><b>straight-R=100</b></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>direct-R=0</b></td>
+<td class="org-left">0-0 = 0</td>
+<td class="org-left">0-100 = -100</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>direct-R=100</b></td>
+<td class="org-left">100-0 = 100</td>
+<td class="org-left">100-100 = 0</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Before we apply <i>any</i> background knowledge or data analysis to this, we know that we
+have an inherent relationship in the data because of how he's chosen to plot it:
+</p>
+
+<p width="500px">
+<img src="/img/shiva_st-vs-dir.png" alt="nil"/>
+</p>
+
+<p>
+One can intuitively see this, as well. In a county with <i>no</i> straight-R votes&#x2026; surely
+<i>someone</i> will vote for Trump, right? Thus <code>direct-R - straight &gt; 0</code>. As we increase in
+straight-R votes, two things happen:
+</p>
+<ul class="org-ul">
+<li>straight-R % begins to exceed the general population sentiment (90% straight-R is higher
+than Trump support at large), so the chance of direct-R &lt; straight-R increases</li>
+<li>in addition, high straight-R % means a very <i>low</i> relative number of direct voters, so
+the denominator becomes small, and even a few Biden votes makes for a much lower direct-R
+%.</li>
+</ul>
+
+<p>
+The last point is key: say we have 100 voters in a 90% straight-R precinct. This only
+leaves 10 direct voters, and imagine that 3 vote for Biden. This precinct is <i>97% Trump</i>
+(90 direct + 7 direct out of 100), however due to the choice of this metric, it will show
+a -60% Trump "hit" (30% direct - 90% straight). Can you see how this graph isn't what it
+seems? I didn't see how they calculated "stolen" votes, so I would be curious if they
+factor in the small direct-R population (loss of 3 votes?) or consider the "deficit" vs
+the total voters (a loss of perhaps 60 votes).
+</p>
+
+<p>
+This premise also ignores that as you increase in straight-R percentage, some of those
+choosing to vote direct are <i>specifically doing it to vote against Trump</i>. That is to say,
+the direct voting group <i>is expected</i> to lean more toward Biden than the overall straight-R
+percent.
+</p>
+
+<p>
+Next, Wayne county is shown as an example where "the algorithm" is not detected, and where Trump
+even managed a "boost" of 10%:
+</p>
+
+<p width="500px">
+<img src="/img/shiva_wayne-county.png" alt="nil"/>
+</p>
+
+<p>
+This is followed by showing Kent county, where the algorithm is alive and well:
+</p>
+
+<p width="500px">
+<img src="/img/shiva_kent-county.png" alt="nil"/>
+</p>
+
+<p>
+But note the axes. At a guess, I'd say 80% of Wayne county precincts are &lt;10% straight-R
+voters, and the axis stops at 35%. Kent county goes all the way up to 80% straight-R, and
+the axis extends to 100%. Look at Kent straight-R &lt; 35%, right where the elbow is in the
+fit line. That's essentially where all of Wayne county's data is. It's not "the algorithm"
+that isn't at play; the precincts are simply below high straight-R territory where we
+the pre-determined mathematical pattern will <i>always</i> be observed.
+</p>
+
+<p>
+This is also good point to show a corollary. What about that Trump "boost"? As the
+straight-R percent declines, you descend below the general population sentiment, so you're
+bound to have a higher Trump % among direct voters than the straight-R %. Wayne county was
+30.7% Trump, which is much higher than the 0-10% straight-R % for most precincts.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9779d62" class="outline-2">
+<h2 id="org9779d62">validating</h2>
+<div class="outline-text-2" id="text-org9779d62">
+<p>
+My favorite approach to these things is to just try them myself. Can we? Straight ticket
+data seems sparse, but I managed to find <a href="https://sites.austincc.edu/newsroom/2008/12/11/cppps-releases-straight-ticket-voting-report/">a report</a> with data from Texas. It covered
+straight ticket votes in 47 counties amounting to 83% of the overall Texas votes in 2008
+(<a href="https://www.austincc.edu/cppps/pdfs/straightticketfinalreport.pdf">pdf</a>). Without <i>too</i> much work, I extracted the main table with <a href="https://en.wikipedia.org/wiki/Poppler_(software)#poppler-utils"><code>pdftotext</code></a>, pasted it
+into a spreadsheet, and paired it with the overall TX <a href="https://en.wikipedia.org/wiki/2008_United_States_presidential_election_in_Texas#By_county">results per county</a> (<a href="https://jwhendy.github.io/data/shiva_tx-straight-vs-direct_2008.csv">data</a>). Plotting
+with their method, what do we find?  
+</p>
+
+<p width="500px">
+<img src="/img/shiva_tx-st-vs-dir.png" alt="nil"/>
+</p>
+
+<p>
+In light of Dr. Shiva's following conclusion, consider that this is Texas, which had an
+overall result of 55.5% McCain to 43.7% Obama in 2008:
+</p>
+
+<p width="500px">
+<img src="/img/shiva_conclusion.png" alt="nil"/>
+</p>
+
+<p>
+Surely the argument isn't that McCain won Texas by fraud (Obama's trend is lower and
+therefore shows that "the algorithm" took more of his votes)? Or that that
+algorithm was stealing votes from both (why would they <i>both</i> follow this suspicious,
+downward trend)? And why did the algorithm kick in so early with the independent
+candidates? For what it's worth, FiveThirtyEight <a href="https://en.wikipedia.org/wiki/FiveThirtyEight#Final_projections_of_2008_elections">was extremely accurate</a> in 2008, and Texas
+<a href="https://web.archive.org/web/20081204075833/http://www.fivethirtyeight.com/2008/11/todays-polls-and-final-election.html">wasn't even listed</a> as a swing state. Why risk cheating when you don't need to?
+</p>
+
+<p>
+Indeed, none of these things make sense. This is what one would expect these plots to
+look like in the first place.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdbfc236" class="outline-2">
+<h2 id="orgdbfc236">final thoughts</h2>
+<div class="outline-text-2" id="text-orgdbfc236">
+<p>
+Here are some notable aspects of fraud theries appearing to leverage math and/or data I've
+noticed:
+</p>
+<ul class="org-ul">
+<li>the analysis focuses on one year. What is the historical context for this metric? Is
+this actually unique? What trends or patterns have existed over time?</li>
+<li>the evaluation is conducted for only one candidate. Note what my plot would look like
+above with Obama or McCain removed. Indeed, with only Trump shown and the many invented
+examples slipped in of what these supposedly shood look like, it paints the picture that
+the data is unique to Trump.</li>
+<li>only instances unfavorable to a certain candidate are evaluated. While the analysis is
+presented behind a mask of virtue and integrity&#x2026; no justice is sought where the
+desired result was obtained (yet the "suspicious" pattern occurred). In addition, if
+pattern X means "fraud," how can it it appear everywhere?</li>
+<li>lastly, the metric used (e.g. straight vs. direct-straight) is never justified; ask
+yourself if you've ever heard what this relationship is <i>supposed</i> to be?</li>
+</ul>
+
+<p>
+This last point is key. I'm sure a different term already exists for
+this concept, but I've been thinking of this as "argument by inception." You were never
+suspicious of this metric, pattern, ratio, etc. before someone told you it was odd. Once
+suggested, it's hard to shake despite zero evidence being presented to justify it.
 </p>
 </div>
 </div>

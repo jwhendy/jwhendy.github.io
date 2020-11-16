@@ -9,6 +9,7 @@
 <link rel="canonical" href="https://jwhendy.github.io/blog/arch-and-ubuntu-side-by-side-on-encrypted-btrfs/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="John Henderson">
 <link rel="prev" href="../comparing-python-plotting-libraries/" title="Comparing python plotting libraries" type="text/html">
+<link rel="next" href="../vote-fraud-theory-straight-ticket-vs-direct-votes/" title="Vote fraud theory: straight ticket vs. direct votes" type="text/html">
 <meta property="og:site_name" content="jwhendy">
 <meta property="og:title" content="Arch and Ubuntu side-by-side on encrypted btrfs">
 <meta property="og:url" content="https://jwhendy.github.io/blog/arch-and-ubuntu-side-by-side-on-encrypted-btrfs/">
@@ -45,9 +46,6 @@ doesn't give me">
             <!-- Everything you want hidden at 940px or less, place within here -->
             <div class="nav-collapse collapse">
                 <ul class="nav">
-<li>
-<a href="../../portfolio/">portfolio</a>
-                </li>
 <li>
 <a href="../">blog</a>
                 </li>
@@ -95,9 +93,9 @@ doesn't give me">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-org6cb3663" class="outline-2">
-<h2 id="org6cb3663">background</h2>
-<div class="outline-text-2" id="text-org6cb3663">
+    <div id="outline-container-orgb5f589b" class="outline-2">
+<h2 id="orgb5f589b">background</h2>
+<div class="outline-text-2" id="text-orgb5f589b">
 <p>
 I've used Arch linux for about 8 years from <a href="https://bbs.archlinux.org/profile.php?id=35588">what I can tell</a>. I love the minimalistic
 nature, and also think <code>pacman</code> and <code>pacaur</code> are pretty great for package management. Arch
@@ -124,9 +122,9 @@ About ~15hrs later, I've got base systems installed and am feeling pretty happy.
 </div>
 </div>
 
-<div id="outline-container-org37659c0" class="outline-2">
-<h2 id="org37659c0">hardware</h2>
-<div class="outline-text-2" id="text-org37659c0">
+<div id="outline-container-org2571be0" class="outline-2">
+<h2 id="org2571be0">hardware</h2>
+<div class="outline-text-2" id="text-org2571be0">
 <p>
 I first went through this (minus UEFI stuff) on an HP Zbook 15 G2 and I'm using a Zbook 15
 G4 to recreate the setup and write this guide (I didn't take very good notes last
@@ -142,9 +140,9 @@ USB's hashes with Secure Boot.
 </div>
 </div>
 
-<div id="outline-container-org5461c88" class="outline-2">
-<h2 id="org5461c88">prepping the drive</h2>
-<div class="outline-text-2" id="text-org5461c88">
+<div id="outline-container-orge340062" class="outline-2">
+<h2 id="orge340062">prepping the drive</h2>
+<div class="outline-text-2" id="text-orge340062">
 <p>
 This is pretty straightforward stuff, though I ended up doing all of this <i>twice</i> because
 I didn't realize one gotcha. When it comes to partitioning, the bootloader will need to
@@ -209,9 +207,9 @@ this with respect to installing arch first, then ubuntu.
 </div>
 </div>
 
-<div id="outline-container-orga4b115b" class="outline-2">
-<h2 id="orga4b115b">installing arch</h2>
-<div class="outline-text-2" id="text-orga4b115b">
+<div id="outline-container-org03cb0f4" class="outline-2">
+<h2 id="org03cb0f4">installing arch</h2>
+<div class="outline-text-2" id="text-org03cb0f4">
 <p>
 We need to create the subvolumes we'd like to use, as well as the boot structure. I used
 the following for my <code>btrfs</code> setup (we'll create subvols for ubuntu later):
@@ -270,9 +268,9 @@ wireless tools, etc.
 </div>
 </div>
 
-<div id="outline-container-orge5335a6" class="outline-2">
-<h2 id="orge5335a6">bootloader setup</h2>
-<div class="outline-text-2" id="text-orge5335a6">
+<div id="outline-container-org18b7ea4" class="outline-2">
+<h2 id="org18b7ea4">bootloader setup</h2>
+<div class="outline-text-2" id="text-org18b7ea4">
 <p>
 For the bootloader, I'm going with <a href="https://wiki.archlinux.org/index.php/REFInd"><code>rEFInd</code></a>, (<code>refind-efi</code> package). Since I have Secure
 Boot enabled, I had to do a few more things like installing <a href="https://aur.archlinux.org/packages/shim-signed/"><code>shim-signed</code></a> (AUR), which
@@ -416,9 +414,9 @@ enrolling the hash at boot each time it updates.
 </div>
 </div>
 
-<div id="outline-container-org349686a" class="outline-2">
-<h2 id="org349686a">install ubuntu</h2>
-<div class="outline-text-2" id="text-org349686a">
+<div id="outline-container-org7314afd" class="outline-2">
+<h2 id="org7314afd">install ubuntu</h2>
+<div class="outline-text-2" id="text-org7314afd">
 <p>
 Boot into Ubuntu and choose the option to try it (not install). Open a terminal and open
 the existing crypt device:
@@ -571,9 +569,9 @@ require fiddling like arch's).
 </div>
 </div>
 
-<div id="outline-container-org91608e6" class="outline-2">
-<h2 id="org91608e6">nvidia drivers</h2>
-<div class="outline-text-2" id="text-org91608e6">
+<div id="outline-container-org2c63310" class="outline-2">
+<h2 id="org2c63310">nvidia drivers</h2>
+<div class="outline-text-2" id="text-org2c63310">
 <p>
 On ubuntu, <code>nvidia</code> drivers won't <code>modprobe</code> becuase <a href="https://askubuntu.com/questions/755238/why-disabling-secure-boot-is-enforced-policy-when-installing-3rd-party-modules">ubuntu uses</a> the
 <code>CONFIG_MODULE_SIG_FORCE</code> option in its kernel. We have to sign them with the keys we
@@ -630,9 +628,9 @@ checking to make sure <code>nouveau</code> is not present and <code>nvidia</code
 </div>
 
 
-<div id="outline-container-org42ba5a0" class="outline-2">
-<h2 id="org42ba5a0">conclusion</h2>
-<div class="outline-text-2" id="text-org42ba5a0">
+<div id="outline-container-orgf609dfb" class="outline-2">
+<h2 id="orgf609dfb">conclusion</h2>
+<div class="outline-text-2" id="text-orgf609dfb">
 <p>
 So that's it! I <i>love</i> using <code>btrfs</code> for this purpose, as you can easily recreate this
 process with any number of distros. My use of ubuntu is for the <a href="http://www.ros.org/">Robot Operating System</a>
@@ -642,9 +640,9 @@ this is perfect for not having to deal with re-partitioning, worrying about sizi
 </div>
 </div>
 
-<div id="outline-container-org8f7a10c" class="outline-2">
-<h2 id="org8f7a10c">notes</h2>
-<div class="outline-text-2" id="text-org8f7a10c">
+<div id="outline-container-orgd05a7b4" class="outline-2">
+<h2 id="orgd05a7b4">notes</h2>
+<div class="outline-text-2" id="text-orgd05a7b4">
 <ul class="org-ul">
 <li>I found that <code>refind-install</code> changed the system boot order. I got a little freaked out
 at first, thinking something had been overwritten, but it was fine. You can change this
@@ -664,9 +662,9 @@ instead (like <code>luks.uuid</code>).</li>
 </div>
 
 
-<div id="outline-container-org9aeec40" class="outline-2">
-<h2 id="org9aeec40">various resources</h2>
-<div class="outline-text-2" id="text-org9aeec40">
+<div id="outline-container-orgd9ede24" class="outline-2">
+<h2 id="orgd9ede24">various resources</h2>
+<div class="outline-text-2" id="text-orgd9ede24">
 <p>
 Other various sites I thought were helpful. This whole exercise felt like putting together
 bits and pieces from a lot of places, comparing them, using what was most consistent, etc.
@@ -701,6 +699,9 @@ way, it's either more than I needed or for other applications I'm not running in
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../comparing-python-plotting-libraries/" rel="prev" title="Comparing python plotting libraries">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../vote-fraud-theory-straight-ticket-vs-direct-votes/" rel="next" title="Vote fraud theory: straight ticket vs. direct votes">Next post</a>
             </li>
         </ul></nav></aside></article>
 </div>
