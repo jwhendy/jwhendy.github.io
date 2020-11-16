@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy</title><link>https://jwhendy.github.io/</link><description>Knowledge, sleep, food and coffee go in; this type of stuff comes out.</description><atom:link href="https://jwhendy.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Sun, 15 Nov 2020 21:20:20 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Arch and Ubuntu side-by-side on encrypted btrfs</title><link>https://jwhendy.github.io/blog/arch-and-ubuntu-side-by-side-on-encrypted-btrfs/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org6cb3663" class="outline-2"&gt;
-&lt;h2 id="org6cb3663"&gt;background&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org6cb3663"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy</title><link>https://jwhendy.github.io/</link><description>Knowledge, sleep, food and coffee go in; this type of stuff comes out.</description><atom:link href="https://jwhendy.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Mon, 16 Nov 2020 02:48:07 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Vote fraud theory: straight ticket vs. direct votes</title><link>https://jwhendy.github.io/blog/vote-fraud-theory-straight-ticket-vs-direct-votes/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org0902eaf" class="outline-2"&gt;
+&lt;h2 id="org0902eaf"&gt;background&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org0902eaf"&gt;
+&lt;p&gt;
+While the 2020 election is behind us, this is not the case with interpretations. Theories
+abound proposing how and why we can &lt;i&gt;know&lt;/i&gt; that fraud is the overwhelming conclusion. One
+such theory is contained in &lt;a href="https://www.youtube.com/watch?v=YRJCB6U-H4E"&gt;this video&lt;/a&gt; by a &lt;a href="https://en.wikipedia.org/wiki/Shiva_Ayyadurai"&gt;Dr. Shiva&lt;/a&gt;. The gist goes like this:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;in certain states, one may vote "straight ticket," which means making one choice to
+select all same-party candidates on the ballot&lt;/li&gt;
+&lt;li&gt;one may also "direct vote," meaning one makes individual choices (which may or may not
+be for all same-party candidates)&lt;/li&gt;
+&lt;li&gt;for a given party, there is an expected correlation between the percent of straight
+ticket votes in an area (e.g. precinct, county) and direct votes for others of the same
+party; deviating from this correlation implies fraud&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Let's take a look!
+&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://jwhendy.github.io/blog/vote-fraud-theory-straight-ticket-vs-direct-votes/"&gt;Read more…&lt;/a&gt; (16 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://jwhendy.github.io/blog/vote-fraud-theory-straight-ticket-vs-direct-votes/</guid><pubDate>Sun, 15 Nov 2020 16:50:25 GMT</pubDate></item><item><title>Arch and Ubuntu side-by-side on encrypted btrfs</title><link>https://jwhendy.github.io/blog/arch-and-ubuntu-side-by-side-on-encrypted-btrfs/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orgb5f589b" class="outline-2"&gt;
+&lt;h2 id="orgb5f589b"&gt;background&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgb5f589b"&gt;
 &lt;p&gt;
 I've used Arch linux for about 8 years from &lt;a href="https://bbs.archlinux.org/profile.php?id=35588"&gt;what I can tell&lt;/a&gt;. I love the minimalistic
 nature, and also think &lt;code&gt;pacman&lt;/code&gt; and &lt;code&gt;pacaur&lt;/code&gt; are pretty great for package management. Arch
@@ -24,9 +46,9 @@ and Secure Boot, which was entirely new to me.
 About ~15hrs later, I've got base systems installed and am feeling pretty happy.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://jwhendy.github.io/blog/arch-and-ubuntu-side-by-side-on-encrypted-btrfs/"&gt;Read more…&lt;/a&gt; (13 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>linux</category><guid>https://jwhendy.github.io/blog/arch-and-ubuntu-side-by-side-on-encrypted-btrfs/</guid><pubDate>Sat, 28 Apr 2018 14:17:26 GMT</pubDate></item><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orgbfd2c65" class="outline-2"&gt;
-&lt;h2 id="orgbfd2c65"&gt;introduction&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgbfd2c65"&gt;
+&lt;p&gt;&lt;a href="https://jwhendy.github.io/blog/arch-and-ubuntu-side-by-side-on-encrypted-btrfs/"&gt;Read more…&lt;/a&gt; (13 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>linux</category><guid>https://jwhendy.github.io/blog/arch-and-ubuntu-side-by-side-on-encrypted-btrfs/</guid><pubDate>Sat, 28 Apr 2018 14:17:26 GMT</pubDate></item><item><title>Comparing python plotting libraries</title><link>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orgd988adc" class="outline-2"&gt;
+&lt;h2 id="orgd988adc"&gt;introduction&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgd988adc"&gt;
 &lt;p&gt;
 As mentioned in a &lt;a href="https://jwhendy.github.io/blog/translating-r-to-python/"&gt;previous post&lt;/a&gt;, I've been trying to pick up &lt;code&gt;python&lt;/code&gt;, coming from mostly
 using &lt;code&gt;R&lt;/code&gt; over the past 5-7 years for data analysis, stats, and a lot of plotting. I found
@@ -54,9 +76,9 @@ libraries:
 &lt;li&gt;&lt;a href="http://pygal.org/en/stable/"&gt;&lt;code&gt;pygal&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a href="https://jwhendy.github.io/blog/comparing-python-plotting-libraries/"&gt;Read more…&lt;/a&gt; (20 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</guid><pubDate>Sat, 23 Dec 2017 19:33:34 GMT</pubDate></item><item><title>Translating R to python</title><link>https://jwhendy.github.io/blog/translating-r-to-python/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-orga830a45" class="outline-2"&gt;
-&lt;h2 id="orga830a45"&gt;Background&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orga830a45"&gt;
+&lt;p&gt;&lt;a href="https://jwhendy.github.io/blog/comparing-python-plotting-libraries/"&gt;Read more…&lt;/a&gt; (20 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>learning</category><category>python</category><category>r</category><guid>https://jwhendy.github.io/blog/comparing-python-plotting-libraries/</guid><pubDate>Sat, 23 Dec 2017 19:33:34 GMT</pubDate></item><item><title>Translating R to python</title><link>https://jwhendy.github.io/blog/translating-r-to-python/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org9bc5321" class="outline-2"&gt;
+&lt;h2 id="org9bc5321"&gt;Background&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org9bc5321"&gt;
 &lt;p&gt;
 I've been using &lt;code&gt;R&lt;/code&gt; for at least &lt;a href="https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r"&gt;5 years&lt;/a&gt;. Lately, I've been trying to pick up &lt;code&gt;python&lt;/code&gt; as
 well, which is quite the learning experience! I've been through some tutorials (or pieces
