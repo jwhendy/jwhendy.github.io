@@ -81,9 +81,9 @@ look at the video, which compares snapshots of the election results as extracted
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div id="outline-container-org9e3f09c" class="outline-2">
-<h2 id="org9e3f09c">background</h2>
-<div class="outline-text-2" id="text-org9e3f09c">
+    <div id="outline-container-org67abfbd" class="outline-2">
+<h2 id="org67abfbd">background</h2>
+<div class="outline-text-2" id="text-org67abfbd">
 <p>
 I've been presented with another theory of fraud in the 2020 Presidential election. Have a
 look at <a href="https://www.youtube.com/watch?v=X1uyg1f0RNA">the video</a>, which compares snapshots of the election results as extracted from NY Times <code>.json</code>
@@ -114,9 +114,9 @@ here folks.
 </div>
 </div>
 
-<div id="outline-container-orgb29716f" class="outline-2">
-<h2 id="orgb29716f">explanation</h2>
-<div class="outline-text-2" id="text-orgb29716f">
+<div id="outline-container-orgcbfeff2" class="outline-2">
+<h2 id="orgcbfeff2">explanation</h2>
+<div class="outline-text-2" id="text-orgcbfeff2">
 <p>
 The gist of the theory is simple:
 </p>
@@ -134,6 +134,14 @@ many news organizations… but again, where do <i>they</i> get it? Why do we thi
 Research somehow equals "wired into the mainframe" here? Other sources on election night
 were wrong and <a href="https://www.vox.com/recode/2020/11/4/21549710/biden-michigan-votes-trump-retweet-election-map">had to be corrected</a>, why are these magical .json files infallible?
 </p>
+
+<p>
+Even the author of this code admits to fatal flaw:
+</p>
+
+<p width="500">
+<img src="../../img/hammer_edison-caveat.png" alt="nil"></p>
+
 
 <p>
 Just in case it's .json files that somehow raise credibility, if you aren't familiar they
@@ -228,9 +236,9 @@ total votes (3% switched, 13% lost during election night).
 </div>
 </div>
 
-<div id="outline-container-orgfca074c" class="outline-2">
-<h2 id="orgfca074c">digging in</h2>
-<div class="outline-text-2" id="text-orgfca074c">
+<div id="outline-container-org3d07f6d" class="outline-2">
+<h2 id="org3d07f6d">digging in</h2>
+<div class="outline-text-2" id="text-org3d07f6d">
 <p>
 I'd already been playing with voting data pulled from the Times, so it was a relatively
 simple matter to get all the timestamped files vs. the state and county results. I'm
@@ -419,10 +427,9 @@ what we see. Again, I doubt this matches anyone's intuitive interpretation of "T
 </div>
 </div>
 
-
-<div id="outline-container-orge33bfa9" class="outline-2">
-<h2 id="orge33bfa9">the code</h2>
-<div class="outline-text-2" id="text-orge33bfa9">
+<div id="outline-container-org8531af7" class="outline-2">
+<h2 id="org8531af7">the code</h2>
+<div class="outline-text-2" id="text-org8531af7">
 <p>
 Now, what's the code behind this, anyway? Well, again, while I admit I think this theory
 is absolutely preposterous, kudos for sharing the source the code. If you know <code>python</code>, I'm
@@ -557,6 +564,15 @@ finding in the YouTube comments, I'm guessing no one actually did.
 </p>
 
 <p>
+Even the original author of this work (PedeInspector) <a href="https://thedonald.win/p/11Q8XRRBt1/x/c/1BjFWxSJeh?d=50">disagrees</a> with this interpretation,
+despite it being already passed along publicly by Trump.
+</p>
+
+<p width="500">
+<img src="../../img/hammer_pede-response.png" alt="nil"></p>
+
+
+<p>
 My assessment at this point is that this code just blindly runs some calculations, without
 actually verifying what it's finding or whether that seems sane. For example… seeing the
 indices with the biggest losses at 48 and 56 in the data, let's go look at them.
@@ -670,7 +686,7 @@ the closest of the four.
 </p>
 
 <p>
-To close out, here's all 50 states again, with the <code>votes=0</code> entries removed:
+Here's all 50 states again, with the <code>votes=0</code> entries removed:
 </p>
 
 <p width="500">
@@ -682,12 +698,129 @@ Is it everything you imagined?
 </div>
 </div>
 
-<div id="outline-container-org7793376" class="outline-2">
-<h2 id="org7793376">conclusion</h2>
-<div class="outline-text-2" id="text-org7793376">
+<div id="outline-container-org19eb725" class="outline-2">
+<h2 id="org19eb725">a final angle</h2>
+<div class="outline-text-2" id="text-org19eb725">
 <p>
-I hate to say it, but this feels like the kind of thing wide eyed kids do when they've
-just had the epiphany that maybe with magnets in just the right positions, they could create a
+There's a more subtle issue going on here.
+</p>
+<ul class="org-ul">
+<li>inputs are % share and total votes</li>
+<li>for each candidate, we take as true both inputs to caluclate candidate votes</li>
+<li>this implies that we have discovered the <i>true</i> votes behind the scenes</li>
+<li>with each new update, the deltas are being calculated based on <i>reported</i> votes and
+percentages… while the whole premise of this calculation is that we've discovered a
+more accurate truth</li>
+</ul>
+<p>
+In essence, the ability to infer that the data is manipulated/false, and yet
+continue to rely on it for subsequent calculations is contradictory. Let's return to the
+concrete example used from Michgan: 
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup>
+<col class="org-left">
+<col class="org-right">
+<col class="org-right">
+<col class="org-right">
+<col class="org-right">
+<col class="org-right">
+</colgroup>
+<thead><tr>
+<th scope="col" class="org-left">time</th>
+<th scope="col" class="org-right">total votes</th>
+<th scope="col" class="org-right">trump, %</th>
+<th scope="col" class="org-right">trump, votes</th>
+<th scope="col" class="org-right">biden, %</th>
+<th scope="col" class="org-right">biden, votes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="org-left">2020-11-04 01:51:26</td>
+<td class="org-right">573857</td>
+<td class="org-right">0.578</td>
+<td class="org-right">331689</td>
+<td class="org-right">0.401</td>
+<td class="org-right">230117</td>
+</tr>
+<tr>
+<td class="org-left">2021-11-04 01:51:52</td>
+<td class="org-right">574417</td>
+<td class="org-right">0.568</td>
+<td class="org-right">326269</td>
+<td class="org-right">0.406</td>
+<td class="org-right">233213</td>
+</tr>
+</tbody>
+<tbody><tr>
+<td class="org-left">delta</td>
+<td class="org-right">560</td>
+<td class="org-right">-0.01</td>
+<td class="org-right">-5420</td>
+<td class="org-right">0.005</td>
+<td class="org-right">3096</td>
+</tr></tbody>
+</table>
+<p>
+Indeed, the data makes no sense here and there's no way to resolve the conflict. We're
+supposed to have a devicit of 3096-5420=-2324 votes above, but we're positive 560. Think
+of total votes like your net worth, and Trump and Biden as the % contributions from 
+two of your bank accounts. I've just handed you a statement that shows that your net worth
+went up by $560, but individually your accounts are down by $2300. Is this proof of theft?
+Are you actually richer, or poorer? You can't actually say unless you can account for
+<i>all</i> the dollars, indluding the negative ones.
+</p>
+
+<p>
+Also realize that the code above used negative values as the catch condition. But how do
+we differentiate between legitimate positive votes and "corrected" positive votes? Absent
+of all of this, the best off the cuff hunch you could have is "the account that 
+lost the most probably did worse than the other," right? Except that's not what we
+find. I've grouped by state and candidate to add up all the "losses" that appear in the
+data, and plotted vs the final candidate percent (last data point in each timeseries).
+</p>
+
+<p>
+Biden "lost" move votes by far, and he also won the states in which these losses occurred.
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">df_agg</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'state'</span><span class="p">,</span> <span class="s1">'cand'</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s1">'delta'</span><span class="p">:</span> <span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()],</span>
+    <span class="s1">'perc'</span><span class="p">:</span> <span class="s1">'last'</span><span class="p">,</span>
+    <span class="s1">'votes'</span><span class="p">:</span> <span class="s1">'max'</span><span class="p">,</span>
+    <span class="s1">'votes_tot'</span><span class="p">:</span> <span class="s1">'last'</span><span class="p">})</span>
+<span class="n">df_agg</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'state'</span><span class="p">,</span> <span class="s1">'cand'</span><span class="p">,</span> <span class="s1">'pos'</span><span class="p">,</span> <span class="s1">'neg'</span><span class="p">,</span> <span class="s1">'perc'</span><span class="p">,</span> <span class="s1">'votes_c'</span><span class="p">,</span> <span class="s1">'votes_tot'</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df_agg</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'perc'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'neg'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'cand'</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">()</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_color_manual</span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="p">[</span><span class="s1">'bidenj'</span><span class="p">,</span> <span class="s1">'trumpd'</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">'blue'</span><span class="p">,</span> <span class="s1">'red'</span><span class="p">],</span> <span class="n">guide</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'sum of negative vote changes'</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'ending candidate % votes'</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">theme_minimal</span><span class="p">()</span> <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s1">'Hack'</span><span class="p">),</span>
+				<span class="n">plot_background</span><span class="o">=</span><span class="n">element_rect</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">'white'</span><span class="p">),</span>
+				<span class="n">axis_text_x</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">315</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+
+<p width="500">
+<img src="../../img/hammer_delta-vs-perc.png" alt="nil"></p>
+
+<p>
+Viewed another way, we can show cumulative "lost" votes vs. time for both candidates by
+state. As is no surprise, I don't think this fits the narrative.
+</p>
+
+<p width="500">
+<img src="../../img/hammer_i-vs-neg-delta.png" alt="nil"></p>
+</div>
+</div>
+
+
+<div id="outline-container-orged760fe" class="outline-2">
+<h2 id="orged760fe">conclusion</h2>
+<div class="outline-text-2" id="text-orged760fe">
+<p>
+This theory strikes me as the kind of thing wide eyed kids do when they've
+just had the epiphany that maybe with magnets in just the right positions they could create a
 perpetual motion machine. A bit of sketchy code on the internet pumped out numbers that
 said what people wanted to hear, and now this is holy fact etched in stone.
 </p>

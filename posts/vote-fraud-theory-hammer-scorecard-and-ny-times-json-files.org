@@ -53,6 +53,12 @@ many news organizations... but again, where do /they/ get it? Why do we think th
 Research somehow equals "wired into the mainframe" here? Other sources on election night
 were wrong and [[https://www.vox.com/recode/2020/11/4/21549710/biden-michigan-votes-trump-retweet-election-map][had to be corrected]], why are these magical .json files infallible?
 
+Even the author of this code admits to fatal flaw:
+
+#+attr_html: :width 500
+[[img-url:/img/hammer_edison-caveat.png]]
+
+
 Just in case it's .json files that somehow raise credibility, if you aren't familiar they
 are literally just another way to store data. There's nothing magical about them. If the
 analysis had downloaded all the Times' Excel or .csv files, the situation would be
@@ -266,7 +272,6 @@ what we see. Again, I doubt this matches anyone's intuitive interpretation of "T
 #+attr_html: :width 500
 [[img-url:/img/hammer_votes-vs-i_fl-pa.png]]
 
-
 * the code
 
 Now, what's the code behind this, anyway? Well, again, while I admit I think this theory
@@ -395,6 +400,13 @@ situation, though, Biden lost ~3x the votes that Trump did. Again, I applaud the
 invitation to run the code, but with the rave reviews for this incredible, rock solid
 finding in the YouTube comments, I'm guessing no one actually did.
 
+Even the original author of this work (PedeInspector) [[https://thedonald.win/p/11Q8XRRBt1/x/c/1BjFWxSJeh?d=50][disagrees]] with this interpretation,
+despite it being already passed along publicly by Trump.
+
+#+attr_html: :width 500
+[[img-url:/img/hammer_pede-response.png]]
+
+
 My assessment at this point is that this code just blindly runs some calculations, without
 actually verifying what it's finding or whether that seems sane. For example... seeing the
 indices with the biggest losses at 48 and 56 in the data, let's go look at them.
@@ -503,17 +515,83 @@ around (and I think the print out at the bottom is the net result, so Trump came
 beneffiting from this). Ironically, the one where Biden supposedly had an advantage was Georgia which was
 the closest of the four.
 
-To close out, here's all 50 states again, with the ~votes=0~ entries removed:
+Here's all 50 states again, with the ~votes=0~ entries removed:
 
 #+attr_html: :width 500
 [[img-url:/img/hammer_votes-vs-time_no0.png]]
 
 Is it everything you imagined?
 
+* a final angle
+
+There's a more subtle issue going on here.
+- inputs are % share and total votes
+- for each candidate, we take as true both inputs to caluclate candidate votes
+- this implies that we have discovered the /true/ votes behind the scenes
+- with each new update, the deltas are being calculated based on /reported/ votes and
+  percentages... while the whole premise of this calculation is that we've discovered a
+  more accurate truth
+
+In essence, the ability to infer that the data is manipulated/false, and yet
+continue to rely on it for subsequent calculations is contradictory. Let's return to the
+concrete example used from Michgan: 
+
+| time                | total votes | trump, % | trump, votes | biden, % | biden, votes |
+|---------------------+-------------+----------+--------------+----------+--------------|
+| 2020-11-04 01:51:26 |      573857 |    0.578 |       331689 |    0.401 |       230117 |
+| 2021-11-04 01:51:52 |      574417 |    0.568 |       326269 |    0.406 |       233213 |
+|---------------------+-------------+----------+--------------+----------+--------------|
+| delta               |         560 |    -0.01 |        -5420 |    0.005 |         3096 |
+#+TBLFM: 
+
+Indeed, the data makes no sense here and there's no way to resolve the conflict. We're
+supposed to have a devicit of 3096-5420=-2324 votes above, but we're positive 560. Think
+of total votes like your net worth, and Trump and Biden as the % contributions from 
+two of your bank accounts. I've just handed you a statement that shows that your net worth
+went up by $560, but individually your accounts are down by $2300. Is this proof of theft?
+Are you actually richer, or poorer? You can't actually say unless you can account for
+/all/ the dollars, indluding the negative ones.
+
+Also realize that the code above used negative values as the catch condition. But how do
+we differentiate between legitimate positive votes and "corrected" positive votes? Absent
+of all of this, the best off the cuff hunch you could have is "the account that 
+lost the most probably did worse than the other," right? Except that's not what we
+find. I've grouped by state and candidate to add up all the "losses" that appear in the
+data, and plotted vs the final candidate percent (last data point in each timeseries).
+
+Biden "lost" move votes by far, and he also won the states in which these losses occurred.
+
+#+begin_src python :eval no
+df_agg = df.groupby(['state', 'cand'], as_index=False).agg({
+    'delta': [lambda x: x[x>0].sum(), lambda x: x[x<0].sum()],
+    'perc': 'last',
+    'votes': 'max',
+    'votes_tot': 'last'})
+df_agg.columns = ['state', 'cand', 'pos', 'neg', 'perc', 'votes_c', 'votes_tot']
+
+p = ggplot(df_agg, aes(x='perc', y='neg', color='cand')) + geom_point()
+p = p + scale_color_manual(breaks=['bidenj', 'trumpd'], values=['blue', 'red'], guide=False)
+p = p + scale_y_continuous(name='sum of negative vote changes')
+p = p + scale_x_continuous(name='ending candidate % votes')
+p = p + theme_minimal() + theme(text=element_text(family='Hack'),
+                                plot_background=element_rect(fill='white'),
+                                axis_text_x=element_text(angle=315, hjust=0))
+#+end_src
+
+#+attr_html: :width 500
+[[img-url:/img/hammer_delta-vs-perc.png]]
+
+Viewed another way, we can show cumulative "lost" votes vs. time for both candidates by
+state. As is no surprise, I don't think this fits the narrative.
+
+#+attr_html: :width 500
+[[img-url:/img/hammer_i-vs-neg-delta.png]]
+
+
 * conclusion
 
-I hate to say it, but this feels like the kind of thing wide eyed kids do when they've
-just had the epiphany that maybe with magnets in just the right positions, they could create a
+This theory strikes me as the kind of thing wide eyed kids do when they've
+just had the epiphany that maybe with magnets in just the right positions they could create a
 perpetual motion machine. A bit of sketchy code on the internet pumped out numbers that
 said what people wanted to hear, and now this is holy fact etched in stone.
 
