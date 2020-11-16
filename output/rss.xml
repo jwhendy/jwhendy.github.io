@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy</title><link>https://jwhendy.github.io/</link><description>Knowledge, sleep, food and coffee go in; this type of stuff comes out.</description><atom:link href="https://jwhendy.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Mon, 16 Nov 2020 02:51:04 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Vote fraud theory: straight ticket vs. direct votes</title><link>https://jwhendy.github.io/blog/vote-fraud-theory-straight-ticket-vs-direct-votes/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org1d963a2" class="outline-2"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jwhendy</title><link>https://jwhendy.github.io/</link><description>Knowledge, sleep, food and coffee go in; this type of stuff comes out.</description><atom:link href="https://jwhendy.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:jw.hendy@gmail.com"&gt;John Henderson&lt;/a&gt; </copyright><lastBuildDate>Mon, 16 Nov 2020 07:27:48 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Vote fraud theory: Hammer, Scorecard, and NY Times json files</title><link>https://jwhendy.github.io/blog/vote-fraud-theory-hammer-scorecard-and-ny-times-json-files/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org8e73130" class="outline-2"&gt;
+&lt;h2 id="org8e73130"&gt;background&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org8e73130"&gt;
+&lt;p&gt;
+I've been presented with another theory of fraud in the 2020 Presidential election. Have a
+look at &lt;a href="https://www.youtube.com/watch?v=X1uyg1f0RNA"&gt;the video&lt;/a&gt;, which compares snapshots of the election results as extracted from NY Times &lt;code&gt;.json&lt;/code&gt;
+files to "prove" that votes were switched and lost. This is done via some &lt;code&gt;python&lt;/code&gt;
+code we'll take a look at in detail below. The video walks through this &lt;a href="https://www.naturalnews.com/2020-11-11-election-data-analyzed-votes-switched-biden-software.html"&gt;Natural News post&lt;/a&gt; in a very lively and shout-splaining
+fashion. Bold claims are made, including:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;NY Times &lt;code&gt;.json&lt;/code&gt; files are analogous to a "Flight Data Recorder (black box)" when it
+comes to being official transation logs of election night results&lt;/li&gt;
+&lt;li&gt;over 500k votes were switched from Trump to Biden&lt;/li&gt;
+&lt;li&gt;Bannon and Giuliani have confirmed whistleblowers from Dominion, a ballot counting
+software company (that was on 11/11; with all of these things it's the same: dangle some
+mind-blowing info tidbit and then… why do we never hear about it again? Nevertheless,
+for weeks I'll hear people citing "those Dominion whistleblowers they found")&lt;/li&gt;
+&lt;li&gt;a &lt;a href="https://everylegalvote.com/country"&gt;fraud simulator &lt;/a&gt; (spoiler: it just switches key states when you toggle between fraud
+and no fraud scenarios, with no explanation of how it's calculating this)&lt;/li&gt;
+&lt;li&gt;Trump and DoD personnel watched this fraud happen in real time, have it recorded, and
+&lt;i&gt;allowed&lt;/i&gt; the fraud to happen so they'd have proof (but still filed lawsuits &lt;a href="https://www.theguardian.com/us-news/2020/nov/10/donald-trump-longshot-election-lawsuits"&gt;in five
+states&lt;/a&gt;, just to &lt;a href="https://www.reuters.com/article/snell-maricopa/snell-wilmer-withdraws-from-election-lawsuit-as-trump-contests-arizona-results-idUSL1N2HY005"&gt;withdraw&lt;/a&gt; from &lt;a href="https://www.theguardian.com/us-news/2020/nov/13/trump-law-firm-withdraws-pennsylvania-election-case"&gt;two&lt;/a&gt;?)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+In any case, we'll be focused on the data analysis and short answer: no, there's nothing
+here folks.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://jwhendy.github.io/blog/vote-fraud-theory-hammer-scorecard-and-ny-times-json-files/"&gt;Read more…&lt;/a&gt; (14 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://jwhendy.github.io/blog/vote-fraud-theory-hammer-scorecard-and-ny-times-json-files/</guid><pubDate>Mon, 16 Nov 2020 04:31:55 GMT</pubDate></item><item><title>Vote fraud theory: straight ticket vs. direct votes</title><link>https://jwhendy.github.io/blog/vote-fraud-theory-straight-ticket-vs-direct-votes/</link><dc:creator>John Henderson</dc:creator><description>&lt;div id="outline-container-org1d963a2" class="outline-2"&gt;
 &lt;h2 id="org1d963a2"&gt;background&lt;/h2&gt;
 &lt;div class="outline-text-2" id="text-org1d963a2"&gt;
 &lt;p&gt;

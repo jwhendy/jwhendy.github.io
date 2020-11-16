@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Vote fraud theory: Hammer, Scorecard, and NY Times json files | jwhendy</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://jwhendy.github.io/blog/vote-fraud-theory-hammer-scorecard-and-ny-times-json-files/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="John Henderson">
+<link rel="prev" href="../vote-fraud-theory-straight-ticket-vs-direct-votes/" title="Vote fraud theory: straight ticket vs. direct votes" type="text/html">
+<meta property="og:site_name" content="jwhendy">
+<meta property="og:title" content="Vote fraud theory: Hammer, Scorecard, and NY Times json files">
+<meta property="og:url" content="https://jwhendy.github.io/blog/vote-fraud-theory-hammer-scorecard-and-ny-times-json-files/">
+<meta property="og:description" content="background
+
+
+I've been presented with another theory of fraud in the 2020 Presidential election. Have a
+look at the video, which compares snapshots of the election results as extracted from NY Times .">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-11-15T22:31:55-06:00">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="navbar navbar-static-top" id="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+
+            <a class="brand" href="https://jwhendy.github.io/">
+
+                <span id="blog-title">jwhendy</span>
+            </a>
+            <!-- Everything you want hidden at 940px or less, place within here -->
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+<li>
+<a href="../">blog</a>
+                </li>
+<li>
+<a href="../../categories/">tags</a>
+
+                    
+                </li>
+</ul>
+<ul class="nav pull-right"></ul>
+</div>
+        </div>
+    </div>
+</div>
+<!-- End of Menubar -->
+<div class="container-fluid" id="content" role="main">
+    <!--Body content-->
+    <div class="row-fluid">
+    <div class="span2"></div>
+    <div class="span8">
+    
+    
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Vote fraud theory: Hammer, Scorecard, and NY Times json files</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    John Henderson
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-11-15T22:31:55-06:00" itemprop="datePublished" title="2020-11-15 22:31">2020-11-15 22:31</time></a>
+            </p>
+            
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div id="outline-container-org8e73130" class="outline-2">
+<h2 id="org8e73130">background</h2>
+<div class="outline-text-2" id="text-org8e73130">
+<p>
+I've been presented with another theory of fraud in the 2020 Presidential election. Have a
+look at <a href="https://www.youtube.com/watch?v=X1uyg1f0RNA">the video</a>, which compares snapshots of the election results as extracted from NY Times <code>.json</code>
+files to "prove" that votes were switched and lost. This is done via some <code>python</code>
+code we'll take a look at in detail below. The video walks through this <a href="https://www.naturalnews.com/2020-11-11-election-data-analyzed-votes-switched-biden-software.html">Natural News post</a> in a very lively and shout-splaining
+fashion. Bold claims are made, including:
+</p>
+<ul class="org-ul">
+<li>NY Times <code>.json</code> files are analogous to a "Flight Data Recorder (black box)" when it
+comes to being official transation logs of election night results</li>
+<li>over 500k votes were switched from Trump to Biden</li>
+<li>Bannon and Giuliani have confirmed whistleblowers from Dominion, a ballot counting
+software company (that was on 11/11; with all of these things it's the same: dangle some
+mind-blowing info tidbit and then… why do we never hear about it again? Nevertheless,
+for weeks I'll hear people citing "those Dominion whistleblowers they found")</li>
+<li>a <a href="https://everylegalvote.com/country">fraud simulator </a> (spoiler: it just switches key states when you toggle between fraud
+and no fraud scenarios, with no explanation of how it's calculating this)</li>
+<li>Trump and DoD personnel watched this fraud happen in real time, have it recorded, and
+<i>allowed</i> the fraud to happen so they'd have proof (but still filed lawsuits <a href="https://www.theguardian.com/us-news/2020/nov/10/donald-trump-longshot-election-lawsuits">in five
+states</a>, just to <a href="https://www.reuters.com/article/snell-maricopa/snell-wilmer-withdraws-from-election-lawsuit-as-trump-contests-arizona-results-idUSL1N2HY005">withdraw</a> from <a href="https://www.theguardian.com/us-news/2020/nov/13/trump-law-firm-withdraws-pennsylvania-election-case">two</a>?)</li>
+</ul>
+<p>
+In any case, we'll be focused on the data analysis and short answer: no, there's nothing
+here folks.
+</p>
+
+<!-- TEASER_END -->
+</div>
+</div>
+
+<div id="outline-container-org56ef7ae" class="outline-2">
+<h2 id="org56ef7ae">explanation</h2>
+<div class="outline-text-2" id="text-org56ef7ae">
+<p>
+The gist of the theory is simple:
+</p>
+<ul class="org-ul">
+<li>the NY Times stores the data from its live election night updates in json files</li>
+<li>a person on the internet downloaded those and found irregularities</li>
+<li>because the files must be ground truth, tied directly to ballot counting machines via
+infallible link, these irregularities imply fraud</li>
+</ul>
+<p>
+There are two key legs this theory stands on. The first is a <i>huge</i> leap, in my opinion,
+that the NY Times data is to be treated as ground truth for anything. The news page adds
+some handwaving "truth boost" to this that the data is from Edison Research, also used by
+many news organizations… but again, where do <i>they</i> get it? Why do we think that Edison
+Research somehow equals "wired into the mainframe" here? Other sources on election night
+were wrong and <a href="https://www.vox.com/recode/2020/11/4/21549710/biden-michigan-votes-trump-retweet-election-map">had to be corrected</a>, why are these magical .json files infallible?
+</p>
+
+<p>
+The second key premise is that these findings are at all meaningful. Here's an
+example:
+</p>
+
+<p width="500">
+<img src="../../img/hammer_shapshots.png" alt="nil"></p>
+
+<p>
+The data is as follows, with some calculated columns added:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup>
+<col class="org-left">
+<col class="org-right">
+<col class="org-right">
+<col class="org-right">
+<col class="org-right">
+<col class="org-right">
+</colgroup>
+<thead><tr>
+<th scope="col" class="org-left">time</th>
+<th scope="col" class="org-right">total votes</th>
+<th scope="col" class="org-right">trump, %</th>
+<th scope="col" class="org-right">trump, votes</th>
+<th scope="col" class="org-right">biden, %</th>
+<th scope="col" class="org-right">biden, votes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="org-left">2020-11-04 01:51:26</td>
+<td class="org-right">573857</td>
+<td class="org-right">0.578</td>
+<td class="org-right">331689</td>
+<td class="org-right">0.401</td>
+<td class="org-right">230117</td>
+</tr>
+<tr>
+<td class="org-left">2021-11-04 01:51:52</td>
+<td class="org-right">574417</td>
+<td class="org-right">0.568</td>
+<td class="org-right">326269</td>
+<td class="org-right">0.406</td>
+<td class="org-right">233213</td>
+</tr>
+</tbody>
+<tbody><tr>
+<td class="org-left">delta</td>
+<td class="org-right">560</td>
+<td class="org-right">-0.01</td>
+<td class="org-right">-5420</td>
+<td class="org-right">0.005</td>
+<td class="org-right">3096</td>
+</tr></tbody>
+</table>
+<p>
+Assuming the first premise (the perfect truth of files used for news article
+visualizations), this does look odd. In ~30 seconds, the total votes went up, but
+somehow one of the candidates lost 10x that, and the other gained 6x, with the net
+exchange being way off from the total vote change.
+</p>
+
+<p>
+In any case, someone wrote code which reads through all these snapshots and looks for
+these instances, tallying them all up, and we get to this claim about the magnitude of
+these findings:
+</p>
+
+<p width="500">
+<img src="../../img/hammer_counts.png" alt="nil"></p>
+
+<p>
+Is it true? Well, at least the presenter repeatedly welcomed folks to try for themselves,
+so I did.
+</p>
+
+<p>
+Before we move on, I want you to try something. You know the angle this theory takes
+already, and have seen some concrete numbers. In Pennsylvania, votes were "switched" and
+"lost" to the tune of 200k and 900k, respectively. In your mind, or better yet on paper,
+please draw a plot of <code>y=votes</code> and <code>x=time</code> might look like for a state with 6.86 million
+total votes (3% switched, 13% lost during election night).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7a42051" class="outline-2">
+<h2 id="org7a42051">digging in</h2>
+<div class="outline-text-2" id="text-org7a42051">
+<p>
+I'd already been playing with voting data pulled from the Times, so it was a relatively
+simple matter to get all the timestamped files vs. the state and county results. I'm
+leaving some code out for brevity (like purging non-states from <a href="https://gist.github.com/rogerallen/1583593">the dict</a> of abbreviations
+used as <code>states</code> below), but this will get you close. 
+</p>
+
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">data.us_state_abbrev</span> <span class="k">as</span> <span class="nn">states</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotnine</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="kn">from</span> <span class="nn">plotnine</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1">### get all NY times data files</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s1">'https://static01.nyt.com/elections-assets/2020/data/api/2020-11-03/race-page'</span>
+<span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span><span class="o">.</span><span class="n">us_state_abbrev</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">state_code</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./data/pres_ts_2020_nyt/</span><span class="si">{}</span><span class="s1">.json'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">state</span><span class="p">),</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+	<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">/president.json'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">state_code</span><span class="o">.</span><span class="n">lower</span><span class="p">()))</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+
+<p>
+Next, we run through all the files, and grab all the snapshots, along with the associated
+metadata:
+</p>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">proc_results</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./data/pres_ts_2020_nyt/</span><span class="si">{}</span><span class="s1">.json'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">state</span><span class="p">),</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+	<span class="n">dat</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[{</span>
+	<span class="s1">'state'</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s1">'state_name'</span><span class="p">],</span>
+	<span class="s1">'time'</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="s1">'timestamp'</span><span class="p">],</span>
+	<span class="s1">'votes_tot'</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="s1">'votes'</span><span class="p">],</span>
+	<span class="s1">'cand'</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span>
+	<span class="s1">'perc'</span><span class="p">:</span> <span class="n">v</span><span class="p">}</span>
+	<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">dat</span><span class="p">[</span><span class="s1">'data'</span><span class="p">][</span><span class="s1">'races'</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">r</span><span class="p">[</span><span class="s1">'timeseries'</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">t</span><span class="p">[</span><span class="s1">'vote_shares'</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">proc_results</span><span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span><span class="o">.</span><span class="n">us_state_abbrev</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+
+<p>
+Lastly, we do some post-processing and add calculated columns for visualization.
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'time'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'time'</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'votes'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'votes_tot'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'perc'</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'i'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'state'</span><span class="p">,</span> <span class="s1">'cand'</span><span class="p">])[</span><span class="s1">'votes'</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'state'</span><span class="p">,</span> <span class="s1">'cand'</span><span class="p">,</span> <span class="s1">'time'</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'votes_perc'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'state'</span><span class="p">,</span> <span class="s1">'cand'</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s1">'votes'</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1">###</span>
+       <span class="n">state</span>                      <span class="n">time</span>  <span class="n">votes_tot</span>    <span class="n">cand</span>   <span class="n">perc</span>   <span class="n">votes</span>  <span class="n">votes_perc</span>   <span class="n">i</span>
+<span class="mi">3</span>    <span class="n">Alabama</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">01</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">07</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>       <span class="mi">1053</span>  <span class="n">bidenj</span>  <span class="mf">0.585</span>     <span class="mi">616</span>    <span class="mf">0.000731</span>   <span class="mi">0</span>
+<span class="mi">5</span>    <span class="n">Alabama</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">01</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">39</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>       <span class="mi">2190</span>  <span class="n">bidenj</span>  <span class="mf">0.602</span>    <span class="mi">1318</span>    <span class="mf">0.001563</span>   <span class="mi">1</span>
+<span class="mi">7</span>    <span class="n">Alabama</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">01</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">35</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>       <span class="mi">3709</span>  <span class="n">bidenj</span>  <span class="mf">0.489</span>    <span class="mi">1813</span>    <span class="mf">0.002150</span>   <span class="mi">2</span>
+<span class="mi">9</span>    <span class="n">Alabama</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">01</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">46</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>       <span class="mi">4280</span>  <span class="n">bidenj</span>  <span class="mf">0.474</span>    <span class="mi">2028</span>    <span class="mf">0.002405</span>   <span class="mi">3</span>
+<span class="mi">11</span>   <span class="n">Alabama</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">01</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">51</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>       <span class="mi">5249</span>  <span class="n">bidenj</span>  <span class="mf">0.476</span>    <span class="mi">2498</span>    <span class="mf">0.002963</span>   <span class="mi">4</span>
+<span class="o">..</span>       <span class="o">...</span>                       <span class="o">...</span>        <span class="o">...</span>     <span class="o">...</span>    <span class="o">...</span>     <span class="o">...</span>         <span class="o">...</span>  <span class="o">..</span>
+<span class="mi">92</span>   <span class="n">Wyoming</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">11</span> <span class="mi">20</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">54</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">276630</span>  <span class="n">trumpd</span>  <span class="mf">0.700</span>  <span class="mi">193641</span>    <span class="mf">0.999819</span>  <span class="mi">46</span>
+<span class="mi">94</span>   <span class="n">Wyoming</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">11</span> <span class="mi">20</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">41</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">276648</span>  <span class="n">trumpd</span>  <span class="mf">0.700</span>  <span class="mi">193653</span>    <span class="mf">0.999881</span>  <span class="mi">47</span>
+<span class="mi">96</span>   <span class="n">Wyoming</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">11</span> <span class="mi">20</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">31</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">276679</span>  <span class="n">trumpd</span>  <span class="mf">0.700</span>  <span class="mi">193675</span>    <span class="mf">0.999995</span>  <span class="mi">48</span>
+<span class="mi">98</span>   <span class="n">Wyoming</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">11</span> <span class="mi">20</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">50</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">276681</span>  <span class="n">trumpd</span>  <span class="mf">0.700</span>  <span class="mi">193676</span>    <span class="mf">1.000000</span>  <span class="mi">49</span>
+<span class="mi">100</span>  <span class="n">Wyoming</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">11</span> <span class="mi">21</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">55</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">276765</span>  <span class="n">trumpd</span>  <span class="mf">0.699</span>  <span class="mi">193458</span>    <span class="mf">0.998874</span>  <span class="mi">50</span>
+</pre></div>
+
+<p>
+If you haven't used <code>plotnine</code>, I <i>highly</i> recommend it. It's the <code>python</code> equivalent to
+<code>ggplot2</code> in <code>R</code>, and I just don't think I'll ever be able to live without facets again.
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'time'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'votes'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'cand'</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">'state+cand'</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_line</span><span class="p">()</span> <span class="o">+</span> <span class="n">facet_wrap</span><span class="p">(</span><span class="s1">'~state'</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_color_manual</span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="p">[</span><span class="s1">'bidenj'</span><span class="p">,</span> <span class="s1">'trumpd'</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">'blue'</span><span class="p">,</span> <span class="s1">'red'</span><span class="p">],</span> <span class="n">guide</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'delta'</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_x_datetime</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'timestamp'</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">theme_minimal</span><span class="p">()</span> <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s1">'Hack'</span><span class="p">),</span>
+				<span class="n">plot_background</span><span class="o">=</span><span class="n">element_rect</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">'white'</span><span class="p">),</span>
+				<span class="n">axis_text_x</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">315</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+
+<p width="500">
+<img src="../../img/hammer_votes-vs-time.png" alt="nil"></p>
+
+<p>
+What do you see? Per our earlier exercise, when I did this last night, despite already
+thinking NYT json reliability was suspect, this <i>certainly</i> didn't look like I expected
+given the booming voice proclaiming the incontrovertable fact that this shows election
+theivery! I see… a bunch of dips followed by recovery and then all is well? Let's pick
+too and take a closer look:
+</p>
+
+<p width="500">
+<img src="../../img/hammer_votes-vs-time_fl-pa.png" alt="nil"></p>
+
+<p>
+Hmmm. Let's look at the area around zero.
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">df_sub</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'state'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">'Florida'</span><span class="p">,</span> <span class="s1">'Pennsylvania'</span><span class="p">])]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sub</span><span class="p">[</span><span class="n">df_sub</span><span class="p">[</span><span class="s1">'state'</span><span class="p">]</span><span class="o">==</span><span class="s1">'Pennsylvania'</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sub</span><span class="p">[</span><span class="n">df_sub</span><span class="p">[</span><span class="s1">'state'</span><span class="p">]</span><span class="o">==</span><span class="s1">'Florida'</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sub</span><span class="p">[</span><span class="n">df_sub</span><span class="p">[</span><span class="s1">'votes'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sub</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'state'</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">'time'</span><span class="p">:</span> <span class="s1">'min'</span><span class="p">,</span> <span class="s1">'votes'</span><span class="p">:</span> <span class="s1">'first'</span><span class="p">}))</span>
+<span class="c1">###</span>
+      <span class="n">state</span>                      <span class="n">time</span>  <span class="n">votes_tot</span>    <span class="n">cand</span>   <span class="n">perc</span>   <span class="n">votes</span>  <span class="n">i</span>  <span class="n">votes_perc</span>
+<span class="mi">3</span>   <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">01</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">560771</span>  <span class="n">bidenj</span>  <span class="mf">0.428</span>  <span class="mi">240009</span>  <span class="mi">1</span>    <span class="mf">0.045334</span>
+<span class="mi">5</span>   <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">42</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">844914</span>  <span class="n">bidenj</span>  <span class="mf">0.434</span>  <span class="mi">366692</span>  <span class="mi">2</span>    <span class="mf">0.069263</span>
+<span class="mi">7</span>   <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">26</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">1004171</span>  <span class="n">bidenj</span>  <span class="mf">0.435</span>  <span class="mi">436814</span>  <span class="mi">3</span>    <span class="mf">0.082507</span>
+<span class="mi">9</span>   <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">44</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">1457441</span>  <span class="n">bidenj</span>  <span class="mf">0.467</span>  <span class="mi">680624</span>  <span class="mi">4</span>    <span class="mf">0.128559</span>
+<span class="mi">11</span>  <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">05</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">1515932</span>  <span class="n">bidenj</span>  <span class="mf">0.461</span>  <span class="mi">698844</span>  <span class="mi">5</span>    <span class="mf">0.132001</span>
+
+	   <span class="n">state</span>                      <span class="n">time</span>  <span class="n">votes_tot</span>    <span class="n">cand</span>   <span class="n">perc</span>  <span class="n">votes</span>  <span class="n">i</span>  <span class="n">votes_perc</span>
+<span class="mi">2</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">27</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>         <span class="mi">77</span>  <span class="n">bidenj</span>  <span class="mf">0.571</span>     <span class="mi">43</span>  <span class="mi">1</span>    <span class="mf">0.000013</span>
+<span class="mi">5</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">20</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">bidenj</span>  <span class="mf">0.000</span>      <span class="mi">0</span>  <span class="mi">2</span>    <span class="mf">0.000000</span>
+<span class="mi">6</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mi">45</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>         <span class="mi">11</span>  <span class="n">bidenj</span>  <span class="mf">0.636</span>      <span class="mi">6</span>  <span class="mi">3</span>    <span class="mf">0.000002</span>
+<span class="mi">9</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">bidenj</span>  <span class="mf">0.000</span>      <span class="mi">0</span>  <span class="mi">4</span>    <span class="mf">0.000000</span>
+<span class="mi">10</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">01</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">44</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>      <span class="mi">64535</span>  <span class="n">bidenj</span>  <span class="mf">0.799</span>  <span class="mi">51563</span>  <span class="mi">5</span>    <span class="mf">0.015074</span>
+
+<span class="c1"># entries with votes==0</span>
+	  <span class="n">state</span>                      <span class="n">time</span>  <span class="n">votes_tot</span>    <span class="n">cand</span>  <span class="n">perc</span>  <span class="n">votes</span>  <span class="n">i</span>  <span class="n">votes_perc</span>
+<span class="mi">1</span>       <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">06</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">bidenj</span>   <span class="mf">0.0</span>      <span class="mi">0</span>  <span class="mi">0</span>         <span class="mf">0.0</span>
+<span class="mi">0</span>       <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">06</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">trumpd</span>   <span class="mf">0.0</span>      <span class="mi">0</span>  <span class="mi">0</span>         <span class="mf">0.0</span>
+<span class="mi">5</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">20</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">bidenj</span>   <span class="mf">0.0</span>      <span class="mi">0</span>  <span class="mi">2</span>         <span class="mf">0.0</span>
+<span class="mi">9</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">bidenj</span>   <span class="mf">0.0</span>      <span class="mi">0</span>  <span class="mi">4</span>         <span class="mf">0.0</span>
+<span class="mi">1</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">09</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">23</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">bidenj</span>   <span class="mf">0.0</span>      <span class="mi">0</span>  <span class="mi">0</span>         <span class="mf">0.0</span>
+<span class="mi">4</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">20</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">trumpd</span>   <span class="mf">0.0</span>      <span class="mi">0</span>  <span class="mi">2</span>         <span class="mf">0.0</span>
+<span class="mi">8</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">trumpd</span>   <span class="mf">0.0</span>      <span class="mi">0</span>  <span class="mi">4</span>         <span class="mf">0.0</span>
+<span class="mi">0</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">09</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">23</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>          <span class="mi">0</span>  <span class="n">trumpd</span>   <span class="mf">0.0</span>      <span class="mi">0</span>  <span class="mi">0</span>         <span class="mf">0.0</span>
+
+<span class="c1"># min timestamp per state</span>
+	  <span class="n">state</span>                      <span class="n">time</span>
+<span class="mi">0</span>       <span class="n">Florida</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">01</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="mi">1</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">00</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">27</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+
+<p>
+Honestly, who knows, but at this point we can see a few things:
+</p>
+<ul class="org-ul">
+<li>the data is in order of increasing time</li>
+<li>the first entries have non-zero votes</li>
+<li>later, both states have votes=0 entries</li>
+<li>in each graph, you can see that the plot recovers, and near the same pre-dip total <i>and</i>
+in the same relative ranking</li>
+</ul>
+<p>
+So… what if we just treat <code>votes=0</code> as a fluke and remove those rows (2 for FL, 6 for
+PA)? I don't suppose you drew a plot of what 220k switched votes and 900k lost votes looks
+like, did you? I'm guessing it isn't this:
+</p>
+
+<p width="500">
+<img src="../../img/hammer_votes-vs-time_fl-pa_no0.png" alt="nil"></p>
+</div>
+</div>
+
+<div id="outline-container-org5e1dcc3" class="outline-2">
+<h2 id="org5e1dcc3">the code</h2>
+<div class="outline-text-2" id="text-org5e1dcc3">
+<p>
+Now, what's the code behind this, anyway? Well, again, while I admit I think this theory
+is absolutely preposterous, kudos for open sourcing the code. If you know <code>python</code>, I'm
+sorry that this will probably give you nightmares tonight:
+</p>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">findfraud</span><span class="p">(</span><span class="n">NAME</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">NAME</span> <span class="o">+</span> <span class="s1">'.json'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+	<span class="n">x</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">TotalVotesLostTrump</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">TotalVotesLostBiden</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">TrumpToThird</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">TrumpToBiden</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">BidenToTrump</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ThirdToTrump</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ThirdToBiden</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">BidenToThird</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">TotalVotesLostThird</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">series</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"races"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"timeseries"</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)):</span>
+	    <span class="n">thirdPartyNow</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"votes"</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"vote_shares"</span><span class="p">][</span><span class="s2">"bidenj"</span><span class="p">]</span> <span class="o">-</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"vote_shares"</span><span class="p">][</span><span class="s2">"trumpd"</span><span class="p">])</span>
+	    <span class="n">thirdPartyThen</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"votes"</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"vote_shares"</span><span class="p">][</span><span class="s2">"bidenj"</span><span class="p">]</span> <span class="o">-</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"vote_shares"</span><span class="p">][</span><span class="s2">"trumpd"</span><span class="p">])</span>
+	    <span class="n">TrumpNow</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"votes"</span><span class="p">]</span> <span class="o">*</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"vote_shares"</span><span class="p">][</span><span class="s2">"trumpd"</span><span class="p">]</span>
+	    <span class="n">TrumpThen</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"votes"</span><span class="p">]</span> <span class="o">*</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"vote_shares"</span><span class="p">][</span><span class="s2">"trumpd"</span><span class="p">]</span>
+	    <span class="n">BidenNow</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"votes"</span><span class="p">]</span> <span class="o">*</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"vote_shares"</span><span class="p">][</span><span class="s2">"bidenj"</span><span class="p">]</span>
+	    <span class="n">BidenThen</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"votes"</span><span class="p">]</span> <span class="o">*</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"vote_shares"</span><span class="p">][</span><span class="s2">"bidenj"</span><span class="p">]</span>
+	    <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">TrumpNow</span> <span class="o">&lt;</span> <span class="n">TrumpThen</span> <span class="ow">and</span> <span class="p">(</span><span class="n">TrumpThen</span> <span class="o">-</span> <span class="n">TrumpNow</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mf">0.00049999</span> <span class="o">*</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"votes"</span><span class="p">])</span> <span class="o">+</span> <span class="mi">50</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">BidenNow</span> <span class="o">&gt;</span> <span class="n">BidenThen</span> <span class="ow">or</span> <span class="n">thirdPartyNow</span> <span class="o">&gt;</span> <span class="n">thirdPartyThen</span><span class="p">:</span>
+		    <span class="k">if</span> <span class="n">TrumpNow</span> <span class="o">-</span> <span class="n">TrumpThen</span> <span class="o">&lt;=</span> <span class="n">BidenNow</span> <span class="o">-</span> <span class="n">BidenThen</span> <span class="ow">or</span> <span class="n">TrumpNow</span> <span class="o">-</span> <span class="n">TrumpThen</span> <span class="o">&lt;=</span> <span class="n">thirdPartyNow</span> <span class="o">-</span> <span class="n">thirdPartyThen</span><span class="p">:</span>
+			<span class="nb">print</span> <span class="p">(</span><span class="s2">"(TRUMP"</span><span class="p">)</span>
+			<span class="nb">print</span> <span class="p">(</span><span class="s2">"Index : "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" Past Index : "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+			<span class="nb">print</span> <span class="p">(</span><span class="n">TrumpNow</span> <span class="o">-</span> <span class="n">TrumpThen</span><span class="p">)</span>
+			<span class="n">TrumpLostNow</span> <span class="o">=</span> <span class="n">TrumpThen</span> <span class="o">-</span> <span class="n">TrumpNow</span>
+			<span class="n">TrumpLostTotal</span> <span class="o">=</span> <span class="n">TrumpThen</span> <span class="o">-</span> <span class="n">TrumpNow</span>
+			<span class="k">if</span> <span class="n">BidenNow</span> <span class="o">&gt;</span> <span class="n">BidenThen</span> <span class="ow">and</span> <span class="n">TrumpNow</span> <span class="o">-</span> <span class="n">TrumpThen</span> <span class="o">&lt;=</span> <span class="n">BidenNow</span> <span class="o">-</span> <span class="n">BidenThen</span><span class="p">:</span>
+			    <span class="k">if</span> <span class="n">BidenNow</span> <span class="o">-</span> <span class="n">BidenThen</span> <span class="o">&gt;</span> <span class="n">TrumpLostTotal</span><span class="p">:</span>
+				<span class="n">TrumpToBiden</span> <span class="o">+=</span> <span class="n">TrumpLostTotal</span>
+				<span class="n">TrumpLostTotal</span> <span class="o">=</span> <span class="mi">0</span>
+			    <span class="k">else</span><span class="p">:</span>
+				<span class="n">TrumpToBiden</span> <span class="o">+=</span> <span class="n">BidenNow</span> <span class="o">-</span> <span class="n">BidenThen</span>
+				<span class="n">TrumpLostTotal</span> <span class="o">-=</span> <span class="n">BidenNow</span> <span class="o">-</span> <span class="n">BidenThen</span>
+			<span class="k">if</span> <span class="n">thirdPartyNow</span> <span class="o">&gt;</span> <span class="n">thirdPartyThen</span> <span class="ow">and</span> <span class="n">TrumpNow</span> <span class="o">-</span> <span class="n">TrumpThen</span> <span class="o">&lt;=</span> <span class="n">thirdPartyNow</span> <span class="o">-</span> <span class="n">thirdPartyThen</span><span class="p">:</span>
+			    <span class="k">if</span> <span class="n">thirdPartyNow</span> <span class="o">-</span> <span class="n">thirdPartyThen</span> <span class="o">&gt;</span> <span class="n">TrumpLostTotal</span><span class="p">:</span>
+				<span class="n">TrumpToThird</span> <span class="o">+=</span> <span class="n">TrumpLostTotal</span>
+				<span class="n">TrumpLostTotal</span> <span class="o">=</span> <span class="mi">0</span>
+			    <span class="k">else</span><span class="p">:</span>
+				<span class="n">TrumpToThird</span> <span class="o">+=</span> <span class="n">thirdPartyNow</span> <span class="o">-</span> <span class="n">thirdPartyThen</span>
+				<span class="n">TrumpLostTotal</span> <span class="o">-=</span> <span class="n">thirdPartyNow</span> <span class="o">-</span> <span class="n">thirdPartyThen</span>
+			<span class="k">if</span> <span class="n">TrumpLostNow</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+			    <span class="n">TrumpLostNow</span> <span class="o">=</span> <span class="mi">0</span>
+			<span class="n">TotalVotesLostTrump</span> <span class="o">+=</span> <span class="n">TrumpLostNow</span> <span class="o">-</span> <span class="n">TrumpLostTotal</span>
+			<span class="nb">print</span> <span class="p">(</span><span class="s2">"TRUMP)"</span><span class="p">)</span>
+</pre></div>
+
+<p>
+That's just <i>one</i> of the three main logic branches. There's two others for Biden and third
+party votes just like it. I admit I don't even follow all of this, but I get the gist is
+comparing timeseries indices for changes in vote counts, and trying to infer who they went
+to, hence printing out this summary at the end:
+</p>
+
+<div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">TotalVotesLostTrump</span><span class="p">)</span>  <span class="o">+</span> <span class="s2">" TRUMP LOST"</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">TrumpToBiden</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" Trump to Biden"</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">TrumpToThird</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" Trump to Third"</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">TotalVotesLostBiden</span><span class="p">)</span>  <span class="o">+</span> <span class="s2">" BIDEN LOST"</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">BidenToTrump</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" Biden to Trump"</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">BidenToThird</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" Biden to Third"</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">TotalVotesLostThird</span><span class="p">)</span>  <span class="o">+</span> <span class="s2">" 3RD PARTY LOST"</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ThirdToBiden</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" Third to Biden"</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ThirdToTrump</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" Third to Trump"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">BidenToTrump</span> <span class="o">&gt;</span> <span class="n">TrumpToBiden</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">BidenToTrump</span> <span class="o">-</span> <span class="n">TrumpToBiden</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" TRUMP"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">TrumpToBiden</span> <span class="o">&gt;</span> <span class="n">BidenToTrump</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">TrumpToBiden</span> <span class="o">-</span> <span class="n">BidenToTrump</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" BIDEN"</span><span class="p">)</span>
+</pre></div>
+
+<p>
+There's another function, <code>lostvotes()</code> that looks to do something similar, tabulating all
+the lost votes per candidate. So, what do they show? I modified them to point to my data
+directory and ran it on Pennsylvania, which is a fun one due it's massive numbers.
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">findfraud</span><span class="p">(</span><span class="s1">'Pennsylvania'</span><span class="p">)</span>
+<span class="n">lostvotes</span><span class="p">(</span><span class="s1">'Pennsylvania'</span><span class="p">)</span>
+
+<span class="c1"># findfrand()</span>
+<span class="mf">88769.8330000007</span> <span class="n">TRUMP</span> <span class="n">LOST</span>
+<span class="mf">49718.495999999344</span> <span class="n">Trump</span> <span class="n">to</span> <span class="n">Biden</span>
+<span class="mf">39051.33700000135</span> <span class="n">Trump</span> <span class="n">to</span> <span class="n">Third</span>
+<span class="mf">27413.24899999972</span> <span class="n">BIDEN</span> <span class="n">LOST</span>
+<span class="mf">7159.232000000076</span> <span class="n">Biden</span> <span class="n">to</span> <span class="n">Trump</span>
+<span class="mf">20254.016999999643</span> <span class="n">Biden</span> <span class="n">to</span> <span class="n">Third</span>
+<span class="mf">223140.98500000124</span> <span class="mi">3</span><span class="n">RD</span> <span class="n">PARTY</span> <span class="n">LOST</span>
+<span class="mf">216223.19600000113</span> <span class="n">Third</span> <span class="n">to</span> <span class="n">Biden</span>
+<span class="mf">6917.789000000117</span> <span class="n">Third</span> <span class="n">to</span> <span class="n">Trump</span>
+<span class="mf">42559.26399999927</span> <span class="n">BIDEN</span>
+
+<span class="c1"># lostvotes()</span>
+<span class="n">Index</span> <span class="p">:</span> <span class="mi">2</span> <span class="n">Past</span> <span class="n">Index</span> <span class="p">:</span> <span class="mi">1</span>
+<span class="o">-</span><span class="mi">77</span>
+<span class="n">Index</span> <span class="p">:</span> <span class="mi">4</span> <span class="n">Past</span> <span class="n">Index</span> <span class="p">:</span> <span class="mi">3</span>
+<span class="o">-</span><span class="mi">11</span>
+<span class="n">Index</span> <span class="p">:</span> <span class="mi">48</span> <span class="n">Past</span> <span class="n">Index</span> <span class="p">:</span> <span class="mi">47</span>
+<span class="o">-</span><span class="mi">239804</span>
+<span class="n">Index</span> <span class="p">:</span> <span class="mi">56</span> <span class="n">Past</span> <span class="n">Index</span> <span class="p">:</span> <span class="mi">55</span>
+<span class="o">-</span><span class="mi">586189</span>
+<span class="o">-</span><span class="mf">187542.07999999996</span> <span class="n">TRUMP</span>
+<span class="o">-</span><span class="mf">613071.5320000001</span> <span class="n">BIDEN</span>
+<span class="o">-</span><span class="mf">25467.387999999948</span> <span class="n">THIRD</span>
+<span class="o">-</span><span class="mi">826081</span>
+</pre></div>
+
+<p>
+Returning to the video for a moment, we have the following quote at 7:55:
+</p>
+
+<pre class="example">
+We know that this election was stolen over the net in real time. This list is organized by
+voting systems. And now they're going to highlight some of the swing states. In
+Pennsylvania they recorded 220,883 votes that switched to Joe Biden. Trump lost 941,248
+votes.
+</pre>
+
+<p>
+<code>findfraud()</code> shows votes going all over the place. I suppose one would rationalize this
+away by saying that fraud is somewhat of a shell game, and having votes go from Trump to Biden and
+Biden to Trump would help hide the activities. Assuming <code>lostvotes()</code> is the summary
+situation, though, Biden lost ~3x the votes that Trump did. Again, I applaud the
+invitation to run the code, but with the rave reviews for this incredible, rock solid
+finding in the YouTube comments, I'm guessing no one actually did.
+</p>
+
+<p>
+My assessment at this point is that this code just blindly runs some calculations, without
+actually verifying what it's finding or whether that seems sane. For example… seeing the
+indices with the biggest losses at 48 and 56 in the data, let's go look at them.
+</p>
+
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'state'</span><span class="p">]</span><span class="o">==</span><span class="s1">'Pennsylvania'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">50</span><span class="p">])</span>
+	    <span class="n">state</span>                      <span class="n">time</span>  <span class="n">votes_tot</span>    <span class="n">cand</span>   <span class="n">perc</span>   <span class="n">votes</span>   <span class="n">i</span>  <span class="n">votes_perc</span>
+<span class="mi">92</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">01</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">1106477</span>  <span class="n">bidenj</span>  <span class="mf">0.643</span>  <span class="mi">711464</span>  <span class="mi">46</span>    <span class="mf">0.207993</span>
+<span class="mi">94</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">11</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">1111586</span>  <span class="n">bidenj</span>  <span class="mf">0.641</span>  <span class="mi">712526</span>  <span class="mi">47</span>    <span class="mf">0.208303</span>
+<span class="mi">96</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">32</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">871782</span>  <span class="n">bidenj</span>  <span class="mf">0.592</span>  <span class="mi">516094</span>  <span class="mi">48</span>    <span class="mf">0.150877</span>
+<span class="mi">98</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">877724</span>  <span class="n">bidenj</span>  <span class="mf">0.590</span>  <span class="mi">517857</span>  <span class="mi">49</span>    <span class="mf">0.151393</span>
+<span class="mi">100</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mi">43</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">888907</span>  <span class="n">bidenj</span>  <span class="mf">0.586</span>  <span class="mi">520899</span>  <span class="mi">50</span>    <span class="mf">0.152282</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'state'</span><span class="p">]</span><span class="o">==</span><span class="s1">'Pennsylvania'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">52</span><span class="p">:</span><span class="mi">57</span><span class="p">])</span>
+	    <span class="n">state</span>                      <span class="n">time</span>  <span class="n">votes_tot</span>    <span class="n">cand</span>   <span class="n">perc</span>   <span class="n">votes</span>   <span class="n">i</span>  <span class="n">votes_perc</span>
+<span class="mi">106</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">59</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">1288475</span>  <span class="n">bidenj</span>  <span class="mf">0.677</span>  <span class="mi">872297</span>  <span class="mi">53</span>    <span class="mf">0.255012</span>
+<span class="mi">108</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">33</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">1288604</span>  <span class="n">bidenj</span>  <span class="mf">0.677</span>  <span class="mi">872384</span>  <span class="mi">54</span>    <span class="mf">0.255037</span>
+<span class="mi">110</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mi">59</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">1325632</span>  <span class="n">bidenj</span>  <span class="mf">0.664</span>  <span class="mi">880219</span>  <span class="mi">55</span>    <span class="mf">0.257327</span>
+<span class="mi">112</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">45</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">739443</span>  <span class="n">bidenj</span>  <span class="mf">0.627</span>  <span class="mi">463630</span>  <span class="mi">56</span>    <span class="mf">0.135540</span>
+<span class="mi">114</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">32</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">779178</span>  <span class="n">bidenj</span>  <span class="mf">0.629</span>  <span class="mi">490102</span>  <span class="mi">57</span>    <span class="mf">0.143279</span>
+</pre></div>
+
+<p>
+Taking a look at this anther way, we can just calculate the <code>diff()</code> on our votes column,
+and look for the biggest changes:
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'state'</span><span class="p">,</span> <span class="s1">'cand'</span><span class="p">,</span> <span class="s1">'i'</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'delta'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'state'</span><span class="p">,</span> <span class="s1">'cand'</span><span class="p">])[</span><span class="s1">'votes'</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">diff</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">'state'</span><span class="p">]</span><span class="o">==</span><span class="s1">'Pennsylvania'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'delta'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">10000</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">'state'</span><span class="p">]</span><span class="o">==</span><span class="s1">'Pennsylvania'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'delta'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">10000</span><span class="p">)][</span><span class="s1">'delta'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="c1">###</span>
+<span class="c1"># biggest swings in votes</span>
+	    <span class="n">state</span>                      <span class="n">time</span>  <span class="n">votes_tot</span>    <span class="n">cand</span>   <span class="n">perc</span>    <span class="n">votes</span>    <span class="n">i</span>  <span class="n">votes_perc</span>     <span class="n">delta</span>
+<span class="mi">96</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">32</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">871782</span>  <span class="n">bidenj</span>  <span class="mf">0.592</span>   <span class="mi">516094</span>   <span class="mi">48</span>    <span class="mf">0.150877</span> <span class="o">-</span><span class="mf">196432.0</span>
+<span class="mi">112</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">45</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">739443</span>  <span class="n">bidenj</span>  <span class="mf">0.627</span>   <span class="mi">463630</span>   <span class="mi">56</span>    <span class="mf">0.135540</span> <span class="o">-</span><span class="mf">416589.0</span>
+<span class="mi">97</span>   <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">32</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">871782</span>  <span class="n">trumpd</span>  <span class="mf">0.399</span>   <span class="mi">347841</span>   <span class="mi">48</span>    <span class="mf">0.103760</span>  <span class="o">-</span><span class="mf">42325.0</span>
+<span class="mi">103</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">03</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">774021</span>  <span class="n">trumpd</span>  <span class="mf">0.301</span>   <span class="mi">232980</span>   <span class="mi">51</span>    <span class="mf">0.069497</span> <span class="o">-</span><span class="mf">127916.0</span>
+<span class="mi">113</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">45</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">739443</span>  <span class="n">trumpd</span>  <span class="mf">0.363</span>   <span class="mi">268417</span>   <span class="mi">56</span>    <span class="mf">0.080068</span> <span class="o">-</span><span class="mf">145180.0</span>
+<span class="mi">376</span>  <span class="n">Pennsylvania</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">04</span> <span class="mi">04</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">51</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">2984522</span>  <span class="n">trumpd</span>  <span class="mf">0.560</span>  <span class="mi">1671332</span>  <span class="mi">188</span>    <span class="mf">0.498553</span>  <span class="o">-</span><span class="mf">17876.0</span>
+
+<span class="c1"># total "lost votes"</span>
+<span class="o">-</span><span class="mf">946318.0</span>
+</pre></div>
+
+<p>
+Does this fit the narrative <i>at all</i>? Biden is the source of 600k of those 900k lost votes… but the
+quote above presents Trump as having lost almost 1M votes in PA. How about the other swing
+states? <code>lostvotes()</code> returned all zeros for Arizona, Georgia, Michigan, and Wisconsin. How about <code>findfraud()</code>?
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">findfraud</span><span class="p">(</span><span class="s1">'Arizona'</span><span class="p">)</span>
+<span class="n">findfraud</span><span class="p">(</span><span class="s1">'Georgia'</span><span class="p">)</span>
+<span class="n">findfraud</span><span class="p">(</span><span class="s1">'Michigan'</span><span class="p">)</span>
+<span class="n">findfraud</span><span class="p">(</span><span class="s1">'Wisconsin'</span><span class="p">)</span>
+
+<span class="c1"># Arizona</span>
+<span class="mf">4492.284999999916</span> <span class="n">TRUMP</span> <span class="n">LOST</span>
+<span class="mf">532.839999999851</span> <span class="n">Trump</span> <span class="n">to</span> <span class="n">Biden</span>
+<span class="mf">3959.445000000065</span> <span class="n">Trump</span> <span class="n">to</span> <span class="n">Third</span>
+<span class="mf">11413.710000000196</span> <span class="n">BIDEN</span> <span class="n">LOST</span>
+<span class="mf">4917.905999999959</span> <span class="n">Biden</span> <span class="n">to</span> <span class="n">Trump</span>
+<span class="mf">6495.804000000237</span> <span class="n">Biden</span> <span class="n">to</span> <span class="n">Third</span>
+<span class="mf">36773.55299999989</span> <span class="mi">3</span><span class="n">RD</span> <span class="n">PARTY</span> <span class="n">LOST</span>
+<span class="mf">35530.15799999998</span> <span class="n">Third</span> <span class="n">to</span> <span class="n">Biden</span>
+<span class="mf">1243.3949999999095</span> <span class="n">Third</span> <span class="n">to</span> <span class="n">Trump</span>
+<span class="mf">4385.066000000108</span> <span class="n">TRUMP</span>
+
+<span class="c1"># Georgia</span>
+<span class="mf">20215.65600000025</span> <span class="n">TRUMP</span> <span class="n">LOST</span>
+<span class="mf">6956.512000000046</span> <span class="n">Trump</span> <span class="n">to</span> <span class="n">Biden</span>
+<span class="mf">13259.144000000204</span> <span class="n">Trump</span> <span class="n">to</span> <span class="n">Third</span>
+<span class="mf">5456.885000000213</span> <span class="n">BIDEN</span> <span class="n">LOST</span>
+<span class="mf">3530.7619999998715</span> <span class="n">Biden</span> <span class="n">to</span> <span class="n">Trump</span>
+<span class="mf">1926.1230000003416</span> <span class="n">Biden</span> <span class="n">to</span> <span class="n">Third</span>
+<span class="mf">98070.76399999915</span> <span class="mi">3</span><span class="n">RD</span> <span class="n">PARTY</span> <span class="n">LOST</span>
+<span class="mf">81906.734999999</span> <span class="n">Third</span> <span class="n">to</span> <span class="n">Biden</span>
+<span class="mf">16164.02900000017</span> <span class="n">Third</span> <span class="n">to</span> <span class="n">Trump</span>
+<span class="mf">3425.7500000001746</span> <span class="n">BIDEN</span>
+
+<span class="c1"># Michigan</span>
+<span class="mf">16807.160000000382</span> <span class="n">TRUMP</span> <span class="n">LOST</span>
+<span class="mf">9395.204000000726</span> <span class="n">Trump</span> <span class="n">to</span> <span class="n">Biden</span>
+<span class="mf">7411.955999999656</span> <span class="n">Trump</span> <span class="n">to</span> <span class="n">Third</span>
+<span class="mf">24250.137000000395</span> <span class="n">BIDEN</span> <span class="n">LOST</span>
+<span class="mf">11981.314000000828</span> <span class="n">Biden</span> <span class="n">to</span> <span class="n">Trump</span>
+<span class="mf">12268.822999999567</span> <span class="n">Biden</span> <span class="n">to</span> <span class="n">Third</span>
+<span class="mf">149435.23900000064</span> <span class="mi">3</span><span class="n">RD</span> <span class="n">PARTY</span> <span class="n">LOST</span>
+<span class="mf">124803.46400000044</span> <span class="n">Third</span> <span class="n">to</span> <span class="n">Biden</span>
+<span class="mf">24631.775000000212</span> <span class="n">Third</span> <span class="n">to</span> <span class="n">Trump</span>
+<span class="mf">2586.1100000001024</span> <span class="n">TRUMP</span>
+
+<span class="c1"># Wisconsin</span>
+<span class="mi">0</span> <span class="n">Trump</span> <span class="n">to</span> <span class="n">Biden</span>
+<span class="mf">390.70799999998417</span> <span class="n">Trump</span> <span class="n">to</span> <span class="n">Third</span>
+<span class="mf">13927.016999999993</span> <span class="n">BIDEN</span> <span class="n">LOST</span>
+<span class="mf">5800.282999999821</span> <span class="n">Biden</span> <span class="n">to</span> <span class="n">Trump</span>
+<span class="mf">8126.734000000171</span> <span class="n">Biden</span> <span class="n">to</span> <span class="n">Third</span>
+<span class="mf">59287.08899999898</span> <span class="mi">3</span><span class="n">RD</span> <span class="n">PARTY</span> <span class="n">LOST</span>
+<span class="mf">50930.62899999939</span> <span class="n">Third</span> <span class="n">to</span> <span class="n">Biden</span>
+<span class="mf">8356.459999999588</span> <span class="n">Third</span> <span class="n">to</span> <span class="n">Trump</span>
+<span class="mf">5800.282999999821</span> <span class="n">TRUMP</span>
+</pre></div>
+
+
+<p>
+Are you seeing the pattern here? No matter how we slice and dice this thing, there's just
+nothing there. In three of four cases, Biden lost more votes to Trump than the other way
+around (and I think the print out at the bottom is the net result, so Trump came out net
+beneffiting from this). Ironically, the one where Biden supposedly had an advantage was Georgia which was
+the closest of the four.
+</p>
+
+<p>
+To close out, here's all 50 states again, with zero entries removed:
+</p>
+
+<p width="500">
+<img src="../../img/hammer_votes-vs-time_no0.png" alt="nil"></p>
+
+<p>
+Is it everything you imagined?
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd33dab1" class="outline-2">
+<h2 id="orgd33dab1">conclusion</h2>
+<div class="outline-text-2" id="text-orgd33dab1">
+<p>
+I hate to say it, but this feels like the kind of thing wide eyed kids do when they've
+just had the epiphany that maybe with magnets in the right positions, they could create a
+perpetual motion machine. A bit of sketchy code on the internet pumped out numbers that
+said what people wanted to hear, and now this is holy fact etched in stone.
+</p>
+
+<p>
+Take a moment to recall what you were <i>actually</i> presented with, not what you thought you
+saw, or hoped you saw.
+</p>
+<ul class="org-ul">
+<li>someone told you that New York Times data files were equivalent to official, government
+records, functioning "like a flight recorder black box"</li>
+<li>code you don't understand and never looked at did something, and said votes were
+switched and were lost</li>
+<li>across the board, these large numbers were presented as having moved from Biden to Trump</li>
+<li>a map, possibly based on this data, was created where you can click around and "see for
+yourself" what the election <i>really</i> should have looked like</li>
+</ul>
+<p>
+I think it's easy to be sort of cheap on the internet. Every idea you're presented with is
+like a transaction. Someone's selling you something in return for your "mental bet." But
+with these things, the bet is cheap. Well, if it's wrong, I still know the overall fact is
+true, even if this thing didn't manage to show it. What if it were in real life and I
+asked you for a million dollars to save our country from an attack against democracy.
+</p>
+
+<p>
+I mean, aren't those what the stakes <i>really</i> are? If this is true, soemthing awful
+happened. Given what you've seen, will you step up materially and tangibly for the cause?
+Would you find a million dollars, no matter the personal cost, to save our country? If
+not, consider not betting with your neurons so cheaply.
+</p>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="previous">
+                <a href="../vote-fraud-theory-straight-ticket-vs-direct-votes/" rel="prev" title="Vote fraud theory: straight ticket vs. direct votes">Previous post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+    </div>
+    <!--End of body content-->
+</div>
+<div class="footerbox">
+    Contents © 2020         <a href="mailto:jw.hendy@gmail.com">John Henderson</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</div>
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><!-- ditch empty arrows
+    <script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+    -->
+</body>
+</html>
