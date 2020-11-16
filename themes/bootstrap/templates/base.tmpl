@@ -80,6 +80,7 @@ ${base.late_load_js()}
     </script>
     <!-- end fancy dates -->
     <%block name="extra_js"></%block>
+    <!-- ditch empty arrows
     <script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
@@ -87,6 +88,7 @@ ${base.late_load_js()}
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script>
+    -->
 ${body_end}
 ${template_hooks['body_end']()}
 </body>
