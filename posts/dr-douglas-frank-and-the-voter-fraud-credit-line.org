@@ -1,0 +1,38 @@
+#+BEGIN_COMMENT
+.. title: Dr. Douglas Frank and the voter fraud credit line
+.. slug: dr-douglas-frank-and-the-voter-fraud-credit-line
+.. date: 2021-04-15 21:19:25 UTC-05:00
+.. tags: 
+.. category: 
+.. status: 
+.. description: 
+.. type: text
+
+#+END_COMMENT
+
+* background
+  
+A voter fraud theory strikes again! I have come to rather enjoy these, as if you just take
+a deep breath and remember there was no fraud, these amount to a puzzle to solve. It's
+just a game of Penn & Teller "Fool Us" where the goal is to figure out how the magician
+does his trick. Instead of magic, we have math and data as the tools in play.
+
+You can find the theory of Dr. Douglas G. Frank presented in a [[https://www.depernolaw.com/uploads/2/7/0/2/27029178/collective_response_to_motions_for_protective_order_040921.pdf][recent legal brief]] from Attorney
+Matthew DePerno (attorney for the Plaintiff, William Bailey against Antrim County). You
+can hear him walk through the brief in an interview [[https://rumble.com/vfjei7-interview-with-matt-deperno-on-new-explosive-evidence-submitted-in-michigan.html][on rumble]] as well.
+
+#+begin_export html
+<!-- TEASER_END -->
+#+end_export
+
+This was the most involved, and the more I looked the more I found, so I shifted to my
+more natural, full-on Org-mode habitat in order to reproducibly analyze. The output is
+this PDF, with code available [[https://github.com/jwhendy/dr-frank-voter-fraud][on github]] if you'd like to take a look yourself!
+
+* analysis
+
+#+begin_export html
+<div align="center">
+<embed src="../../uploads/frank_refutation_2020-04-19.pdf#toolbar=0&navpanes=0" width="90%" height="800px" />
+</div>
+#+end_export
