@@ -1,6 +1,6 @@
-<div id="outline-container-orgf1f3318" class="outline-2">
-<h2 id="orgf1f3318">background</h2>
-<div class="outline-text-2" id="text-orgf1f3318">
+<div id="outline-container-orge93efc5" class="outline-2">
+<h2 id="orge93efc5">background</h2>
+<div class="outline-text-2" id="text-orge93efc5">
 <p>
 A voter fraud theory strikes again! I have come to rather enjoy these, as if you just take
 a deep breath and remember there was no fraud, these amount to a puzzle to solve. It's
@@ -21,7 +21,12 @@ This was the most involved, and the more I looked the more I found, so I shifted
 more natural, full-on Org-mode habitat in order to reproducibly analyze. The output is
 this PDF, with code available <a href="https://github.com/jwhendy/dr-frank-voter-fraud">on github</a> if you'd like to take a look yourself!
 </p>
+</div>
+</div>
 
+<div id="outline-container-org4426f31" class="outline-2">
+<h2 id="org4426f31">analysis</h2>
+<div class="outline-text-2" id="text-org4426f31">
 <div align="center">
 <embed src="../../uploads/frank_refutation_2020-04-19.pdf#toolbar=0&navpanes=0" width="90%" height="800px" />
 </div>

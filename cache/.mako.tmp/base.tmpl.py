@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1618859323.0368526
+_modified_time = 1618860274.4874618
 _enable_loop = True
 _template_filename = 'themes/bootstrap/templates/base.tmpl'
 _template_uri = 'base.tmpl'
@@ -29,35 +29,35 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         _import_ns = {}
         _mako_get_namespace(context, 'base')._populate(_import_ns, ['*'])
-        date_fanciness = _import_ns.get('date_fanciness', context.get('date_fanciness', UNDEFINED))
-        search_form = _import_ns.get('search_form', context.get('search_form', UNDEFINED))
-        body_end = _import_ns.get('body_end', context.get('body_end', UNDEFINED))
-        show_sourcelink = _import_ns.get('show_sourcelink', context.get('show_sourcelink', UNDEFINED))
-        set_locale = _import_ns.get('set_locale', context.get('set_locale', UNDEFINED))
-        def content():
-            return render_content(context._locals(__M_locals))
-        template_hooks = _import_ns.get('template_hooks', context.get('template_hooks', UNDEFINED))
-        def sourcelink():
-            return render_sourcelink(context._locals(__M_locals))
-        lang = _import_ns.get('lang', context.get('lang', UNDEFINED))
-        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
-        js_date_format = _import_ns.get('js_date_format', context.get('js_date_format', UNDEFINED))
+        blog_title = _import_ns.get('blog_title', context.get('blog_title', UNDEFINED))
         def extra_head():
             return render_extra_head(context._locals(__M_locals))
+        _link = _import_ns.get('_link', context.get('_link', UNDEFINED))
+        len = _import_ns.get('len', context.get('len', UNDEFINED))
+        content_footer = _import_ns.get('content_footer', context.get('content_footer', UNDEFINED))
+        momentjs_locales = _import_ns.get('momentjs_locales', context.get('momentjs_locales', UNDEFINED))
+        date_fanciness = _import_ns.get('date_fanciness', context.get('date_fanciness', UNDEFINED))
+        search_form = _import_ns.get('search_form', context.get('search_form', UNDEFINED))
         logo_url = _import_ns.get('logo_url', context.get('logo_url', UNDEFINED))
+        def sourcelink():
+            return render_sourcelink(context._locals(__M_locals))
+        js_date_format = _import_ns.get('js_date_format', context.get('js_date_format', UNDEFINED))
+        def content():
+            return render_content(context._locals(__M_locals))
         def extra_js():
             return render_extra_js(context._locals(__M_locals))
-        blog_title = _import_ns.get('blog_title', context.get('blog_title', UNDEFINED))
-        _link = _import_ns.get('_link', context.get('_link', UNDEFINED))
-        momentjs_locales = _import_ns.get('momentjs_locales', context.get('momentjs_locales', UNDEFINED))
+        template_hooks = _import_ns.get('template_hooks', context.get('template_hooks', UNDEFINED))
+        lang = _import_ns.get('lang', context.get('lang', UNDEFINED))
+        abs_link = _import_ns.get('abs_link', context.get('abs_link', UNDEFINED))
+        base = _mako_get_namespace(context, 'base')
         show_blog_title = _import_ns.get('show_blog_title', context.get('show_blog_title', UNDEFINED))
+        body_end = _import_ns.get('body_end', context.get('body_end', UNDEFINED))
+        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         def belowtitle():
             return render_belowtitle(context._locals(__M_locals))
         translations = _import_ns.get('translations', context.get('translations', UNDEFINED))
-        base = _mako_get_namespace(context, 'base')
-        abs_link = _import_ns.get('abs_link', context.get('abs_link', UNDEFINED))
-        content_footer = _import_ns.get('content_footer', context.get('content_footer', UNDEFINED))
-        len = _import_ns.get('len', context.get('len', UNDEFINED))
+        show_sourcelink = _import_ns.get('show_sourcelink', context.get('show_sourcelink', UNDEFINED))
+        set_locale = _import_ns.get('set_locale', context.get('set_locale', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer(str(set_locale(lang)))
@@ -163,11 +163,11 @@ def render_belowtitle(context,**pageargs):
     try:
         _import_ns = {}
         _mako_get_namespace(context, 'base')._populate(_import_ns, ['*'])
-        base = _mako_get_namespace(context, 'base')
         len = _import_ns.get('len', context.get('len', UNDEFINED))
-        translations = _import_ns.get('translations', context.get('translations', UNDEFINED))
         def belowtitle():
             return render_belowtitle(context)
+        translations = _import_ns.get('translations', context.get('translations', UNDEFINED))
+        base = _mako_get_namespace(context, 'base')
         __M_writer = context.writer()
         __M_writer('\n')
         if len(translations) > 1:
